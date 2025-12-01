@@ -28,7 +28,8 @@ function getData() {
             'company_name' => 'My Agency',
             'company_email' => 'billing@agency.com',
             'company_address' => '123 Business Road, Tech City',
-            'company_phone' => '+91 98765 43210'
+            'company_phone' => '+91 98765 43210',
+            'next_invoice_num' => 1 // Default start
         ]
     ];
 
@@ -50,6 +51,7 @@ function getData() {
     $data['invoices'] = $data['invoices'] ?? [];
     $data['clients'] = $data['clients'] ?? [];
     $data['settings'] = $data['settings'] ?? $defaultData['settings'];
+    $data['settings']['next_invoice_num'] = $data['settings']['next_invoice_num'] ?? 1;
 
     return $data;
 }
@@ -107,12 +109,22 @@ try {
         if (isset($input['action']) && $input['action'] === 'save_settings') {
             $data = getData();
             if(isset($input['settings'])) {
-                $data['settings'] = $input['settings'];
+                $data['settings'] = array_merge($data['settings'], $input['settings']);
                 saveData($data);
                 echo json_encode(['status' => 'success', 'message' => 'Settings Saved']);
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'No settings data provided']);
             }
+            exit;
+        }
+
+        // CLEAR DATA
+        if (isset($input['action']) && $input['action'] === 'clear_data') {
+            $data = getData();
+            $data['invoices'] = [];
+            $data['settings']['next_invoice_num'] = 1;
+            saveData($data);
+            echo json_encode(['status' => 'success', 'message' => 'All invoices cleared & sequence reset.']);
             exit;
         }
 
@@ -149,6 +161,17 @@ try {
                 $newInvoice['status'] = 'Pending';
                 $newInvoice['paid_at'] = null;
                 array_unshift($data['invoices'], $newInvoice);
+
+                // Update Sequence in Settings
+                // Extract number from input string (e.g. "INV-00050" -> 50)
+                if (preg_match('/(\d+)/', $newInvoice['number'], $matches)) {
+                    $currentNum = intval($matches[0]);
+                    // Only update next_num if the current one is equal or greater than what we expected
+                    // This prevents manual lower numbers from messing up the future sequence
+                    if ($currentNum >= ($data['settings']['next_invoice_num'] ?? 0)) {
+                         $data['settings']['next_invoice_num'] = $currentNum + 1;
+                    }
+                }
             }
 
             // Update Clients
@@ -382,7 +405,7 @@ try {
                 <!-- SETTINGS -->
                 <div id="view-settings" class="view-section hidden fade-in">
                     <h2 class="text-3xl font-bold text-gray-800 mb-6">Company Settings</h2>
-                    <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl">
+                    <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mb-8">
                         <form onsubmit="saveSettings(event)">
                             <div class="mb-4">
                                 <label class="block text-gray-700 font-bold mb-2">Company Name</label>
@@ -400,8 +423,24 @@ try {
                                 <label class="block text-gray-700 font-bold mb-2">Address</label>
                                 <textarea id="set-address" rows="3" class="w-full border p-2 rounded"></textarea>
                             </div>
+                            
+                            <!-- New Sequence Setting -->
+                            <div class="mb-6 border-t pt-4">
+                                <h3 class="font-bold text-lg mb-2 text-blue-900">Invoice Sequencing</h3>
+                                <p class="text-sm text-gray-500 mb-2">Manually set the next invoice number if your sequence got messed up (e.g. set to '1' to restart).</p>
+                                <label class="block text-gray-700 font-bold mb-2">Next Invoice Number Start</label>
+                                <input type="number" id="set-next-num" class="w-32 border p-2 rounded" min="1">
+                            </div>
+
                             <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Save Settings</button>
                         </form>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="bg-red-50 rounded-lg shadow border border-red-200 p-8 max-w-2xl">
+                        <h3 class="text-red-800 font-bold text-lg mb-2">Danger Zone</h3>
+                        <p class="text-red-600 text-sm mb-4">Need a fresh start? This will delete ALL invoices and clients. Cannot be undone.</p>
+                        <button onclick="clearAllData()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm">Clear All Data</button>
                     </div>
                 </div>
 
@@ -422,7 +461,8 @@ try {
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-bold mb-2">Invoice Number</label>
-                                    <input type="text" id="inv-number" class="w-full border p-2 rounded" required>
+                                    <input type="text" id="inv-number" class="w-full border p-2 rounded bg-gray-50" required>
+                                    <p class="text-xs text-gray-400 mt-1">Auto-generated. Change in Settings if needed.</p>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-bold mb-2">Client Email</label>
@@ -617,6 +657,7 @@ try {
                     document.getElementById('set-email').value = appData.settings.company_email || '';
                     document.getElementById('set-address').value = appData.settings.company_address || '';
                     document.getElementById('set-phone').value = appData.settings.company_phone || '';
+                    document.getElementById('set-next-num').value = appData.settings.next_invoice_num || 1;
                 }
 
                 updateDashboard();
@@ -696,7 +737,8 @@ try {
                 company_name: document.getElementById('set-name').value,
                 company_email: document.getElementById('set-email').value,
                 company_address: document.getElementById('set-address').value,
-                company_phone: document.getElementById('set-phone').value
+                company_phone: document.getElementById('set-phone').value,
+                next_invoice_num: parseInt(document.getElementById('set-next-num').value) || 1
             };
             const res = await fetch('index.php', { 
                 method: 'POST', 
@@ -707,13 +749,32 @@ try {
             alert(data.message);
             fetchData();
         }
+        
+        async function clearAllData() {
+            if(!confirm("DANGER: This will delete ALL invoice history and clients permanently. Are you sure?")) return;
+            const res = await fetch('index.php', { 
+                method: 'POST', 
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({action: 'clear_data'}) 
+            });
+            const data = await res.json();
+            alert(data.message);
+            location.reload();
+        }
 
         // --- CRUD ---
         function resetForm() {
             document.getElementById('create-title').innerText = 'Create New Invoice';
             document.querySelector('#view-create form').reset();
             document.getElementById('inv-id').value = '';
-            document.getElementById('inv-number').value = 'INV-' + Math.floor(Math.random()*100000);
+            
+            // SERIAL NUMBER LOGIC
+            // 1. Check if specific sequence start is set in settings
+            let nextNum = appData.settings.next_invoice_num || 1;
+            
+            // Format as INV-00001
+            document.getElementById('inv-number').value = 'INV-' + String(nextNum).padStart(5, '0');
+
             document.getElementById('items-body').innerHTML = '';
             addItemRow();
         }
@@ -809,18 +870,12 @@ try {
             const row = document.createElement('tr');
             row.className = "border-b";
             row.innerHTML = `
-                <td class="py-2 pr-2"><input type="text" name="item_desc[]" class="w-full border p-1 rounded" placeholder="Item name" required></td>
-                <td class="py-2 pr-2"><input type="number" name="item_qty[]" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
-                <td class="py-2 pr-2"><input type="number" name="item_rate[]" step="0.01" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
+                <td class="py-2 pr-2"><input type="text" name="item_desc[]" value="${desc}" class="w-full border p-1 rounded" placeholder="Item name" required></td>
+                <td class="py-2 pr-2"><input type="number" name="item_qty[]" value="${qty}" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
+                <td class="py-2 pr-2"><input type="number" name="item_rate[]" step="0.01" value="${rate}" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
                 <td class="py-2 pr-2 text-right font-medium row-amount">0.00</td>
                 <td class="py-2 text-center"><button type="button" onclick="this.closest('tr').remove(); calculateTotals()" class="text-red-500"><i class="fa-solid fa-trash"></i></button></td>
             `;
-
-            // Set values securely to prevent quote truncation issues
-            row.querySelector('input[name="item_desc[]"]').value = desc;
-            row.querySelector('input[name="item_qty[]"]').value = qty;
-            row.querySelector('input[name="item_rate[]"]').value = rate;
-
             tbody.appendChild(row);
             if(desc) calculateTotals();
         }
