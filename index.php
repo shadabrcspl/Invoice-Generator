@@ -809,12 +809,18 @@ try {
             const row = document.createElement('tr');
             row.className = "border-b";
             row.innerHTML = `
-                <td class="py-2 pr-2"><input type="text" name="item_desc[]" value="${desc}" class="w-full border p-1 rounded" placeholder="Item name" required></td>
-                <td class="py-2 pr-2"><input type="number" name="item_qty[]" value="${qty}" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
-                <td class="py-2 pr-2"><input type="number" name="item_rate[]" step="0.01" value="${rate}" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
+                <td class="py-2 pr-2"><input type="text" name="item_desc[]" class="w-full border p-1 rounded" placeholder="Item name" required></td>
+                <td class="py-2 pr-2"><input type="number" name="item_qty[]" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
+                <td class="py-2 pr-2"><input type="number" name="item_rate[]" step="0.01" oninput="calculateTotals()" class="w-full border p-1 rounded text-right" required></td>
                 <td class="py-2 pr-2 text-right font-medium row-amount">0.00</td>
                 <td class="py-2 text-center"><button type="button" onclick="this.closest('tr').remove(); calculateTotals()" class="text-red-500"><i class="fa-solid fa-trash"></i></button></td>
             `;
+
+            // Set values securely to prevent quote truncation issues
+            row.querySelector('input[name="item_desc[]"]').value = desc;
+            row.querySelector('input[name="item_qty[]"]').value = qty;
+            row.querySelector('input[name="item_rate[]"]').value = rate;
+
             tbody.appendChild(row);
             if(desc) calculateTotals();
         }
