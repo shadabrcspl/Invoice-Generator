@@ -1,7 +1,7 @@
 <?php
 /**
  * Single File Invoice Generator (PHP + HTML + JS)
- * Features: Auth, JSON Database, Multi-currency, Emailing, Analytics, PDF Download, Settings
+ * Features: Auth, JSON Database, Multi-currency, Emailing, Analytics, PDF Download, Settings, Notes/Bank Details
  */
 
 // Prevent HTML errors from breaking JSON response
@@ -29,7 +29,8 @@ function getData() {
             'company_email' => 'billing@agency.com',
             'company_address' => '123 Business Road, Tech City',
             'company_phone' => '+91 98765 43210',
-            'next_invoice_num' => 1 // Default start
+            'next_invoice_num' => 1,
+            'default_notes' => "Bank Name: \nAccount No: \nIFSC/SWIFT: "
         ]
     ];
 
@@ -52,6 +53,7 @@ function getData() {
     $data['clients'] = $data['clients'] ?? [];
     $data['settings'] = $data['settings'] ?? $defaultData['settings'];
     $data['settings']['next_invoice_num'] = $data['settings']['next_invoice_num'] ?? 1;
+    $data['settings']['default_notes'] = $data['settings']['default_notes'] ?? '';
 
     return $data;
 }
@@ -164,10 +166,9 @@ try {
 
                 // Update Sequence in Settings
                 // Extract number from input string (e.g. "INV-00050" -> 50)
-                if (preg_match('/(\d+)/', $newInvoice['number'], $matches)) {
-                    $currentNum = intval($matches[0]);
+                if (preg_match('/(\d+)$/', trim($newInvoice['number']), $matches)) {
+                    $currentNum = intval($matches[1]);
                     // Only update next_num if the current one is equal or greater than what we expected
-                    // This prevents manual lower numbers from messing up the future sequence
                     if ($currentNum >= ($data['settings']['next_invoice_num'] ?? 0)) {
                          $data['settings']['next_invoice_num'] = $currentNum + 1;
                     }
@@ -423,8 +424,15 @@ try {
                                 <label class="block text-gray-700 font-bold mb-2">Address</label>
                                 <textarea id="set-address" rows="3" class="w-full border p-2 rounded"></textarea>
                             </div>
+
+                            <!-- Bank Details / Notes Setting -->
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-bold mb-2">Default Notes / Bank Details</label>
+                                <p class="text-xs text-gray-500 mb-2">This text will appear on every new invoice (e.g., Bank Name, IBAN, Swift Code).</p>
+                                <textarea id="set-default-notes" rows="4" class="w-full border p-2 rounded" placeholder="Bank Name: &#10;Account No: &#10;SWIFT/IBAN:"></textarea>
+                            </div>
                             
-                            <!-- New Sequence Setting -->
+                            <!-- Sequence Setting -->
                             <div class="mb-6 border-t pt-4">
                                 <h3 class="font-bold text-lg mb-2 text-blue-900">Invoice Sequencing</h3>
                                 <p class="text-sm text-gray-500 mb-2">Manually set the next invoice number if your sequence got messed up (e.g. set to '1' to restart).</p>
@@ -504,7 +512,7 @@ try {
                             </div>
 
                             <!-- Totals -->
-                            <div class="flex justify-end">
+                            <div class="flex justify-end mb-6">
                                 <div class="w-64 space-y-2">
                                     <div class="flex justify-between"><span>Subtotal:</span><span id="display-subtotal">0.00</span></div>
                                     <div class="flex justify-between items-center">
@@ -513,6 +521,12 @@ try {
                                     </div>
                                     <div class="flex justify-between font-bold text-xl border-t pt-2"><span>Total:</span><span id="display-total">0.00</span></div>
                                 </div>
+                            </div>
+
+                            <!-- Invoice Notes / Bank Details -->
+                            <div class="mb-6 border-t pt-4">
+                                <label class="block text-gray-700 font-bold mb-2">Notes / Bank Details</label>
+                                <textarea id="inv-notes" class="w-full border p-2 rounded bg-yellow-50" rows="3" placeholder="Enter bank details or notes here..."></textarea>
                             </div>
 
                             <div class="mt-8 flex justify-end gap-4">
@@ -614,6 +628,17 @@ try {
                         <div class="flex justify-between py-2 text-xl font-bold text-blue-900 mt-2"><span>Total</span><span id="modal-total"></span></div>
                     </div>
                 </div>
+
+                <!-- Notes / Bank Details Section in Modal -->
+                <div class="mt-8 border-t pt-4">
+                    <h4 class="font-bold text-gray-700 mb-2">Notes / Bank Details:</h4>
+                    <p id="modal-notes" class="whitespace-pre-line text-sm text-gray-600"></p>
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-12 text-center text-xs text-gray-400">
+                    Made by <a href="https://codxpert.com" target="_blank" class="text-blue-500 hover:text-blue-700">CodXpert</a>
+                </div>
             </div>
         </div>
     </div>
@@ -658,6 +683,7 @@ try {
                     document.getElementById('set-address').value = appData.settings.company_address || '';
                     document.getElementById('set-phone').value = appData.settings.company_phone || '';
                     document.getElementById('set-next-num').value = appData.settings.next_invoice_num || 1;
+                    document.getElementById('set-default-notes').value = appData.settings.default_notes || '';
                 }
 
                 updateDashboard();
@@ -738,7 +764,8 @@ try {
                 company_email: document.getElementById('set-email').value,
                 company_address: document.getElementById('set-address').value,
                 company_phone: document.getElementById('set-phone').value,
-                next_invoice_num: parseInt(document.getElementById('set-next-num').value) || 1
+                next_invoice_num: parseInt(document.getElementById('set-next-num').value) || 1,
+                default_notes: document.getElementById('set-default-notes').value
             };
             const res = await fetch('index.php', { 
                 method: 'POST', 
@@ -775,6 +802,9 @@ try {
             // Format as INV-00001
             document.getElementById('inv-number').value = 'INV-' + String(nextNum).padStart(5, '0');
 
+            // Default Notes
+            document.getElementById('inv-notes').value = appData.settings.default_notes || '';
+
             document.getElementById('items-body').innerHTML = '';
             addItemRow();
         }
@@ -792,6 +822,7 @@ try {
             document.getElementById('inv-client-address').value = inv.client_address;
             document.getElementById('inv-currency').value = inv.currency;
             document.getElementById('inv-tax-rate').value = inv.tax_rate;
+            document.getElementById('inv-notes').value = inv.notes || '';
             
             document.getElementById('items-body').innerHTML = '';
             inv.items.forEach(item => {
@@ -833,7 +864,8 @@ try {
                 items: items,
                 subtotal: document.getElementById('display-subtotal').innerText,
                 tax_rate: document.getElementById('inv-tax-rate').value,
-                total: document.getElementById('display-total').innerText
+                total: document.getElementById('display-total').innerText,
+                notes: document.getElementById('inv-notes').value
             };
 
             try {
@@ -965,6 +997,9 @@ try {
             document.getElementById('modal-subtotal').innerText = inv.subtotal + ' ' + inv.currency;
             document.getElementById('modal-tax').innerText = `(${inv.tax_rate}%)`;
             document.getElementById('modal-total').innerText = inv.total + ' ' + inv.currency;
+
+            // Notes
+            document.getElementById('modal-notes').innerText = inv.notes || '';
 
             document.getElementById('invoice-modal').classList.remove('hidden');
         }

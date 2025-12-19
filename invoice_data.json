@@ -1,0 +1,88 @@
+{
+    "settings": {
+        "company_name": "Test Co",
+        "company_email": "shadabcse2020@gmail.com",
+        "company_address": "S\/O: Md Aftab Alam, churamba shaheb tola near purani masjid, Basdeopur",
+        "company_phone": "9570512399",
+        "next_invoice_num": 1000,
+        "default_notes": "VERIFIED DEFAULT NOTE"
+    },
+    "invoices": [
+        {
+            "id": "69452b31637b4",
+            "number": "INV-2025-999",
+            "client_name": "Playwright Client",
+            "client_email": "pw@test.com",
+            "client_address": "",
+            "currency": "USD",
+            "items": [
+                {
+                    "desc": "Test Item",
+                    "qty": "1",
+                    "rate": "100",
+                    "amount": "100.00"
+                }
+            ],
+            "subtotal": "100.00",
+            "tax_rate": "0",
+            "total": "100.00",
+            "notes": "VERIFIED DEFAULT NOTE",
+            "created_at": "2025-12-19 10:38:41",
+            "status": "Pending",
+            "paid_at": null
+        },
+        {
+            "number": "INV-2023-001",
+            "client_name": "Client X",
+            "client_email": "x@y.com",
+            "client_address": "Addr",
+            "currency": "USD",
+            "items": [],
+            "subtotal": "0",
+            "tax_rate": "0",
+            "total": "0",
+            "notes": "",
+            "id": "69452a98605f5",
+            "created_at": "2025-12-19 10:36:08",
+            "status": "Pending",
+            "paid_at": null
+        }
+    ],
+    "clients": [
+        {
+            "name": "Work Made Simple Pty. Ltd.",
+            "email": "shadabcse2020@gmail.com",
+            "address": "123"
+        },
+        {
+            "name": "Client A",
+            "email": "a@b.com",
+            "address": "Addr"
+        },
+        {
+            "name": "Client B",
+            "email": "b@c.com",
+            "address": "Addr"
+        },
+        {
+            "name": "Client C",
+            "email": "c@d.com",
+            "address": "Addr"
+        },
+        {
+            "name": "Client D",
+            "email": "d@e.com",
+            "address": "Addr"
+        },
+        {
+            "name": "Client X",
+            "email": "x@y.com",
+            "address": "Addr"
+        },
+        {
+            "name": "Playwright Client",
+            "email": "pw@test.com",
+            "address": ""
+        }
+    ]
+}
