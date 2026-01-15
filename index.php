@@ -58,7 +58,7 @@ function getData() {
 
 function saveData($data) {
     global $DATA_FILE;
-    file_put_contents($DATA_FILE, json_encode($data, JSON_PRETTY_PRINT));
+    file_put_contents($DATA_FILE, json_encode($data));
 }
 
 // Global Exception Handler for JSON responses
