@@ -399,7 +399,7 @@
 
         <!-- Footer -->
         <div class="footer">
-            Made by <a href="https://codxpert.com" style="color: #94a3b8; text-decoration: none; font-weight: bold;">codxpert.com</a>
+            Made by <a href="https://codxpert.com/" style="color: #94a3b8; text-decoration: none; font-weight: bold;">CodXpert</a>
         </div>
     </div>
 </body>

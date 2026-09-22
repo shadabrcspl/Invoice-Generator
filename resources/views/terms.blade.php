@@ -503,7 +503,7 @@
                         </p>
                         <div class="p-3 bg-light rounded-3 border mt-4">
                             <p class="mb-1"><strong>Cod Xpert Invoices Legal Desk</strong></p>
-                            <p class="mb-1 text-muted fs-7">Main Domain: <a href="https://codxpert.com" target="_blank" class="text-decoration-none text-primary fw-semibold">codxpert.com</a></p>
+                            <p class="mb-1 text-muted fs-7">Main Domain: <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-decoration-none text-primary fw-semibold">codxpert.com</a></p>
                             <p class="mb-1 text-muted fs-7">Platform URL: <a href="https://invoice.codxpert.com" class="text-decoration-none text-primary fw-semibold">invoice.codxpert.com</a></p>
                             <p class="mb-0 text-muted fs-7">Contact & Legal Inquiries: <a href="mailto:support@codxpert.com" class="text-decoration-none text-primary fw-semibold">support@codxpert.com</a></p>
                         </div>
@@ -533,7 +533,7 @@
                         <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                         <li><a href="{{ route('login') }}">Sign In</a></li>
                     </ul>
-                    <p class="text-muted fs-8 mb-0" style="font-size:12px;">© {{ date('Y') }} <a href="https://codxpert.com" target="_blank" style="color:var(--color-primary); text-decoration:none; font-weight:600;">codxpert.com</a>. All rights reserved.</p>
+                    <p class="text-muted fs-8 mb-0" style="font-size:12px;">© {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; font-weight:600;">CodXpert</a> (<a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">codxpert.com</a>). All rights reserved.</p>
                 </div>
             </div>
         </div>

@@ -248,7 +248,7 @@
                     </div>
                     
                     <div class="mt-4 pt-3 border-top text-center text-muted fs-8">
-                        Branding: <a href="https://codxpert.com" target="_blank" class="fw-semibold text-muted text-decoration-none">codxpert.com</a>
+                        Branding: <a href="https://codxpert.com/" target="_blank" rel="noopener" class="fw-semibold text-muted text-decoration-none">CodXpert</a>
                     </div>
                 </div>
             </div>

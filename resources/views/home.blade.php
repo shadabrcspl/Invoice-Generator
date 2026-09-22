@@ -34,6 +34,16 @@
         "name": "Cod Xpert Invoices",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All",
+        "author": {
+            "@type": "Organization",
+            "name": "CodXpert",
+            "url": "https://codxpert.com/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "CodXpert",
+            "url": "https://codxpert.com/"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0.00",
@@ -1529,8 +1539,8 @@
                         <div class="brand-badge">EX</div>
                         <span class="font-heading fw-bold text-dark fs-5">Cod Xpert Invoices</span>
                     </a>
-                    <p class="text-muted fs-8 mb-0" style="max-width: 420px;">
-                        Enterprise statutory invoicing for exporters, aligned with Indian GST laws, DPDP Act 2023, and automated Forex reconciliation.
+                    <p class="text-muted fs-8 mb-0" style="max-width: 440px;">
+                        Enterprise statutory invoicing for exporters, engineered by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a>. Aligned with Indian GST laws, DPDP Act 2023, and automated Forex reconciliation.
                     </p>
                 </div>
                 <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end gap-2">
@@ -1539,12 +1549,13 @@
                         <li><a href="#simulator" class="text-muted text-decoration-none">Simulator</a></li>
                         <li><a href="{{ route('terms') }}" class="text-muted text-decoration-none">Terms of Use</a></li>
                         <li><a href="{{ route('privacy') }}" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">CodXpert Main</a></li>
                         <li><a href="{{ route('login') }}" class="text-primary text-decoration-none fw-bold">Sign In</a></li>
                     </ul>
                 </div>
             </div>
             <div class="pt-4 text-center text-md-start d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 fs-8 font-mono text-muted">
-                <span>© {{ date('Y') }} <a href="https://codxpert.com" class="text-primary text-decoration-none fw-semibold">codxpert.com</a>. All rights reserved.</span>
+                <span>© {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a> (<a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">codxpert.com</a>). All rights reserved.</span>
                 <span>Statutory Compliance: GST LUT & DPDP Act, 2023 Certified</span>
             </div>
         </div>

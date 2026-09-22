@@ -451,9 +451,9 @@
                     <span>•</span>
                     <a href="{{ route('terms') }}" class="text-muted text-decoration-none">Terms of Use</a>
                     <span>•</span>
-                    <a href="https://codxpert.com" target="_blank" class="text-muted text-decoration-none">codxpert.com</a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none fw-semibold">CodXpert</a>
                 </div>
-                <div>© {{ date('Y') }} Cod Xpert Invoices. All rights reserved.</div>
+                <div>© {{ date('Y') }} Cod Xpert Invoices · Powered by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a>. All rights reserved.</div>
             </footer>
         </div>
     </main>

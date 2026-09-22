@@ -336,7 +336,7 @@
                 </div>
 
                 <div class="mt-4 pt-3 border-top text-center text-muted fs-8">
-                    Made by <a href="https://codxpert.com" target="_blank" class="fw-semibold text-primary text-decoration-none">codxpert.com</a>
+                    Made by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="fw-semibold text-primary text-decoration-none">CodXpert</a>
                 </div>
             </div>
         </div>

@@ -49,7 +49,7 @@
         </tr>
         <tr>
           <td style="background:#f8fafc;padding:20px 40px;text-align:center;border-top:1px solid #e2e8f0;">
-            <p style="margin:0;color:#9ca3af;font-size:11px;">© {{ date('Y') }} {{ config('app.name', 'Cod Xpert Invoices') }} · Public Contact Form</p>
+            <p style="margin:0;color:#9ca3af;font-size:11px;">© {{ date('Y') }} {{ config('app.name', 'Cod Xpert Invoices') }} · Powered by <a href="https://codxpert.com/" style="color:#64748b;text-decoration:none;font-weight:600;">CodXpert</a></p>
           </td>
         </tr>
       </table>

@@ -1,7 +1,10 @@
 # Cod Xpert Invoices ⚡
 
-> **Statutory-Compliant Foreign Currency Invoicing, GST LUT Exemption & Real-Time Forex Variance Platform for Global Exporters.**
+> **Statutory-Compliant Foreign Currency Invoicing, GST LUT Exemption & Real-Time Forex Variance Platform for Global Exporters.**  
+> *Engineered & Maintained by [CodXpert](https://codxpert.com/).*
 
+[![CodXpert](https://img.shields.io/badge/Maintained%20by-CodXpert-0066FF?style=flat-square&logo=googlechrome&logoColor=white)](https://codxpert.com/)
+[![Website](https://img.shields.io/badge/Official%20Site-codxpert.com-10B981?style=flat-square)](https://codxpert.com/)
 [![Laravel](https://img.shields.io/badge/Laravel-10.x-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat-square&logo=php)](https://php.net)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=flat-square&logo=bootstrap)](https://getbootstrap.com)
@@ -36,8 +39,8 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone git@github.com:shadabrcspl/codxpert-invoices.git
-cd codxpert-invoices
+git clone https://github.com/shadabrcspl/Invoice-Generator.git
+cd Invoice-Generator
 ```
 
 ### 2. Install Dependencies
@@ -91,4 +94,15 @@ To keep daily exchange rates and payment reminders synchronized:
 
 ---
 
-© 2026 [Cod Xpert](https://codxpert.com). All rights reserved.
+## 🏢 About CodXpert
+
+**CodXpert Invoices** is designed and engineered by **[CodXpert](https://codxpert.com/)**, an enterprise web & software engineering firm specializing in high-performance digital products, API architectures, and statutory fintech systems.
+
+- **Website:** [https://codxpert.com/](https://codxpert.com/)
+- **Solutions:** Enterprise Web Apps, Custom Invoicing Platforms, Forex & Cloud Integrations
+- **Inquiries:** [support@codxpert.com](mailto:support@codxpert.com)
+
+---
+
+© 2026 [CodXpert](https://codxpert.com/). All rights reserved.
+

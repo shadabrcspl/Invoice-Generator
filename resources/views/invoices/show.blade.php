@@ -537,7 +537,7 @@
         <!-- Footer -->
         <hr class="my-5 text-muted opacity-25">
         <div class="d-flex justify-content-center text-muted fs-8 py-2">
-            Made by <a href="https://codxpert.com" target="_blank" class="fw-semibold ms-1 text-primary text-decoration-none">codxpert.com</a>
+            Made by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="fw-semibold ms-1 text-primary text-decoration-none">CodXpert</a>
         </div>
     </div>
 </div>
