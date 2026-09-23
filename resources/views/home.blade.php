@@ -798,33 +798,7 @@
     <div class="ambient-glow ambient-glow-3"></div>
 
     <!-- Top Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="{{ url('/') }}">
-                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
-                <span class="font-heading fw-bold text-dark fs-5 tracking-tight">Invoices</span>
-            </a>
-            
-            <button class="navbar-toggler border-0 shadow-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#features">Architecture</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="{{ route('pricing') }}">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern text-primary fw-semibold" href="{{ route('free-invoice-generator') }}"><span class="badge bg-primary-subtle text-primary me-1">Free</span> Generator</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#simulator">Simulator</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#faqs">Statutory FAQs</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="{{ route('contact.view') }}">Contact Desk</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                    <a href="{{ route('login') }}" class="btn-brand-secondary py-2 px-3">Sign In</a>
-                    <a href="{{ route('register') }}" class="btn-brand-primary py-2 px-3">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('partials.public_navbar')
 
     <!-- 1. Hero Section -->
     <header class="hero-section">
@@ -1602,43 +1576,7 @@
     </section>
 
     <!-- 8. Minimal Modern Footer -->
-    <footer class="footer-modern">
-        <div class="container">
-            <div class="row align-items-center g-4 pb-4 border-bottom border-subtle">
-                <div class="col-md-6 text-center text-md-start">
-                    <a class="d-inline-flex align-items-center gap-2 text-decoration-none mb-2" href="{{ url('/') }}">
-                        <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 36px; width: auto; object-fit: contain;">
-                        <span class="font-heading fw-bold text-dark fs-5">Invoices</span>
-                    </a>
-                    <p class="text-muted fs-8 mb-0" style="max-width: 440px;">
-                        Enterprise statutory invoicing for exporters, engineered by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a>. Aligned with Indian GST laws, DPDP Act 2023, and automated Forex reconciliation.
-                    </p>
-                </div>
-                <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end gap-2">
-                    <ul class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-end gap-3 m-0 fs-8 font-mono">
-                        <li><a href="#features" class="text-muted text-decoration-none">Architecture</a></li>
-                        <li><a href="{{ route('pricing') }}" class="text-muted text-decoration-none">Pricing</a></li>
-                        <li><a href="{{ route('free-invoice-generator') }}" class="text-muted text-decoration-none">Free Generator</a></li>
-                        <li><a href="{{ route('for.freelancers') }}" class="text-muted text-decoration-none">For Freelancers</a></li>
-                        <li><a href="{{ route('for.contractors') }}" class="text-muted text-decoration-none">For Contractors</a></li>
-                        <li><a href="{{ route('features.e-invoicing') }}" class="text-muted text-decoration-none">E-Invoicing</a></li>
-                        <li><a href="{{ route('terms') }}" class="text-muted text-decoration-none">Terms</a></li>
-                        <li><a href="{{ route('privacy') }}" class="text-muted text-decoration-none">Privacy</a></li>
-                        <li><a href="{{ route('contact.view') }}" class="text-muted text-decoration-none">Contact Desk</a></li>
-                        <li><a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">CodXpert Main</a></li>
-                        <li><a href="{{ route('login') }}" class="text-primary text-decoration-none fw-bold">Sign In</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-4 text-center text-md-start d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 fs-8 font-mono text-muted">
-                <span>© {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a> (<a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">codxpert.com</a>). All rights reserved.</span>
-                <span>Statutory Compliance: GST LUT & DPDP Act, 2023 Certified</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap 5 JavaScript Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @include('partials.public_footer')
 
     <!-- Micro-Interactions & Engines: 3D Tilt, Text Scramble, Forex Simulator, AJAX -->
     <script>

@@ -89,31 +89,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="{{ url('/') }}">
-                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
-                <span class="fw-bold text-dark fs-5">Invoices</span>
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link text-muted" href="{{ url('/') }}#features">Architecture</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="{{ route('pricing') }}">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link text-primary fw-semibold" href="{{ route('free-invoice-generator') }}"><span class="badge bg-primary-subtle text-primary me-1">Free</span> Generator</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="{{ route('for.freelancers') }}">For Freelancers</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="{{ route('for.contractors') }}">For Contractors</a></li>
-                    <li class="nav-item"><a class="nav-link text-muted" href="{{ route('contact.view') }}">Contact</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-2">
-                    <a href="{{ route('login') }}" class="btn btn-outline-secondary btn-sm px-3 rounded-pill">Sign In</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary btn-sm px-3 rounded-pill">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('partials.public_navbar')
 
     <!-- Header -->
     <header class="py-5 text-center bg-white border-bottom">
@@ -214,25 +190,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer-modern">
-        <div class="container text-center text-md-start">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-                <div class="text-muted fs-8">
-                    © {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a>. All rights reserved. · Statutory Compliance: GST LUT & DPDP Act, 2023 Certified
-                </div>
-                <div class="d-flex gap-3 fs-8">
-                    <a href="{{ url('/') }}" class="text-muted text-decoration-none">Home</a>
-                    <a href="{{ route('pricing') }}" class="text-muted text-decoration-none">Pricing</a>
-                    <a href="{{ route('free-invoice-generator') }}" class="text-muted text-decoration-none">Free Generator</a>
-                    <a href="{{ route('for.freelancers') }}" class="text-muted text-decoration-none">For Freelancers</a>
-                    <a href="{{ route('for.contractors') }}" class="text-muted text-decoration-none">For Contractors</a>
-                    <a href="{{ route('features.e-invoicing') }}" class="text-muted text-decoration-none">E-Invoicing</a>
-                    <a href="{{ route('terms') }}" class="text-muted text-decoration-none">Terms</a>
-                    <a href="{{ route('privacy') }}" class="text-muted text-decoration-none">Privacy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('partials.public_footer')
 
 </body>
 </html>

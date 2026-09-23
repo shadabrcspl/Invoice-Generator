@@ -317,27 +317,7 @@
     <div class="bg-blob bg-blob-3"></div>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container">
-            <a class="navbar-brand-custom" href="{{ url('/') }}">
-                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
-                <span class="brand-text">Invoices</span>
-            </a>
-            <div class="ms-auto d-flex align-items-center gap-2">
-                <a href="{{ url('/') }}" class="nav-link-custom d-none d-sm-inline-block">Home</a>
-                <a href="{{ route('terms') }}" class="nav-link-custom d-none d-sm-inline-block">Terms of Use</a>
-                @auth
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold border-0" style="background: linear-gradient(135deg, #0284c7, #2563eb); font-size:14px;">
-                        Dashboard
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold border-0" style="background: linear-gradient(135deg, #0284c7, #2563eb); font-size:14px;">
-                        Sign In
-                    </a>
-                @endauth
-            </div>
-        </div>
-    </nav>
+    @include('partials.public_navbar')
 
     <!-- Main Content Container -->
     <div class="container py-5">
@@ -529,30 +509,6 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer-custom">
-        <div class="container">
-            <div class="row align-items-center g-3">
-                <div class="col-md-6 text-center text-md-start">
-                    <a class="navbar-brand-custom justify-content-center justify-content-md-start mb-2" href="{{ url('/') }}">
-                        <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 32px; width: auto; object-fit: contain;">
-                        <span class="brand-text text-dark" style="font-size:17px;">Invoices</span>
-                    </a>
-                    <p class="text-muted fs-8 mb-0">GST-compliant, multi-currency export billing & expense tracking software.</p>
-                </div>
-                <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end gap-2">
-                    <ul class="footer-links">
-                        <li><a href="{{ url('/') }}">Home</a></li>
-                        <li><a href="{{ route('terms') }}">Terms of Use</a></li>
-                        <li><a href="{{ route('privacy') }}" class="text-primary fw-semibold">Privacy Policy</a></li>
-                        <li><a href="{{ route('login') }}">Sign In</a></li>
-                    </ul>
-                    <p class="text-muted fs-8 mb-0" style="font-size:12px;">© {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; font-weight:600;">CodXpert</a> (<a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">codxpert.com</a>). All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap 5 JavaScript Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @include('partials.public_footer')
 </body>
 </html>
