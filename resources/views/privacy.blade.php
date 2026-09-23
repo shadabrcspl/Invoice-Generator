@@ -508,9 +508,10 @@
                         <div class="p-4 bg-light rounded-4 border mb-4">
                             <h5 class="fw-bold text-dark mb-2">Designated Data Protection & Grievance Redressal Officer</h5>
                             <p class="mb-1"><strong>Officer Name / Desk:</strong> Data Protection Office, Cod Xpert Invoices</p>
-                            <p class="mb-1"><strong>Company:</strong> COD XPERT</p>
-                            <p class="mb-1"><strong>Office Address:</strong> Neelam Cinema Road, Gandhi Chowk, India</p>
-                            <p class="mb-1"><strong>Official Grievance Email:</strong> <a href="mailto:support@codxpert.com" class="text-primary fw-semibold text-decoration-none">support@codxpert.com</a></p>
+                            <p class="mb-1"><strong>Company:</strong> COD XPERT Digital Technologies</p>
+                            <p class="mb-1"><strong>Registered Office Address:</strong> House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India</p>
+                            <p class="mb-1"><strong>Phone / Support:</strong> <a href="tel:+917979976451" class="text-primary fw-semibold text-decoration-none">+91 7979976451</a></p>
+                            <p class="mb-1"><strong>Official Grievance Email:</strong> <a href="mailto:info@codxpert.com" class="text-primary fw-semibold text-decoration-none">info@codxpert.com</a></p>
                             <p class="mb-0"><strong>Response & Resolution SLA:</strong> Initial acknowledgment within 24 hours; complete resolution within <strong>7 business days</strong>.</p>
                         </div>
 

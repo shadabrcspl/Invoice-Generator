@@ -114,23 +114,25 @@ class HomeController extends Controller
         }
 
         try {
-            Mail::to('shadabcse2020@gmail.com')->send(
-                new ContactUsMail(
-                    name: $validated['name'],
-                    email: $validated['email'],
-                    mailSubject: $subject,
-                    messageContent: $validated['message'],
-                    phone: $validated['phone'] ?? null,
-                    company: $validated['company'] ?? null,
-                    inquiryType: $validated['inquiry_type'] ?? null,
-                )
-            );
+            Mail::to('info@codxpert.com')
+                ->cc('shadabcse2020@gmail.com')
+                ->send(
+                    new ContactUsMail(
+                        name: $validated['name'],
+                        email: $validated['email'],
+                        mailSubject: $subject,
+                        messageContent: $validated['message'],
+                        phone: $validated['phone'] ?? null,
+                        company: $validated['company'] ?? null,
+                        inquiryType: $validated['inquiry_type'] ?? null,
+                    )
+                );
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error('Contact form submission error: ' . $e->getMessage());
             if ($request->expectsJson()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Failed to send your message. Please try again later or email us directly at shadabcse2020@gmail.com.',
+                    'message' => 'Failed to send your message. Please try again later or email us directly at info@codxpert.com.',
                 ], 500);
             }
 

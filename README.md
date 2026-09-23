@@ -100,7 +100,9 @@ To keep daily exchange rates and payment reminders synchronized:
 
 - **Website:** [https://codxpert.com/](https://codxpert.com/)
 - **Solutions:** Enterprise Web Apps, Custom Invoicing Platforms, Forex & Cloud Integrations
-- **Inquiries:** [support@codxpert.com](mailto:support@codxpert.com)
+- **Email:** [info@codxpert.com](mailto:info@codxpert.com)
+- **Phone:** +91 7979976451
+- **Registered Office:** House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India
 
 ---
 

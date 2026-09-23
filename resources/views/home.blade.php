@@ -1493,7 +1493,23 @@
                             <div class="brand-badge" style="background: rgba(2, 132, 199, 0.1); color: var(--brand-primary); font-size: 16px;">✉️</div>
                             <div>
                                 <small class="text-muted font-mono d-block fs-8">Direct Email Support</small>
-                                <span class="fw-bold text-dark fs-7">shadabcse2020@gmail.com</span>
+                                <a href="mailto:info@codxpert.com" class="fw-bold text-dark fs-7 text-decoration-none">info@codxpert.com</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 p-3 bg-white rounded-3 border border-subtle">
+                            <div class="brand-badge" style="background: rgba(34, 197, 94, 0.1); color: #16a34a; font-size: 16px;">📞</div>
+                            <div>
+                                <small class="text-muted font-mono d-block fs-8">Phone & WhatsApp Support</small>
+                                <a href="tel:+917979976451" class="fw-bold text-dark fs-7 text-decoration-none">+91 7979976451</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start gap-3 p-3 bg-white rounded-3 border border-subtle">
+                            <div class="brand-badge mt-1" style="background: rgba(234, 179, 8, 0.1); color: #ca8a04; font-size: 16px;">📍</div>
+                            <div>
+                                <small class="text-muted font-mono d-block fs-8">Registered Headquarters</small>
+                                <span class="fw-semibold text-dark fs-8 d-block">House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India</span>
                             </div>
                         </div>
                     </div>

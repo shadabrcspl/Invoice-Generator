@@ -418,7 +418,7 @@
                         <ul>
                             <li><strong>Age Requirement (18+):</strong> You represent and warrant that you are at least 18 years of age and legally competent to enter into binding agreements. The platform is not intended for minors.</li>
                             <li><strong>Authentic Information (Section 15):</strong> In accordance with the duties of Data Principals under the DPDP Act, you agree to provide true, accurate, current, and verifiable business and tax details, and not to suppress any material information or impersonate another entity.</li>
-                            <li><strong>Credential Security:</strong> You must maintain the confidentiality of your login credentials and immediately notify us at <a href="mailto:support@codxpert.com" class="text-primary text-decoration-none">support@codxpert.com</a> upon detecting any security breach.</li>
+                            <li><strong>Credential Security:</strong> You must maintain the confidentiality of your login credentials and immediately notify us at <a href="mailto:info@codxpert.com" class="text-primary text-decoration-none">info@codxpert.com</a> upon detecting any security breach.</li>
                             <li><strong>Admin Review:</strong> All new business registrations remain subject to manual administrative review and approval before full platform activation.</li>
                         </ul>
                     </div>
@@ -508,9 +508,11 @@
                         </p>
                         <div class="p-3 bg-light rounded-3 border mt-4">
                             <p class="mb-1"><strong>Cod Xpert Invoices Legal Desk</strong></p>
-                            <p class="mb-1 text-muted fs-7">Main Domain: <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-decoration-none text-primary fw-semibold">codxpert.com</a></p>
-                            <p class="mb-1 text-muted fs-7">Platform URL: <a href="https://invoice.codxpert.com" class="text-decoration-none text-primary fw-semibold">invoice.codxpert.com</a></p>
-                            <p class="mb-0 text-muted fs-7">Contact & Legal Inquiries: <a href="mailto:support@codxpert.com" class="text-decoration-none text-primary fw-semibold">support@codxpert.com</a></p>
+                            <p class="mb-1 text-muted fs-7">COD XPERT Digital Technologies</p>
+                            <p class="mb-1 text-muted fs-7">Address: House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India</p>
+                            <p class="mb-1 text-muted fs-7">Phone / Support: <a href="tel:+917979976451" class="text-decoration-none text-primary fw-semibold">+91 7979976451</a></p>
+                            <p class="mb-1 text-muted fs-7">Contact & Legal Inquiries: <a href="mailto:info@codxpert.com" class="text-decoration-none text-primary fw-semibold">info@codxpert.com</a></p>
+                            <p class="mb-0 text-muted fs-7">Corporate Site: <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-decoration-none text-primary fw-semibold">codxpert.com</a></p>
                         </div>
                     </div>
 

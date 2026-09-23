@@ -255,7 +255,7 @@
                         </label>
                     </div>
                     <input type="text" id="sellerName" class="form-control-sheet fw-bold fs-4 text-dark mb-1 w-100" value="Your Business Name" placeholder="Your Business / Company Name">
-                    <textarea id="sellerDetails" class="form-control-sheet text-muted fs-7 w-100" rows="3" placeholder="Address, City, Country&#10;GSTIN / Tax ID: 27AAAAA0000A1Z5&#10;Email: billing@yourdomain.com">Neelam Cinema Road, Gandhi Chowk, India&#10;GSTIN: 07AAAAA0000A1Z5&#10;Email: billing@codxpert.com</textarea>
+                    <textarea id="sellerDetails" class="form-control-sheet text-muted fs-7 w-100" rows="3" placeholder="Address, City, Country&#10;GSTIN / Tax ID: 27AAAAA0000A1Z5&#10;Email: info@yourdomain.com">House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India&#10;Phone: +91 7979976451&#10;Email: info@codxpert.com</textarea>
                 </div>
                 <div class="col-md-5 text-md-end">
                     <h2 class="fw-extrabold text-primary mb-3">INVOICE</h2>

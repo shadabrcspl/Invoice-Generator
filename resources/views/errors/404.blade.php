@@ -242,7 +242,7 @@
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ route('privacy') }}">Privacy Policy</a>
             <a href="{{ route('terms') }}">Terms of Use</a>
-            <a href="mailto:support@codxpert.com">Contact Support</a>
+            <a href="mailto:info@codxpert.com">Contact Support</a>
         </div>
     </div>
 </body>

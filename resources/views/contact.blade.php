@@ -33,11 +33,21 @@
             "@type": "Organization",
             "name": "CodXpert",
             "url": "https://codxpert.com/",
-            "email": "support@codxpert.com",
+            "email": "info@codxpert.com",
+            "telephone": "+91 7979976451",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "House No. 119, I.T.C. Colony, Shankarpur",
+                "addressLocality": "Munger",
+                "addressRegion": "Bihar",
+                "postalCode": "811201",
+                "addressCountry": "IN"
+            },
             "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "Customer Support",
-                "email": "support@codxpert.com",
+                "telephone": "+91 7979976451",
+                "email": "info@codxpert.com",
                 "availableLanguage": ["English", "Hindi"]
             }
         }
@@ -213,7 +223,7 @@
                             <div>
                                 <h5 class="fw-bold text-dark mb-1">Official Support & Legal Desk</h5>
                                 <p class="text-muted fs-7 mb-2">Direct assistance for account verification, API issues, and statutory questions.</p>
-                                <a href="mailto:support@codxpert.com" class="text-primary fw-semibold text-decoration-none">support@codxpert.com</a>
+                                <a href="mailto:info@codxpert.com" class="text-primary fw-semibold text-decoration-none">info@codxpert.com</a>
                                 <div class="mt-2 text-muted fs-8 font-monospace">SLA: Under 24 Business Hours</div>
                             </div>
                         </div>
@@ -225,10 +235,13 @@
                                 <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
                             </div>
                             <div>
-                                <h5 class="fw-bold text-dark mb-1">WhatsApp Fast Connect</h5>
-                                <p class="text-muted fs-7 mb-2">Instant messaging for quick onboarding and technical consultations.</p>
-                                <span class="badge bg-success-subtle text-success px-2 py-1 rounded">Fast WhatsApp Support</span>
-                                <div class="mt-2 text-muted fs-8 font-monospace">Mon – Sat, 9:30 AM to 6:30 PM IST</div>
+                                <h5 class="fw-bold text-dark mb-1">Direct Phone & WhatsApp</h5>
+                                <p class="text-muted fs-7 mb-2">Instant messaging and telephonic support for onboarding & technical queries.</p>
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <a href="tel:+917979976451" class="text-dark fw-bold text-decoration-none fs-6">+91 7979976451</a>
+                                    <a href="https://wa.me/917979976451" target="_blank" rel="noopener" class="badge bg-success text-white text-decoration-none px-2 py-1 rounded">WhatsApp Chat →</a>
+                                </div>
+                                <div class="mt-1 text-muted fs-8 font-monospace">Mon – Sat, 9:30 AM to 6:30 PM IST</div>
                             </div>
                         </div>
                     </div>
@@ -239,9 +252,10 @@
                                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                             </div>
                             <div>
-                                <h5 class="fw-bold text-dark mb-1">Engineering Headquarters</h5>
-                                <p class="text-muted fs-7 mb-1">COD XPERT Digital Technologies</p>
-                                <p class="text-muted fs-8 mb-1">Neelam Cinema Road, Gandhi Chowk, India</p>
+                                <h5 class="fw-bold text-dark mb-1">Registered Headquarters</h5>
+                                <p class="text-muted fs-7 mb-1 fw-semibold">COD XPERT Digital Technologies</p>
+                                <p class="text-muted fs-8 mb-1">House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India</p>
+                                <p class="text-muted fs-8 mb-2">Phone: +91 7979976451 · Email: info@codxpert.com</p>
                                 <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold fs-8">Visit CodXpert Corporate Site →</a>
                             </div>
                         </div>
@@ -373,7 +387,7 @@
             })
             .catch(err => {
                 alertBox.className = 'alert alert-danger';
-                alertBox.textContent = '✕ Error submitting inquiry. Please try again or email support@codxpert.com directly.';
+                alertBox.textContent = '✕ Error submitting inquiry. Please try again or email info@codxpert.com directly.';
                 alertBox.style.display = 'block';
             })
             .finally(() => {
