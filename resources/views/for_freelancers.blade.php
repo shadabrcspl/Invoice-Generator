@@ -16,6 +16,9 @@
     <meta property="og:title" content="Invoicing Software for Freelancers | Cod Xpert Invoices">
     <meta property="og:description" content="Effortless multi-currency billing, automated payment reminders, and statutory GST LUT compliance for global freelancers.">
 
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+
     <!-- Schema.org SoftwareApplication for Freelancers -->
     <script type="application/ld+json">
     {
@@ -140,8 +143,8 @@
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="{{ url('/') }}">
-                <div class="brand-badge">EX</div>
-                <span class="fw-bold text-dark fs-5">Cod Xpert Invoices</span>
+                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
+                <span class="fw-bold text-dark fs-5">Invoices</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
                 <span class="navbar-toggler-icon"></span>

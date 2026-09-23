@@ -11,7 +11,9 @@
       <table width="580" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
         <tr>
           <td style="background:linear-gradient(135deg,#0f172a,#1e293b);padding:40px;text-align:center;">
-            <div style="width:64px;height:64px;background:rgba(255,255,255,0.1);border-radius:16px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:28px;">✉️</div>
+            <div style="background:#ffffff;border-radius:12px;display:inline-block;padding:8px 16px;margin-bottom:16px;">
+              <img src="https://invoice.codxpert.com/images/codxpert-logo.png" alt="CodXpert" style="height:36px;width:auto;display:block;">
+            </div>
             <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:800;">New Contact Inquiry</h1>
             <p style="margin:8px 0 0;color:rgba(255,255,255,0.8);font-size:14px;">A message was submitted from the public landing page</p>
           </td>

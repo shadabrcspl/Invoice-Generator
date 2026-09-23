@@ -25,6 +25,9 @@
     <meta property="twitter:description" content="An ultra-modern, statutory-compliant invoicing platform for global exporters. Features GST LUT 0% IGST export billing, real-time exchange rates, automated Forex variance tracking, and GSTR-1 CSV exports.">
     <meta property="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
 
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
     {
@@ -796,8 +799,8 @@
     <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="{{ url('/') }}">
-                <div class="brand-badge">EX</div>
-                <span class="font-heading fw-bold text-dark fs-5 tracking-tight">Cod Xpert Invoices</span>
+                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
+                <span class="font-heading fw-bold text-dark fs-5 tracking-tight">Invoices</span>
             </a>
             
             <button class="navbar-toggler border-0 shadow-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -1586,8 +1589,8 @@
             <div class="row align-items-center g-4 pb-4 border-bottom border-subtle">
                 <div class="col-md-6 text-center text-md-start">
                     <a class="d-inline-flex align-items-center gap-2 text-decoration-none mb-2" href="{{ url('/') }}">
-                        <div class="brand-badge">EX</div>
-                        <span class="font-heading fw-bold text-dark fs-5">Cod Xpert Invoices</span>
+                        <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 36px; width: auto; object-fit: contain;">
+                        <span class="font-heading fw-bold text-dark fs-5">Invoices</span>
                     </a>
                     <p class="text-muted fs-8 mb-0" style="max-width: 440px;">
                         Enterprise statutory invoicing for exporters, engineered by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold">CodXpert</a>. Aligned with Indian GST laws, DPDP Act 2023, and automated Forex reconciliation.

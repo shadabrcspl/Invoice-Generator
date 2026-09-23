@@ -15,6 +15,9 @@
     <meta property="og:title" content="Free Online Invoice Generator | Instant PDF Download">
     <meta property="og:description" content="Generate beautiful, multi-currency export invoices in seconds. Download PDF instantly with zero registration required.">
 
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+
     <!-- Schema.org WebApplication -->
     <script type="application/ld+json">
     {
@@ -176,8 +179,8 @@
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top no-print">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="{{ url('/') }}">
-                <div class="brand-badge">EX</div>
-                <span class="fw-bold text-dark fs-5">Cod Xpert Invoices</span>
+                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
+                <span class="fw-bold text-dark fs-5">Invoices</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
                 <span class="navbar-toggler-icon"></span>
@@ -242,6 +245,13 @@
             <!-- Top Header: Seller & Invoice Meta -->
             <div class="row g-4 justify-content-between mb-4 border-bottom pb-4">
                 <div class="col-md-6">
+                    <div class="mb-3 d-flex align-items-center gap-3">
+                        <img id="invoiceLogoPreview" src="{{ asset('images/codxpert-logo.png') }}" alt="Logo" style="height: 48px; max-width: 160px; object-fit: contain;">
+                        <label for="invoiceLogoUpload" class="btn btn-outline-secondary btn-sm rounded-pill fs-8 no-print" style="cursor: pointer;">
+                            <span>Change Logo</span>
+                            <input type="file" id="invoiceLogoUpload" class="d-none" accept="image/*" onchange="previewInvoiceLogo(event)">
+                        </label>
+                    </div>
                     <input type="text" id="sellerName" class="form-control-sheet fw-bold fs-4 text-dark mb-1 w-100" value="Your Business Name" placeholder="Your Business / Company Name">
                     <textarea id="sellerDetails" class="form-control-sheet text-muted fs-7 w-100" rows="3" placeholder="Address, City, Country&#10;GSTIN / Tax ID: 27AAAAA0000A1Z5&#10;Email: billing@yourdomain.com">Neelam Cinema Road, Gandhi Chowk, India&#10;GSTIN: 07AAAAA0000A1Z5&#10;Email: billing@codxpert.com</textarea>
                 </div>
@@ -455,6 +465,17 @@
             context.querySelectorAll('.item-qty, .item-rate').forEach(input => {
                 input.addEventListener('input', recalculate);
             });
+        }
+
+        function previewInvoiceLogo(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('invoiceLogoPreview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
         }
 
         document.getElementById('currencySelect').addEventListener('change', recalculate);

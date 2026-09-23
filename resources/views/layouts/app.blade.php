@@ -10,6 +10,9 @@
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -311,8 +314,12 @@
     <!-- Sidebar Layout Navigation -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <div class="brand-icon">EX</div>
-            <span class="brand-text">Cod Xpert</span>
+            <a href="{{ route('dashboard') }}" class="d-flex align-items-center gap-2 text-decoration-none">
+                <div style="background: #ffffff; border-radius: 8px; padding: 4px 8px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                    <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 28px; width: auto; object-fit: contain;">
+                </div>
+                <span class="brand-text">Invoices</span>
+            </a>
         </div>
 
         <nav class="sidebar-nav">

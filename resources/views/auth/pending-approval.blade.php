@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registration Pending Approval | {{ config('app.name') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -117,6 +119,11 @@
     <div class="bg-blob bg-blob-2"></div>
 
     <div class="pending-card">
+        <div class="text-center mb-3">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 52px; width: auto; object-fit: contain;">
+            </a>
+        </div>
         <div class="brand-icon">⏳</div>
         <h3 class="text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Registration Received</h3>
         <p class="text-center text-muted small mb-4">Pending Administrator Approval</p>

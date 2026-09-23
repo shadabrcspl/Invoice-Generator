@@ -16,6 +16,9 @@
     <meta property="og:title" content="E-Invoicing & Statutory Compliance Software | Cod Xpert Invoices">
     <meta property="og:description" content="Automated GST LUT declarations, QR code verification, and real-time Forex reconciliation in an enterprise e-invoicing suite.">
 
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+
     <!-- Schema.org SoftwareApplication -->
     <script type="application/ld+json">
     {
@@ -140,8 +143,8 @@
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="{{ url('/') }}">
-                <div class="brand-badge">EX</div>
-                <span class="fw-bold text-dark fs-5">Cod Xpert Invoices</span>
+                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
+                <span class="fw-bold text-dark fs-5">Invoices</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
                 <span class="navbar-toggler-icon"></span>

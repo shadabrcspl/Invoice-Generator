@@ -16,6 +16,9 @@
     <meta property="og:title" content="Terms of Use | Cod Xpert Invoices">
     <meta property="og:description" content="Read the terms, conditions, and compliance guidelines governing the use of Cod Xpert Invoices software.">
 
+    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -315,8 +318,8 @@
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand-custom" href="{{ url('/') }}">
-                <div class="brand-icon">EX</div>
-                <span class="brand-text">Cod Xpert Invoices</span>
+                <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain;">
+                <span class="brand-text">Invoices</span>
             </a>
             <div class="ms-auto d-flex align-items-center gap-2">
                 <a href="{{ url('/') }}" class="nav-link-custom d-none d-sm-inline-block">Home</a>
@@ -521,8 +524,8 @@
             <div class="row align-items-center g-3">
                 <div class="col-md-6 text-center text-md-start">
                     <a class="navbar-brand-custom justify-content-center justify-content-md-start mb-2" href="{{ url('/') }}">
-                        <div class="brand-icon" style="height:28px; width:28px; font-size:14px;">EX</div>
-                        <span class="brand-text text-dark" style="font-size:17px;">Cod Xpert Invoices</span>
+                        <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 32px; width: auto; object-fit: contain;">
+                        <span class="brand-text text-dark" style="font-size:17px;">Invoices</span>
                     </a>
                     <p class="text-muted fs-8 mb-0">GST-compliant, multi-currency export billing & expense tracking software.</p>
                 </div>
