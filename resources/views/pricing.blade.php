@@ -16,8 +16,10 @@
     <meta property="og:title" content="Transparent Pricing & Plans | Cod Xpert Invoices">
     <meta property="og:description" content="Start free with GST LUT invoicing or unlock automated Forex variance and GSTR-1 exports.">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Schema.org Pricing Product -->
     <script type="application/ld+json">

@@ -15,8 +15,10 @@
     <meta property="og:title" content="Free Online Invoice Generator | Instant PDF Download">
     <meta property="og:description" content="Generate beautiful, multi-currency export invoices in seconds. Download PDF instantly with zero registration required.">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Schema.org WebApplication -->
     <script type="application/ld+json">

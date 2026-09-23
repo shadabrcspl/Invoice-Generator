@@ -25,8 +25,10 @@
     <meta property="twitter:description" content="An ultra-modern, statutory-compliant invoicing platform for global exporters. Features GST LUT 0% IGST export billing, real-time exchange rates, automated Forex variance tracking, and GSTR-1 CSV exports.">
     <meta property="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">

@@ -16,8 +16,10 @@
     <meta property="og:title" content="Contractor Invoicing Software | Cod Xpert Invoices">
     <meta property="og:description" content="Milestone billing, multi-currency support, expense tracking, and clean professional PDF generation for contractors.">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Schema.org SoftwareApplication for Contractors -->
     <script type="application/ld+json">

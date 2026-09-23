@@ -16,8 +16,10 @@
     <meta property="og:title" content="E-Invoicing & Statutory Compliance Software | Cod Xpert Invoices">
     <meta property="og:description" content="Automated GST LUT declarations, QR code verification, and real-time Forex reconciliation in an enterprise e-invoicing suite.">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/codxpert-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/codxpert-logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Schema.org SoftwareApplication -->
     <script type="application/ld+json">
