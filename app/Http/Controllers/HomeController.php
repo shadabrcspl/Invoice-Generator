@@ -206,6 +206,134 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the Recurring Invoices feature page.
+     */
+    public function featuresRecurringInvoices()
+    {
+        return view('features_recurring_invoices');
+    }
+
+    /**
+     * Display the Invoice Tracking feature page.
+     */
+    public function featuresInvoiceTracking()
+    {
+        return view('features_invoice_tracking');
+    }
+
+    /**
+     * Display the Multi-Currency billing page.
+     */
+    public function featuresMultiCurrency()
+    {
+        $rates = [
+            'USD' => 95.15,
+            'AED' => 25.90,
+            'EUR' => 109.71,
+            'GBP' => 128.82,
+            'AUD' => 68.68,
+            'CAD' => 68.92,
+        ];
+        return view('features_multi_currency', compact('rates'));
+    }
+
+    /**
+     * Display Quotations to Invoices feature page.
+     */
+    public function featuresQuotations()
+    {
+        return view('features_quotations');
+    }
+
+    /**
+     * Display Invoicing for Small Business page.
+     */
+    public function forSmallBusiness()
+    {
+        return view('for_small_business');
+    }
+
+    /**
+     * Display Invoicing for Digital Agencies page.
+     */
+    public function forAgencies()
+    {
+        return view('for_agencies');
+    }
+
+    /**
+     * Display Invoicing for Consultants page.
+     */
+    public function forConsultants()
+    {
+        return view('for_consultants');
+    }
+
+    /**
+     * Display the comprehensive GST LUT Rule 96A Exporter Guide.
+     */
+    public function gstLutGuide()
+    {
+        return view('gst_lut_guide');
+    }
+
+    /**
+     * Display the FIRC & e-BRC Reconciliation Guide.
+     */
+    public function fircEBrcGuide()
+    {
+        return view('firc_e_brc_guide');
+    }
+
+    /**
+     * Display CodXpert vs Zoho Invoice comparison page.
+     */
+    public function vsZohoInvoice()
+    {
+        return view('vs_zoho_invoice');
+    }
+
+    /**
+     * Display CodXpert vs Tally Prime comparison page.
+     */
+    public function vsTallyPrime()
+    {
+        return view('vs_tally_prime');
+    }
+
+    /**
+     * Display the Interactive Forex & Variance Calculator tool.
+     */
+    public function toolsForexCalculator()
+    {
+        $rates = [
+            'USD' => 95.15,
+            'AED' => 25.90,
+            'EUR' => 109.71,
+            'GBP' => 128.82,
+            'AUD' => 68.68,
+            'CAD' => 68.92,
+        ];
+        return view('tools_forex_calculator', compact('rates'));
+    }
+
+    /**
+     * Display Free Word Invoice Templates page.
+     */
+    public function templatesWord()
+    {
+        return view('templates_invoice_word');
+    }
+
+    /**
+     * Display Free Excel Invoice Templates page.
+     */
+    public function templatesExcel()
+    {
+        return view('templates_invoice_excel');
+    }
+
+    /**
      * Display the Privacy Policy page.
      */
     public function privacy()

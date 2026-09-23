@@ -1,11 +1,14 @@
 # Cod Xpert Invoices (https://invoice.codxpert.com)
 
-> Enterprise Statutory Foreign Currency Invoicing, GST LUT Exemption & Real-Time Forex Variance Platform for Global Exporters, Freelancers & Contractors. Engineered by CodXpert (https://codxpert.com/).
+> Enterprise Statutory Foreign Currency Invoicing, GST LUT Exemption & Real-Time Forex Variance Platform for Global Exporters, Small Businesses, Agencies, Freelancers & Contractors. Engineered by CodXpert (https://codxpert.com/).
 
 ## Core Capabilities
 - **GST LUT 0% IGST Export Billing:** Automated statutory Letter of Undertaking (LUT) declarations pursuant to Rule 96A of CGST Rules 2017 / Section 16 of the IGST Act. Prevents working capital blockage on cross-border shipments.
 - **Multi-Currency Engine:** Real-time exchange rate sync via ExchangeRate-API (USD, AED, EUR, GBP, AUD, CAD) with manual override capabilities to lock exact invoice-date interbank rates.
 - **Forex Variance & FIRC / e-BRC Reconciliation:** Logs exact bank liquidation dates, realized INR values, and automatically accounts for realized Forex gains (credits) or losses (debits) with FIRC reference tracking.
+- **Recurring Invoices & Retainer Billing:** Set cadence, automated dispatch, and payment reminders for monthly agency retainers and client contracts.
+- **Invoice Tracking & Status Telemetry:** Track delivery, view dates, aging breakdown, and automated chasing of overdue invoices.
+- **Estimates & Quotation Conversion:** Issue professional quotes and convert approved estimates to tax invoices in 1 click.
 - **GSTR-1 Tax Portal Export:** One-click CSV generation pre-formatted for direct Chartered Accountant and GST portal filing under Table 6A.
 - **Business Expense & Input Tax Credit (ITC) Tracker:** Digital receipt uploads with automatic tax breakdown and Excel exports.
 - **Custom Per-User SMTP Mailer:** Isolated, domain-verified SMTP delivery with AES-256 encrypted credentials preventing spam flagging.
@@ -16,9 +19,35 @@
 - Homepage: https://invoice.codxpert.com/
 - Free Invoice Generator: https://invoice.codxpert.com/free-invoice-generator
 - Pricing & Deployment Plans: https://invoice.codxpert.com/pricing
+
+### Personas & Audiences
+- For Small Business: https://invoice.codxpert.com/for/small-business
+- For Agencies: https://invoice.codxpert.com/for/agencies
+- For Consultants: https://invoice.codxpert.com/for/consultants
 - For Freelancers: https://invoice.codxpert.com/for/freelancers
 - For Contractors: https://invoice.codxpert.com/for/contractors
+
+### Feature Pillars
 - E-Invoicing & Compliance: https://invoice.codxpert.com/features/e-invoicing
+- Recurring Invoices: https://invoice.codxpert.com/features/recurring-invoices
+- Invoice Tracking: https://invoice.codxpert.com/features/invoice-tracking
+- Multi-Currency Billing: https://invoice.codxpert.com/features/multi-currency
+- Quotations & Estimates: https://invoice.codxpert.com/features/quotations
+
+### Statutory Exporter Guides
+- GST LUT Rule 96A Guide: https://invoice.codxpert.com/gst-lut-guide
+- FIRC & e-BRC Reconciliation Guide: https://invoice.codxpert.com/firc-e-brc-guide
+
+### Competitor Comparisons
+- CodXpert vs Zoho Invoice: https://invoice.codxpert.com/vs/zoho-invoice
+- CodXpert vs Tally Prime: https://invoice.codxpert.com/vs/tally-prime
+
+### Free Tools & Templates
+- Forex & Variance Calculator: https://invoice.codxpert.com/tools/forex-calculator
+- Word Invoice Templates: https://invoice.codxpert.com/templates/invoice-template-word
+- Excel Invoice Templates: https://invoice.codxpert.com/templates/excel-invoice-template
+
+### Legal & Contact
 - Contact & Demo Desk: https://invoice.codxpert.com/contact
 - Terms of Use: https://invoice.codxpert.com/terms
 - Privacy Policy: https://invoice.codxpert.com/privacy

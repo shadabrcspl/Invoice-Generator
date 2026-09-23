@@ -86,8 +86,30 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/pricing', [App\Http\Controllers\HomeController::class, 'pricing'])->name('pricing');
 Route::get('/for/freelancers', [App\Http\Controllers\HomeController::class, 'forFreelancers'])->name('for.freelancers');
 Route::get('/for/contractors', [App\Http\Controllers\HomeController::class, 'forContractors'])->name('for.contractors');
+Route::get('/for/small-business', [App\Http\Controllers\HomeController::class, 'forSmallBusiness'])->name('for.small-business');
+Route::get('/for/agencies', [App\Http\Controllers\HomeController::class, 'forAgencies'])->name('for.agencies');
+Route::get('/for/consultants', [App\Http\Controllers\HomeController::class, 'forConsultants'])->name('for.consultants');
+
+// Feature Pillars
 Route::get('/features/e-invoicing', [App\Http\Controllers\HomeController::class, 'featuresEInvoicing'])->name('features.e-invoicing');
+Route::get('/features/recurring-invoices', [App\Http\Controllers\HomeController::class, 'featuresRecurringInvoices'])->name('features.recurring-invoices');
+Route::get('/features/invoice-tracking', [App\Http\Controllers\HomeController::class, 'featuresInvoiceTracking'])->name('features.invoice-tracking');
+Route::get('/features/multi-currency', [App\Http\Controllers\HomeController::class, 'featuresMultiCurrency'])->name('features.multi-currency');
+Route::get('/features/quotations', [App\Http\Controllers\HomeController::class, 'featuresQuotations'])->name('features.quotations');
+
+// Statutory Guides
+Route::get('/gst-lut-guide', [App\Http\Controllers\HomeController::class, 'gstLutGuide'])->name('guide.gst-lut');
+Route::get('/firc-e-brc-guide', [App\Http\Controllers\HomeController::class, 'fircEBrcGuide'])->name('guide.firc-e-brc');
+
+// Competitor Comparisons
+Route::get('/vs/zoho-invoice', [App\Http\Controllers\HomeController::class, 'vsZohoInvoice'])->name('vs.zoho-invoice');
+Route::get('/vs/tally-prime', [App\Http\Controllers\HomeController::class, 'vsTallyPrime'])->name('vs.tally-prime');
+
+// Tools & Free Templates
 Route::get('/free-invoice-generator', [App\Http\Controllers\HomeController::class, 'freeInvoiceGenerator'])->name('free-invoice-generator');
+Route::get('/tools/forex-calculator', [App\Http\Controllers\HomeController::class, 'toolsForexCalculator'])->name('tools.forex-calculator');
+Route::get('/templates/invoice-template-word', [App\Http\Controllers\HomeController::class, 'templatesWord'])->name('templates.word');
+Route::get('/templates/excel-invoice-template', [App\Http\Controllers\HomeController::class, 'templatesExcel'])->name('templates.excel');
 
 // Contact Desk (GET renders dedicated page, POST handles submission)
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contactView'])->name('contact.view');
