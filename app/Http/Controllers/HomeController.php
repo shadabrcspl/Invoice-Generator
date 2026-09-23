@@ -150,6 +150,62 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the dedicated Contact Desk page.
+     */
+    public function contactView()
+    {
+        return view('contact');
+    }
+
+    /**
+     * Display the transparent Pricing & Deployment plans page.
+     */
+    public function pricing()
+    {
+        return view('pricing');
+    }
+
+    /**
+     * Display the dedicated For Freelancers page.
+     */
+    public function forFreelancers()
+    {
+        return view('for_freelancers');
+    }
+
+    /**
+     * Display the dedicated For Contractors page.
+     */
+    public function forContractors()
+    {
+        return view('for_contractors');
+    }
+
+    /**
+     * Display the E-Invoicing & Compliance page.
+     */
+    public function featuresEInvoicing()
+    {
+        return view('features_e_invoicing');
+    }
+
+    /**
+     * Display the instant browser-based Free Invoice Generator.
+     */
+    public function freeInvoiceGenerator()
+    {
+        $rates = [
+            'USD' => 95.15,
+            'AED' => 25.90,
+            'EUR' => 109.71,
+            'GBP' => 128.82,
+            'AUD' => 68.68,
+            'CAD' => 68.92,
+        ];
+        return view('free_invoice_generator', compact('rates'));
+    }
+
+    /**
      * Display the Privacy Policy page.
      */
     public function privacy()

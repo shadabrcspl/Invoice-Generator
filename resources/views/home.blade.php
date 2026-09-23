@@ -7,9 +7,8 @@
 
     <!-- SEO Meta Tags -->
     <title>Cod Xpert Invoices - GST LUT Foreign Currency Invoicing & Forex Software</title>
-    <meta name="description" content="An ultra-modern, statutory-compliant invoicing platform for global exporters. Features GST LUT 0% IGST export billing, real-time exchange rates, automated Forex variance tracking, GSTR-1 CSV exports, and business expense management.">
+    <meta name="description" content="Statutory GST LUT 0% IGST export invoicing and real-time Forex variance software. Automated FIRC reconciliation, e-BRC tracking, and GSTR-1 CSV exports.">
     <meta name="keywords" content="invoice generator, multi-currency invoicing, GST LUT, export billing, GSTR-1 exporter, Forex gain loss tracker, business expense tracker, custom SMTP invoicing, DPDP Act compliant">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url('/') }}">
 
     <!-- Open Graph / Facebook -->
@@ -58,6 +57,56 @@
             "GSTR-1 Compliant CSV Exporting",
             "Business Expense & Input Tax Credit (ITC) Tracker",
             "Digital Personal Data Protection Act (DPDP Act) 2023 Compliant"
+        ]
+    }
+    </script>
+
+    <!-- FAQPage JSON-LD Schema Markup for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How does the GST Letter of Undertaking (LUT) zero-rate export work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Under Section 16 of the IGST Act, Indian registered entities exporting services or goods can supply without payment of Integrated GST by executing an active Letter of Undertaking (LUT). Once you register your LUT number inside settings, Cod Xpert automatically injects the mandatory statutory declaration string onto both customer views and downloaded PDF invoice layouts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How are foreign currency exchange rates validated and locked?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The application connects to a secure live ExchangeRate-API. Whenever you select a foreign currency (USD, AED, EUR, AUD, etc.), the system checks its validity and fetches the daily conversion rate. For maximum commercial flexibility, you can manually override the exchange rate, which updates the locked, read-only INR equivalent."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Forex reconciliation and FIRC/e-BRC logging function?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "When recording a payment or editing an invoice, you enter the actual INR credited by your bank and the Foreign Inward Remittance Certificate (FIRC/e-BRC) reference number. The system compares the received INR with the locked invoice date INR, automatically calculating and posting the exact realized Forex Gain Credit or Loss Debit to your compliance ledger."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I track business expenses and claim Input Tax Credit (ITC)?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! The integrated Business Expense Tracker allows you to log operational costs (hosting, internet, software licenses), upload PDF or image receipts, and compile tax splits (CGST, SGST, IGST) into a clean Excel ledger to claim Input Tax Credit on your GST returns."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my business and client data compliant with India's DPDP Act, 2023?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, 100%. Cod Xpert operates in complete compliance with India's Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023). We enforce itemized notice and consent, strict purpose limitation, AES-256-CBC encryption for SMTP credentials, multi-tenant database isolation, a published Data Protection Officer desk, and a guaranteed 7-business-day resolution SLA."
+                }
+            }
         ]
     }
     </script>
@@ -758,10 +807,11 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link nav-link-modern" href="#features">Architecture</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#simulator">Live Simulator</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#workflow">Workflow</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-modern" href="{{ route('pricing') }}">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-modern text-primary fw-semibold" href="{{ route('free-invoice-generator') }}"><span class="badge bg-primary-subtle text-primary me-1">Free</span> Generator</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#simulator">Simulator</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-modern" href="#faqs">Statutory FAQs</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-modern" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-modern" href="{{ route('contact.view') }}">Contact Desk</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
                     <a href="{{ route('login') }}" class="btn-brand-secondary py-2 px-3">Sign In</a>
@@ -1347,11 +1397,11 @@
                         
                         <!-- FAQ 1 -->
                         <div class="accordion-item">
-                            <h2 class="accordion-header">
+                            <h3 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true">
                                     How does the GST Letter of Undertaking (LUT) zero-rate export work?
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     Under Section 16 of the IGST Act, Indian registered entities exporting services or goods can supply without payment of Integrated GST by executing an active Letter of Undertaking (LUT). Once you register your LUT number inside settings, Cod Xpert automatically injects the mandatory statutory declaration string onto both customer views and downloaded PDF invoice layouts.
@@ -1361,11 +1411,11 @@
 
                         <!-- FAQ 2 -->
                         <div class="accordion-item">
-                            <h2 class="accordion-header">
+                            <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false">
                                     How are foreign currency exchange rates validated and locked?
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     The application connects to a secure live ExchangeRate-API. Whenever you select a foreign currency (USD, AED, EUR, AUD, etc.), the system checks its validity and fetches the daily conversion rate. For maximum commercial flexibility, you can manually override the exchange rate, which updates the locked, read-only INR equivalent.
@@ -1375,11 +1425,11 @@
 
                         <!-- FAQ 3 -->
                         <div class="accordion-item">
-                            <h2 class="accordion-header">
+                            <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false">
                                     How does Forex reconciliation and FIRC/e-BRC logging function?
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     When recording a payment or editing an invoice, you enter the actual INR credited by your bank and the Foreign Inward Remittance Certificate (FIRC/e-BRC) reference number. The system compares the received INR with the locked invoice date INR, automatically calculating and posting the exact realized Forex Gain Credit or Loss Debit to your compliance ledger.
@@ -1389,11 +1439,11 @@
 
                         <!-- FAQ 4 -->
                         <div class="accordion-item">
-                            <h2 class="accordion-header">
+                            <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false">
                                     Can I track business expenses and claim Input Tax Credit (ITC)?
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     Yes! The integrated Business Expense Tracker allows you to log operational costs (hosting, internet, software licenses), upload PDF or image receipts, and compile tax splits (CGST, SGST, IGST) into a clean Excel ledger to claim Input Tax Credit on your GST returns.
@@ -1403,11 +1453,11 @@
 
                         <!-- FAQ 5 -->
                         <div class="accordion-item">
-                            <h2 class="accordion-header">
+                            <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false">
                                     Is my business and client data compliant with India's DPDP Act, 2023?
                                 </button>
-                            </h2>
+                            </h3>
                             <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     Yes, 100%. Cod Xpert operates in complete compliance with India's Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023). We enforce itemized notice and consent, strict purpose limitation, AES-256-CBC encryption for SMTP credentials, multi-tenant database isolation, a published Data Protection Officer desk, and a guaranteed 7-business-day resolution SLA.
@@ -1544,11 +1594,16 @@
                     </p>
                 </div>
                 <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end gap-2">
-                    <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 m-0 fs-8 font-mono">
+                    <ul class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-end gap-3 m-0 fs-8 font-mono">
                         <li><a href="#features" class="text-muted text-decoration-none">Architecture</a></li>
-                        <li><a href="#simulator" class="text-muted text-decoration-none">Simulator</a></li>
-                        <li><a href="{{ route('terms') }}" class="text-muted text-decoration-none">Terms of Use</a></li>
-                        <li><a href="{{ route('privacy') }}" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="{{ route('pricing') }}" class="text-muted text-decoration-none">Pricing</a></li>
+                        <li><a href="{{ route('free-invoice-generator') }}" class="text-muted text-decoration-none">Free Generator</a></li>
+                        <li><a href="{{ route('for.freelancers') }}" class="text-muted text-decoration-none">For Freelancers</a></li>
+                        <li><a href="{{ route('for.contractors') }}" class="text-muted text-decoration-none">For Contractors</a></li>
+                        <li><a href="{{ route('features.e-invoicing') }}" class="text-muted text-decoration-none">E-Invoicing</a></li>
+                        <li><a href="{{ route('terms') }}" class="text-muted text-decoration-none">Terms</a></li>
+                        <li><a href="{{ route('privacy') }}" class="text-muted text-decoration-none">Privacy</a></li>
+                        <li><a href="{{ route('contact.view') }}" class="text-muted text-decoration-none">Contact Desk</a></li>
                         <li><a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-muted text-decoration-none">CodXpert Main</a></li>
                         <li><a href="{{ route('login') }}" class="text-primary text-decoration-none fw-bold">Sign In</a></li>
                     </ul>

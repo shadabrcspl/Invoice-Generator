@@ -1,0 +1,7 @@
+Contact: mailto:support@codxpert.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://invoice.codxpert.com/.well-known/security.txt
+Policy: https://invoice.codxpert.com/terms
+Hiring: https://codxpert.com/
+Acknowledgments: https://invoice.codxpert.com/

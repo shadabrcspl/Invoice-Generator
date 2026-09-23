@@ -1,0 +1,28 @@
+# Cod Xpert Invoices (https://invoice.codxpert.com)
+
+> Enterprise Statutory Foreign Currency Invoicing, GST LUT Exemption & Real-Time Forex Variance Platform for Global Exporters, Freelancers & Contractors. Engineered by CodXpert (https://codxpert.com/).
+
+## Core Capabilities
+- **GST LUT 0% IGST Export Billing:** Automated statutory Letter of Undertaking (LUT) declarations pursuant to Rule 96A of CGST Rules 2017 / Section 16 of the IGST Act. Prevents working capital blockage on cross-border shipments.
+- **Multi-Currency Engine:** Real-time exchange rate sync via ExchangeRate-API (USD, AED, EUR, GBP, AUD, CAD) with manual override capabilities to lock exact invoice-date interbank rates.
+- **Forex Variance & FIRC / e-BRC Reconciliation:** Logs exact bank liquidation dates, realized INR values, and automatically accounts for realized Forex gains (credits) or losses (debits) with FIRC reference tracking.
+- **GSTR-1 Tax Portal Export:** One-click CSV generation pre-formatted for direct Chartered Accountant and GST portal filing under Table 6A.
+- **Business Expense & Input Tax Credit (ITC) Tracker:** Digital receipt uploads with automatic tax breakdown and Excel exports.
+- **Custom Per-User SMTP Mailer:** Isolated, domain-verified SMTP delivery with AES-256 encrypted credentials preventing spam flagging.
+- **Free Instant Invoice Generator:** Browser-based client-side and server-backed invoice maker with instant PDF download.
+- **Statutory Compliance:** Compliant with India's Digital Personal Data Protection Act, 2023 (DPDP Act).
+
+## Public Endpoints & Tools
+- Homepage: https://invoice.codxpert.com/
+- Free Invoice Generator: https://invoice.codxpert.com/free-invoice-generator
+- Pricing & Deployment Plans: https://invoice.codxpert.com/pricing
+- For Freelancers: https://invoice.codxpert.com/for/freelancers
+- For Contractors: https://invoice.codxpert.com/for/contractors
+- E-Invoicing & Compliance: https://invoice.codxpert.com/features/e-invoicing
+- Contact & Demo Desk: https://invoice.codxpert.com/contact
+- Terms of Use: https://invoice.codxpert.com/terms
+- Privacy Policy: https://invoice.codxpert.com/privacy
+
+## Organization & Engineering
+- Developed by CodXpert (https://codxpert.com/)
+- Contact: support@codxpert.com

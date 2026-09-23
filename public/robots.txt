@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Allow: /pricing
+Allow: /for/freelancers
+Allow: /for/contractors
+Allow: /features/e-invoicing
+Allow: /free-invoice-generator
+Allow: /contact
+Allow: /terms
+Allow: /privacy
+Allow: /login
+Allow: /register
+
+# Disallow private user and administrative paths
+Disallow: /dashboard
+Disallow: /invoices/
+Disallow: /clients/
+Disallow: /expenses/
+Disallow: /settings
+Disallow: /email-settings
+Disallow: /currencies/
+Disallow: /gstr1
+Disallow: /admin/
+Disallow: /pending-approval
+
+Sitemap: https://invoice.codxpert.com/sitemap.xml

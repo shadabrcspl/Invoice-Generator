@@ -83,6 +83,14 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/pricing', [App\Http\Controllers\HomeController::class, 'pricing'])->name('pricing');
+Route::get('/for/freelancers', [App\Http\Controllers\HomeController::class, 'forFreelancers'])->name('for.freelancers');
+Route::get('/for/contractors', [App\Http\Controllers\HomeController::class, 'forContractors'])->name('for.contractors');
+Route::get('/features/e-invoicing', [App\Http\Controllers\HomeController::class, 'featuresEInvoicing'])->name('features.e-invoicing');
+Route::get('/free-invoice-generator', [App\Http\Controllers\HomeController::class, 'freeInvoiceGenerator'])->name('free-invoice-generator');
+
+// Contact Desk (GET renders dedicated page, POST handles submission)
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contactView'])->name('contact.view');
 Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 
 // Public Legal and Compliance Pages
