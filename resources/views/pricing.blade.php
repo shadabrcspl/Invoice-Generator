@@ -137,6 +137,55 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            z-index: 2;
+        }
+
+        /* Blur Overlays for Paid Plans During Free Trial */
+        .pricing-card-blur-wrapper {
+            position: relative;
+            height: 100%;
+            border-radius: 24px;
+        }
+
+        .pricing-card.blurred {
+            filter: blur(5px);
+            opacity: 0.4;
+            pointer-events: none;
+            user-select: none;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .pricing-blur-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(248, 250, 252, 0.65);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            z-index: 5;
+            border: 1.5px dashed #cbd5e1;
+        }
+
+        .blur-badge {
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .price-amount {
@@ -246,90 +295,126 @@
 
     <!-- Pricing Cards Grid -->
     <main class="container py-5">
+        <!-- Free Trial Active Announcement Banner -->
+        <div class="alert bg-primary-subtle text-primary border border-primary-subtle rounded-4 p-3 mb-5 text-center shadow-xs">
+            <span class="fs-6 fw-bold">🎉 Special Free Trial Active:</span> We are currently offering our export billing suite <strong>completely free of charge</strong> during open access. Start generating statutory export invoices right now with zero fees!
+        </div>
+
         <div class="row g-4 align-items-stretch justify-content-center">
             
-            <!-- Tier 1: Free Forever -->
+            <!-- Tier 1: Free Forever / Active Free Trial (Featured) -->
             <div class="col-lg-4 col-md-6">
-                <div class="pricing-card">
+                <div class="pricing-card featured position-relative">
+                    <span class="popular-badge" style="background: linear-gradient(135deg, #0284c7, #2563eb);">⚡ Free Trial Active</span>
                     <div>
-                        <h4 class="fw-bold text-dark mb-1">Starter Exporter</h4>
-                        <p class="text-muted fs-7 mb-4">Ideal for solo exporters, freelancers, and early startups.</p>
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h4 class="fw-bold text-dark mb-0">Starter Exporter</h4>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fs-8 fw-bold">100% Free For Now</span>
+                        </div>
+                        <p class="text-muted fs-7 mb-4">Complete invoicing suite for exporters, freelancers, and businesses.</p>
                         
                         <div class="d-flex align-items-baseline mb-4">
                             <span class="price-amount">₹0</span>
-                            <span class="text-muted ms-2 fs-7">/ free forever</span>
+                            <span class="text-muted ms-2 fs-7">/ free trial access</span>
                         </div>
 
                         <div class="border-top pt-4">
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Up to 15 invoices per month</div>
+                            <div class="feature-item"><span class="feature-icon-check">✓</span> <strong>Unlimited</strong> export & domestic invoices</div>
                             <div class="feature-item"><span class="feature-icon-check">✓</span> GST LUT 0% IGST Rule 96A declarations</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Multi-currency engine (USD, AED, EUR, GBP)</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Live interbank exchange rate sync</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Pixel-perfect DomPDF generation</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> 100% DPDP Act 2023 data compliance</div>
+                            <div class="feature-item"><span class="feature-icon-check">✓</span> Multi-currency engine (USD, AED, EUR, GBP, AUD)</div>
+                            <div class="feature-item"><span class="feature-icon-check">✓</span> Live interbank exchange rate synchronization</div>
+                            <div class="feature-item"><span class="feature-icon-check">✓</span> Client directory & payment tracking</div>
+                            <div class="feature-item"><span class="feature-icon-check">✓</span> Pixel-perfect PDF generation & email delivery</div>
+                            <div class="feature-item"><span class="feature-icon-check">✓</span> 100% DPDP Act 2023 statutory data privacy</div>
                         </div>
                     </div>
 
                     <div class="pt-4">
-                        <a href="{{ route('register') }}" class="btn-brand-secondary">Get Started Free</a>
+                        <a href="{{ route('register') }}" class="btn-brand-primary w-100 text-center text-decoration-none">Start Free Access Now</a>
+                        <p class="text-center text-muted fs-8 mt-2 mb-0">No credit card or payment required.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Tier 2: Pro Exporter (Featured) -->
+            <!-- Tier 2: Pro Exporter (Blurred / Plan on Hold) -->
             <div class="col-lg-4 col-md-6">
-                <div class="pricing-card featured">
-                    <span class="popular-badge">Most Popular</span>
-                    <div>
-                        <h4 class="fw-bold text-primary mb-1">Pro Exporter</h4>
-                        <p class="text-muted fs-7 mb-4">Complete compliance suite for growing exporters and agencies.</p>
-                        
-                        <div class="d-flex align-items-baseline mb-4">
-                            <span class="price-amount">₹999</span>
-                            <span class="text-muted ms-2 fs-7">/ month (or $12)</span>
+                <div class="pricing-card-blur-wrapper">
+                    <div class="pricing-card blurred">
+                        <div>
+                            <h4 class="fw-bold text-primary mb-1">Pro Exporter</h4>
+                            <p class="text-muted fs-7 mb-4">Complete compliance suite for growing exporters and agencies.</p>
+                            
+                            <div class="d-flex align-items-baseline mb-4">
+                                <span class="price-amount">₹999</span>
+                                <span class="text-muted ms-2 fs-7">/ month</span>
+                            </div>
+
+                            <div class="border-top pt-4">
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Unlimited multi-currency invoices</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Automated Forex Gain/Loss ledger</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> FIRC & e-BRC reference reconciliation</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> GSTR-1 Table 6A CSV exports for CA filing</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Business Expense & Input Tax Credit (ITC) tracker</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Custom Domain SMTP Mailer (Zero spam)</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Automated client payment reminder scheduler</div>
+                            </div>
                         </div>
 
-                        <div class="border-top pt-4">
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> <strong>Unlimited</strong> multi-currency invoices</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> <strong>Automated Forex Gain/Loss ledger</strong></div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> <strong>FIRC & e-BRC reference reconciliation</strong></div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> <strong>GSTR-1 Table 6A CSV exports</strong> for CA filing</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Business Expense & Input Tax Credit (ITC) tracker</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> <strong>Custom Domain SMTP Mailer</strong> (Zero spam)</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Automated client payment reminder scheduler</div>
+                        <div class="pt-4">
+                            <button type="button" class="btn-brand-secondary" disabled>Start Pro Exporter Plan</button>
                         </div>
                     </div>
 
-                    <div class="pt-4">
-                        <a href="{{ route('register') }}" class="btn-brand-primary">Start Pro Exporter Plan</a>
+                    <!-- Blur Overlay Notice -->
+                    <div class="pricing-blur-overlay">
+                        <div class="blur-badge">
+                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                            Plan on Hold
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Free Trial Active</h5>
+                        <p class="text-muted fs-7 mb-3 px-2">We are not charging anything right now. You can use all core exporter features on our free trial!</p>
+                        <a href="{{ route('register') }}" class="btn btn-primary btn-sm rounded-pill px-4 py-2 fw-semibold shadow-sm text-decoration-none">Use Free Plan Instead</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Tier 3: Enterprise Custom -->
+            <!-- Tier 3: Enterprise Custom (Blurred / Plan on Hold) -->
             <div class="col-lg-4 col-md-6">
-                <div class="pricing-card">
-                    <div>
-                        <h4 class="fw-bold text-dark mb-1">Enterprise Custom</h4>
-                        <p class="text-muted fs-7 mb-4">For established export houses, CA firms, and corporate fleets.</p>
-                        
-                        <div class="d-flex align-items-baseline mb-4">
-                            <span class="price-amount">Custom</span>
-                            <span class="text-muted ms-2 fs-7">/ tailored deployment</span>
+                <div class="pricing-card-blur-wrapper">
+                    <div class="pricing-card blurred">
+                        <div>
+                            <h4 class="fw-bold text-dark mb-1">Enterprise Custom</h4>
+                            <p class="text-muted fs-7 mb-4">For established export houses, CA firms, and corporate fleets.</p>
+                            
+                            <div class="d-flex align-items-baseline mb-4">
+                                <span class="price-amount">Custom</span>
+                                <span class="text-muted ms-2 fs-7">/ tailored deployment</span>
+                            </div>
+
+                            <div class="border-top pt-4">
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Everything in Pro Exporter</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Dedicated cloud server VM instance</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Multi-user role hierarchy & CA audit access</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Custom ERP / Accounting API integrations</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Guaranteed 99.9% uptime SLA</div>
+                                <div class="feature-item"><span class="feature-icon-check">✓</span> Dedicated account manager & WhatsApp desk</div>
+                            </div>
                         </div>
 
-                        <div class="border-top pt-4">
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Everything in Pro Exporter</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Dedicated cloud server VM instance</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Multi-user role hierarchy & CA audit access</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Custom ERP / Accounting API integrations</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Guaranteed 99.9% uptime SLA</div>
-                            <div class="feature-item"><span class="feature-icon-check">✓</span> Dedicated account manager & WhatsApp desk</div>
+                        <div class="pt-4">
+                            <button type="button" class="btn-brand-secondary" disabled>Request Architecture Demo</button>
                         </div>
                     </div>
 
-                    <div class="pt-4">
-                        <a href="{{ route('contact.view') }}" class="btn-brand-secondary">Request Architecture Demo</a>
+                    <!-- Blur Overlay Notice -->
+                    <div class="pricing-blur-overlay">
+                        <div class="blur-badge">
+                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                            Custom Plans on Hold
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">Free Trial Available</h5>
+                        <p class="text-muted fs-7 mb-3 px-2">Export billing is currently complimentary for all users during our open access phase.</p>
+                        <a href="{{ route('register') }}" class="btn btn-outline-dark btn-sm rounded-pill px-4 py-2 fw-semibold text-decoration-none">Get Started Free</a>
                     </div>
                 </div>
             </div>
