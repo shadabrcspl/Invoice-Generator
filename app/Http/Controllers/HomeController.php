@@ -336,6 +336,56 @@ class HomeController extends Controller
     }
 
     /**
+     * Download pre-configured invoice templates (.docx and .xlsx).
+     */
+    public function downloadTemplate(string $filename)
+    {
+        $whitelist = [
+            'codxpert-modern-corporate-invoice-template.docx' => [
+                'name' => 'CodXpert-Modern-Corporate-Invoice-Template.docx',
+                'mime' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            ],
+            'codxpert-freelancer-consultant-invoice-template.docx' => [
+                'name' => 'CodXpert-Freelancer-Consultant-Invoice-Template.docx',
+                'mime' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            ],
+            'codxpert-gst-lut-export-invoice-template.docx' => [
+                'name' => 'CodXpert-GST-LUT-Export-Invoice-Template.docx',
+                'mime' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            ],
+            'codxpert-automated-gst-invoice-template.xlsx' => [
+                'name' => 'CodXpert-Automated-GST-Invoice-Template.xlsx',
+                'mime' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+            'codxpert-multi-currency-forex-invoice-template.xlsx' => [
+                'name' => 'CodXpert-Multi-Currency-Forex-Invoice-Template.xlsx',
+                'mime' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+            'codxpert-timesheet-hourly-billing-invoice-template.xlsx' => [
+                'name' => 'CodXpert-Timesheet-Hourly-Billing-Invoice-Template.xlsx',
+                'mime' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ],
+        ];
+
+        if (!array_key_exists($filename, $whitelist)) {
+            abort(404, 'Template not found.');
+        }
+
+        $filePath = public_path('downloads/templates/' . $filename);
+
+        if (!file_exists($filePath)) {
+            abort(404, 'Template file currently unavailable.');
+        }
+
+        $headers = [
+            'Content-Type' => $whitelist[$filename]['mime'],
+            'Cache-Control' => 'no-cache, must-revalidate',
+        ];
+
+        return response()->download($filePath, $whitelist[$filename]['name'], $headers);
+    }
+
+    /**
      * Display the Privacy Policy page.
      */
     public function privacy()

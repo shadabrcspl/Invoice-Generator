@@ -222,14 +222,14 @@
                             <div class="item-icon">📝</div>
                             <div>
                                 <div class="item-title">Word Invoice Templates (.docx)</div>
-                                <div class="item-desc">Curated corporate and minimalist blank templates.</div>
+                                <div class="item-desc">Download editable .docx files for Word & Google Docs.</div>
                             </div>
                         </a>
                         <a href="{{ route('templates.excel') }}" class="dropdown-item-modern">
                             <div class="item-icon">📊</div>
                             <div>
                                 <div class="item-title">Excel Invoice Templates (.xlsx)</div>
-                                <div class="item-desc">Automated spreadsheets with built-in tax formulas.</div>
+                                <div class="item-desc">Download automated .xlsx sheets with built-in formulas.</div>
                             </div>
                         </a>
                     </div>

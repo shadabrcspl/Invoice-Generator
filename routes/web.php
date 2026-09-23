@@ -110,6 +110,7 @@ Route::get('/free-invoice-generator', [App\Http\Controllers\HomeController::clas
 Route::get('/tools/forex-calculator', [App\Http\Controllers\HomeController::class, 'toolsForexCalculator'])->name('tools.forex-calculator');
 Route::get('/templates/invoice-template-word', [App\Http\Controllers\HomeController::class, 'templatesWord'])->name('templates.word');
 Route::get('/templates/excel-invoice-template', [App\Http\Controllers\HomeController::class, 'templatesExcel'])->name('templates.excel');
+Route::get('/downloads/template/{filename}', [App\Http\Controllers\HomeController::class, 'downloadTemplate'])->name('templates.download');
 
 // Contact Desk (GET renders dedicated page, POST handles submission)
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contactView'])->name('contact.view');
