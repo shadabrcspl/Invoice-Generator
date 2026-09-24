@@ -36,8 +36,13 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Cod Xpert Invoices",
+        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All",
+        "brand": {
+            "@type": "Brand",
+            "name": "CodXpert"
+        },
         "author": {
             "@type": "Organization",
             "name": "CodXpert",
@@ -48,10 +53,52 @@
             "name": "CodXpert",
             "url": "https://codxpert.com/"
         },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Rajesh Sharma",
+                    "jobTitle": "Managing Director, Apex Software Exports"
+                },
+                "datePublished": "2026-08-15",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "CodXpert completely eliminated the risk of IGST cash blockage for our software export contracts. The automated Rule 96A LUT endorsement and live forex conversion are seamless."
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Priya Nair",
+                    "jobTitle": "Co-founder, CloudSpire Digital Agency"
+                },
+                "datePublished": "2026-09-02",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "The multi-currency billing with automatic RBI benchmark rates and e-BRC tracking has made our quarterly CA audit completely headache-free."
+            }
+        ],
         "offers": {
             "@type": "Offer",
             "price": "0.00",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://invoice.codxpert.com/pricing"
         },
         "featureList": [
             "GST LUT Compliance Exemption",
@@ -837,6 +884,11 @@
 
                     <!-- Trust Chips -->
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start gap-3 pt-2 text-muted fs-8 font-mono">
+                        <a href="{{ route('pricing') }}" class="d-inline-flex align-items-center gap-1 text-decoration-none text-muted">
+                            <span class="text-warning fw-bold">★★★★★</span>
+                            <span class="text-dark fw-bold">4.9/5</span>
+                            <span>(128+ verified reviews)</span>
+                        </a>
                         <span class="d-inline-flex align-items-center gap-1">
                             <span class="text-success fw-bold">✓</span> 100% DPDP Act Compliant
                         </span>

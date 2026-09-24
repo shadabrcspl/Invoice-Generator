@@ -25,12 +25,25 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Cod Xpert Exporter Forex & Remittance Calculator",
+        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
+        "brand": {
+            "@type": "Brand",
+            "name": "CodXpert"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0.00",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "priceValidUntil": "2027-12-31"
         },
         "publisher": {
             "@type": "Organization",

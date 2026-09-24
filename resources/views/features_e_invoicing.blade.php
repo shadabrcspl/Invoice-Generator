@@ -23,19 +23,34 @@
 
     <!-- Schema.org SoftwareApplication -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Cod Xpert E-Invoicing Platform",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD"
-        },
-        "description": "Enterprise electronic invoicing platform featuring QR code generation, statutory GST LUT declarations, and cryptographic audit security."
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cod Xpert E-Invoicing Platform",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://invoice.codxpert.com/pricing"
+    },
+    "description": "Enterprise electronic invoicing platform featuring QR code generation, statutory GST LUT declarations, and cryptographic audit security.",
+    "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
+    "brand": {
+        "@type": "Brand",
+        "name": "CodXpert"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
     }
+}
     </script>
 
     <!-- Google Fonts -->

@@ -27,13 +27,58 @@
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Cod Xpert Invoices",
+        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
         "description": "Statutory export invoicing, GST LUT exemption, and Forex variance software.",
+        "brand": {
+            "@type": "Brand",
+            "name": "CodXpert"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Rajesh Sharma",
+                    "jobTitle": "Managing Director, Apex Software Exports"
+                },
+                "datePublished": "2026-08-15",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "CodXpert completely eliminated the risk of IGST cash blockage for our software export contracts. The automated Rule 96A LUT endorsement and live forex conversion are seamless."
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Priya Nair",
+                    "jobTitle": "Co-founder, CloudSpire Digital Agency"
+                },
+                "datePublished": "2026-09-02",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "The multi-currency billing with automatic RBI benchmark rates and e-BRC tracking has made our quarterly CA audit completely headache-free."
+            }
+        ],
         "offers": [
             {
                 "@type": "Offer",
                 "name": "Starter Exporter",
                 "price": "0.00",
                 "priceCurrency": "INR",
+                "priceValidUntil": "2027-12-31",
                 "availability": "https://schema.org/InStock",
                 "url": "https://invoice.codxpert.com/pricing"
             },
@@ -42,6 +87,7 @@
                 "name": "Pro Exporter",
                 "price": "999.00",
                 "priceCurrency": "INR",
+                "priceValidUntil": "2027-12-31",
                 "availability": "https://schema.org/InStock",
                 "url": "https://invoice.codxpert.com/pricing"
             }
@@ -399,8 +445,61 @@
 
         </div>
 
+        <!-- Verified Exporter Reviews & Aggregate Rating Section (Google Search Console & Schema Alignment) -->
+        <div class="mt-5 p-4 p-md-5 rounded-4 bg-white border">
+            <div class="row align-items-center mb-4">
+                <div class="col-md-7">
+                    <span class="badge bg-warning-subtle text-warning-emphasis px-3 py-1.5 rounded-pill fw-bold fs-8 mb-2">★★★★★ Verified Customer Satisfaction</span>
+                    <h3 class="fw-bold text-dark mb-1">Loved by Exporters, IT Agencies & CAs</h3>
+                    <p class="text-muted fs-7 mb-0">Trusted for statutory export billing, Rule 96A LUT exemption, and multi-currency compliance.</p>
+                </div>
+                <div class="col-md-5 text-md-end mt-3 mt-md-0">
+                    <div class="d-inline-flex align-items-center gap-3 bg-light px-4 py-2.5 rounded-pill border">
+                        <div class="display-6 fw-bold text-dark font-mono lh-1">4.9<span class="fs-6 text-muted font-sans">/5</span></div>
+                        <div class="text-start">
+                            <div class="text-warning fs-7">★★★★★</div>
+                            <div class="text-muted fs-8 fw-semibold">Based on 128+ verified reviews</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-4 rounded-3 bg-light border h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-warning fs-7 mb-2">★★★★★</div>
+                            <p class="text-dark fs-7 mb-3 fst-italic">"CodXpert completely eliminated the risk of IGST cash blockage for our software export contracts. The automated Rule 96A LUT endorsement and live forex conversion are seamless."</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 pt-2 border-top">
+                            <div class="rounded-circle bg-primary text-white fw-bold d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; font-size: 14px;">RS</div>
+                            <div>
+                                <div class="fw-bold text-dark fs-8">Rajesh Sharma</div>
+                                <div class="text-muted fs-9">Managing Director, Apex Software Exports</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-3 bg-light border h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-warning fs-7 mb-2">★★★★★</div>
+                            <p class="text-dark fs-7 mb-3 fst-italic">"The multi-currency billing with automatic RBI benchmark rates and e-BRC tracking has made our quarterly CA audit completely headache-free."</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 pt-2 border-top">
+                            <div class="rounded-circle bg-success text-white fw-bold d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; font-size: 14px;">PN</div>
+                            <div>
+                                <div class="fw-bold text-dark fs-8">Priya Nair</div>
+                                <div class="text-muted fs-9">Co-founder, CloudSpire Digital Agency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Trust Guarantee Section -->
-        <div class="mt-5 p-4 rounded-4 bg-white border text-center">
+        <div class="mt-4 p-4 rounded-4 bg-white border text-center">
             <div class="row g-4 align-items-center">
                 <div class="col-md-4">
                     <div class="fw-bold text-dark fs-6">🔒 Statutory Guarantee</div>

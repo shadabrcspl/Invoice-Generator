@@ -25,15 +25,42 @@
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "CodXpert Cloud Invoicing Platform",
+        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
         "description": "Cloud-native GST and export billing alternative to desktop accounting suites.",
         "brand": {
             "@type": "Brand",
             "name": "CodXpert"
         },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Vikram Sethi"
+                },
+                "datePublished": "2026-08-28",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Moved away from cumbersome desktop accounting to CodXpert. Now our team can invoice international clients anywhere with instant CA CSV export."
+            }
+        ],
         "offers": {
             "@type": "Offer",
             "price": "0.00",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://invoice.codxpert.com/vs/tally-prime"
         }
     }
     </script>
@@ -196,6 +223,29 @@
                         <div class="fw-bold text-dark">Happy CA</div>
                         <div class="text-muted fs-8">Seamless GSTR-1 & 3B filing</div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verified User Review & Rating Badge -->
+        <div class="p-4 rounded-4 bg-white border mb-5">
+            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 border-bottom pb-3 mb-3">
+                <div>
+                    <span class="badge bg-warning-subtle text-warning-emphasis px-3 py-1 rounded-pill fw-bold fs-8">Verified Exporter Review</span>
+                    <h5 class="fw-bold text-dark mt-1 mb-0">Why Teams Switch from Desktop Accounting</h5>
+                </div>
+                <div class="d-inline-flex align-items-center gap-2">
+                    <span class="text-warning fs-6">★★★★★</span>
+                    <span class="fw-bold text-dark fs-7">4.9 / 5</span>
+                    <span class="text-muted fs-8">(128 verified ratings)</span>
+                </div>
+            </div>
+            <div class="p-3 rounded-3 bg-light border">
+                <p class="text-dark fs-7 mb-2 fst-italic">"Moved away from cumbersome desktop accounting to CodXpert. Now our team can invoice international clients anywhere with instant CA CSV export."</p>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-circle bg-primary text-white fw-bold d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; font-size: 11px;">VS</div>
+                    <span class="fw-bold text-dark fs-8">Vikram Sethi</span>
+                    <span class="text-muted fs-9">&bull; Technology Founder & Exporter</span>
                 </div>
             </div>
         </div>

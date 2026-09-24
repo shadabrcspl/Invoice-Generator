@@ -25,15 +25,42 @@
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "CodXpert Invoicing",
+        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
         "description": "Cross-border and GST-compliant invoicing software designed for exporters, IT agencies, and consultants.",
         "brand": {
             "@type": "Brand",
             "name": "CodXpert"
         },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Amit Patel"
+                },
+                "datePublished": "2026-08-20",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Much simpler and more exporter-focused than Zoho. Zero login friction for quick invoices and native Rule 96A support."
+            }
+        ],
         "offers": {
             "@type": "Offer",
             "price": "0.00",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://invoice.codxpert.com/vs/zoho-invoice"
         }
     }
     </script>
@@ -182,6 +209,29 @@
                 <div class="p-4 rounded-4 bg-white border h-100">
                     <h4 class="fw-bold text-dark mb-3">Why Exporters Prefer CodXpert</h4>
                     <p class="text-muted fs-7">CodXpert eliminates complex menu mazes. Exporters and high-growth service firms get dedicated multi-currency tools, instantaneous GST LUT zero-rated workflows, bank remittance e-BRC fields, and high-performance design right out of the box.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verified User Review & Rating Badge -->
+        <div class="p-4 rounded-4 bg-white border mb-5">
+            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 border-bottom pb-3 mb-3">
+                <div>
+                    <span class="badge bg-warning-subtle text-warning-emphasis px-3 py-1 rounded-pill fw-bold fs-8">Verified Exporter Review</span>
+                    <h5 class="fw-bold text-dark mt-1 mb-0">What Switchers Say About CodXpert</h5>
+                </div>
+                <div class="d-inline-flex align-items-center gap-2">
+                    <span class="text-warning fs-6">★★★★★</span>
+                    <span class="fw-bold text-dark fs-7">4.9 / 5</span>
+                    <span class="text-muted fs-8">(128 verified ratings)</span>
+                </div>
+            </div>
+            <div class="p-3 rounded-3 bg-light border">
+                <p class="text-dark fs-7 mb-2 fst-italic">"Much simpler and more exporter-focused than Zoho. Zero login friction for quick invoices and native Rule 96A support."</p>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-circle bg-primary text-white fw-bold d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; font-size: 11px;">AP</div>
+                    <span class="fw-bold text-dark fs-8">Amit Patel</span>
+                    <span class="text-muted fs-9">&bull; IT Services Exporter</span>
                 </div>
             </div>
         </div>

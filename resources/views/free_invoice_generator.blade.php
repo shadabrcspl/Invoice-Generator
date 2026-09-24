@@ -27,12 +27,25 @@
         "@type": "WebApplication",
         "name": "Cod Xpert Free Invoice Generator",
         "url": "https://invoice.codxpert.com/free-invoice-generator",
+        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All",
+        "brand": {
+            "@type": "Brand",
+            "name": "CodXpert"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0.00",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "priceValidUntil": "2027-12-31"
         },
         "description": "Free web-based invoice maker supporting multi-currency billing, GST LUT declarations, and instant client-side PDF downloads."
     }

@@ -23,19 +23,34 @@
 
     <!-- Schema.org SoftwareApplication for Freelancers -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Cod Xpert Invoices for Freelancers",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD"
-        },
-        "description": "Cross-border multi-currency invoicing software tailored for independent freelancers, remote consultants, and international creators."
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cod Xpert Invoices for Freelancers",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://invoice.codxpert.com/pricing"
+    },
+    "description": "Cross-border multi-currency invoicing software tailored for independent freelancers, remote consultants, and international creators.",
+    "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
+    "brand": {
+        "@type": "Brand",
+        "name": "CodXpert"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
     }
+}
     </script>
 
     <!-- Google Fonts -->

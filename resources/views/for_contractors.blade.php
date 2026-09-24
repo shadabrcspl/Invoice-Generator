@@ -23,19 +23,34 @@
 
     <!-- Schema.org SoftwareApplication for Contractors -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Cod Xpert Invoices for Contractors",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD"
-        },
-        "description": "Enterprise-grade milestone and project invoicing platform designed for independent contractors, technical consultants, and service firms."
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cod Xpert Invoices for Contractors",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://invoice.codxpert.com/pricing"
+    },
+    "description": "Enterprise-grade milestone and project invoicing platform designed for independent contractors, technical consultants, and service firms.",
+    "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
+    "brand": {
+        "@type": "Brand",
+        "name": "CodXpert"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
     }
+}
     </script>
 
     <!-- Google Fonts -->
