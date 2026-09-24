@@ -54,13 +54,51 @@
                 "reviewBody": "Much simpler and more exporter-focused than Zoho. Zero login friction for quick invoices and native Rule 96A support."
             }
         ],
+        "sku": "CODXPERT-VS-ZOHO",
+        "mpn": "CXP-INV-2026",
         "offers": {
             "@type": "Offer",
             "price": "0.00",
             "priceCurrency": "USD",
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/InStock",
-            "url": "https://invoice.codxpert.com/vs/zoho-invoice"
+            "url": "https://invoice.codxpert.com/vs/zoho-invoice",
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "IN",
+                "returnPolicyCountry": "IN",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 30,
+                "returnMethod": "https://schema.org/ReturnNotPermitted",
+                "returnFees": "https://schema.org/FreeReturn"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0.00",
+                    "currency": "USD"
+                },
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "IN"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "DAY"
+                    }
+                }
+            }
         }
     }
     </script>

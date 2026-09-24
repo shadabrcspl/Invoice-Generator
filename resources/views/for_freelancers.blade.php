@@ -35,7 +35,43 @@
         "priceCurrency": "USD",
         "priceValidUntil": "2027-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://invoice.codxpert.com/pricing"
+        "url": "https://invoice.codxpert.com/pricing",
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnNotPermitted",
+            "returnFees": "https://schema.org/FreeReturn"
+        },
+        "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0.00",
+                "currency": "USD"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+            },
+            "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                },
+                "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                }
+            }
+        }
     },
     "description": "Cross-border multi-currency invoicing software tailored for independent freelancers, remote consultants, and international creators.",
     "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
@@ -49,7 +85,9 @@
         "reviewCount": "128",
         "bestRating": "5",
         "worstRating": "1"
-    }
+    },
+    "sku": "CODXPERT-INV-FOR_FREELANCERS",
+    "mpn": "CXP-INV-2026"
 }
     </script>
 

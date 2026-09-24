@@ -21,36 +21,74 @@
 
     <!-- Schema.org SoftwareApplication -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Cod Xpert Exporter Forex & Remittance Calculator",
-        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "All",
-        "brand": {
-            "@type": "Brand",
-            "name": "CodXpert"
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cod Xpert Exporter Forex & Remittance Calculator",
+    "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "brand": {
+        "@type": "Brand",
+        "name": "CodXpert"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnNotPermitted",
+            "returnFees": "https://schema.org/FreeReturn"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "128",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD",
-            "priceValidUntil": "2027-12-31"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "CodXpert",
-            "url": "https://codxpert.com/"
+        "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0.00",
+                "currency": "USD"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+            },
+            "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                },
+                "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                }
+            }
         }
-    }
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "CodXpert",
+        "url": "https://codxpert.com/"
+    },
+    "sku": "CODXPERT-INV-TOOLS_FOREX_CALCULATOR",
+    "mpn": "CXP-INV-2026"
+}
     </script>
 
     <!-- Google Fonts & Bootstrap -->

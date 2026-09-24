@@ -22,33 +22,71 @@
 
     <!-- Schema.org WebApplication -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Cod Xpert Free Invoice Generator",
-        "url": "https://invoice.codxpert.com/free-invoice-generator",
-        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "brand": {
-            "@type": "Brand",
-            "name": "CodXpert"
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cod Xpert Free Invoice Generator",
+    "url": "https://invoice.codxpert.com/free-invoice-generator",
+    "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "brand": {
+        "@type": "Brand",
+        "name": "CodXpert"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnNotPermitted",
+            "returnFees": "https://schema.org/FreeReturn"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "128",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD",
-            "priceValidUntil": "2027-12-31"
-        },
-        "description": "Free web-based invoice maker supporting multi-currency billing, GST LUT declarations, and instant client-side PDF downloads."
-    }
+        "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0.00",
+                "currency": "USD"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+            },
+            "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                },
+                "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                }
+            }
+        }
+    },
+    "description": "Free web-based invoice maker supporting multi-currency billing, GST LUT declarations, and instant client-side PDF downloads.",
+    "sku": "CODXPERT-INV-FREE_INVOICE_GENERATOR",
+    "mpn": "CXP-INV-2026"
+}
     </script>
 
     <!-- Google Fonts -->

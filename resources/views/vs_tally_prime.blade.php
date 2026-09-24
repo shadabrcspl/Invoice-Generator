@@ -54,13 +54,51 @@
                 "reviewBody": "Moved away from cumbersome desktop accounting to CodXpert. Now our team can invoice international clients anywhere with instant CA CSV export."
             }
         ],
+        "sku": "CODXPERT-VS-TALLY",
+        "mpn": "CXP-INV-2026",
         "offers": {
             "@type": "Offer",
             "price": "0.00",
             "priceCurrency": "USD",
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/InStock",
-            "url": "https://invoice.codxpert.com/vs/tally-prime"
+            "url": "https://invoice.codxpert.com/vs/tally-prime",
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "IN",
+                "returnPolicyCountry": "IN",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 30,
+                "returnMethod": "https://schema.org/ReturnNotPermitted",
+                "returnFees": "https://schema.org/FreeReturn"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0.00",
+                    "currency": "USD"
+                },
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "IN"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "DAY"
+                    }
+                }
+            }
         }
     }
     </script>

@@ -32,85 +32,123 @@
 
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Cod Xpert Invoices",
-        "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "brand": {
-            "@type": "Brand",
-            "name": "CodXpert"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "CodXpert",
-            "url": "https://codxpert.com/"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "CodXpert",
-            "url": "https://codxpert.com/"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "128",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "review": [
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Rajesh Sharma",
-                    "jobTitle": "Managing Director, Apex Software Exports"
-                },
-                "datePublished": "2026-08-15",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "reviewBody": "CodXpert completely eliminated the risk of IGST cash blockage for our software export contracts. The automated Rule 96A LUT endorsement and live forex conversion are seamless."
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cod Xpert Invoices",
+    "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "brand": {
+        "@type": "Brand",
+        "name": "CodXpert"
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "CodXpert",
+        "url": "https://codxpert.com/"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "CodXpert",
+        "url": "https://codxpert.com/"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "review": [
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Rajesh Sharma",
+                "jobTitle": "Managing Director, Apex Software Exports"
             },
-            {
-                "@type": "Review",
-                "author": {
-                    "@type": "Person",
-                    "name": "Priya Nair",
-                    "jobTitle": "Co-founder, CloudSpire Digital Agency"
-                },
-                "datePublished": "2026-09-02",
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                },
-                "reviewBody": "The multi-currency billing with automatic RBI benchmark rates and e-BRC tracking has made our quarterly CA audit completely headache-free."
-            }
-        ],
-        "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD",
-            "priceValidUntil": "2027-12-31",
-            "availability": "https://schema.org/InStock",
-            "url": "https://invoice.codxpert.com/pricing"
+            "datePublished": "2026-08-15",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "CodXpert completely eliminated the risk of IGST cash blockage for our software export contracts. The automated Rule 96A LUT endorsement and live forex conversion are seamless."
         },
-        "featureList": [
-            "GST LUT Compliance Exemption",
-            "Multi-Currency Invoicing",
-            "Manual & Daily Exchange Rate Override",
-            "Real-time Forex Reconciliation & Simulator",
-            "Custom User SMTP Mailer Configuration",
-            "GSTR-1 Compliant CSV Exporting",
-            "Business Expense & Input Tax Credit (ITC) Tracker",
-            "Digital Personal Data Protection Act (DPDP Act) 2023 Compliant"
-        ]
-    }
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Priya Nair",
+                "jobTitle": "Co-founder, CloudSpire Digital Agency"
+            },
+            "datePublished": "2026-09-02",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "The multi-currency billing with automatic RBI benchmark rates and e-BRC tracking has made our quarterly CA audit completely headache-free."
+        }
+    ],
+    "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://invoice.codxpert.com/pricing",
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnNotPermitted",
+            "returnFees": "https://schema.org/FreeReturn"
+        },
+        "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0.00",
+                "currency": "USD"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+            },
+            "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                },
+                "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 0,
+                    "unitCode": "DAY"
+                }
+            }
+        }
+    },
+    "featureList": [
+        "GST LUT Compliance Exemption",
+        "Multi-Currency Invoicing",
+        "Manual & Daily Exchange Rate Override",
+        "Real-time Forex Reconciliation & Simulator",
+        "Custom User SMTP Mailer Configuration",
+        "GSTR-1 Compliant CSV Exporting",
+        "Business Expense & Input Tax Credit (ITC) Tracker",
+        "Digital Personal Data Protection Act (DPDP Act) 2023 Compliant"
+    ],
+    "sku": "CODXPERT-INV-HOME",
+    "mpn": "CXP-INV-2026"
+}
     </script>
 
     <!-- FAQPage JSON-LD Schema Markup for Google Rich Snippets -->
