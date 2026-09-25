@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration Pending Approval | {{ config('app.name') }}</title>
+    <title>Registration Pending Approval | Cod Xpert Invoices</title>
+    <meta name="description" content="Your CodXpert Invoices registration request has been submitted and is currently pending administrator approval.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="{{ url('/pending-approval') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
@@ -127,7 +130,7 @@
             </a>
         </div>
         <div class="brand-icon">⏳</div>
-        <h3 class="text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Registration Received</h3>
+        <h1 class="h3 text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Registration Received</h1>
         <p class="text-center text-muted small mb-4">Pending Administrator Approval</p>
 
         <div class="alert alert-warning border-0 rounded-3 mb-4 p-3 text-center" style="background-color: rgba(245, 158, 11, 0.1); color: #b45309; font-size: 13.5px; line-height: 1.6;">

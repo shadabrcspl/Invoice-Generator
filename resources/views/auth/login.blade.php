@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | Cod Xpert Invoices</title>
+    <meta name="description" content="Sign in to your CodXpert Invoices account to manage multi-currency export billing, GST LUT declarations, client invoices, and payment tracking.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="{{ url('/login') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
@@ -90,7 +93,7 @@
                 <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 52px; width: auto; object-fit: contain;">
             </a>
         </div>
-        <h3 class="text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Welcome Back</h3>
+        <h1 class="h3 text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Welcome Back</h1>
         <p class="text-center text-muted fs-7 mb-4">Please log in to manage your invoices.</p>
 
         @if($errors->any())

@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register | Cod Xpert Invoices</title>
+    <meta name="description" content="Create a free CodXpert Invoices account to access automated GST LUT export invoicing, multi-currency accounting, and GSTR-1 CSV exports.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="{{ url('/register') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
@@ -90,7 +93,7 @@
                 <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 52px; width: auto; object-fit: contain;">
             </a>
         </div>
-        <h3 class="text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Register Account</h3>
+        <h1 class="h3 text-center fw-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #0f172a;">Register Account</h1>
         <p class="text-center text-muted fs-7 mb-4">Start managing your business billing professionally.</p>
 
         @if($errors->any())

@@ -8,10 +8,8 @@ Allow: /free-invoice-generator
 Allow: /contact
 Allow: /terms
 Allow: /privacy
-Allow: /login
-Allow: /register
 
-# Disallow private user and administrative paths
+# Disallow private user, administrative, and password recovery utility paths
 Disallow: /dashboard
 Disallow: /invoices/
 Disallow: /clients/
@@ -22,5 +20,7 @@ Disallow: /currencies/
 Disallow: /gstr1
 Disallow: /admin/
 Disallow: /pending-approval
+Disallow: /forgot-password
+Disallow: /reset-password
 
 Sitemap: https://invoice.codxpert.com/sitemap.xml
