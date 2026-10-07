@@ -59,6 +59,7 @@ class StoreInvoiceRequest extends FormRequest
             'bank_notes'      => ['nullable', 'string'],
             'status'          => ['required', 'string', 'in:draft,sent,paid,overdue'],
             'type'            => ['nullable', 'string', 'in:invoice,quotation'],
+            'payment_date'    => ['nullable', 'date'],
             'exchange_rate_inr'    => ['nullable', 'numeric', 'min:0'],
             'firc_number'          => ['nullable', 'string', 'max:255'],
             'actual_exchange_rate' => ['nullable', 'numeric', 'min:0'],

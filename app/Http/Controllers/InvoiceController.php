@@ -393,9 +393,13 @@ class InvoiceController extends Controller
                 'actual_inr_received' => $actualInrReceived,
             ]);
 
-            // Synchronize with payment record if payment exists
-            if ($invoice->payment) {
+            // Synchronize with payment record if payment exists or if payment details provided
+            $paymentDateInput = $validated['payment_date'] ?? null;
+            if ($invoice->payment || $paymentDateInput || $actualInrReceived || $actualExchangeRate || $fircNumberInput) {
                 $paymentUpdates = [];
+                if ($paymentDateInput) {
+                    $paymentUpdates['payment_date'] = $paymentDateInput;
+                }
                 if ($fircNumberInput !== null) {
                     $paymentUpdates['firc_number'] = $fircNumberInput;
                 }
@@ -407,7 +411,17 @@ class InvoiceController extends Controller
                     $paymentUpdates['forex_gain_loss'] = $actualInrReceived - $inrEquivalent;
                 }
                 if (!empty($paymentUpdates)) {
-                    $invoice->payment->update($paymentUpdates);
+                    if ($invoice->payment) {
+                        $invoice->payment->update($paymentUpdates);
+                    } elseif (!empty($paymentUpdates['payment_date']) || !empty($paymentUpdates['inr_amount_received'])) {
+                        $invoice->payment()->create(array_merge([
+                            'payment_date' => $paymentDateInput ?: now()->toDateString(),
+                            'exchange_rate_payment' => $actualExchangeRate ?: ($invoice->exchange_rate_inr ?: 1.0),
+                            'inr_amount_received' => $actualInrReceived ?: $inrEquivalent,
+                            'forex_gain_loss' => ($actualInrReceived ?: $inrEquivalent) - $inrEquivalent,
+                            'firc_number' => $fircNumberInput,
+                        ], $paymentUpdates));
+                    }
                 }
             }
 
@@ -510,6 +524,9 @@ class InvoiceController extends Controller
         // Calculate Forex Gain/Loss: Received INR - Locked Invoice INR
         $forexGainLoss = $currency === 'INR' ? 0.00 : ($inrReceived - $invoicedInr);
 
+        // Check if payment existed prior to this request
+        $isExisting = $invoice->payment()->exists();
+
         DB::transaction(function () use ($invoice, $validated, $exchangeRatePayment, $inrReceived, $forexGainLoss) {
             // Update invoice status and inline FIRC fields (for backward compatibility)
             $invoice->update([
@@ -539,9 +556,9 @@ class InvoiceController extends Controller
             $warningMsg = ' Note: The payment is flagged because the actual received amount has a variation of ' . number_format($percentDifference * 100, 1) . '% from the invoiced amount.';
         }
 
-
+        $successText = $isExisting ? 'Payment details updated successfully!' : 'Payment recorded successfully!';
 
         return redirect()->route('invoices.show', $invoice->id)
-            ->with('success', 'Payment recorded successfully!' . $warningMsg);
+            ->with('success', $successText . $warningMsg);
     }
 }

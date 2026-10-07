@@ -214,17 +214,22 @@
                     <p class="text-muted fs-7 mb-4">Log Foreign Inward Remittance Certificate reference details once payment is liquidated by your bank.</p>
                     
                     <div class="row g-3">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
+                            <label class="form-label fw-semibold text-muted fs-7">Payment Received Date</label>
+                            <input type="date" name="payment_date" class="form-control rounded-3" value="{{ old('payment_date', $invoice->payment?->payment_date ? $invoice->payment->payment_date->format('Y-m-d') : '') }}">
+                        </div>
+
+                        <div class="col-12 col-md-3">
                             <label class="form-label fw-semibold text-muted fs-7">FIRC / e-BRC Ref Number</label>
                             <input type="text" name="firc_number" class="form-control rounded-3" value="{{ old('firc_number', $invoice->firc_number ?: ($invoice->payment?->firc_number ?? '')) }}" placeholder="e.g. FIRC12345678">
                         </div>
                         
-                        <div class="col-12 col-md-4">
-                            <label class="form-label fw-semibold text-muted fs-7">Bank Exchange Rate (per foreign unit)</label>
+                        <div class="col-12 col-md-3">
+                            <label class="form-label fw-semibold text-muted fs-7">Bank Exchange Rate</label>
                             <input type="number" name="actual_exchange_rate" step="any" class="form-control rounded-3" value="{{ old('actual_exchange_rate', $invoice->actual_exchange_rate ?: ($invoice->payment?->exchange_rate_payment ?? '')) }}" placeholder="e.g. 83.250000">
                         </div>
                         
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
                             <label class="form-label fw-semibold text-muted fs-7">Actual INR Received</label>
                             <input type="number" name="actual_inr_received" step="any" class="form-control rounded-3" value="{{ old('actual_inr_received', $invoice->actual_inr_received ?: ($invoice->payment?->inr_amount_received ?? '')) }}" placeholder="e.g. 416250.00">
                         </div>

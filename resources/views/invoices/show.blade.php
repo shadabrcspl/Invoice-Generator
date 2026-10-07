@@ -155,11 +155,18 @@
                     Download PDF
                 </a>
 
-                @if($invoice->type === 'invoice' && $invoice->status !== 'paid')
-                    <!-- Record Payment Trigger -->
-                    <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#0d9488,#0f766e);">
-                        💵 Record Payment
-                    </button>
+                @if($invoice->type === 'invoice')
+                    @if($invoice->status !== 'paid' && !$invoice->payment)
+                        <!-- Record Payment Trigger -->
+                        <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#0d9488,#0f766e);">
+                            💵 Record Payment
+                        </button>
+                    @else
+                        <!-- Edit Payment Trigger -->
+                        <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#0d9488,#0f766e);" title="Edit recorded payment details">
+                            ✏️ Edit Payment
+                        </button>
+                    @endif
                 @endif
 
                 <!-- Send Invoice Email -->
@@ -490,7 +497,13 @@
 
                 @if($invoice->currency_code !== 'INR' && ($invoice->payment || $fircRef || $actualReceivedInr))
                     <div class="p-3 border border-warning rounded-3 bg-light">
-                        <span class="metadata-label d-block mb-2 text-warning">Compliance: FIRC/e-BRC Tracking Summary</span>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="metadata-label text-warning m-0">Compliance: FIRC/e-BRC Tracking Summary</span>
+                            <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn btn-sm btn-outline-warning text-dark fw-semibold rounded-pill py-0 px-2 fs-8 d-inline-flex align-items-center gap-1" title="Edit payment details">
+                                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                Edit
+                            </button>
+                        </div>
                         <div class="row g-2 fs-7 text-muted">
                             <div class="col-6">FIRC/e-BRC Ref:</div>
                             <div class="col-6 fw-bold text-dark">{{ $fircRef ?: 'N/A' }}</div>
@@ -541,12 +554,14 @@
         </div>
     </div>
 </div>
-    {{-- 💵 Record Payment Modal --}}
-    @if($invoice->type === 'invoice' && $invoice->status !== 'paid')
+    {{-- 💵 Record / Edit Payment Modal --}}
+    @if($invoice->type === 'invoice')
     <div id="recordPaymentModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; padding:20px;">
         <div style="background:#fff; border-radius:20px; padding:32px; width:100%; max-width:650px; box-shadow:0 25px 60px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px;">
-                <h5 style="margin:0; font-weight:800; color:#111827; font-size:18px;">💵 Record Payment & Forex Reconciliation</h5>
+                <h5 style="margin:0; font-weight:800; color:#111827; font-size:18px;">
+                    {{ ($invoice->payment || $invoice->status === 'paid') ? '✏️ Edit Payment & Forex Reconciliation' : '💵 Record Payment & Forex Reconciliation' }}
+                </h5>
                 <button onclick="document.getElementById('recordPaymentModal').style.display='none'" style="background:none; border:none; font-size:22px; color:#9ca3af; cursor:pointer; line-height:1;">×</button>
             </div>
             
@@ -557,14 +572,14 @@
                     <!-- Payment Date -->
                     <div class="col-12 col-md-6">
                         <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">Payment Received Date</label>
-                        <input type="date" name="payment_date" value="{{ date('Y-m-d') }}" required
+                        <input type="date" name="payment_date" id="modal-payment-date-input" value="{{ old('payment_date', $invoice->payment?->payment_date ? $invoice->payment->payment_date->format('Y-m-d') : date('Y-m-d')) }}" required
                             style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
                     </div>
                     
                     <!-- FIRC Number -->
                     <div class="col-12 col-md-6">
                         <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">FIRC / e-BRC Ref Number</label>
-                        <input type="text" name="firc_number" placeholder="e.g. FIRC12345678"
+                        <input type="text" name="firc_number" id="modal-firc-number-input" value="{{ old('firc_number', $invoice->payment?->firc_number ?? $invoice->firc_number) }}" placeholder="e.g. FIRC12345678"
                             style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
                     </div>
 
@@ -572,7 +587,7 @@
                         <!-- Realized Bank Exchange Rate -->
                         <div class="col-12 col-md-6">
                             <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">Bank Exchange Rate (per {{ $invoice->currency_code }})</label>
-                            <input type="number" name="exchange_rate_payment" id="bank-exchange-rate-input" step="any" required
+                            <input type="number" name="exchange_rate_payment" id="bank-exchange-rate-input" step="any" value="{{ old('exchange_rate_payment', $invoice->payment?->exchange_rate_payment ?? $invoice->actual_exchange_rate) }}" required
                                 style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
                             
                             <!-- Slider input for interactive reconciliation -->
@@ -586,7 +601,7 @@
                     <!-- Actual INR Amount Received -->
                     <div class="col-12 col-md-6">
                         <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">Actual INR Received in Bank</label>
-                        <input type="number" name="inr_amount_received" id="inr-received-input" step="any" required
+                        <input type="number" name="inr_amount_received" id="inr-received-input" step="any" value="{{ old('inr_amount_received', $invoice->payment?->inr_amount_received ?? $invoice->actual_inr_received) }}" required
                             style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
                     </div>
                 </div>
@@ -637,7 +652,7 @@
                     </button>
                     <button type="submit"
                         style="flex:2; padding:12px; background:linear-gradient(135deg,#0ea5e9,#2563eb); border:none; border-radius:10px; font-size:14px; font-weight:700; color:#fff; cursor:pointer;">
-                        ✔️ Record & Sync Payment
+                        {{ ($invoice->payment || $invoice->status === 'paid') ? '✔️ Update Payment Details' : '✔️ Record & Sync Payment' }}
                     </button>
                 </div>
             </form>
@@ -651,8 +666,25 @@
             const grandTotal = parseFloat("{{ $invoice->grand_total }}");
             const invoicedInr = parseFloat("{{ $invoice->inr_equivalent ?? $invoice->grand_total }}");
 
+            // Existing payment values if already recorded
+            const existingPaymentDate = "{{ $invoice->payment?->payment_date ? $invoice->payment->payment_date->format('Y-m-d') : '' }}";
+            const existingBankRate = parseFloat("{{ $invoice->payment?->exchange_rate_payment ?? ($invoice->actual_exchange_rate ?? '') }}");
+            const existingInrReceived = parseFloat("{{ $invoice->payment?->inr_amount_received ?? ($invoice->actual_inr_received ?? '') }}");
+
+            if (existingPaymentDate) {
+                const dateInput = document.getElementById('modal-payment-date-input');
+                if (dateInput) {
+                    dateInput.value = existingPaymentDate;
+                }
+            }
+
             if (currency === 'INR') {
-                document.getElementById('inr-received-input').value = grandTotal.toFixed(2);
+                const inrInput = document.getElementById('inr-received-input');
+                if (inrInput) {
+                    inrInput.value = (!isNaN(existingInrReceived) && existingInrReceived > 0)
+                        ? existingInrReceived.toFixed(2)
+                        : grandTotal.toFixed(2);
+                }
                 return;
             }
 
@@ -666,14 +698,22 @@
             const warningBanner = document.getElementById('modal-variance-warning-banner');
             const variancePercentLbl = document.getElementById('modal-variance-percent-lbl');
 
+            const hasExistingRate = !isNaN(existingBankRate) && existingBankRate > 0;
+            const hasExistingInr = !isNaN(existingInrReceived) && existingInrReceived > 0;
+            const effectiveRate = hasExistingRate ? existingBankRate : lockedRate;
+
             // Setup dynamic slider range
-            const minRate = lockedRate - 3.00;
-            const maxRate = lockedRate + 3.00;
+            const minRate = Math.min(lockedRate, effectiveRate) - 3.00;
+            const maxRate = Math.max(lockedRate, effectiveRate) + 3.00;
             rateSlider.min = minRate.toFixed(2);
             rateSlider.max = maxRate.toFixed(2);
-            rateSlider.value = lockedRate.toFixed(2);
-            bankRateInput.value = lockedRate.toFixed(4);
-            sliderValLabel.textContent = lockedRate.toFixed(2);
+            rateSlider.value = effectiveRate.toFixed(2);
+            bankRateInput.value = effectiveRate.toFixed(4);
+            sliderValLabel.textContent = effectiveRate.toFixed(2);
+
+            if (hasExistingInr) {
+                inrReceivedInput.value = existingInrReceived.toFixed(2);
+            }
 
             function updateCalculations(currentRate, source) {
                 if (isNaN(currentRate) || currentRate <= 0) return;
@@ -743,8 +783,12 @@
                 updateCalculations(parseFloat(inrReceivedInput.value), 'amount');
             };
 
-            // Run initial calculate
-            updateCalculations(lockedRate, 'input');
+            // Run initial calculate with existing values if available
+            if (hasExistingInr) {
+                updateCalculations(effectiveRate, 'amount');
+            } else {
+                updateCalculations(effectiveRate, 'input');
+            }
         }
     </script>
     @endif
