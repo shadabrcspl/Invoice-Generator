@@ -561,4 +561,24 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice->id)
             ->with('success', $successText . $warningMsg);
     }
+
+    /**
+     * Download FEMA 23(R) / HDFC Bank EDF Declaration Form Excel spreadsheet.
+     */
+    public function downloadFemaDeclaration(Invoice $invoice, \App\Services\FemaDeclarationService $service)
+    {
+        $this->authorize('view', $invoice);
+
+        try {
+            $filePath = $service->generate($invoice);
+            $cleanInvoiceNum = preg_replace('/[^A-Za-z0-9_-]/', '_', $invoice->invoice_number);
+            $downloadFilename = "FEMA_23R_EDF_Declaration_{$cleanInvoiceNum}.xlsx";
+
+            return response()->download($filePath, $downloadFilename, [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ])->deleteFileAfterSend(true);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Unable to generate FEMA Declaration: ' . $e->getMessage());
+        }
+    }
 }

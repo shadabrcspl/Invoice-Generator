@@ -56,6 +56,7 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     Route::resource('invoices', InvoiceController::class);
     Route::post('invoices/{invoice}/convert', [InvoiceController::class, 'convertToInvoice'])->name('quotations.convert');
     Route::post('invoices/{invoice}/record-payment', [InvoiceController::class, 'recordPayment'])->name('invoices.record-payment');
+    Route::get('invoices/{invoice}/fema-declaration', [InvoiceController::class, 'downloadFemaDeclaration'])->name('invoices.fema-declaration');
 
     // GSTR-1 & Forex Reconciliation Dashboard
     Route::get('gstr1', [Gstr1ExportController::class, 'index'])->name('gstr1.index');

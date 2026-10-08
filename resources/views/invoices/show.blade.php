@@ -155,6 +155,14 @@
                     Download PDF
                 </a>
 
+                @if($invoice->currency_code !== 'INR')
+                    <!-- FEMA 23(R) / HDFC EDF Declaration Form Download -->
+                    <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg, #1e3a5f, #0f172a);" title="Download mandatory FEMA 23(R) / HDFC Bank EDF Declaration Form (.xlsx)">
+                        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        📄 FEMA 23(R) Declaration
+                    </a>
+                @endif
+
                 @if($invoice->type === 'invoice')
                     @if($invoice->status !== 'paid' && !$invoice->payment)
                         <!-- Record Payment Trigger -->
@@ -531,6 +539,14 @@
                                     @endif
                                 </div>
                             @endif
+
+                            <div class="col-12 border-top pt-2 mt-2 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                                <span class="fs-8 text-muted">Mandatory under FEMA 23(R) effective Oct 1, 2026</span>
+                                <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn btn-sm btn-dark rounded-pill px-3 py-1 fs-8 fw-semibold d-inline-flex align-items-center gap-1" style="background: #1e3a5f; border-color: #1e3a5f;" title="Auto-populate HDFC EDF Declaration Form (.xlsx)">
+                                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    Download FEMA 23(R) / HDFC EDF Excel
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endif
