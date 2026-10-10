@@ -26,6 +26,7 @@ class StoreClientRequest extends FormRequest
             'email' => ['nullable', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
             'address' => ['nullable', 'string'],
+            'country' => ['nullable', 'string', 'max:100'],
             'gst_number' => ['nullable', 'string', 'max:50'],
         ];
     }

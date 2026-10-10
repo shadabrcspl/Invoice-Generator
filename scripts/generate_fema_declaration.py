@@ -126,13 +126,15 @@ def main():
         ws_req['P10'] = exporter.get('ad_name_address') or f"{exporter.get('bank_name', 'HDFC Bank Ltd.')}, {exporter.get('branch_address', 'Munger Branch')}"
         ws_req['P11'] = f"{exporter.get('name', 'COD XPERT')}, {exporter.get('address', '')}"
         
-        # Export Classifications
+        # Export Classifications (Preserving and setting valid dropdown values)
         ws_req['E12'] = 'Service'
         ws_req['AD12'] = 'Regular Export'
         ws_req['F13'] = 'Internet'
         ws_req['P14'] = 'Others (Specify)'
         ws_req['E15'] = 'Others (advance payment, etc. including transfer/remittance to bank a/c maintained overseas)'
-        ws_req['AD15'] = f"Country of Final Destination: {client.get('country', 'N/A')}"
+        
+        country_name = client.get('country') or 'Overseas'
+        ws_req['AD15'] = f"Country of Final Destination: {country_name}"
         
         invoice_date = data.get('invoice_date_dmy') or data.get('invoice_date', '')
         ws_req['D16'] = invoice_date
@@ -145,7 +147,7 @@ def main():
         
         # Table of Invoices (Row 25 to 28)
         client_full = f"{client.get('name', '')}, {client.get('address', '')}".strip(', ')
-        client_country = client.get('country', 'N/A')
+        client_country = country_name
         invoice_no = data.get('invoice_number', '')
         lut_num = exporter.get('lut_number', '')
         remarks = f"Export of Services under LUT No. {lut_num} without payment of IGST" if lut_num else "Export of Services under LUT without payment of IGST"
@@ -174,6 +176,22 @@ def main():
         ws_req['AE30'] = exporter.get('email', '')
         ws_req['B35'] = f"For {exporter.get('name', 'COD XPERT')}"
 
+        # Re-attach and ensure standard Excel dropdown DataValidations on REQUEST LETTER
+        from openpyxl.worksheet.datavalidation import DataValidation
+        req_dropdowns = [
+            ('list', 'Sheet2!$B$2:$B$3', 'E12:M12'),      # Service / Software
+            ('list', 'Sheet2!$G$1:$G$2', 'AD12:AK12'),   # Project Export / Regular Export
+            ('list', 'Sheet2!$E$1:$E$6', 'F13:L13'),     # Mode of Transport (Internet, Air, etc.)
+            ('list', 'Sheet2!$A$1:$A$5', 'P14'),         # Category of Exporter (Others, etc.)
+            ('list', 'Sheet2!$C$1:$C$3', 'E15:N15'),     # Mode of Realisation
+            ('list', 'Sheet2!$I$1:$I$3', 'U16:AA18'),    # Dispatch Indicator (Non dispatch)
+            ('list', 'Sheet2!$F$1:$F$2', 'E21:G21'),     # Third Party (YES / NO)
+        ]
+        for dv_type, formula, cell_range in req_dropdowns:
+            dv = DataValidation(type=dv_type, formula1=formula, allow_blank=True)
+            ws_req.add_data_validation(dv)
+            dv.add(cell_range)
+
     # =========================================================================
     # 2. SHEET: EDF Annexure
     # =========================================================================
@@ -198,7 +216,22 @@ def main():
         ws_edf['J11'] = amount_in_words
         ws_edf['K11'] = client.get('name', '')
         ws_edf['L11'] = client.get('address', '')
-        ws_edf['M11'] = client.get('country', '')
+        ws_edf['M11'] = country_name
+
+        # Re-attach and ensure dropdown DataValidations on EDF Annexure
+        from openpyxl.worksheet.datavalidation import DataValidation
+        edf_dropdowns = [
+            ('list', "'Format Sheet'!$B$13:$B$14", 'B11:B33'), # service / software
+            ('list', "'Format Sheet'!$A$2:$A$7", 'C11:C33'),   # Internet, Air, etc.
+            ('list', "'Format Sheet'!$C$2:$C$6", 'D11:D33'),   # Category
+            ('list', "'Format Sheet'!$E$2:$E$4", 'E11:E33'),   # Mode of Realisation
+            ('list', "'Format Sheet'!$G$12:$G$13", 'F11:F33'), # Regular Export / Project Export
+            ('list', "'Format Sheet'!$D$16:$D$18", 'H11:H33'), # Non dispatch / Bank / Exporter
+        ]
+        for dv_type, formula, cell_range in edf_dropdowns:
+            dv = DataValidation(type=dv_type, formula1=formula, allow_blank=True)
+            ws_edf.add_data_validation(dv)
+            dv.add(cell_range)
 
     # =========================================================================
     # 3. SHEET: Invoice Details 1

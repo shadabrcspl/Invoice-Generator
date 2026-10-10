@@ -16,6 +16,7 @@ class Client extends Model
         'email',
         'phone',
         'address',
+        'country',
         'gst_number',
     ];
 

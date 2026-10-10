@@ -42,7 +42,7 @@
                             <label class="form-label fw-semibold text-muted fs-7">Select Client <span class="text-danger">*</span></label>
                             <select name="client_id" id="client-select" class="form-select rounded-3" required>
                                 @foreach($clients as $client)
-                                    <option value="{{ $client->id }}" data-email="{{ $client->email }}" data-phone="{{ $client->phone }}" data-address="{{ $client->address }}" data-gst="{{ $client->gst_number }}" {{ $invoice->client_id === $client->id ? 'selected' : '' }}>
+                                    <option value="{{ $client->id }}" data-email="{{ $client->email }}" data-phone="{{ $client->phone }}" data-address="{{ $client->address }}" data-country="{{ $client->country }}" data-gst="{{ $client->gst_number }}" {{ $invoice->client_id === $client->id ? 'selected' : '' }}>
                                         {{ $client->name }}
                                     </option>
                                 @endforeach
@@ -109,6 +109,10 @@
                                 <span id="preview-client-name" class="fw-semibold text-dark">{{ $invoice->client->name ?? 'N/A' }}</span>
                             </div>
                             <div class="col-12 col-sm-6">
+                                <span class="fw-bold fs-7 d-block">Country:</span>
+                                <span id="preview-client-country" class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 fs-8">{{ $invoice->client->country ?? '—' }}</span>
+                            </div>
+                            <div class="col-12 col-sm-6">
                                 <span class="fw-bold fs-7 d-block">GST/VAT Number:</span>
                                 <span id="preview-client-gst" class="text-muted fs-7">{{ $invoice->client->gst_number ?: '—' }}</span>
                             </div>
@@ -116,7 +120,7 @@
                                 <span class="fw-bold fs-7 d-block">Contact Info:</span>
                                 <span id="preview-client-contact" class="text-muted fs-7">{{ $invoice->client->email ?: 'No email' }} | {{ $invoice->client->phone ?: 'No phone' }}</span>
                             </div>
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <span class="fw-bold fs-7 d-block">Billing Address:</span>
                                 <span id="preview-client-address" class="text-muted fs-7">{{ $invoice->client->address ?: 'No address' }}</span>
                             </div>
@@ -353,10 +357,12 @@
             const name = selectedOpt.textContent.trim();
             const email = selectedOpt.getAttribute('data-email') || 'No email';
             const phone = selectedOpt.getAttribute('data-phone') || 'No phone';
+            const country = selectedOpt.getAttribute('data-country') || '—';
             const gst = selectedOpt.getAttribute('data-gst') || 'N/A';
             const address = selectedOpt.getAttribute('data-address') || 'No address';
 
             document.getElementById('preview-client-name').textContent = name;
+            document.getElementById('preview-client-country').textContent = country;
             document.getElementById('preview-client-gst').textContent = gst;
             document.getElementById('preview-client-contact').textContent = `${email} | ${phone}`;
             document.getElementById('preview-client-address').textContent = address;

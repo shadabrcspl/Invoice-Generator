@@ -33,6 +33,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label fw-semibold text-muted fs-7">Country (Auto-populated in Invoices & FEMA Declarations)</label>
+                        <input type="text" name="country" class="form-control rounded-3" value="{{ old('country', $client->country) }}" placeholder="e.g. Australia, United Arab Emirates, United States">
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label fw-semibold text-muted fs-7">GSTIN / VAT Number</label>
                         <input type="text" name="gst_number" class="form-control rounded-3" value="{{ old('gst_number', $client->gst_number) }}">
                     </div>

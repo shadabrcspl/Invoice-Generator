@@ -42,6 +42,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>Country</th>
                         <th>GST/VAT Number</th>
                         <th class="text-end">Actions</th>
                     </tr>
@@ -52,8 +53,15 @@
                             <td class="fw-semibold">{{ $client->name }}</td>
                             <td>{{ $client->email ?: '—' }}</td>
                             <td>{{ $client->phone ?: '—' }}</td>
-                            <td class="text-muted fs-7" style="max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                            <td class="text-muted fs-7" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                                 {{ $client->address ?: '—' }}
+                            </td>
+                            <td>
+                                @if($client->country)
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">{{ $client->country }}</span>
+                                @else
+                                    <span class="text-muted fs-7">—</span>
+                                @endif
                             </td>
                             <td>
                                 @if($client->gst_number)
@@ -76,7 +84,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center text-muted py-5">
+                            <td colspan="7" class="text-center text-muted py-5">
                                 <svg class="mb-3 text-muted" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                                 <p class="m-0 fw-semibold">No clients registered</p>
                                 <p class="fs-7 text-muted">Register a client to speed up invoice generation.</p>
@@ -120,6 +128,11 @@
                     <div class="mb-3">
                         <label class="form-label fw-semibold text-muted fs-7">Contact Phone Number</label>
                         <input type="text" name="phone" class="form-control rounded-3" placeholder="e.g. +91 98765 43210">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-muted fs-7">Country (Auto-populated in Invoices & FEMA Declarations)</label>
+                        <input type="text" name="country" class="form-control rounded-3" placeholder="e.g. Australia, United Arab Emirates, United States">
                     </div>
 
                     <div class="mb-3">
