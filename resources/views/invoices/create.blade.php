@@ -25,21 +25,39 @@
     <form method="POST" action="{{ route('invoices.store') }}" id="invoice-form">
         @csrf
 
+        @if(!empty($originalInvoice))
+            <input type="hidden" name="original_invoice_id" value="{{ $originalInvoice->id }}">
+            <div class="alert alert-info border-0 rounded-4 mb-4 d-flex align-items-center justify-content-between p-3" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #0284c7 !important;">
+                <div class="d-flex align-items-center gap-3">
+                    <span style="font-size: 24px;">🔗</span>
+                    <div>
+                        <span class="fw-bold text-primary fs-7">Referenced Original Tax Invoice:</span>
+                        <a href="{{ route('invoices.show', $originalInvoice->id) }}" target="_blank" class="fw-bold text-dark fs-7 ms-1 text-decoration-underline">{{ $originalInvoice->invoice_number }}</a>
+                        <span class="text-muted fs-8">({{ $originalInvoice->invoice_date->format('d M Y') }}) — Grand Total: {{ $originalInvoice->currency_symbol }}{{ number_format($originalInvoice->grand_total, 2) }}</span>
+                        <div class="text-muted fs-8 mt-1">Pre-filled with customer details, original currency, and line items. Modify amounts/quantities as needed for this note.</div>
+                    </div>
+                </div>
+                <span class="badge bg-primary rounded-pill px-3 py-2 fs-8">{{ strtoupper(str_replace('_', ' ', $type)) }}</span>
+            </div>
+        @endif
+
         <div class="row g-4">
             <!-- Left Panel: Core Fields & Line Items -->
             <div class="col-12 col-xl-9">
                 <!-- Metadata & Client -->
                 <div class="premium-card mb-4">
-                    <h4 class="mb-4 fs-5" id="card-metadata-title">{{ $type === 'quotation' ? 'Quotation Metadata & Client' : 'Invoice Metadata & Client' }}</h4>
+                    <h4 class="mb-4 fs-5" id="card-metadata-title">
+                        {{ $type === 'quotation' ? 'Quotation Metadata & Client' : ($type === 'credit_note' ? 'Credit Note Metadata & Client' : ($type === 'debit_note' ? 'Debit Note Metadata & Client' : 'Invoice Metadata & Client')) }}
+                    </h4>
 
                     <div class="row g-3">
                         <!-- Client Selector -->
                         <div class="col-12 col-md-4">
                             <label class="form-label fw-semibold text-muted fs-7">Select Client <span class="text-danger">*</span></label>
                             <select name="client_id" id="client-select" class="form-select rounded-3" required>
-                                <option value="" disabled selected>-- Choose Customer --</option>
+                                <option value="" disabled {{ empty($originalInvoice) ? 'selected' : '' }}>-- Choose Customer --</option>
                                 @foreach($clients as $client)
-                                    <option value="{{ $client->id }}" data-email="{{ $client->email }}" data-phone="{{ $client->phone }}" data-address="{{ $client->address }}" data-country="{{ $client->country }}" data-gst="{{ $client->gst_number }}">
+                                    <option value="{{ $client->id }}" data-email="{{ $client->email }}" data-phone="{{ $client->phone }}" data-address="{{ $client->address }}" data-country="{{ $client->country }}" data-gst="{{ $client->gst_number }}" {{ (old('client_id', $originalInvoice?->client_id) == $client->id) ? 'selected' : '' }}>
                                         {{ $client->name }}
                                     </option>
                                 @endforeach
@@ -48,7 +66,9 @@
 
                         <!-- Invoice Number -->
                         <div class="col-12 col-md-4">
-                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-number">{{ $type === 'quotation' ? 'Quotation Number' : 'Invoice Number' }} <span class="text-danger">*</span></label>
+                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-number">
+                                {{ $type === 'quotation' ? 'Quotation Number' : ($type === 'credit_note' ? 'Credit Note Number' : ($type === 'debit_note' ? 'Debit Note Number' : 'Invoice Number')) }} <span class="text-danger">*</span>
+                            </label>
                             <input type="text" name="invoice_number" id="invoice-number-input" class="form-control rounded-3" value="{{ old('invoice_number', $defaultInvoiceNumber) }}" required>
                         </div>
 
@@ -56,17 +76,21 @@
                         <div class="col-12 col-md-4">
                             <label class="form-label fw-semibold text-muted fs-7">Currency Support <span class="text-danger">*</span></label>
                             <select name="currency_code" id="currency-select" class="form-select rounded-3" required>
-                                <option value="INR" data-symbol="₹">INR (₹)</option>
+                                <option value="INR" data-symbol="₹" {{ (old('currency_code', $originalInvoice?->currency_code) === 'INR') ? 'selected' : '' }}>INR (₹)</option>
                                 @foreach($activeCurrencies as $curr)
-                                    <option value="{{ $curr->code }}" data-symbol="{{ $curr->symbol }}">{{ $curr->code }} ({{ $curr->symbol }})</option>
+                                    <option value="{{ $curr->code }}" data-symbol="{{ $curr->symbol }}" {{ (old('currency_code', $originalInvoice?->currency_code) === $curr->code) ? 'selected' : '' }}>
+                                        {{ $curr->code }} ({{ $curr->symbol }})
+                                    </option>
                                 @endforeach
                             </select>
-                            <input type="hidden" name="currency_symbol" id="currency-symbol-input" value="₹">
+                            <input type="hidden" name="currency_symbol" id="currency-symbol-input" value="{{ $originalInvoice?->currency_symbol ?: '₹' }}">
                         </div>
 
                         <!-- Date -->
                         <div class="col-12 col-md-4">
-                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-date">{{ $type === 'quotation' ? 'Quotation Date' : 'Invoice Date' }} <span class="text-danger">*</span></label>
+                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-date">
+                                {{ $type === 'quotation' ? 'Quotation Date' : ($type === 'credit_note' ? 'Credit Note Date' : ($type === 'debit_note' ? 'Debit Note Date' : 'Invoice Date')) }} <span class="text-danger">*</span>
+                            </label>
                             <input type="date" name="invoice_date" class="form-control rounded-3" value="{{ old('invoice_date', date('Y-m-d')) }}" required>
                         </div>
 
@@ -74,6 +98,19 @@
                         <div class="col-12 col-md-4">
                             <label class="form-label fw-semibold text-muted fs-7" id="label-doc-duedate">Due Date</label>
                             <input type="date" name="due_date" class="form-control rounded-3" value="{{ old('due_date', date('Y-m-d', strtotime('+14 days'))) }}">
+                        </div>
+
+                        <!-- Note Reason (Section 34 Mandate for Credit / Debit Notes) -->
+                        <div class="col-12 col-md-4" id="note-reason-container" style="{{ in_array($type, ['credit_note', 'debit_note']) ? '' : 'display: none;' }}">
+                            <label class="form-label fw-semibold text-muted fs-7">Reason for Note (GST Sec 34) <span class="text-danger">*</span></label>
+                            <select name="note_reason" class="form-select rounded-3">
+                                <option value="Post-sale Discount" {{ old('note_reason') === 'Post-sale Discount' ? 'selected' : '' }}>Post-sale Discount</option>
+                                <option value="Deficiency in Services" {{ old('note_reason') === 'Deficiency in Services' ? 'selected' : '' }}>Deficiency in Services</option>
+                                <option value="Correction in Invoice" {{ old('note_reason') === 'Correction in Invoice' ? 'selected' : '' }}>Correction in Invoice</option>
+                                <option value="Order Cancellation / Refund" {{ old('note_reason') === 'Order Cancellation / Refund' ? 'selected' : '' }}>Order Cancellation / Refund</option>
+                                <option value="Supplementary Services" {{ old('note_reason') === 'Supplementary Services' ? 'selected' : '' }}>Supplementary Services</option>
+                                <option value="Others" {{ old('note_reason') === 'Others' ? 'selected' : '' }}>Others</option>
+                            </select>
                         </div>
 
                         <!-- Exchange Rate Override -->
@@ -131,41 +168,76 @@
                                 </tr>
                             </thead>
                             <tbody id="items-tbody">
-                                <!-- Row 1 Default -->
-                                <tr class="item-row" data-row-id="0">
-                                    <td>
-                                        <input type="text" name="items[0][item_name]" class="form-control form-control-sm rounded-2 mb-2" required placeholder="Item Name / Service title">
-                                        <input type="text" name="items[0][description]" class="form-control form-control-xs rounded-2 fs-7 text-muted" placeholder="Optional short description">
-                                    </td>
-                                    <td>
-                                        <select class="form-select form-select-sm rounded-2 input-sac-select">
-                                            <option value="998314">998314 – Web Dev</option>
-                                            <option value="998315" selected>998315 – Hosting</option>
-                                            <option value="998316">998316 – Maintenance</option>
-                                            <option value="998319">998319 – IT Services</option>
-                                            <option value="998365">998365 – Digital Mktg</option>
-                                            <option value="998366">998366 – Email Mktg</option>
-                                            <option value="custom">✏️ Custom</option>
-                                        </select>
-                                        <input type="text" class="form-control form-control-sm rounded-2 input-sac-custom mt-1" placeholder="e.g. 998411" maxlength="8" style="display:none">
-                                        <input type="hidden" name="items[0][sac_code]" class="input-sac-value" value="998315">
-                                    </td>
-                                    <td>
-                                        <input type="number" name="items[0][qty]" class="form-control form-control-sm rounded-2 input-qty" required min="0.01" step="any" value="1.00">
-                                    </td>
-                                    <td>
-                                        <input type="number" name="items[0][rate]" class="form-control form-control-sm rounded-2 input-rate" required min="0" step="any" value="0.00">
-                                    </td>
-                                    <td>
-                                        <input type="number" name="items[0][tax_percent]" class="form-control form-control-sm rounded-2 input-tax" required min="0" max="100" step="any" value="18.00">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control form-control-sm rounded-2 input-total bg-light border-0 fw-semibold text-dark" readonly value="0.00">
-                                    </td>
-                                    <td class="text-end">
-                                        <button type="button" class="btn btn-outline-danger btn-sm border-0 rounded-circle btn-remove-row" style="height: 28px; width: 28px; padding: 0;">×</button>
-                                    </td>
-                                </tr>
+                                @php
+                                    $initialItems = old('items');
+                                    if (!$initialItems && !empty($originalInvoice) && $originalInvoice->items->isNotEmpty()) {
+                                        $initialItems = $originalInvoice->items->map(function($it) {
+                                            return [
+                                                'item_name' => $it->item_name,
+                                                'description' => $it->description,
+                                                'sac_code' => $it->sac_code ?: '998315',
+                                                'qty' => $it->qty,
+                                                'rate' => $it->rate,
+                                                'tax_percent' => $it->tax_percent,
+                                                'total' => $it->total,
+                                            ];
+                                        })->toArray();
+                                    }
+                                    if (empty($initialItems)) {
+                                        $initialItems = [
+                                            [
+                                                'item_name' => '',
+                                                'description' => '',
+                                                'sac_code' => '998315',
+                                                'qty' => 1.00,
+                                                'rate' => 0.00,
+                                                'tax_percent' => 18.00,
+                                                'total' => 0.00,
+                                            ]
+                                        ];
+                                    }
+                                @endphp
+                                @foreach($initialItems as $idx => $item)
+                                    <tr class="item-row" data-row-id="{{ $idx }}">
+                                        <td>
+                                            <input type="text" name="items[{{ $idx }}][item_name]" class="form-control form-control-sm rounded-2 mb-2" required placeholder="Item Name / Service title" value="{{ $item['item_name'] ?? '' }}">
+                                            <input type="text" name="items[{{ $idx }}][description]" class="form-control form-control-xs rounded-2 fs-7 text-muted" placeholder="Optional short description" value="{{ $item['description'] ?? '' }}">
+                                        </td>
+                                        <td>
+                                            @php
+                                                $curSac = $item['sac_code'] ?? '998315';
+                                                $standardSacs = ['998314', '998315', '998316', '998319', '998365', '998366'];
+                                                $isCustomSac = !in_array($curSac, $standardSacs);
+                                            @endphp
+                                            <select class="form-select form-select-sm rounded-2 input-sac-select">
+                                                <option value="998314" {{ $curSac === '998314' ? 'selected' : '' }}>998314 – Web Dev</option>
+                                                <option value="998315" {{ $curSac === '998315' ? 'selected' : '' }}>998315 – Hosting</option>
+                                                <option value="998316" {{ $curSac === '998316' ? 'selected' : '' }}>998316 – Maintenance</option>
+                                                <option value="998319" {{ $curSac === '998319' ? 'selected' : '' }}>998319 – IT Services</option>
+                                                <option value="998365" {{ $curSac === '998365' ? 'selected' : '' }}>998365 – Digital Mktg</option>
+                                                <option value="998366" {{ $curSac === '998366' ? 'selected' : '' }}>998366 – Email Mktg</option>
+                                                <option value="custom" {{ $isCustomSac ? 'selected' : '' }}>✏️ Custom</option>
+                                            </select>
+                                            <input type="text" class="form-control form-control-sm rounded-2 input-sac-custom mt-1" placeholder="e.g. 998411" maxlength="8" value="{{ $isCustomSac ? $curSac : '' }}" style="{{ $isCustomSac ? '' : 'display:none;' }}">
+                                            <input type="hidden" name="items[{{ $idx }}][sac_code]" class="input-sac-value" value="{{ $curSac }}">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="items[{{ $idx }}][qty]" class="form-control form-control-sm rounded-2 input-qty" required min="0.01" step="any" value="{{ $item['qty'] ?? 1.00 }}">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="items[{{ $idx }}][rate]" class="form-control form-control-sm rounded-2 input-rate" required min="0" step="any" value="{{ $item['rate'] ?? 0.00 }}">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="items[{{ $idx }}][tax_percent]" class="form-control form-control-sm rounded-2 input-tax" required min="0" max="100" step="any" value="{{ $item['tax_percent'] ?? 18.00 }}">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm rounded-2 input-total bg-light border-0 fw-semibold text-dark" readonly value="{{ number_format($item['total'] ?? 0, 2, '.', '') }}">
+                                        </td>
+                                        <td class="text-end">
+                                            <button type="button" class="btn btn-outline-danger btn-sm border-0 rounded-circle btn-remove-row" style="height: 28px; width: 28px; padding: 0;">×</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -229,6 +301,8 @@
                         <select name="type" id="document-type-select" class="form-select rounded-3">
                             <option value="invoice" {{ $type === 'invoice' ? 'selected' : '' }}>Invoice</option>
                             <option value="quotation" {{ $type === 'quotation' ? 'selected' : '' }}>Quotation</option>
+                            <option value="credit_note" {{ $type === 'credit_note' ? 'selected' : '' }}>Credit Note (Reversal / Discount)</option>
+                            <option value="debit_note" {{ $type === 'debit_note' ? 'selected' : '' }}>Debit Note (Additional / Supplemental)</option>
                         </select>
                     </div>
 
@@ -242,9 +316,40 @@
                         </select>
                     </div>
 
+                    <!-- Recurring Invoices & Subscriptions Box -->
+                    <div class="calculation-box mb-4" id="recurring-settings-box" style="{{ in_array($type, ['invoice']) ? '' : 'display: none;' }}">
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" role="switch" name="is_recurring" value="1" id="is-recurring-switch" {{ old('is_recurring') ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold text-dark fs-7" for="is-recurring-switch">🔄 Recurring Subscription</label>
+                        </div>
+                        <div id="recurring-fields-container" style="{{ old('is_recurring') ? '' : 'display: none;' }}">
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold text-muted fs-8 mb-1">Billing Frequency</label>
+                                <select name="recurring_frequency" class="form-select form-select-sm rounded-2">
+                                    <option value="weekly" {{ old('recurring_frequency') === 'weekly' ? 'selected' : '' }}>Weekly</option>
+                                    <option value="monthly" {{ old('recurring_frequency', 'monthly') === 'monthly' ? 'selected' : '' }}>Monthly</option>
+                                    <option value="quarterly" {{ old('recurring_frequency') === 'quarterly' ? 'selected' : '' }}>Quarterly</option>
+                                    <option value="yearly" {{ old('recurring_frequency') === 'yearly' ? 'selected' : '' }}>Yearly</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold text-muted fs-8 mb-1">Next Recurrence Date</label>
+                                <input type="date" name="recurring_next_date" class="form-control form-control-sm rounded-2" value="{{ old('recurring_next_date', date('Y-m-d', strtotime('+1 month'))) }}">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold text-muted fs-8 mb-1">End Date (Optional)</label>
+                                <input type="date" name="recurring_end_date" class="form-control form-control-sm rounded-2" value="{{ old('recurring_end_date') }}" placeholder="Indefinite if empty">
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" name="recurring_auto_send" value="1" id="auto-send-check" {{ old('recurring_auto_send') ? 'checked' : '' }}>
+                                <label class="form-check-label fs-8 text-muted" for="auto-send-check">Auto-send email upon billing cycle</label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="d-flex flex-column gap-2">
                         <button type="submit" class="btn btn-primary rounded-pill py-3 fw-semibold border-0" id="btn-submit-document" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
-                            {{ $type === 'quotation' ? 'Generate Quotation' : 'Generate Invoice' }}
+                            {{ $type === 'quotation' ? 'Generate Quotation' : ($type === 'credit_note' ? 'Issue Credit Note' : ($type === 'debit_note' ? 'Issue Debit Note' : 'Generate Invoice')) }}
                         </button>
                         <a href="{{ route('invoices.index') }}" class="btn btn-light rounded-pill py-3 fw-semibold text-dark">
                             Cancel
@@ -265,7 +370,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const exchangeRates = @json($latestRates);
-        let rowCount = 1;
+        let rowCount = {{ count($initialItems ?? [1]) }};
 
         // Dynamic type toggles
         const typeSelect = document.getElementById('document-type-select');
@@ -274,31 +379,56 @@
         const labelDocDate = document.getElementById('label-doc-date');
         const docNumberInput = document.getElementById('invoice-number-input');
         const btnSubmitDoc = document.getElementById('btn-submit-document');
+        const reasonContainer = document.getElementById('note-reason-container');
+        const recurringBox = document.getElementById('recurring-settings-box');
 
         typeSelect.addEventListener('change', function() {
             const val = this.value;
+            let currentNum = docNumberInput.value;
+            
             if (val === 'quotation') {
                 cardMetadataTitle.textContent = 'Quotation Metadata & Client';
                 labelDocNumber.innerHTML = 'Quotation Number <span class="text-danger">*</span>';
                 labelDocDate.innerHTML = 'Quotation Date <span class="text-danger">*</span>';
                 btnSubmitDoc.textContent = 'Generate Quotation';
-                
-                let currentNum = docNumberInput.value;
-                if (currentNum.startsWith('INV-')) {
-                    docNumberInput.value = currentNum.replace('INV-', 'QUO-');
-                }
+                if (reasonContainer) reasonContainer.style.display = 'none';
+                if (recurringBox) recurringBox.style.display = 'none';
+                docNumberInput.value = currentNum.replace(/^(INV|CN|DN)-/, 'QUO-');
+            } else if (val === 'credit_note') {
+                cardMetadataTitle.textContent = 'Credit Note Metadata & Client';
+                labelDocNumber.innerHTML = 'Credit Note Number <span class="text-danger">*</span>';
+                labelDocDate.innerHTML = 'Credit Note Date <span class="text-danger">*</span>';
+                btnSubmitDoc.textContent = 'Issue Credit Note';
+                if (reasonContainer) reasonContainer.style.display = 'block';
+                if (recurringBox) recurringBox.style.display = 'none';
+                docNumberInput.value = currentNum.replace(/^(INV|QUO|DN)-/, 'CN-');
+            } else if (val === 'debit_note') {
+                cardMetadataTitle.textContent = 'Debit Note Metadata & Client';
+                labelDocNumber.innerHTML = 'Debit Note Number <span class="text-danger">*</span>';
+                labelDocDate.innerHTML = 'Debit Note Date <span class="text-danger">*</span>';
+                btnSubmitDoc.textContent = 'Issue Debit Note';
+                if (reasonContainer) reasonContainer.style.display = 'block';
+                if (recurringBox) recurringBox.style.display = 'none';
+                docNumberInput.value = currentNum.replace(/^(INV|QUO|CN)-/, 'DN-');
             } else {
                 cardMetadataTitle.textContent = 'Invoice Metadata & Client';
                 labelDocNumber.innerHTML = 'Invoice Number <span class="text-danger">*</span>';
                 labelDocDate.innerHTML = 'Invoice Date <span class="text-danger">*</span>';
                 btnSubmitDoc.textContent = 'Generate Invoice';
-                
-                let currentNum = docNumberInput.value;
-                if (currentNum.startsWith('QUO-')) {
-                    docNumberInput.value = currentNum.replace('QUO-', 'INV-');
-                }
+                if (reasonContainer) reasonContainer.style.display = 'none';
+                if (recurringBox) recurringBox.style.display = 'block';
+                docNumberInput.value = currentNum.replace(/^(QUO|CN|DN)-/, 'INV-');
             }
         });
+
+        // Recurring switch handler
+        const isRecurringSwitch = document.getElementById('is-recurring-switch');
+        const recurringFieldsContainer = document.getElementById('recurring-fields-container');
+        if (isRecurringSwitch && recurringFieldsContainer) {
+            isRecurringSwitch.addEventListener('change', function() {
+                recurringFieldsContainer.style.display = this.checked ? 'block' : 'none';
+            });
+        }
 
         // Auto-fill Client Details
         const clientSelect = document.getElementById('client-select');
@@ -519,7 +649,14 @@
         bindCalculations();
         calculateInvoice();
         
-        rateInputContainer.style.display = currencySelect.value === 'INR' ? 'none' : 'block';
+        if (clientSelect.value) {
+            clientSelect.dispatchEvent(new Event('change'));
+        }
+        if (currencySelect.value !== 'INR') {
+            currencySelect.dispatchEvent(new Event('change'));
+        } else {
+            rateInputContainer.style.display = 'none';
+        }
     });
 </script>
 @endsection

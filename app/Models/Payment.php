@@ -19,14 +19,18 @@ class Payment extends Model
         'payment_date',
         'exchange_rate_payment',
         'inr_amount_received',
+        'tds_deducted',
+        'tds_section',
         'forex_gain_loss',
         'firc_number',
+        'payment_notes',
     ];
 
     protected $casts = [
         'payment_date' => 'date',
         'exchange_rate_payment' => 'decimal:6',
         'inr_amount_received' => 'decimal:2',
+        'tds_deducted' => 'decimal:2',
         'forex_gain_loss' => 'decimal:2',
     ];
 

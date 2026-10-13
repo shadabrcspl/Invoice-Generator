@@ -96,10 +96,32 @@
 
     <!-- Table Card -->
     <div class="premium-card">
+        @if($type === 'invoice')
+            <form id="consolidated-fema-form" method="POST" action="{{ route('invoices.fema-declaration.consolidated') }}" class="mb-3" style="display: none;">
+                @csrf
+                <div class="d-flex align-items-center justify-content-between p-3 rounded-3" style="background: linear-gradient(135deg, #1e3a5f, #0f172a); color: white;">
+                    <div class="d-flex align-items-center gap-2">
+                        <span style="font-size: 20px;">📄</span>
+                        <span class="fw-semibold fs-7"><span id="selected-count">0</span> foreign currency invoices selected for monthly filing</span>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-warning btn-sm rounded-pill px-4 fw-bold text-dark">
+                            📥 Download Consolidated FEMA 23(R) / EDF (.xlsx)
+                        </button>
+                    </div>
+                </div>
+            </form>
+        @endif
+
         <div class="table-responsive">
             <table class="table align-middle">
                 <thead class="table-light">
                     <tr class="fs-7 text-uppercase text-muted fw-bold">
+                        @if($type === 'invoice')
+                            <th style="width: 40px;">
+                                <input type="checkbox" id="select-all-fema" class="form-check-input" title="Select all foreign invoices">
+                            </th>
+                        @endif
                         <th>{{ $type === 'quotation' ? 'Quotation Number' : 'Invoice Number' }}</th>
                         <th>Client</th>
                         <th>Issue Date</th>
@@ -112,10 +134,26 @@
                 <tbody>
                     @forelse($invoices as $invoice)
                         <tr>
+                            @if($type === 'invoice')
+                                <td>
+                                    @if($invoice->currency_code !== 'INR')
+                                        <input type="checkbox" name="invoice_ids[]" value="{{ $invoice->id }}" form="consolidated-fema-form" class="form-check-input fema-checkbox" title="Select for consolidated FEMA filing">
+                                    @else
+                                        <span class="text-muted opacity-25">—</span>
+                                    @endif
+                                </td>
+                            @endif
                             <td class="fw-semibold">
                                 {{ $invoice->invoice_number }}
                                 @if($invoice->type === 'quotation')
-                                    <span class="badge bg-teal-subtle text-teal-800 border border-teal-200 rounded-pill px-2 py-1 fs-9 ms-1" style="background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 10px; font-weight: 600;">QUO</span>
+                                    <span class="badge rounded-pill px-2 py-1 fs-9 ms-1" style="background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 10px; font-weight: 600;">QUO</span>
+                                @elseif($invoice->type === 'credit_note')
+                                    <span class="badge rounded-pill px-2 py-1 fs-9 ms-1" style="background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca; font-size: 10px; font-weight: 600;">CN</span>
+                                @elseif($invoice->type === 'debit_note')
+                                    <span class="badge rounded-pill px-2 py-1 fs-9 ms-1" style="background-color: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; font-size: 10px; font-weight: 600;">DN</span>
+                                @endif
+                                @if($invoice->is_recurring)
+                                    <span class="badge rounded-pill px-2 py-1 fs-9 ms-1" style="background-color: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; font-size: 10px; font-weight: 600;" title="Recurring {{ ucfirst($invoice->recurring_frequency) }}">🔄 {{ ucfirst($invoice->recurring_frequency) }}</span>
                                 @endif
                             </td>
                             <td class="fw-medium">{{ $invoice->client->name ?? 'N/A' }}</td>
@@ -150,7 +188,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-5">
+                            <td colspan="{{ $type === 'invoice' ? 8 : 7 }}" class="text-center text-muted py-5">
                                 <svg class="mb-3 text-muted" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                 </svg>
@@ -162,6 +200,37 @@
                 </tbody>
             </table>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const selectAll = document.getElementById('select-all-fema');
+                const checkboxes = document.querySelectorAll('.fema-checkbox');
+                const banner = document.getElementById('consolidated-fema-form');
+                const countLabel = document.getElementById('selected-count');
+
+                function updateFemaState() {
+                    const checkedCount = document.querySelectorAll('.fema-checkbox:checked').length;
+                    if (countLabel) countLabel.textContent = checkedCount;
+                    if (banner) {
+                        banner.style.display = checkedCount > 0 ? 'block' : 'none';
+                    }
+                    if (selectAll) {
+                        selectAll.checked = checkboxes.length > 0 && checkedCount === checkboxes.length;
+                    }
+                }
+
+                if (selectAll) {
+                    selectAll.addEventListener('change', function() {
+                        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+                        updateFemaState();
+                    });
+                }
+
+                checkboxes.forEach(cb => {
+                    cb.addEventListener('change', updateFemaState);
+                });
+            });
+        </script>
 
         @if($invoices->hasPages())
             <div class="mt-4 d-flex justify-content-center">

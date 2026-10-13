@@ -87,10 +87,10 @@
                     <p class="text-muted fs-7 m-0">Generate GSTR-1 compliant CSV reports for your accountant. Ignores payment dates and realized values, locking strictly on invoice-date values.</p>
                 </div>
 
-                <form method="GET" action="{{ route('gstr1.export') }}">
+                <form method="GET" action="{{ route('gstr1.export') }}" id="gstr1-form">
                     <div class="mb-3">
                         <label class="form-label fw-semibold text-muted fs-7">Select Filing Period</label>
-                        <select name="month" class="form-select rounded-3" required>
+                        <select name="month" class="form-select rounded-3" id="gstr1-month-select" required>
                             @foreach($months as $m)
                                 @php 
                                     $carbon = \Carbon\Carbon::createFromFormat('Y-m', $m);
@@ -101,10 +101,23 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary rounded-pill w-100 py-2.5 fw-semibold border-0" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
-                        📥 Download GSTR-1 CSV Ledger
-                    </button>
+                    <div class="d-flex flex-column gap-2">
+                        <button type="submit" class="btn btn-primary rounded-pill w-100 py-2.5 fw-semibold border-0" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+                            📥 Download GSTR-1 CSV Ledger
+                        </button>
+                        <button type="button" onclick="submitGstr1Json()" class="btn btn-dark rounded-pill w-100 py-2.5 fw-semibold border-0" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                            ⚡ Download GSTR-1 JSON (GST Portal Direct Upload)
+                        </button>
+                    </div>
                 </form>
+
+                <script>
+                    function submitGstr1Json() {
+                        const form = document.getElementById('gstr1-form');
+                        const month = document.getElementById('gstr1-month-select').value;
+                        window.location.href = "{{ route('gstr1.export-json') }}?month=" + encodeURIComponent(month);
+                    }
+                </script>
             </div>
             
             <div class="reconcile-card" style="background: linear-gradient(135deg, #faf5ff, #f3e8ff); border-color: #d8b4fe;">

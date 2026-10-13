@@ -67,12 +67,21 @@ class InvoiceController extends Controller
         
         $type = $request->get('type', 'invoice');
 
-        // Dynamic Default Invoice/Quotation Number (e.g. INV-202507-0001)
-        // Strategy: find the highest sequence number ever used for this user+type,
-        // then increment it. This is month-agnostic and gap-proof.
+        // Dynamic Default Number (e.g. INV-202507-0001, QUO-..., CN-..., DN-...)
         $year = date('Y');
         $month = date('m');
-        $prefix = $type === 'quotation' ? 'QUO' : 'INV';
+        $prefix = match($type) {
+            'quotation'   => 'QUO',
+            'credit_note' => 'CN',
+            'debit_note'  => 'DN',
+            default       => 'INV',
+        };
+
+        // Support cloning/prefilling from an original invoice if creating Credit/Debit Note
+        $originalInvoice = null;
+        if ($request->has('original_invoice_id')) {
+            $originalInvoice = Invoice::where('user_id', $userId)->find($request->get('original_invoice_id'));
+        }
 
         // Pull all invoice_numbers for this user+type that match the prefix pattern
         $lastInvoice = Invoice::where('user_id', $userId)
@@ -86,7 +95,6 @@ class InvoiceController extends Controller
             ->first();
 
         if ($lastInvoice) {
-            // Extract the trailing sequence segment (e.g. "0007" from "INV-202506-0007")
             $parts = explode('-', $lastInvoice->invoice_number);
             $lastSeq = (int) end($parts);
             $nextSeq = $lastSeq + 1;
@@ -138,7 +146,7 @@ class InvoiceController extends Controller
             }
         }
 
-        return view('invoices.create', compact('clients', 'companySetting', 'defaultInvoiceNumber', 'type', 'latestRates', 'activeCurrencies'));
+        return view('invoices.create', compact('clients', 'companySetting', 'defaultInvoiceNumber', 'type', 'latestRates', 'activeCurrencies', 'originalInvoice'));
     }
 
     /**
@@ -215,6 +223,13 @@ class InvoiceController extends Controller
                 'bank_notes' => $validated['bank_notes'] ?? null,
                 'status' => $validated['status'],
                 'type' => $type,
+                'original_invoice_id' => $validated['original_invoice_id'] ?? null,
+                'note_reason' => $validated['note_reason'] ?? null,
+                'is_recurring' => !empty($validated['is_recurring']),
+                'recurring_frequency' => $validated['recurring_frequency'] ?? null,
+                'recurring_next_date' => $validated['recurring_next_date'] ?? null,
+                'recurring_end_date' => $validated['recurring_end_date'] ?? null,
+                'recurring_auto_send' => !empty($validated['recurring_auto_send']),
                 'exchange_rate_inr' => $exchangeRateInr,
                 'inr_equivalent' => $inrEquivalent,
                 'firc_number' => $validated['firc_number'] ?? null,
@@ -252,7 +267,7 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         $this->authorize('view', $invoice);
-        $invoice->load(['client', 'items', 'user.companySetting', 'payment']);
+        $invoice->load(['client', 'items', 'user.companySetting', 'payment', 'originalInvoice', 'creditDebitNotes']);
         return view('invoices.show', compact('invoice'));
     }
 
@@ -262,7 +277,7 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         $this->authorize('view', $invoice);
-        $invoice->load(['items', 'payment']);
+        $invoice->load(['items', 'payment', 'originalInvoice']);
         
         $userId = Auth::id();
         $clients = Client::where('user_id', $userId)->orderBy('name')->get();
@@ -386,6 +401,13 @@ class InvoiceController extends Controller
                 'bank_notes' => $validated['bank_notes'] ?? null,
                 'status' => $validated['status'],
                 'type' => $validated['type'] ?? $invoice->type,
+                'original_invoice_id' => $validated['original_invoice_id'] ?? $invoice->original_invoice_id,
+                'note_reason' => $validated['note_reason'] ?? $invoice->note_reason,
+                'is_recurring' => !empty($validated['is_recurring']),
+                'recurring_frequency' => $validated['recurring_frequency'] ?? null,
+                'recurring_next_date' => $validated['recurring_next_date'] ?? null,
+                'recurring_end_date' => $validated['recurring_end_date'] ?? null,
+                'recurring_auto_send' => !empty($validated['recurring_auto_send']),
                 'exchange_rate_inr' => $exchangeRateInr,
                 'inr_equivalent' => $inrEquivalent,
                 'firc_number' => $fircNumberInput,
@@ -504,6 +526,9 @@ class InvoiceController extends Controller
         $rules = [
             'payment_date'        => ['required', 'date'],
             'inr_amount_received' => ['required', 'numeric', 'min:0'],
+            'tds_deducted'        => ['nullable', 'numeric', 'min:0'],
+            'tds_section'         => ['nullable', 'string', 'max:100'],
+            'payment_notes'       => ['nullable', 'string', 'max:1000'],
             'firc_number'         => ['nullable', 'string', 'max:255'],
         ];
 
@@ -519,15 +544,17 @@ class InvoiceController extends Controller
         $invoicedInr = floatval($invoice->inr_equivalent ?? $invoice->grand_total);
         
         $inrReceived = floatval($validated['inr_amount_received']);
+        $tdsDeducted = floatval($validated['tds_deducted'] ?? 0);
+        $totalSettledInr = $inrReceived + $tdsDeducted;
         $exchangeRatePayment = $currency === 'INR' ? 1.0 : floatval($validated['exchange_rate_payment'] ?? 1.0);
         
-        // Calculate Forex Gain/Loss: Received INR - Locked Invoice INR
+        // Calculate Forex Gain/Loss: Received INR - Locked Invoice INR (for foreign currency)
         $forexGainLoss = $currency === 'INR' ? 0.00 : ($inrReceived - $invoicedInr);
 
         // Check if payment existed prior to this request
         $isExisting = $invoice->payment()->exists();
 
-        DB::transaction(function () use ($invoice, $validated, $exchangeRatePayment, $inrReceived, $forexGainLoss) {
+        DB::transaction(function () use ($invoice, $validated, $exchangeRatePayment, $inrReceived, $tdsDeducted, $forexGainLoss) {
             // Update invoice status and inline FIRC fields (for backward compatibility)
             $invoice->update([
                 'status' => 'paid',
@@ -543,17 +570,21 @@ class InvoiceController extends Controller
                     'payment_date'          => $validated['payment_date'],
                     'exchange_rate_payment' => $exchangeRatePayment,
                     'inr_amount_received'   => $inrReceived,
+                    'tds_deducted'          => $tdsDeducted,
+                    'tds_section'           => $validated['tds_section'] ?? null,
+                    'payment_notes'         => $validated['payment_notes'] ?? null,
                     'forex_gain_loss'       => $forexGainLoss,
                     'firc_number'           => $validated['firc_number'] ?? null,
                 ]
             );
         });
 
-        // Flag warning if there is a variance of more than 10%
-        $percentDifference = $invoicedInr > 0 ? (abs($inrReceived - $invoicedInr) / $invoicedInr) : 0;
+        // Flag warning if there is a variance of more than 10% (accounting for TDS)
+        $varianceBase = $currency === 'INR' ? $totalSettledInr : $inrReceived;
+        $percentDifference = $invoicedInr > 0 ? (abs($varianceBase - $invoicedInr) / $invoicedInr) : 0;
         $warningMsg = '';
         if ($percentDifference > 0.10) {
-            $warningMsg = ' Note: The payment is flagged because the actual received amount has a variation of ' . number_format($percentDifference * 100, 1) . '% from the invoiced amount.';
+            $warningMsg = ' Note: The payment is flagged because total settlement has a variation of ' . number_format($percentDifference * 100, 1) . '% from the invoiced amount.';
         }
 
         $successText = $isExisting ? 'Payment details updated successfully!' : 'Payment recorded successfully!';
@@ -579,6 +610,38 @@ class InvoiceController extends Controller
             ])->deleteFileAfterSend(true);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Unable to generate FEMA Declaration: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Download multi-invoice consolidated FEMA 23(R) / HDFC Bank EDF Declaration Form Excel spreadsheet.
+     */
+    public function downloadConsolidatedFemaDeclaration(Request $request, \App\Services\FemaDeclarationService $service)
+    {
+        $validated = $request->validate([
+            'invoice_ids' => ['required', 'array', 'min:1'],
+            'invoice_ids.*' => ['required', 'uuid', 'exists:invoices,id'],
+        ]);
+
+        $invoices = Invoice::where('user_id', Auth::id())
+            ->whereIn('id', $validated['invoice_ids'])
+            ->where('currency_code', '!=', 'INR')
+            ->orderBy('invoice_date', 'asc')
+            ->get();
+
+        if ($invoices->isEmpty()) {
+            return redirect()->back()->with('error', 'No valid foreign currency invoices selected for consolidated FEMA declaration.');
+        }
+
+        try {
+            $filePath = $service->generateConsolidated($invoices);
+            $downloadFilename = "FEMA_23R_EDF_Consolidated_Declaration_" . date('Ymd_His') . ".xlsx";
+
+            return response()->download($filePath, $downloadFilename, [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ])->deleteFileAfterSend(true);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Unable to generate Consolidated FEMA Declaration: ' . $e->getMessage());
         }
     }
 }

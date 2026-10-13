@@ -191,13 +191,25 @@
                     </button>
                 @endif
 
+                @if($invoice->type === 'invoice')
+                    <!-- Issue Credit Note -->
+                    <a href="{{ route('invoices.create', ['type' => 'credit_note', 'original_invoice_id' => $invoice->id]) }}" class="btn btn-outline-danger rounded-pill px-4 fw-semibold" title="Issue GST-compliant Credit Note against this invoice">
+                        🔻 Credit Note
+                    </a>
+
+                    <!-- Issue Debit Note -->
+                    <a href="{{ route('invoices.create', ['type' => 'debit_note', 'original_invoice_id' => $invoice->id]) }}" class="btn btn-outline-primary rounded-pill px-4 fw-semibold" title="Issue Supplementary / Debit Note against this invoice">
+                        🔺 Debit Note
+                    </a>
+                @endif
+
                 <!-- Edit -->
                 <a href="{{ route('invoices.edit', $invoice->id) }}" class="btn btn-outline-secondary rounded-pill px-4">
                     Edit
                 </a>
 
                 <!-- Delete -->
-                <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this {{ $invoice->type === 'quotation' ? 'quotation' : 'invoice' }}? This action cannot be undone.');">
+                <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this {{ $invoice->type === 'quotation' ? 'quotation' : ($invoice->type === 'credit_note' ? 'credit note' : ($invoice->type === 'debit_note' ? 'debit note' : 'invoice')) }}? This action cannot be undone.');">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger rounded-pill px-4">
@@ -208,9 +220,95 @@
         </div>
     </div>
 
+    {{-- ✅ Referenced Original Invoice Banner (if Credit/Debit Note) --}}
+    @if($invoice->originalInvoice)
+    <div class="premium-card mb-4" style="background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 1px solid #fca5a5; padding: 16px 24px;">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div class="d-flex align-items-center gap-3">
+                <span style="font-size:24px;">🔗</span>
+                <div>
+                    <span class="fw-bold text-danger fs-6">{{ $invoice->type === 'credit_note' ? 'Credit Note' : 'Debit Note' }} Linked to Original Tax Invoice</span>
+                    <div class="text-muted fs-7 mt-1">
+                        Original Invoice: <a href="{{ route('invoices.show', $invoice->originalInvoice->id) }}" class="fw-bold text-dark text-decoration-underline">{{ $invoice->originalInvoice->invoice_number }}</a>
+                        ({{ $invoice->originalInvoice->invoice_date->format('d M Y') }})
+                        @if($invoice->note_reason)
+                            &nbsp;|&nbsp; <strong>Reason:</strong> {{ $invoice->note_reason }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <a href="{{ route('invoices.show', $invoice->originalInvoice->id) }}" class="btn btn-sm btn-outline-danger rounded-pill px-3">View Original Invoice →</a>
+        </div>
+    </div>
+    @endif
+
+    {{-- ✅ Linked Credit / Debit Notes History (if Tax Invoice) --}}
+    @if($invoice->creditDebitNotes->isNotEmpty())
+    <div class="premium-card mb-4" style="border: 1px solid #e2e8f0;">
+        <h5 class="fs-6 fw-bold mb-3 d-flex align-items-center gap-2">
+            <span>📑 Linked Credit Notes & Debit Notes</span>
+            <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill">{{ $invoice->creditDebitNotes->count() }}</span>
+        </h5>
+        <div class="table-responsive">
+            <table class="table align-middle table-sm mb-0">
+                <thead class="table-light fs-8 text-uppercase">
+                    <tr>
+                        <th>Note Type</th>
+                        <th>Note Number</th>
+                        <th>Date</th>
+                        <th>Reason</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th class="text-end">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($invoice->creditDebitNotes as $cdn)
+                        <tr>
+                            <td>
+                                <span class="badge rounded-pill px-2 py-1 fs-9 {{ $cdn->type === 'credit_note' ? 'bg-danger text-white' : 'bg-primary text-white' }}">
+                                    {{ $cdn->type === 'credit_note' ? 'Credit Note' : 'Debit Note' }}
+                                </span>
+                            </td>
+                            <td class="fw-semibold">{{ $cdn->invoice_number }}</td>
+                            <td class="text-muted">{{ $cdn->invoice_date->format('d M Y') }}</td>
+                            <td class="text-muted fs-7">{{ $cdn->note_reason ?: '—' }}</td>
+                            <td class="fw-bold">{{ $cdn->currency_symbol }}{{ number_format($cdn->grand_total, 2) }}</td>
+                            <td><span class="badge-status badge-{{ $cdn->status }}">{{ $cdn->status }}</span></td>
+                            <td class="text-end">
+                                <a href="{{ route('invoices.show', $cdn->id) }}" class="btn btn-sm btn-light rounded-pill px-3">View</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @endif
+
+    {{-- ✅ Recurring Subscription Badge --}}
+    @if($invoice->is_recurring)
+    <div class="premium-card mb-4" style="background: linear-gradient(135deg, #faf5ff, #f3e8ff); border: 1px solid #d8b4fe; padding: 16px 24px;">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div class="d-flex align-items-center gap-3">
+                <span style="font-size:24px;">🔄</span>
+                <div>
+                    <span class="fw-bold" style="color: #6b21a8; font-size:14px;">Active Recurring Subscription</span>
+                    <div class="text-muted fs-7 mt-1">
+                        Frequency: <strong>{{ ucfirst($invoice->recurring_frequency) }}</strong> &nbsp;|&nbsp;
+                        Next Billing Date: <strong>{{ $invoice->recurring_next_date ? $invoice->recurring_next_date->format('d M Y') : '—' }}</strong> &nbsp;|&nbsp;
+                        End Date: <strong>{{ $invoice->recurring_end_date ? $invoice->recurring_end_date->format('d M Y') : 'Indefinite' }}</strong> &nbsp;|&nbsp;
+                        Auto-Send Client Email: <strong>{{ $invoice->recurring_auto_send ? 'Enabled (Automated)' : 'Disabled' }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
     {{-- ✅ Email Log Badge --}}
     @if($invoice->emailed_to)
-    <div class="premium-card" style="background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; padding: 16px 24px;">
+    <div class="premium-card mb-4" style="background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; padding: 16px 24px;">
         <div class="d-flex align-items-center gap-3">
             <span style="font-size:22px;">📧</span>
             <div>
@@ -503,6 +601,42 @@
                     $difference = $invoice->payment?->forex_gain_loss ?? ($actualReceivedInr && $invoicedInr ? (floatval($actualReceivedInr) - floatval($invoicedInr)) : null);
                 @endphp
 
+                @php
+                    $payment = $invoice->payment;
+                    $tdsAmount = $payment ? floatval($payment->tds_deducted) : 0;
+                    $tdsSec = $payment?->tds_section;
+                @endphp
+
+                @if($invoice->currency_code === 'INR' && ($payment || $actualReceivedInr))
+                    <div class="p-3 border border-success-subtle rounded-3 bg-light">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="metadata-label text-success m-0">Payment & Tax Settlement Record</span>
+                            <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex';" class="btn btn-sm btn-outline-success text-dark fw-semibold rounded-pill py-0 px-2 fs-8 d-inline-flex align-items-center gap-1" title="Edit payment details">
+                                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                Edit
+                            </button>
+                        </div>
+                        <div class="row g-2 fs-7 text-muted">
+                            <div class="col-6">Bank Received Amount:</div>
+                            <div class="col-6 fw-bold text-success">₹{{ number_format($actualReceivedInr ?? $invoice->grand_total, 2) }}</div>
+                            @if($tdsAmount > 0)
+                                <div class="col-6">TDS Deducted by Client:</div>
+                                <div class="col-6 fw-bold text-primary">₹{{ number_format($tdsAmount, 2) }} <span class="badge bg-primary-subtle text-primary fs-8 ms-1">{{ $tdsSec ?: 'Sec 194J' }}</span></div>
+                                <div class="col-6">Total Invoiced Settled:</div>
+                                <div class="col-6 fw-extrabold text-dark">₹{{ number_format(($actualReceivedInr ?? 0) + $tdsAmount, 2) }} of ₹{{ number_format($invoice->grand_total, 2) }}</div>
+                            @endif
+                            @if($paymentDate)
+                                <div class="col-6">Payment Received Date:</div>
+                                <div class="col-6 fw-semibold text-dark">{{ $paymentDate }}</div>
+                            @endif
+                            @if($payment?->payment_notes)
+                                <div class="col-6">Reference / UTR / Notes:</div>
+                                <div class="col-6 text-dark">{{ $payment->payment_notes }}</div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+
                 @if($invoice->currency_code !== 'INR' && ($invoice->payment || $fircRef || $actualReceivedInr))
                     <div class="p-3 border border-warning rounded-3 bg-light">
                         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -523,11 +657,19 @@
                                 <div class="col-6">Actual INR Received:</div>
                                 <div class="col-6 fw-bold text-dark">₹{{ number_format($actualReceivedInr, 2) }}</div>
                             @endif
+                            @if($tdsAmount > 0)
+                                <div class="col-6">Withholding / TDS Tax:</div>
+                                <div class="col-6 fw-bold text-primary">₹{{ number_format($tdsAmount, 2) }} ({{ $tdsSec ?: 'Sec 195' }})</div>
+                            @endif
                             <div class="col-6">Invoiced INR Equivalent:</div>
                             <div class="col-6 fw-semibold text-dark">₹{{ number_format($invoicedInr, 2) }}</div>
                             @if($paymentDate)
                                 <div class="col-6">Payment Received Date:</div>
                                 <div class="col-6 fw-semibold text-dark">{{ $paymentDate }}</div>
+                            @endif
+                            @if($payment?->payment_notes)
+                                <div class="col-6">Reference / Notes:</div>
+                                <div class="col-6 text-dark">{{ $payment->payment_notes }}</div>
                             @endif
                             
                             @if($difference !== null)
@@ -616,8 +758,39 @@
                     
                     <!-- Actual INR Amount Received -->
                     <div class="col-12 col-md-6">
-                        <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">Actual INR Received in Bank</label>
+                        <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">Actual INR Received in Bank <span class="text-danger">*</span></label>
                         <input type="number" name="inr_amount_received" id="inr-received-input" step="any" value="{{ old('inr_amount_received', $invoice->payment?->inr_amount_received ?? $invoice->actual_inr_received) }}" required
+                            style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
+                    </div>
+
+                    <!-- TDS Deducted by Client -->
+                    <div class="col-12 col-md-6">
+                        <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">
+                            TDS Deducted by Client (₹)
+                            <span class="text-muted fw-normal fs-8" style="text-transform:none;">(If applicable)</span>
+                        </label>
+                        <input type="number" name="tds_deducted" id="tds-deducted-input" step="any" min="0" value="{{ old('tds_deducted', $invoice->payment?->tds_deducted ?? '0.00') }}" placeholder="0.00"
+                            style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
+                    </div>
+
+                    <!-- TDS Section -->
+                    <div class="col-12 col-md-6">
+                        <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">TDS Income Tax Section</label>
+                        <select name="tds_section" id="tds-section-select"
+                            style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit; background:#fff;">
+                            <option value="">-- No TDS Deducted --</option>
+                            <option value="194J - Professional & Technical Fees (10%)" {{ ($invoice->payment?->tds_section === '194J - Professional & Technical Fees (10%)') ? 'selected' : '' }}>Sec 194J – Professional & Technical (10%)</option>
+                            <option value="194J - Technical Services (2%)" {{ ($invoice->payment?->tds_section === '194J - Technical Services (2%)') ? 'selected' : '' }}>Sec 194J – Technical Services (2%)</option>
+                            <option value="194C - Contractor & Maintenance (1% Ind / 2% Co)" {{ ($invoice->payment?->tds_section === '194C - Contractor & Maintenance (1% Ind / 2% Co)') ? 'selected' : '' }}>Sec 194C – Contracts / Maint. (1% or 2%)</option>
+                            <option value="194Q - Purchase of Goods (0.1%)" {{ ($invoice->payment?->tds_section === '194Q - Purchase of Goods (0.1%)') ? 'selected' : '' }}>Sec 194Q – Purchase (0.1%)</option>
+                            <option value="195 - Non-Resident Withholding Tax" {{ ($invoice->payment?->tds_section === '195 - Non-Resident Withholding Tax') ? 'selected' : '' }}>Sec 195 – Non-Resident Foreign Withholding</option>
+                        </select>
+                    </div>
+
+                    <!-- Payment Notes -->
+                    <div class="col-12">
+                        <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#374151; margin-bottom:6px;">Payment Notes / UTR / Reference</label>
+                        <input type="text" name="payment_notes" id="modal-payment-notes-input" value="{{ old('payment_notes', $invoice->payment?->payment_notes) }}" placeholder="e.g. Received via NEFT / HDFC NetBanking Ref # CMS12345678"
                             style="width:100%; padding:10px 12px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:13px; color:#111827; outline:none; font-family:inherit;">
                     </div>
                 </div>

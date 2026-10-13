@@ -132,4 +132,119 @@ class FemaDeclarationService
 
         return $outputPath;
     }
+
+    /**
+     * Generate a multi-invoice consolidated FEMA 23(R) / HDFC EDF Declaration Excel file.
+     *
+     * @param \Illuminate\Support\Collection|array $invoices
+     * @return string Path to the generated .xlsx file
+     * @throws \RuntimeException
+     */
+    public function generateConsolidated($invoices): string
+    {
+        $invoices = collect($invoices);
+        if ($invoices->isEmpty()) {
+            throw new \InvalidArgumentException('No invoices provided for consolidated FEMA declaration.');
+        }
+
+        $invoices->loadMissing(['client', 'items', 'user.companySetting', 'payment']);
+
+        $firstInvoice = $invoices->first();
+        $companySetting = $firstInvoice->user->companySetting;
+        $bankNotes = $firstInvoice->bank_notes ?: ($companySetting?->bank_notes ?? '');
+
+        // Extract banking details from bank notes using regex
+        $accountNumber = '50200120756905';
+        if (preg_match('/Account\s*Number\s*:\s*([^\r\n]+)/i', $bankNotes, $m)) {
+            $accountNumber = trim($m[1]);
+        }
+
+        $bankName = 'HDFC Bank Ltd.';
+        if (preg_match('/Bank\s*Name\s*:\s*([^\r\n]+)/i', $bankNotes, $m)) {
+            $bankName = trim($m[1]);
+        }
+
+        $branchAddress = 'HDFC Bank Ltd., Upper Ground & First Floor, Anu Complex, Bekapur Market, Munger, Bihar, Pin-811201';
+        if (preg_match('/Branch\s*Address\s*:\s*([^\r\n]+)/i', $bankNotes, $m)) {
+            $branchAddress = trim($m[1]);
+        }
+
+        // Extract PAN from GSTIN (chars 3 to 12) or fallback
+        $gstNumber = $companySetting?->gst_number ?? '10BZUPA6699D1Z7';
+        $panNumber = 'BZUPA6699D';
+        if (preg_match('/[A-Z]{5}[0-9]{4}[A-Z]/', $gstNumber, $m)) {
+            $panNumber = $m[0];
+        }
+
+        $invoicesData = [];
+        foreach ($invoices as $inv) {
+            $servicesDescription = $inv->items->pluck('item_name')->filter()->join(', ');
+            if (empty($servicesDescription)) {
+                $servicesDescription = 'Software Consultancy, Development & IT Implementation Services';
+            }
+
+            $invoicesData[] = [
+                'invoice_number'        => $inv->invoice_number,
+                'invoice_date'          => $inv->invoice_date ? $inv->invoice_date->format('d-m-Y') : now()->format('d-m-Y'),
+                'currency_code'         => $inv->currency_code,
+                'grand_total'           => floatval($inv->grand_total),
+                'inr_equivalent'        => floatval($inv->inr_equivalent ?? 0),
+                'services_description'  => $servicesDescription,
+                'sac_code'              => $inv->items->first()?->sac_code ?: '998314',
+                'client'                => [
+                    'name'    => $inv->client?->name ?: 'Overseas Client',
+                    'address' => $inv->client?->address ?: 'Overseas Address',
+                    'country' => $inv->client?->country ?: 'Overseas',
+                ],
+            ];
+        }
+
+        $payload = [
+            'is_consolidated'     => true,
+            'request_letter_date' => now()->format('d-M-Y'),
+            'exporter'            => [
+                'name'            => $companySetting?->company_name ?: 'COD XPERT',
+                'address'         => $companySetting?->address ?: 'House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India',
+                'gstin'           => $gstNumber,
+                'pan'             => $panNumber,
+                'iec'             => $companySetting?->iec_number ?: 'N/A',
+                'lut_number'      => $companySetting?->lut_number ?: 'AD100626002271U',
+                'phone'           => $companySetting?->phone ?: '+91 9570512399',
+                'email'           => $companySetting?->email ?: 'info@codxpert.com',
+                'account_number'  => $accountNumber,
+                'bank_name'       => $bankName,
+                'branch_address'  => $branchAddress,
+                'ad_name_address' => "{$bankName}, {$branchAddress}",
+            ],
+            'invoices'            => $invoicesData,
+        ];
+
+        $tempDir = storage_path('app/temp');
+        if (!File::exists($tempDir)) {
+            File::makeDirectory($tempDir, 0755, true);
+        }
+
+        $jsonPath = $tempDir . '/fema_input_cons_' . uniqid() . '.json';
+        $outputPath = $tempDir . '/FEMA_23R_EDF_Consolidated_Declaration_' . date('Ymd_His') . '.xlsx';
+        $templatePath = storage_path('app/templates/fema_23r_services_declaration_template.xlsx');
+
+        File::put($jsonPath, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+        $scriptPath = base_path('scripts/generate_fema_declaration.py');
+
+        $process = new Process(['python3', $scriptPath, $jsonPath, $outputPath, $templatePath]);
+        $process->setTimeout(40);
+        $process->run();
+
+        // Clean up temporary JSON input
+        if (File::exists($jsonPath)) {
+            File::delete($jsonPath);
+        }
+
+        if (!$process->isSuccessful() || !File::exists($outputPath)) {
+            throw new \RuntimeException('Consolidated FEMA Declaration generation failed: ' . $process->getErrorOutput() . ' ' . $process->getOutput());
+        }
+
+        return $outputPath;
+    }
 }

@@ -53,6 +53,7 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     Route::get('invoices/{invoice}/stream', [InvoicePdfController::class, 'stream'])->name('invoices.pdf-stream');
 
     // Invoices CRUD Resource (using UUIDs implicitly via Eloquent model binding)
+    Route::post('invoices/fema-declaration/consolidated', [InvoiceController::class, 'downloadConsolidatedFemaDeclaration'])->name('invoices.fema-declaration.consolidated');
     Route::resource('invoices', InvoiceController::class);
     Route::post('invoices/{invoice}/convert', [InvoiceController::class, 'convertToInvoice'])->name('quotations.convert');
     Route::post('invoices/{invoice}/record-payment', [InvoiceController::class, 'recordPayment'])->name('invoices.record-payment');
@@ -61,6 +62,7 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     // GSTR-1 & Forex Reconciliation Dashboard
     Route::get('gstr1', [Gstr1ExportController::class, 'index'])->name('gstr1.index');
     Route::get('gstr1/export', [Gstr1ExportController::class, 'export'])->name('gstr1.export');
+    Route::get('gstr1/export-json', [Gstr1ExportController::class, 'exportJson'])->name('gstr1.export-json');
 
     // Send Invoice Email (with logging)
     Route::post('invoices/{invoice}/send-email', [InvoiceEmailController::class, 'send'])->name('invoices.send-email');

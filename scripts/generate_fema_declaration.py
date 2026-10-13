@@ -69,17 +69,31 @@ def main():
 
     wb = openpyxl.load_workbook(template_path)
     
-    currency = data.get('currency_code', 'USD')
-    grand_total = float(data.get('grand_total', 0.0))
+    multi_invoices = data.get('invoices', [])
+    exporter = data.get('exporter', {})
+
+    if multi_invoices:
+        currency = multi_invoices[0].get('currency_code', 'USD')
+        grand_total = sum(float(inv.get('grand_total', 0.0)) for inv in multi_invoices)
+        client = multi_invoices[0].get('client', {})
+        items = []
+        services_desc = ", ".join(filter(None, [inv.get('services_description') for inv in multi_invoices]))[:100] or 'Software & IT Consultancy Services'
+        invoice_date = multi_invoices[0].get('invoice_date', '')
+        country_name = client.get('country') or 'Overseas'
+    else:
+        currency = data.get('currency_code', 'USD')
+        grand_total = float(data.get('grand_total', 0.0))
+        client = data.get('client', {})
+        items = data.get('items', [])
+        services_desc = data.get('services_description') or 'Software & IT Consultancy Services'
+        invoice_date = data.get('invoice_date_dmy') or data.get('invoice_date', '')
+        country_name = client.get('country') or 'Overseas'
+
     amount_in_words = number_to_words(grand_total, currency)
     
-    exporter = data.get('exporter', {})
-    client = data.get('client', {})
-    items = data.get('items', [])
-    
-    if not items:
+    if not multi_invoices and not items:
         items = [{
-            'name': data.get('services_description', 'Software & IT Consultancy Services'),
+            'name': services_desc,
             'sac_code': data.get('sac_code', '998314'),
             'amount': grand_total
         }]
@@ -146,29 +160,48 @@ def main():
         ws_req['E21'] = 'NO'  # Third party: NO
         
         # Table of Invoices (Row 25 to 28)
-        client_full = f"{client.get('name', '')}, {client.get('address', '')}".strip(', ')
-        client_country = country_name
-        invoice_no = data.get('invoice_number', '')
         lut_num = exporter.get('lut_number', '')
         remarks = f"Export of Services under LUT No. {lut_num} without payment of IGST" if lut_num else "Export of Services under LUT without payment of IGST"
-        
         start_row = 25
         max_rows = 4  # rows 25, 26, 27, 28
-        for idx, item in enumerate(items[:max_rows]):
-            curr_row = start_row + idx
-            ws_req[f'A{curr_row}'] = idx + 1
-            ws_req[f'B{curr_row}'] = client_full
-            ws_req[f'E{curr_row}'] = client_country
-            ws_req[f'J{curr_row}'] = invoice_no
-            ws_req[f'O{curr_row}'] = invoice_date
-            ws_req[f'T{curr_row}'] = currency
-            item_amt = float(item.get('amount', grand_total))
-            ws_req[f'U{curr_row}'] = item_amt
-            ws_req[f'X{curr_row}'] = item_amt
-            ws_req[f'AB{curr_row}'] = 'N/A'
-            ws_req[f'AE{curr_row}'] = item.get('name') or services_desc
-            ws_req[f'AH{curr_row}'] = item.get('sac_code') or data.get('sac_code', '998314')
-            ws_req[f'AK{curr_row}'] = remarks
+
+        if multi_invoices:
+            for idx, inv in enumerate(multi_invoices[:max_rows]):
+                curr_row = start_row + idx
+                inv_client = inv.get('client', {})
+                inv_client_full = f"{inv_client.get('name', '')}, {inv_client.get('address', '')}".strip(', ')
+                inv_country = inv_client.get('country') or 'Overseas'
+                inv_amt = float(inv.get('grand_total', 0.0))
+                ws_req[f'A{curr_row}'] = idx + 1
+                ws_req[f'B{curr_row}'] = inv_client_full
+                ws_req[f'E{curr_row}'] = inv_country
+                ws_req[f'J{curr_row}'] = inv.get('invoice_number', '')
+                ws_req[f'O{curr_row}'] = inv.get('invoice_date', '')
+                ws_req[f'T{curr_row}'] = inv.get('currency_code', currency)
+                ws_req[f'U{curr_row}'] = inv_amt
+                ws_req[f'X{curr_row}'] = inv_amt
+                ws_req[f'AB{curr_row}'] = 'N/A'
+                ws_req[f'AE{curr_row}'] = inv.get('services_description') or 'Software Consultancy & IT Services'
+                ws_req[f'AH{curr_row}'] = inv.get('sac_code', '998314')
+                ws_req[f'AK{curr_row}'] = remarks
+        else:
+            client_full = f"{client.get('name', '')}, {client.get('address', '')}".strip(', ')
+            invoice_no = data.get('invoice_number', '')
+            for idx, item in enumerate(items[:max_rows]):
+                curr_row = start_row + idx
+                ws_req[f'A{curr_row}'] = idx + 1
+                ws_req[f'B{curr_row}'] = client_full
+                ws_req[f'E{curr_row}'] = country_name
+                ws_req[f'J{curr_row}'] = invoice_no
+                ws_req[f'O{curr_row}'] = invoice_date
+                ws_req[f'T{curr_row}'] = currency
+                item_amt = float(item.get('amount', grand_total))
+                ws_req[f'U{curr_row}'] = item_amt
+                ws_req[f'X{curr_row}'] = item_amt
+                ws_req[f'AB{curr_row}'] = 'N/A'
+                ws_req[f'AE{curr_row}'] = item.get('name') or services_desc
+                ws_req[f'AH{curr_row}'] = item.get('sac_code') or data.get('sac_code', '998314')
+                ws_req[f'AK{curr_row}'] = remarks
 
         # Footer Signoff
         ws_req['Q29'] = account_no
@@ -240,19 +273,34 @@ def main():
     if inv_sheet_name:
         ws_inv = wb[inv_sheet_name]
         start_r = 3
-        for idx, item in enumerate(items[:5]):
-            r = start_r + idx
-            item_amt = float(item.get('amount', grand_total))
-            ws_inv[f'A{r}'] = invoice_no
-            ws_inv[f'B{r}'] = invoice_date
-            ws_inv[f'C{r}'] = item_amt
-            ws_inv[f'D{r}'] = currency
-            ws_inv[f'E{r}'] = item_amt
-            ws_inv[f'F{r}'] = 'N/A'
-            ws_inv[f'G{r}'] = 'N/A'
-            ws_inv[f'H{r}'] = item.get('name') or services_desc
-            ws_inv[f'I{r}'] = item.get('sac_code') or data.get('sac_code', '998314')
-            ws_inv[f'J{r}'] = remarks
+        if multi_invoices:
+            for idx, inv in enumerate(multi_invoices[:10]):
+                r = start_r + idx
+                inv_amt = float(inv.get('grand_total', 0.0))
+                ws_inv[f'A{r}'] = inv.get('invoice_number', '')
+                ws_inv[f'B{r}'] = inv.get('invoice_date', '')
+                ws_inv[f'C{r}'] = inv_amt
+                ws_inv[f'D{r}'] = inv.get('currency_code', currency)
+                ws_inv[f'E{r}'] = inv_amt
+                ws_inv[f'F{r}'] = 'N/A'
+                ws_inv[f'G{r}'] = 'N/A'
+                ws_inv[f'H{r}'] = inv.get('services_description') or 'Software Consultancy & IT Services'
+                ws_inv[f'I{r}'] = inv.get('sac_code') or '998314'
+                ws_inv[f'J{r}'] = remarks
+        else:
+            for idx, item in enumerate(items[:5]):
+                r = start_r + idx
+                item_amt = float(item.get('amount', grand_total))
+                ws_inv[f'A{r}'] = invoice_no
+                ws_inv[f'B{r}'] = invoice_date
+                ws_inv[f'C{r}'] = item_amt
+                ws_inv[f'D{r}'] = currency
+                ws_inv[f'E{r}'] = item_amt
+                ws_inv[f'F{r}'] = 'N/A'
+                ws_inv[f'G{r}'] = 'N/A'
+                ws_inv[f'H{r}'] = item.get('name') or services_desc
+                ws_inv[f'I{r}'] = item.get('sac_code') or data.get('sac_code', '998314')
+                ws_inv[f'J{r}'] = remarks
 
     # Ensure parent directory exists and save
     os.makedirs(os.path.dirname(os.path.abspath(output_xlsx_path)), exist_ok=True)

@@ -11,6 +11,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('invoices:send-payment-reminders')->dailyAt('09:00');
         $schedule->command('exchange-rates:fetch')->dailyAt('06:00');
+        $schedule->command('invoices:process-recurring')->dailyAt('08:00');
     }
 
     /**

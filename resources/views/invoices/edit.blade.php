@@ -29,10 +29,26 @@
         <div class="row g-4">
             <!-- Left Panel -->
             <div class="col-12 col-xl-9">
+                @if($invoice->originalInvoice)
+                    <div class="alert alert-info border-0 rounded-4 mb-4 d-flex align-items-center justify-content-between p-3" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #0284c7 !important;">
+                        <div class="d-flex align-items-center gap-3">
+                            <span style="font-size: 24px;">🔗</span>
+                            <div>
+                                <span class="fw-bold text-primary fs-7">Referenced Original Tax Invoice:</span>
+                                <a href="{{ route('invoices.show', $invoice->originalInvoice->id) }}" target="_blank" class="fw-bold text-dark fs-7 ms-1 text-decoration-underline">{{ $invoice->originalInvoice->invoice_number }}</a>
+                                <span class="text-muted fs-8">({{ $invoice->originalInvoice->invoice_date->format('d M Y') }}) — Grand Total: {{ $invoice->originalInvoice->currency_symbol }}{{ number_format($invoice->originalInvoice->grand_total, 2) }}</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary rounded-pill px-3 py-2 fs-8">{{ strtoupper(str_replace('_', ' ', $invoice->type)) }}</span>
+                    </div>
+                @endif
+
                 <!-- Metadata -->
                 <div class="premium-card mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h4 class="m-0 fs-5" id="card-metadata-title">{{ $invoice->type === 'quotation' ? 'Quotation Metadata & Client' : 'Invoice Metadata & Client' }}</h4>
+                        <h4 class="m-0 fs-5" id="card-metadata-title">
+                            {{ $invoice->type === 'quotation' ? 'Quotation Metadata & Client' : ($invoice->type === 'credit_note' ? 'Credit Note Metadata & Client' : ($invoice->type === 'debit_note' ? 'Debit Note Metadata & Client' : 'Invoice Metadata & Client')) }}
+                        </h4>
                         <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-light btn-sm rounded-pill px-3">← Back to Details</a>
                     </div>
 
@@ -51,7 +67,9 @@
 
                         <!-- Invoice Number -->
                         <div class="col-12 col-md-4">
-                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-number">{{ $invoice->type === 'quotation' ? 'Quotation Number' : 'Invoice Number' }} <span class="text-danger">*</span></label>
+                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-number">
+                                {{ $invoice->type === 'quotation' ? 'Quotation Number' : ($invoice->type === 'credit_note' ? 'Credit Note Number' : ($invoice->type === 'debit_note' ? 'Debit Note Number' : 'Invoice Number')) }} <span class="text-danger">*</span>
+                            </label>
                             <input type="text" name="invoice_number" id="invoice-number-input" class="form-control rounded-3" value="{{ old('invoice_number', $invoice->invoice_number) }}" required>
                         </div>
 
@@ -84,7 +102,9 @@
 
                         <!-- Date -->
                         <div class="col-12 col-md-4">
-                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-date">{{ $invoice->type === 'quotation' ? 'Quotation Date' : 'Invoice Date' }} <span class="text-danger">*</span></label>
+                            <label class="form-label fw-semibold text-muted fs-7" id="label-doc-date">
+                                {{ $invoice->type === 'quotation' ? 'Quotation Date' : ($invoice->type === 'credit_note' ? 'Credit Note Date' : ($invoice->type === 'debit_note' ? 'Debit Note Date' : 'Invoice Date')) }} <span class="text-danger">*</span>
+                            </label>
                             <input type="date" name="invoice_date" class="form-control rounded-3" value="{{ old('invoice_date', $invoice->invoice_date->format('Y-m-d')) }}" required>
                         </div>
 
@@ -92,6 +112,19 @@
                         <div class="col-12 col-md-4">
                             <label class="form-label fw-semibold text-muted fs-7" id="label-doc-duedate">Due Date</label>
                             <input type="date" name="due_date" class="form-control rounded-3" value="{{ old('due_date', $invoice->due_date ? $invoice->due_date->format('Y-m-d') : '') }}">
+                        </div>
+
+                        <!-- Note Reason (Section 34 Mandate for Credit / Debit Notes) -->
+                        <div class="col-12 col-md-4" id="note-reason-container" style="{{ in_array($invoice->type, ['credit_note', 'debit_note']) ? '' : 'display: none;' }}">
+                            <label class="form-label fw-semibold text-muted fs-7">Reason for Note (GST Sec 34) <span class="text-danger">*</span></label>
+                            <select name="note_reason" class="form-select rounded-3">
+                                <option value="Post-sale Discount" {{ old('note_reason', $invoice->note_reason) === 'Post-sale Discount' ? 'selected' : '' }}>Post-sale Discount</option>
+                                <option value="Deficiency in Services" {{ old('note_reason', $invoice->note_reason) === 'Deficiency in Services' ? 'selected' : '' }}>Deficiency in Services</option>
+                                <option value="Correction in Invoice" {{ old('note_reason', $invoice->note_reason) === 'Correction in Invoice' ? 'selected' : '' }}>Correction in Invoice</option>
+                                <option value="Order Cancellation / Refund" {{ old('note_reason', $invoice->note_reason) === 'Order Cancellation / Refund' ? 'selected' : '' }}>Order Cancellation / Refund</option>
+                                <option value="Supplementary Services" {{ old('note_reason', $invoice->note_reason) === 'Supplementary Services' ? 'selected' : '' }}>Supplementary Services</option>
+                                <option value="Others" {{ old('note_reason', $invoice->note_reason) === 'Others' ? 'selected' : '' }}>Others</option>
+                            </select>
                         </div>
 
                         <!-- Exchange Rate Override -->
@@ -281,6 +314,8 @@
                         <select name="type" id="document-type-select" class="form-select rounded-3">
                             <option value="invoice" {{ $invoice->type === 'invoice' ? 'selected' : '' }}>Invoice</option>
                             <option value="quotation" {{ $invoice->type === 'quotation' ? 'selected' : '' }}>Quotation</option>
+                            <option value="credit_note" {{ $invoice->type === 'credit_note' ? 'selected' : '' }}>Credit Note (Reversal / Discount)</option>
+                            <option value="debit_note" {{ $invoice->type === 'debit_note' ? 'selected' : '' }}>Debit Note (Additional / Supplemental)</option>
                         </select>
                     </div>
 
@@ -294,9 +329,40 @@
                         </select>
                     </div>
 
+                    <!-- Recurring Invoices & Subscriptions Box -->
+                    <div class="calculation-box mb-4" id="recurring-settings-box" style="{{ in_array($invoice->type, ['invoice']) ? '' : 'display: none;' }}">
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" role="switch" name="is_recurring" value="1" id="is-recurring-switch" {{ old('is_recurring', $invoice->is_recurring) ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold text-dark fs-7" for="is-recurring-switch">🔄 Recurring Subscription</label>
+                        </div>
+                        <div id="recurring-fields-container" style="{{ old('is_recurring', $invoice->is_recurring) ? '' : 'display: none;' }}">
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold text-muted fs-8 mb-1">Billing Frequency</label>
+                                <select name="recurring_frequency" class="form-select form-select-sm rounded-2">
+                                    <option value="weekly" {{ old('recurring_frequency', $invoice->recurring_frequency) === 'weekly' ? 'selected' : '' }}>Weekly</option>
+                                    <option value="monthly" {{ old('recurring_frequency', $invoice->recurring_frequency) === 'monthly' ? 'selected' : '' }}>Monthly</option>
+                                    <option value="quarterly" {{ old('recurring_frequency', $invoice->recurring_frequency) === 'quarterly' ? 'selected' : '' }}>Quarterly</option>
+                                    <option value="yearly" {{ old('recurring_frequency', $invoice->recurring_frequency) === 'yearly' ? 'selected' : '' }}>Yearly</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold text-muted fs-8 mb-1">Next Recurrence Date</label>
+                                <input type="date" name="recurring_next_date" class="form-control form-control-sm rounded-2" value="{{ old('recurring_next_date', $invoice->recurring_next_date ? $invoice->recurring_next_date->format('Y-m-d') : date('Y-m-d', strtotime('+1 month'))) }}">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold text-muted fs-8 mb-1">End Date (Optional)</label>
+                                <input type="date" name="recurring_end_date" class="form-control form-control-sm rounded-2" value="{{ old('recurring_end_date', $invoice->recurring_end_date ? $invoice->recurring_end_date->format('Y-m-d') : '') }}" placeholder="Indefinite if empty">
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" name="recurring_auto_send" value="1" id="auto-send-check" {{ old('recurring_auto_send', $invoice->recurring_auto_send) ? 'checked' : '' }}>
+                                <label class="form-check-label fs-8 text-muted" for="auto-send-check">Auto-send email upon billing cycle</label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="d-flex flex-column gap-2">
                         <button type="submit" class="btn btn-primary rounded-pill py-3 fw-semibold border-0" id="btn-submit-document" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
-                            {{ $invoice->type === 'quotation' ? 'Update Quotation' : 'Update Invoice' }}
+                            {{ $invoice->type === 'quotation' ? 'Update Quotation' : ($invoice->type === 'credit_note' ? 'Update Credit Note' : ($invoice->type === 'debit_note' ? 'Update Debit Note' : 'Update Invoice')) }}
                         </button>
                         <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-light rounded-pill py-3 fw-semibold text-dark">
                             Cancel
@@ -322,31 +388,56 @@
         const labelDocDate = document.getElementById('label-doc-date');
         const docNumberInput = document.getElementById('invoice-number-input');
         const btnSubmitDoc = document.getElementById('btn-submit-document');
+        const reasonContainer = document.getElementById('note-reason-container');
+        const recurringBox = document.getElementById('recurring-settings-box');
 
         typeSelect.addEventListener('change', function() {
             const val = this.value;
+            let currentNum = docNumberInput.value;
+            
             if (val === 'quotation') {
                 cardMetadataTitle.textContent = 'Quotation Metadata & Client';
                 labelDocNumber.innerHTML = 'Quotation Number <span class="text-danger">*</span>';
                 labelDocDate.innerHTML = 'Quotation Date <span class="text-danger">*</span>';
                 btnSubmitDoc.textContent = 'Update Quotation';
-                
-                let currentNum = docNumberInput.value;
-                if (currentNum.startsWith('INV-')) {
-                    docNumberInput.value = currentNum.replace('INV-', 'QUO-');
-                }
+                if (reasonContainer) reasonContainer.style.display = 'none';
+                if (recurringBox) recurringBox.style.display = 'none';
+                docNumberInput.value = currentNum.replace(/^(INV|CN|DN)-/, 'QUO-');
+            } else if (val === 'credit_note') {
+                cardMetadataTitle.textContent = 'Credit Note Metadata & Client';
+                labelDocNumber.innerHTML = 'Credit Note Number <span class="text-danger">*</span>';
+                labelDocDate.innerHTML = 'Credit Note Date <span class="text-danger">*</span>';
+                btnSubmitDoc.textContent = 'Update Credit Note';
+                if (reasonContainer) reasonContainer.style.display = 'block';
+                if (recurringBox) recurringBox.style.display = 'none';
+                docNumberInput.value = currentNum.replace(/^(INV|QUO|DN)-/, 'CN-');
+            } else if (val === 'debit_note') {
+                cardMetadataTitle.textContent = 'Debit Note Metadata & Client';
+                labelDocNumber.innerHTML = 'Debit Note Number <span class="text-danger">*</span>';
+                labelDocDate.innerHTML = 'Debit Note Date <span class="text-danger">*</span>';
+                btnSubmitDoc.textContent = 'Update Debit Note';
+                if (reasonContainer) reasonContainer.style.display = 'block';
+                if (recurringBox) recurringBox.style.display = 'none';
+                docNumberInput.value = currentNum.replace(/^(INV|QUO|CN)-/, 'DN-');
             } else {
                 cardMetadataTitle.textContent = 'Invoice Metadata & Client';
                 labelDocNumber.innerHTML = 'Invoice Number <span class="text-danger">*</span>';
                 labelDocDate.innerHTML = 'Invoice Date <span class="text-danger">*</span>';
                 btnSubmitDoc.textContent = 'Update Invoice';
-                
-                let currentNum = docNumberInput.value;
-                if (currentNum.startsWith('QUO-')) {
-                    docNumberInput.value = currentNum.replace('QUO-', 'INV-');
-                }
+                if (reasonContainer) reasonContainer.style.display = 'none';
+                if (recurringBox) recurringBox.style.display = 'block';
+                docNumberInput.value = currentNum.replace(/^(QUO|CN|DN)-/, 'INV-');
             }
         });
+
+        // Recurring switch handler
+        const isRecurringSwitch = document.getElementById('is-recurring-switch');
+        const recurringFieldsContainer = document.getElementById('recurring-fields-container');
+        if (isRecurringSwitch && recurringFieldsContainer) {
+            isRecurringSwitch.addEventListener('change', function() {
+                recurringFieldsContainer.style.display = this.checked ? 'block' : 'none';
+            });
+        }
 
         // Client Details
         const clientSelect = document.getElementById('client-select');

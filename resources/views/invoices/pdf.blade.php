@@ -177,12 +177,29 @@
                     <div style="color: #64748b; font-size: 11px;">{{ $invoice->user->companySetting?->website ?? '' }}</div>
                 </td>
                 <td style="width: 50%; text-align: right;">
-                    <div class="header-title">{{ $invoice->type === 'quotation' ? 'QUOTATION' : 'INVOICE' }}</div>
-                    <div style="font-weight: bold; color: #64748b; font-size: 12px; margin-bottom: 10px;">{{ $invoice->invoice_number }}</div>
+                    @php
+                        $headerTitle = match($invoice->type) {
+                            'quotation'   => 'QUOTATION',
+                            'credit_note' => 'CREDIT NOTE',
+                            'debit_note'  => 'DEBIT NOTE',
+                            default       => 'TAX INVOICE',
+                        };
+                    @endphp
+                    <div class="header-title">{{ $headerTitle }}</div>
+                    <div style="font-weight: bold; color: #64748b; font-size: 12px; margin-bottom: 6px;">{{ $invoice->invoice_number }}</div>
                     
-                    <div style="font-size: 11px; color: #475569; line-height: 1.6; margin-top: 10px;">
+                    @if($invoice->originalInvoice)
+                        <div style="font-size: 9px; color: #dc2626; margin-bottom: 6px; font-weight: bold; line-height: 1.3;">
+                            Ref Original Invoice: {{ $invoice->originalInvoice->invoice_number }} ({{ $invoice->originalInvoice->invoice_date->format('M d, Y') }})
+                            @if($invoice->note_reason)
+                                <br><span style="color:#475569; font-weight: normal;">Reason: {{ $invoice->note_reason }}</span>
+                            @endif
+                        </div>
+                    @endif
+
+                    <div style="font-size: 11px; color: #475569; line-height: 1.6; margin-top: 6px;">
                         <div style="margin-bottom: 5px;">
-                            <strong>{{ $invoice->type === 'quotation' ? 'Quotation Date:' : 'Date:' }}</strong> {{ $invoice->invoice_date->format('M d, Y') }}
+                            <strong>{{ $invoice->type === 'quotation' ? 'Quotation Date:' : ($invoice->type === 'credit_note' ? 'Credit Note Date:' : ($invoice->type === 'debit_note' ? 'Debit Note Date:' : 'Invoice Date:')) }}</strong> {{ $invoice->invoice_date->format('M d, Y') }}
                         </div>
                         @if($invoice->due_date)
                             <div style="margin-bottom: 5px;">

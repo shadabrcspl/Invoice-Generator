@@ -31,6 +31,13 @@ class Invoice extends Model
         'emailed_to',
         'emailed_at',
         'type',
+        'original_invoice_id',
+        'note_reason',
+        'is_recurring',
+        'recurring_frequency',
+        'recurring_next_date',
+        'recurring_end_date',
+        'recurring_auto_send',
         'reminder_sent_at',
         'reminder_count',
         'exchange_rate_inr',
@@ -44,9 +51,29 @@ class Invoice extends Model
         'inr_amount_invoice',
     ];
 
+    /**
+     * Original invoice for credit notes or debit notes.
+     */
+    public function originalInvoice()
+    {
+        return $this->belongsTo(Invoice::class, 'original_invoice_id');
+    }
+
+    /**
+     * Credit or debit notes issued against this invoice.
+     */
+    public function creditDebitNotes()
+    {
+        return $this->hasMany(Invoice::class, 'original_invoice_id');
+    }
+
     protected $casts = [
         'invoice_date' => 'date',
         'due_date' => 'date',
+        'is_recurring' => 'boolean',
+        'recurring_next_date' => 'date',
+        'recurring_end_date' => 'date',
+        'recurring_auto_send' => 'boolean',
         'subtotal' => 'decimal:2',
         'tax_amount' => 'decimal:2',
         'grand_total' => 'decimal:2',

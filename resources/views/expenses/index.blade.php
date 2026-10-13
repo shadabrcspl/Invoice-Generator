@@ -145,10 +145,21 @@
                             </td>
                             <td>
                                 @if($expense->receipt_url)
-                                    <a href="{{ Storage::url($expense->receipt_url) }}" target="_blank" class="btn btn-link btn-sm text-primary p-0 d-flex align-items-center gap-1 fw-semibold text-decoration-none">
-                                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                                        View
-                                    </a>
+                                    @php
+                                        $ext = strtolower(pathinfo($expense->receipt_url, PATHINFO_EXTENSION));
+                                        $isPdf = $ext === 'pdf';
+                                        $url = Storage::url($expense->receipt_url);
+                                    @endphp
+                                    <button type="button" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1 d-inline-flex align-items-center gap-1 text-primary fw-semibold"
+                                        onclick="showReceiptModal('{{ $url }}', '{{ $isPdf ? 'pdf' : 'image' }}', '{{ addslashes($expense->vendor_name) }} ({{ $expense->expense_date->format('d M Y') }})')">
+                                        @if($isPdf)
+                                            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                            PDF
+                                        @else
+                                            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                            View
+                                        @endif
+                                    </button>
                                 @else
                                     <span class="text-muted fs-7">—</span>
                                 @endif
@@ -185,4 +196,50 @@
         @endif
     </div>
 </div>
+
+<!-- Lightbox Modal for Receipt Preview -->
+<div class="modal fade" id="receiptPreviewModal" tabindex="-1" aria-labelledby="receiptPreviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 border-0 shadow-lg overflow-hidden">
+            <div class="modal-header border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h5 class="modal-title fs-6 fw-bold" id="receiptPreviewTitle">Expense Receipt</h5>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="#" id="receiptDownloadBtn" target="_blank" download class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1">
+                        Download
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="modal-body p-0 text-center bg-light" style="min-height: 420px; display: flex; align-items: center; justify-content: center;">
+                <img id="receiptImagePreview" src="" alt="Receipt" class="img-fluid" style="max-height: 75vh; width: auto; object-fit: contain; display: none;">
+                <iframe id="receiptPdfPreview" src="" style="width: 100%; height: 75vh; border: none; display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showReceiptModal(url, type, title) {
+        document.getElementById('receiptPreviewTitle').textContent = 'Receipt: ' + title;
+        document.getElementById('receiptDownloadBtn').href = url;
+        
+        const img = document.getElementById('receiptImagePreview');
+        const pdf = document.getElementById('receiptPdfPreview');
+        
+        if (type === 'pdf') {
+            img.style.display = 'none';
+            img.src = '';
+            pdf.style.display = 'block';
+            pdf.src = url;
+        } else {
+            pdf.style.display = 'none';
+            pdf.src = '';
+            img.style.display = 'block';
+            img.src = url;
+        }
+
+        const modal = new bootstrap.Modal(document.getElementById('receiptPreviewModal'));
+        modal.show();
+    }
+</script>
 @endsection
