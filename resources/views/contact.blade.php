@@ -229,7 +229,7 @@
                             </div>
                             <div>
                                 <h5 class="fw-bold text-dark mb-1">Registered Headquarters</h5>
-                                <p class="text-muted fs-7 mb-1 fw-semibold">COD XPERT Digital Technologies</p>
+                                <p class="text-muted fs-7 mb-1 fw-semibold">COD XPERT</p>
                                 <p class="text-muted fs-8 mb-1">House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India</p>
                                 <p class="text-muted fs-8 mb-2">Phone: +91 7979976451 · Email: info@codxpert.com</p>
                                 <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-primary text-decoration-none fw-semibold fs-8">Visit CodXpert Corporate Site →</a>

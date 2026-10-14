@@ -488,7 +488,7 @@
                         </p>
                         <div class="p-3 bg-light rounded-3 border mt-4">
                             <p class="mb-1"><strong>Cod Xpert Invoices Legal Desk</strong></p>
-                            <p class="mb-1 text-muted fs-7">COD XPERT Digital Technologies</p>
+                            <p class="mb-1 text-muted fs-7">COD XPERT</p>
                             <p class="mb-1 text-muted fs-7">Address: House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India</p>
                             <p class="mb-1 text-muted fs-7">Phone / Support: <a href="tel:+917979976451" class="text-decoration-none text-primary fw-semibold">+91 7979976451</a></p>
                             <p class="mb-1 text-muted fs-7">Contact & Legal Inquiries: <a href="mailto:info@codxpert.com" class="text-decoration-none text-primary fw-semibold">info@codxpert.com</a></p>

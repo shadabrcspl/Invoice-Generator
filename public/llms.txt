@@ -54,7 +54,7 @@
 - Privacy Policy: https://invoice.codxpert.com/privacy
 
 ## Organization & Engineering
-- Company: COD XPERT Digital Technologies (https://codxpert.com/)
+- Company: COD XPERT (https://codxpert.com/)
 - Email: info@codxpert.com
 - Phone: +91 7979976451
 - Address: House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India
