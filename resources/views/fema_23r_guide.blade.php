@@ -199,7 +199,7 @@
                         When physical goods leave India, customs officers generate an electronic <strong>Shipping Bill</strong>, which automatically flows into the RBI's <strong>Export Data Processing and Monitoring System (EDPMS)</strong>.
                     </p>
                     <p class="text-secondary leading-relaxed">
-                        However, when a software developer, SaaS company, or digital agency delivers services over the internet (APIs, code commits, cloud consulting), no customs shipping bill exists. To fulfill RBI's statutory monitoring under <strong>Regulation 3 and Regulation 6 of FEMA 23(R)</strong>, AD Category-I banks are required to collect an electronic/physical <strong>Export Declaration Form (EDF) equivalent</strong> and <strong>Customer Request Letter</strong> from the beneficiary before disposing of foreign currency funds.
+                        However, when a software developer, SaaS company, or digital agency delivers services over the internet (APIs, code commits, cloud consulting), no customs shipping bill exists. To fulfill RBI's statutory monitoring under <strong>Regulation 3 and Regulation 6 of FEMA 23(R)</strong>, AD Category-I banks are required to collect an electronic/physical <strong>Export Declaration Form (EDF) equivalent</strong> and <strong>Customer Request Letter</strong> from the beneficiary before disposing of foreign currency funds. As explored in our deep-dive on <a href="https://codxpert.com/industries/fintech/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">FinTech &amp; Financial Services Solutions</a>, cross-border banking integrations demand rigorous data synchronization to reconcile client payments without manual administrative friction.
                     </p>
 
                     <h2 class="fw-bold text-dark mt-5 mb-3">2. FEMA 23(R) Declaration vs Softex Form: Which One Do You Need?</h2>
@@ -331,9 +331,9 @@
                         <ol class="mb-0 text-secondary fs-7 d-flex flex-column gap-3">
                             <li><strong>Issue Export Invoice:</strong> Quote your valid GST LUT ARN, SAC code, overseas client address, and foreign currency value.</li>
                             <li><strong>Submit FEMA 23(R) Declaration:</strong> Provide the completed HDFC / bank declaration workbook along with the invoice PDF to your Authorized Dealer.</li>
-                            <li><strong>Bank Generates IRM (Inward Remittance Message):</strong> Upon disposal, your bank issues an official Inward Remittance Advice (FIRA) containing the IRM reference number.</li>
+                            <li><strong>Bank Generates IRM (Inward Remittance Message):</strong> Upon disposal, your bank issues an official Inward Remittance Advice (FIRA) containing the IRM reference number. For a step-by-step wire reconciliation roadmap, consult our <a href="https://codxpert.com/firc-explained-freelancers-exporters-guide/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">FIRC &amp; Inward Remittance Guide</a>.</li>
                             <li><strong>Self-Certify e-BRC on DGFT Portal:</strong> Log in to <code>dgft.gov.in</code>, navigate to <code>e-BRC Self-Certification</code>, map the IRM to your invoice number, and e-sign the certificate.</li>
-                            <li><strong>Report on GSTR-1 (Table 6A):</strong> Report the export invoice as <code>WOPAY</code> (Export without payment of tax) on the GST portal.</li>
+                            <li><strong>Report on GSTR-1 (Table 6A):</strong> Report the export invoice as <code>WOPAY</code> (Export without payment of tax) on the GST portal. For comprehensive Table 6A compliance instructions, refer to our <a href="https://codxpert.com/gstr-1-filing-export-invoices-step-by-step/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">GSTR-1 Export Invoice Filing Guide</a>.</li>
                         </ol>
                     </div>
 
@@ -341,20 +341,33 @@
                     <ul class="text-secondary leading-relaxed mb-4">
                         <li><strong>Third-Party Remitters:</strong> If your invoice is billed to <em>Acme Inc (USA)</em>, but funds arrive from <em>Acme Holding Ltd (UK)</em> without contractual documentation, the bank will freeze the funds under third-party AML rules.</li>
                         <li><strong>Unaccounted Intermediary Bank Fees:</strong> When a client sends $5,000 and you receive $4,970 due to a $30 intermediary correspondent fee, your declaration must reconcile the gross invoice with net realization.</li>
+                        <li><strong>Invoice Date vs Realization Date Exchange Rate Variance:</strong> The foreign exchange rate on the date of billing rarely matches the interbank rate on the date of bank disposal. Failing to track realized forex gains or losses can create accounting discrepancies; follow our <a href="https://codxpert.com/exchange-rate-gst-invoice-date-vs-payment-date/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">Invoice Date vs Payment Date Exchange Rate Guide</a> for seamless tax audit reconciliation.</li>
                         <li><strong>Missing Client Country / Address:</strong> FEMA mandates identifying the destination country of the service consumption to confirm cross-border supply.</li>
                         <li><strong>Exceeding the 9-Month Realization Period:</strong> Invoices outstanding past 9 months require formal bank extension or RBI write-off approval.</li>
                     </ul>
 
                     <h2 class="fw-bold text-dark mt-5 mb-3">7. How CodXpert Invoices Automates FEMA Compliance</h2>
                     <p class="text-secondary leading-relaxed">
-                        Instead of manually editing complex Excel spreadsheets, calculating currency words, and looking up SAC codes, <strong>CodXpert Invoices</strong> generates ready-to-submit bank declarations automatically:
+                        Instead of manually editing complex Excel spreadsheets, calculating currency words, and looking up SAC codes, the <a href="https://codxpert.com/invoice-generator/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">CodXpert GST Invoice Generator</a> automates the entire statutory workflow with native 1-click FEMA export capabilities:
                     </p>
                     <ul class="text-secondary leading-relaxed mb-4">
-                        <li><strong>1-Click FEMA 23(R) Export:</strong> Download official, bank-ready HDFC Excel workbooks with both the Request Letter and Invoice Details sheets pre-filled.</li>
+                        <li><strong>1-Click FEMA 23(R) Export:</strong> Download official, bank-ready HDFC Excel workbooks with both the Request Letter and Invoice Details sheets pre-filled directly from the <a href="https://codxpert.com/invoice-generator/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">CodXpert GST Invoice Generator</a>.</li>
                         <li><strong>Multi-Invoice Consolidation:</strong> Select multiple foreign currency invoices in your dashboard to generate an aggregated monthly EDF declaration.</li>
                         <li><strong>Native Excel Validations Preserved:</strong> Keeps all cell dropdowns and formulas intact so your bank's automated ingestion system accepts the file without errors.</li>
                         <li><strong>Automated Numbers-to-Words Engine:</strong> Converts foreign currency amounts (e.g., <em>USD Twelve Thousand Four Hundred Fifty and Cents Zero Only</em>) without manual typing.</li>
                     </ul>
+
+                    <!-- Strategic Resources Box -->
+                    <div class="p-4 bg-light rounded-4 border my-4">
+                        <h5 class="fw-bold text-dark mb-3">📚 Strategic Exporter Resources Across the CodXpert Ecosystem</h5>
+                        <ul class="text-secondary leading-relaxed mb-0 fs-7">
+                            <li class="mb-2"><a href="https://codxpert.com/invoice-generator/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">CodXpert GST Invoice Generator ↗</a> — Primary commercial anchor for 1-click FEMA 23(R) export.</li>
+                            <li class="mb-2"><a href="https://codxpert.com/industries/fintech/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">FinTech &amp; Financial Services Solutions ↗</a> — Contextual trust signals for cross-border banking integrations.</li>
+                            <li class="mb-2"><a href="https://codxpert.com/firc-explained-freelancers-exporters-guide/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">FIRC &amp; Inward Remittance Guide ↗</a> — Supporting resource for bank wire &amp; IRM reconciliation.</li>
+                            <li class="mb-2"><a href="https://codxpert.com/gstr-1-filing-export-invoices-step-by-step/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">GSTR-1 Export Invoice Filing Guide ↗</a> — Practical steps for Table 6A WOPAY export reporting.</li>
+                            <li><a href="https://codxpert.com/exchange-rate-gst-invoice-date-vs-payment-date/" target="_blank" rel="noopener" class="text-primary fw-semibold text-decoration-none">Invoice Date vs Payment Date Exchange Rate Guide ↗</a> — Complete forex gain/loss accounting guide.</li>
+                        </ul>
+                    </div>
 
                     <!-- In-article CTA -->
                     <div class="p-4 bg-primary text-white rounded-4 text-center my-5 shadow-sm">
