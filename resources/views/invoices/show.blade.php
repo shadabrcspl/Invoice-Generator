@@ -86,13 +86,86 @@
         border: 1px solid #fecdd3;
     }
 
+    /* Stepper Styling */
+    .invoice-stepper-card {
+        background: #ffffff;
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        padding: 24px 32px;
+    }
+    .stepper-track {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+    .stepper-track::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 40px;
+        right: 40px;
+        height: 3px;
+        background: #e2e8f0;
+        z-index: 1;
+    }
+    .stepper-step {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+    }
+    .step-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #94a3b8;
+        border: 3px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 8px;
+        transition: all 0.25s ease;
+    }
+    .stepper-step.completed .step-circle {
+        background: #10b981;
+        border-color: #d1fae5;
+        color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+    }
+    .stepper-step.active .step-circle {
+        background: #0284c7;
+        border-color: #bae6fd;
+        color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.2);
+    }
+    .step-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 2px;
+    }
+    .stepper-step:not(.completed):not(.active) .step-title {
+        color: #94a3b8;
+    }
+    .step-desc {
+        font-size: 11px;
+        color: #64748b;
+    }
+
     /* Print styling rules */
     @media print {
         body {
             background-color: white !important;
             color: black !important;
         }
-        .sidebar, .header-bar, .action-buttons-card, .footer-bar {
+        .sidebar, .header-bar, .action-buttons-card, .invoice-stepper-card, .footer-bar {
             display: none !important;
         }
         .main-content {
@@ -117,107 +190,224 @@
     <!-- Action buttons bar -->
     <div class="premium-card action-buttons-card">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-            <div class="d-flex gap-2">
-                <a href="{{ $invoice->type === 'quotation' ? route('invoices.index', ['type' => 'quotation']) : route('invoices.index') }}" class="btn btn-light rounded-pill px-4">← Back</a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="{{ $invoice->type === 'quotation' ? route('invoices.index', ['type' => 'quotation']) : route('invoices.index') }}" class="btn btn-light rounded-pill px-3">
+                    ← Back
+                </a>
                 @if($invoice->type === 'quotation')
                     @if($invoice->status === 'paid')
-                        <span class="badge-status mt-1" style="background-color:#e0f2fe; color:#0369a1; border:1px solid #bae6fd;">ACCEPTED</span>
+                        <span class="badge-status" style="background-color:#e0f2fe; color:#0369a1; border:1px solid #bae6fd;">ACCEPTED</span>
                     @elseif($invoice->status === 'sent')
-                        <span class="badge-status badge-sent mt-1">SENT</span>
+                        <span class="badge-status badge-sent">SENT</span>
                     @else
-                        <span class="badge-status badge-draft mt-1">DRAFT</span>
+                        <span class="badge-status badge-draft">DRAFT</span>
                     @endif
                 @else
-                    <span class="badge-status badge-{{ $invoice->status }} mt-1">{{ $invoice->status }}</span>
+                    <span class="badge-status badge-{{ $invoice->status }}">{{ $invoice->status }}</span>
                 @endif
+                <span class="text-muted fs-7 d-none d-md-inline ms-1">• {{ $invoice->invoice_number }}</span>
             </div>
             
-            <div class="d-flex flex-wrap gap-2">
-                @if($invoice->type === 'quotation')
-                    <!-- Convert to Invoice -->
-                    <form method="POST" action="{{ route('quotations.convert', $invoice->id) }}" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-info text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
-                            ⚡ Convert to Invoice
-                        </button>
-                    </form>
-                @endif
-
-                <!-- Print Trigger -->
-                <button onclick="window.print()" class="btn btn-light rounded-pill px-4 fw-semibold">
-                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-3a2 2 0 00-2-2H9a2 2 0 00-2 2v3a2 2 0 002 2zm5-17v2m-6 2h12"/></svg>
-                    Print
-                </button>
-                
-                <!-- PDF Download -->
-                <a href="{{ route('invoices.pdf', $invoice->id) }}" class="btn btn-primary rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
-                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <!-- Primary Action 1: Download PDF -->
+                <a href="{{ route('invoices.pdf', $invoice->id) }}" class="btn btn-primary rounded-pill px-4 fw-semibold border-0 shadow-sm" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+                    <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                     Download PDF
                 </a>
 
-                @if($invoice->currency_code !== 'INR')
-                    <!-- FEMA 23(R) / HDFC EDF Declaration Form Download -->
-                    <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg, #1e3a5f, #0f172a);" title="Download mandatory FEMA 23(R) / HDFC Bank EDF Declaration Form (.xlsx)">
-                        <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        📄 FEMA 23(R) Declaration
-                    </a>
-                @endif
+                <!-- Primary Action 2: Send Email -->
+                <button type="button" onclick="document.getElementById('emailModal').style.display='flex'" class="btn btn-success rounded-pill px-4 fw-semibold border-0 shadow-sm" style="background: linear-gradient(135deg,#059669,#047857);">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Send Email
+                </button>
 
-                @if($invoice->type === 'invoice')
+                <!-- Primary Action 3 (Contextual): Convert / Record Payment -->
+                @if($invoice->type === 'quotation')
+                    <form method="POST" action="{{ route('quotations.convert', $invoice->id) }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-info text-white rounded-pill px-4 fw-semibold border-0 shadow-sm" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                            ⚡ Convert to Invoice
+                        </button>
+                    </form>
+                @elseif($invoice->type === 'invoice')
                     @if($invoice->status !== 'paid' && !$invoice->payment)
-                        <!-- Record Payment Trigger -->
-                        <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#0d9488,#0f766e);">
+                        <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn text-white rounded-pill px-4 fw-semibold border-0 shadow-sm" style="background: linear-gradient(135deg,#0d9488,#0f766e);">
                             💵 Record Payment
                         </button>
                     @else
-                        <!-- Edit Payment Trigger -->
-                        <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn text-white rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#0d9488,#0f766e);" title="Edit recorded payment details">
+                        <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn btn-outline-teal rounded-pill px-4 fw-semibold" style="color: #0f766e; border: 1px solid #0d9488; background-color: #f0fdfa;" title="Edit recorded payment details">
                             ✏️ Edit Payment
                         </button>
                     @endif
                 @endif
 
-                <!-- Send Invoice Email -->
-                <button type="button" onclick="document.getElementById('emailModal').style.display='flex'" class="btn btn-success rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#059669,#047857);">
-                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    Send Email
-                </button>
-
-                @if($invoice->type !== 'quotation')
-                    <!-- Send Invoice Reminder Email -->
-                    <button type="button" onclick="document.getElementById('reminderModal').style.display='flex'" class="btn btn-warning text-dark rounded-pill px-4 fw-semibold border-0" style="background: linear-gradient(135deg,#eab308,#ca8a04);">
-                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        Send Reminder
+                <!-- Streamlined Dropdown: More Actions -->
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-light rounded-pill px-3 fw-semibold dropdown-toggle border" type="button" id="moreActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        More Actions
                     </button>
-                @endif
-
-                @if($invoice->type === 'invoice')
-                    <!-- Issue Credit Note -->
-                    <a href="{{ route('invoices.create', ['type' => 'credit_note', 'original_invoice_id' => $invoice->id]) }}" class="btn btn-outline-danger rounded-pill px-4 fw-semibold" title="Issue GST-compliant Credit Note against this invoice">
-                        🔻 Credit Note
-                    </a>
-
-                    <!-- Issue Debit Note -->
-                    <a href="{{ route('invoices.create', ['type' => 'debit_note', 'original_invoice_id' => $invoice->id]) }}" class="btn btn-outline-primary rounded-pill px-4 fw-semibold" title="Issue Supplementary / Debit Note against this invoice">
-                        🔺 Debit Note
-                    </a>
-                @endif
-
-                <!-- Edit -->
-                <a href="{{ route('invoices.edit', $invoice->id) }}" class="btn btn-outline-secondary rounded-pill px-4">
-                    Edit
-                </a>
-
-                <!-- Delete -->
-                <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this {{ $invoice->type === 'quotation' ? 'quotation' : ($invoice->type === 'credit_note' ? 'credit note' : ($invoice->type === 'debit_note' ? 'debit note' : 'invoice')) }}? This action cannot be undone.');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-outline-danger rounded-pill px-4">
-                        Delete
-                    </button>
-                </form>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2 border-0" aria-labelledby="moreActionsDropdown" style="min-width: 240px;">
+                        <li>
+                            <button class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" onclick="window.print()">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-3a2 2 0 00-2-2H9a2 2 0 00-2 2v3a2 2 0 002 2zm5-17v2m-6 2h12"/></svg>
+                                Print Invoice
+                            </button>
+                        </li>
+                        @if($invoice->currency_code !== 'INR')
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" href="{{ route('invoices.fema-declaration', $invoice->id) }}" title="Download mandatory FEMA 23(R) / HDFC Bank EDF Declaration Form (.xlsx)">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                FEMA 23(R) Form (.xlsx)
+                            </a>
+                        </li>
+                        @endif
+                        @if($invoice->type !== 'quotation')
+                        <li>
+                            <button type="button" class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2 text-warning-emphasis" onclick="document.getElementById('reminderModal').style.display='flex'">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                Send Payment Reminder
+                            </button>
+                        </li>
+                        @endif
+                        @if($invoice->type === 'invoice')
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" href="{{ route('invoices.create', ['type' => 'credit_note', 'original_invoice_id' => $invoice->id]) }}">
+                                <span>🔻</span> Issue Credit Note
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" href="{{ route('invoices.create', ['type' => 'debit_note', 'original_invoice_id' => $invoice->id]) }}">
+                                <span>🔺</span> Issue Debit Note
+                            </a>
+                        </li>
+                        @endif
+                        <li><hr class="dropdown-divider my-1 opacity-25"></li>
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" href="{{ route('invoices.edit', $invoice->id) }}">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                Edit Details
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1 opacity-25"></li>
+                        <li>
+                            <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this {{ $invoice->type === 'quotation' ? 'quotation' : ($invoice->type === 'credit_note' ? 'credit note' : ($invoice->type === 'debit_note' ? 'debit note' : 'invoice')) }}? This action cannot be undone.');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="dropdown-item rounded-3 py-2 px-3 fw-medium text-danger d-flex align-items-center gap-2">
+                                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    Delete Document
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- Visual Lifecycle Stepper Widget -->
+    <div class="invoice-stepper-card">
+        @if($invoice->type === 'quotation')
+            @php
+                $isQuoAccepted = $invoice->status === 'paid';
+                $isQuoSent = in_array($invoice->status, ['sent', 'paid']);
+            @endphp
+            <div class="stepper-track">
+                <!-- Step 1: Draft -->
+                <div class="stepper-step completed">
+                    <div class="step-circle">✓</div>
+                    <div class="step-title">1. Drafted</div>
+                    <div class="step-desc">{{ $invoice->created_at->format('d M Y') }}</div>
+                </div>
+                <!-- Step 2: Sent -->
+                <div class="stepper-step {{ $isQuoSent ? 'completed' : 'active' }}">
+                    <div class="step-circle">{{ $isQuoSent ? '✓' : '2' }}</div>
+                    <div class="step-title">2. Sent to Client</div>
+                    <div class="step-desc">{{ $invoice->emailed_at ? $invoice->emailed_at->format('d M Y') : ($isQuoSent ? 'Dispatched' : 'Pending Send') }}</div>
+                </div>
+                <!-- Step 3: Accepted -->
+                <div class="stepper-step {{ $isQuoAccepted ? 'completed' : ($isQuoSent ? 'active' : '') }}">
+                    <div class="step-circle">{{ $isQuoAccepted ? '✓' : '3' }}</div>
+                    <div class="step-title">3. Accepted</div>
+                    <div class="step-desc">{{ $isQuoAccepted ? 'Approved by Client' : 'Awaiting Approval' }}</div>
+                </div>
+                <!-- Step 4: Converted -->
+                <div class="stepper-step">
+                    <div class="step-circle">4</div>
+                    <div class="step-title">4. Tax Invoice</div>
+                    <div class="step-desc">Convert to Bill</div>
+                </div>
+            </div>
+        @else
+            @php
+                $isCreated = true;
+                $isSent = in_array($invoice->status, ['sent', 'paid', 'overdue']) || !empty($invoice->emailed_at);
+                $isPaid = ($invoice->status === 'paid') || !empty($invoice->payment);
+                $isOverdue = ($invoice->status === 'overdue');
+                $hasFirc = !empty($invoice->payment?->firc_number) || !empty($invoice->firc_number);
+                $isReconciled = $isPaid && ($invoice->currency_code === 'INR' || $hasFirc);
+            @endphp
+            <div class="stepper-track">
+                <!-- Step 1: Created -->
+                <div class="stepper-step completed">
+                    <div class="step-circle">✓</div>
+                    <div class="step-title">1. Created</div>
+                    <div class="step-desc">{{ $invoice->created_at->format('d M Y') }}</div>
+                </div>
+
+                <!-- Step 2: Sent -->
+                <div class="stepper-step {{ $isSent ? 'completed' : 'active' }}">
+                    <div class="step-circle">{{ $isSent ? '✓' : '2' }}</div>
+                    <div class="step-title">2. Dispatched</div>
+                    <div class="step-desc">{{ $invoice->emailed_at ? $invoice->emailed_at->format('d M') : ($isSent ? 'Sent to Client' : 'Draft') }}</div>
+                </div>
+
+                <!-- Step 3: Review / Pending -->
+                <div class="stepper-step {{ $isPaid ? 'completed' : ($isOverdue ? 'active text-danger' : ($isSent ? 'active' : '')) }}">
+                    <div class="step-circle" style="{{ $isOverdue ? 'border-color:#fca5a5; background:#fef2f2; color:#ef4444;' : '' }}">
+                        {{ $isPaid ? '✓' : ($isOverdue ? '!' : '3') }}
+                    </div>
+                    <div class="step-title {{ $isOverdue ? 'text-danger' : '' }}">
+                        {{ $isOverdue ? '3. Overdue' : '3. Awaiting Payment' }}
+                    </div>
+                    <div class="step-desc">
+                        {{ $isPaid ? 'Cleared' : ($invoice->due_date ? 'Due ' . $invoice->due_date->format('d M Y') : 'Net 14') }}
+                    </div>
+                </div>
+
+                <!-- Step 4: Paid -->
+                <div class="stepper-step {{ $isPaid ? 'completed' : '' }}">
+                    <div class="step-circle">{{ $isPaid ? '✓' : '4' }}</div>
+                    <div class="step-title">4. Paid / Settled</div>
+                    <div class="step-desc">
+                        @if($isPaid)
+                            {{ $invoice->currency_symbol }}{{ number_format($invoice->grand_total, 2) }}
+                        @else
+                            Pending
+                        @endif
+                    </div>
+                </div>
+
+                <!-- Step 5: Reconciled (FEMA 23R / e-BRC or GST) -->
+                <div class="stepper-step {{ $isReconciled ? 'completed' : ($isPaid ? 'active' : '') }}">
+                    <div class="step-circle">{{ $isReconciled ? '✓' : '5' }}</div>
+                    <div class="step-title">5. Reconciled</div>
+                    <div class="step-desc">
+                        @if($invoice->currency_code !== 'INR')
+                            @if($hasFirc)
+                                FIRC / e-BRC
+                            @elseif($isPaid)
+                                Ready for FEMA 23(R)
+                            @else
+                                FEMA & Bank
+                            @endif
+                        @else
+                            {{ $isPaid ? 'GST Reconciled' : 'Tax Reconciliation' }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 
     {{-- ✅ Referenced Original Invoice Banner (if Credit/Debit Note) --}}

@@ -50,7 +50,14 @@
                 <tbody>
                     @forelse($clients as $client)
                         <tr>
-                            <td class="fw-semibold">{{ $client->name }}</td>
+                            <td class="fw-semibold">
+                                <span class="d-block text-dark fw-bold">{{ $client->name }}</span>
+                                @if(isset($client->invoices_count))
+                                    <a href="{{ route('invoices.index', ['search' => $client->name]) }}" class="badge rounded-pill text-decoration-none mt-1" style="background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 11px; font-weight: 600;" title="View all invoices for {{ $client->name }}">
+                                        📄 {{ $client->invoices_count }} {{ Str::plural('invoice', $client->invoices_count) }}
+                                    </a>
+                                @endif
+                            </td>
                             <td>{{ $client->email ?: '—' }}</td>
                             <td>{{ $client->phone ?: '—' }}</td>
                             <td class="text-muted fs-7" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
@@ -58,7 +65,29 @@
                             </td>
                             <td>
                                 @if($client->country)
-                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">{{ $client->country }}</span>
+                                    @php
+                                        $cUpper = strtoupper(trim($client->country));
+                                        $cFlag = match($cUpper) {
+                                            'IN', 'INDIA' => '🇮🇳',
+                                            'US', 'USA', 'UNITED STATES', 'UNITED STATES OF AMERICA' => '🇺🇸',
+                                            'GB', 'UK', 'UNITED KINGDOM', 'ENGLAND' => '🇬🇧',
+                                            'CA', 'CANADA' => '🇨🇦',
+                                            'AU', 'AUSTRALIA' => '🇦🇺',
+                                            'DE', 'GERMANY' => '🇩🇪',
+                                            'SG', 'SINGAPORE' => '🇸🇬',
+                                            'AE', 'UAE', 'UNITED ARAB EMIRATES', 'DUBAI' => '🇦🇪',
+                                            'NL', 'NETHERLANDS' => '🇳🇱',
+                                            'FR', 'FRANCE' => '🇫🇷',
+                                            'IE', 'IRELAND' => '🇮🇪',
+                                            'JP', 'JAPAN' => '🇯🇵',
+                                            'CH', 'SWITZERLAND' => '🇨🇭',
+                                            default => '🌐',
+                                        };
+                                        $isOverseas = !in_array($cUpper, ['IN', 'INDIA']);
+                                    @endphp
+                                    <span class="badge {{ $isOverseas ? 'bg-primary-subtle text-primary border border-primary-subtle' : 'bg-light text-dark border' }} px-2.5 py-1 fs-8">
+                                        <span class="me-1">{{ $cFlag }}</span>{{ $client->country }}
+                                    </span>
                                 @else
                                     <span class="text-muted fs-7">—</span>
                                 @endif
@@ -71,13 +100,17 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                <div class="d-flex justify-content-end gap-2">
-                                    <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-light btn-sm rounded-pill px-3">Edit</a>
+                                <div class="d-inline-flex align-items-center gap-1">
+                                    <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-light btn-sm rounded-pill px-3 border shadow-xs" title="Edit Client">
+                                        Edit
+                                    </a>
                                     
-                                    <form method="POST" action="{{ route('clients.destroy', $client->id) }}" class="m-0" onsubmit="return confirm('Are you sure you want to delete this client?');">
+                                    <form method="POST" action="{{ route('clients.destroy', $client->id) }}" class="m-0 d-inline" onsubmit="return confirm('Are you sure you want to delete this client?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3">Delete</button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-2.5" title="Delete Client">
+                                            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                        </button>
                                     </form>
                                 </div>
                             </td>

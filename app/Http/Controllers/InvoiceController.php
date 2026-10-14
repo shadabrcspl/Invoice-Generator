@@ -53,7 +53,21 @@ class InvoiceController extends Controller
 
         $invoices = $query->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('invoices.index', compact('invoices', 'type'));
+        // Financial KPI Metrics for Directory Summary Strip
+        $statsBase = Invoice::where('user_id', Auth::id())->where('type', $type);
+        $totalCount = (clone $statsBase)->count();
+        $paidCount = (clone $statsBase)->where('status', 'paid')->count();
+        $pendingCount = (clone $statsBase)->whereIn('status', ['sent', 'draft'])->count();
+        $overdueCount = (clone $statsBase)->where('status', 'overdue')->count();
+
+        $totalInvoicedSum = (clone $statsBase)->selectRaw("SUM(COALESCE(inr_equivalent, grand_total)) as total_val")->value('total_val') ?? 0;
+        $paidSum = (clone $statsBase)->where('status', 'paid')->selectRaw("SUM(COALESCE(inr_equivalent, grand_total)) as total_val")->value('total_val') ?? 0;
+        $pendingSum = (clone $statsBase)->whereIn('status', ['sent', 'draft'])->selectRaw("SUM(COALESCE(inr_equivalent, grand_total)) as total_val")->value('total_val') ?? 0;
+        $overdueSum = (clone $statsBase)->where('status', 'overdue')->selectRaw("SUM(COALESCE(inr_equivalent, grand_total)) as total_val")->value('total_val') ?? 0;
+
+        $kpiStats = compact('totalCount', 'paidCount', 'pendingCount', 'overdueCount', 'totalInvoicedSum', 'paidSum', 'pendingSum', 'overdueSum');
+
+        return view('invoices.index', compact('invoices', 'type', 'kpiStats'));
     }
 
     /**

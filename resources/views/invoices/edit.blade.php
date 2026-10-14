@@ -17,6 +17,37 @@
         border-radius: 16px;
         padding: 20px;
     }
+    .sac-preset-btn {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 12px;
+        transition: all 0.2s ease;
+        border-color: #cbd5e1;
+        background: #ffffff;
+        color: #334155;
+    }
+    .sac-preset-btn:hover {
+        background: #0284c7;
+        color: #ffffff;
+        border-color: #0284c7;
+        transform: translateY(-1px);
+    }
+    .sticky-summary-bar {
+        position: fixed;
+        bottom: 0;
+        left: 280px;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid #e2e8f0;
+        z-index: 1040;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    }
+    @media (max-width: 991.98px) {
+        .sticky-summary-bar {
+            left: 0 !important;
+        }
+    }
 </style>
 @endsection
 
@@ -163,9 +194,29 @@
 
                 <!-- Line Items System -->
                 <div class="premium-card mb-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="m-0 fs-5">Invoice Line Items</h4>
                         <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3" id="btn-add-item">+ Add Line Row</button>
+                    </div>
+
+                    <!-- 1-Click SAC Code Presets -->
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3 p-2.5 rounded-3 bg-light border">
+                        <span class="fs-8 fw-bold text-muted text-uppercase me-1">⚡ Quick Presets:</span>
+                        <button type="button" class="btn btn-xs rounded-pill sac-preset-btn" data-sac="998314" data-title="Software & Web Application Development">
+                            💻 998314 Software Dev
+                        </button>
+                        <button type="button" class="btn btn-xs rounded-pill sac-preset-btn" data-sac="998311" data-title="IT Consulting & Technical Advisory">
+                            💼 998311 IT Consulting
+                        </button>
+                        <button type="button" class="btn btn-xs rounded-pill sac-preset-btn" data-sac="998313" data-title="DevOps & Cloud Infrastructure Management">
+                            ☁️ 998313 DevOps & Cloud
+                        </button>
+                        <button type="button" class="btn btn-xs rounded-pill sac-preset-btn" data-sac="998315" data-title="Cloud Web Hosting & SaaS Platform Subscription">
+                            🌐 998315 SaaS / Hosting
+                        </button>
+                        <button type="button" class="btn btn-xs rounded-pill sac-preset-btn" data-sac="998365" data-title="Digital Performance Marketing & SEO Consulting">
+                            📈 998365 Digital Marketing
+                        </button>
                     </div>
 
                     <div class="table-responsive">
@@ -368,6 +419,24 @@
                             Cancel
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Bottom Sticky Summary Bar -->
+        <div id="sticky-invoice-summary-bar" class="sticky-summary-bar">
+            <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2 py-2.5 px-4">
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-7 text-muted d-none d-sm-inline">Live Total:</span>
+                    <span class="fw-bold fs-5 text-primary"><span class="currency-symbol-label">{{ $invoice->currency_symbol }}</span><span id="sticky-label-grandtotal">{{ number_format($invoice->grand_total, 2) }}</span></span>
+                    <span id="sticky-inr-wrapper" class="fs-7 text-success fw-semibold" style="{{ $invoice->currency_code !== 'INR' ? '' : 'display: none;' }}">
+                        (≈ ₹<span id="sticky-label-inr">{{ number_format($invoice->inr_equivalent, 2) }}</span>)
+                    </span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-4 fw-semibold shadow-sm" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+                        💾 Save Changes
+                    </button>
                 </div>
             </div>
         </div>
@@ -629,11 +698,18 @@
             document.getElementById('label-tax').textContent = taxVal.toFixed(2);
             document.getElementById('label-grandtotal').textContent = grandTotal.toFixed(2);
 
+            // Sticky Bar live updates
+            const stickyGrandTotal = document.getElementById('sticky-label-grandtotal');
+            if (stickyGrandTotal) stickyGrandTotal.textContent = grandTotal.toFixed(2);
+            const stickyInrWrapper = document.getElementById('sticky-inr-wrapper');
+            const stickyInrLabel = document.getElementById('sticky-label-inr');
+
             // INR Equivalent calculations
             const selectedCurrency = currencySelect.value;
             const inrPreviewBox = document.getElementById('inr-equivalent-preview-box');
             if (selectedCurrency === 'INR') {
                 inrPreviewBox.style.display = 'none';
+                if (stickyInrWrapper) stickyInrWrapper.style.display = 'none';
             } else {
                 let rate = parseFloat(document.getElementById('exchange-rate-input').value);
                 if (isNaN(rate) || rate <= 0) {
@@ -643,17 +719,73 @@
                 if (rate === null) {
                     document.getElementById('label-exchange-rate-inr').textContent = 'Fetching live rate…';
                     document.getElementById('label-inr-equivalent').textContent = '—';
+                    if (stickyInrWrapper) stickyInrWrapper.style.display = 'none';
                 } else {
                     const inrEquivalent = grandTotal * rate;
-                    document.getElementById('label-exchange-rate-inr').textContent = `1 ${selectedCurrency} = ${rate.toFixed(4)} INR`;
-                    document.getElementById('label-inr-equivalent').textContent = inrEquivalent.toLocaleString('en-IN', {
+                    const inrStr = inrEquivalent.toLocaleString('en-IN', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     });
+                    document.getElementById('label-exchange-rate-inr').textContent = `1 ${selectedCurrency} = ${rate.toFixed(4)} INR`;
+                    document.getElementById('label-inr-equivalent').textContent = inrStr;
+                    if (stickyInrWrapper && stickyInrLabel) {
+                        stickyInrWrapper.style.display = 'inline';
+                        stickyInrLabel.textContent = inrStr;
+                    }
                 }
                 inrPreviewBox.style.display = 'block';
             }
         }
+
+        // 1-Click SAC Presets
+        function applySacPreset(sac, title) {
+            const rows = document.querySelectorAll('.item-row');
+            let targetRow = null;
+            if (rows.length > 0) {
+                const lastRow = rows[rows.length - 1];
+                const nameInput = lastRow.querySelector('input[name*="[item_name]"]');
+                if (nameInput && nameInput.value.trim() === '') {
+                    targetRow = lastRow;
+                }
+            }
+            if (!targetRow) {
+                const addBtn = document.getElementById('btn-add-item');
+                if (addBtn) addBtn.click();
+                const updatedRows = document.querySelectorAll('.item-row');
+                targetRow = updatedRows[updatedRows.length - 1];
+            }
+            if (targetRow) {
+                const nameInput = targetRow.querySelector('input[name*="[item_name]"]');
+                const sacSelect = targetRow.querySelector('.input-sac-select');
+                const sacCustom = targetRow.querySelector('.input-sac-custom');
+                const sacValue = targetRow.querySelector('.input-sac-value');
+                if (nameInput) nameInput.value = title;
+                if (sacSelect && sacValue) {
+                    sacSelect.value = sac;
+                    if (sacSelect.value === sac) {
+                        sacValue.value = sac;
+                        if (sacCustom) sacCustom.style.display = 'none';
+                    } else {
+                        sacSelect.value = 'custom';
+                        sacValue.value = sac;
+                        if (sacCustom) {
+                            sacCustom.style.display = 'block';
+                            sacCustom.value = sac;
+                        }
+                    }
+                }
+                const rateInput = targetRow.querySelector('.input-rate');
+                if (rateInput) rateInput.focus();
+                calculateInvoice();
+            }
+        }
+
+        document.querySelectorAll('.sac-preset-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                applySacPreset(this.dataset.sac, this.dataset.title);
+            });
+        });
 
         bindCalculations();
         calculateInvoice();

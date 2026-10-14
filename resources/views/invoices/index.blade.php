@@ -34,11 +34,76 @@
         color: #e11d48;
         border: 1px solid #fecdd3;
     }
+    .row-status-paid { border-left: 4px solid #10b981 !important; }
+    .row-status-sent { border-left: 4px solid #0284c7 !important; }
+    .row-status-overdue { border-left: 4px solid #ef4444 !important; }
+    .row-status-draft { border-left: 4px solid #94a3b8 !important; }
 </style>
 @endsection
 
 @section('content')
 <div class="container-fluid p-0 d-flex flex-column gap-4">
+
+    <!-- Financial KPI Summary Strip -->
+    @if(isset($kpiStats))
+    <div class="row g-3">
+        <!-- Total Invoiced / Billed -->
+        <div class="col-12 col-sm-6 col-xl-3">
+            <div class="premium-card p-3 d-flex align-items-center justify-content-between h-100" style="border-left: 4px solid #0284c7 !important;">
+                <div>
+                    <span class="fs-8 fw-bold text-uppercase text-muted">{{ $type === 'quotation' ? 'Total Proposals' : 'Total Billed Value' }}</span>
+                    <h4 class="fw-extrabold text-dark m-0 mt-1">₹{{ number_format($kpiStats['totalInvoicedSum'], 2) }}</h4>
+                    <span class="fs-8 text-muted">{{ $kpiStats['totalCount'] }} {{ Str::plural($type === 'quotation' ? 'quote' : 'invoice', $kpiStats['totalCount']) }}</span>
+                </div>
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; background: #e0f2fe; color: #0284c7; font-size: 20px;">
+                    💳
+                </div>
+            </div>
+        </div>
+
+        <!-- Paid / Settled -->
+        <div class="col-12 col-sm-6 col-xl-3">
+            <div class="premium-card p-3 d-flex align-items-center justify-content-between h-100" style="border-left: 4px solid #10b981 !important;">
+                <div>
+                    <span class="fs-8 fw-bold text-uppercase text-success">{{ $type === 'quotation' ? 'Accepted Orders' : 'Paid & Settled' }}</span>
+                    <h4 class="fw-extrabold text-success m-0 mt-1">₹{{ number_format($kpiStats['paidSum'], 2) }}</h4>
+                    <span class="fs-8 text-muted">{{ $kpiStats['paidCount'] }} {{ $type === 'quotation' ? 'accepted' : 'settled' }} ({{ $kpiStats['totalCount'] > 0 ? round(($kpiStats['paidCount'] / $kpiStats['totalCount']) * 100) : 0 }}%)</span>
+                </div>
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; background: #dcfce7; color: #16a34a; font-size: 20px;">
+                    ✅
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending / Sent -->
+        <div class="col-12 col-sm-6 col-xl-3">
+            <div class="premium-card p-3 d-flex align-items-center justify-content-between h-100" style="border-left: 4px solid #f59e0b !important;">
+                <div>
+                    <span class="fs-8 fw-bold text-uppercase text-warning-emphasis">{{ $type === 'quotation' ? 'Awaiting Client' : 'Pending Payment' }}</span>
+                    <h4 class="fw-extrabold text-warning-emphasis m-0 mt-1">₹{{ number_format($kpiStats['pendingSum'], 2) }}</h4>
+                    <span class="fs-8 text-muted">{{ $kpiStats['pendingCount'] }} in pipeline</span>
+                </div>
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; background: #fef3c7; color: #d97706; font-size: 20px;">
+                    ⏳
+                </div>
+            </div>
+        </div>
+
+        <!-- Overdue -->
+        <div class="col-12 col-sm-6 col-xl-3">
+            <div class="premium-card p-3 d-flex align-items-center justify-content-between h-100" style="border-left: 4px solid #ef4444 !important;">
+                <div>
+                    <span class="fs-8 fw-bold text-uppercase text-danger">{{ $type === 'quotation' ? 'Expired' : 'Overdue / Follow-up' }}</span>
+                    <h4 class="fw-extrabold text-danger m-0 mt-1">₹{{ number_format($kpiStats['overdueSum'], 2) }}</h4>
+                    <span class="fs-8 text-muted">{{ $kpiStats['overdueCount'] }} past deadline</span>
+                </div>
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; background: #fee2e2; color: #dc2626; font-size: 20px;">
+                    ⚠️
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
     
     <!-- Filter Card -->
     <div class="premium-card">
@@ -133,7 +198,7 @@
                 </thead>
                 <tbody>
                     @forelse($invoices as $invoice)
-                        <tr>
+                        <tr class="{{ $invoice->status === 'paid' ? 'row-status-paid' : ($invoice->status === 'sent' ? 'row-status-sent' : ($invoice->status === 'overdue' ? 'row-status-overdue' : 'row-status-draft')) }}">
                             @if($type === 'invoice')
                                 <td>
                                     @if($invoice->currency_code !== 'INR')
@@ -144,7 +209,9 @@
                                 </td>
                             @endif
                             <td class="fw-semibold">
-                                {{ $invoice->invoice_number }}
+                                <a href="{{ route('invoices.show', $invoice->id) }}" class="text-decoration-none text-dark fw-bold hover-primary">
+                                    {{ $invoice->invoice_number }}
+                                </a>
                                 @if($invoice->type === 'quotation')
                                     <span class="badge rounded-pill px-2 py-1 fs-9 ms-1" style="background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 10px; font-weight: 600;">QUO</span>
                                 @elseif($invoice->type === 'credit_note')
@@ -174,14 +241,22 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                <div class="d-flex justify-content-end gap-2">
-                                    <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-light btn-sm rounded-pill px-3">View</a>
-                                    <a href="{{ route('invoices.edit', $invoice->id) }}" class="btn btn-light btn-sm rounded-pill px-3">Edit</a>
-                                    <a href="{{ route('invoices.pdf', $invoice->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">PDF</a>
+                                <div class="d-inline-flex align-items-center gap-1">
+                                    <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-light btn-sm rounded-pill px-3 fw-semibold text-dark border shadow-xs" title="View details">
+                                        View
+                                    </a>
+                                    <a href="{{ route('invoices.pdf', $invoice->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2 py-1" title="Download PDF">
+                                        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                    </a>
+                                    <a href="{{ route('invoices.edit', $invoice->id) }}" class="btn btn-outline-secondary btn-sm rounded-pill px-2 py-1" title="Edit">
+                                        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
                                     <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this {{ $invoice->type === 'quotation' ? 'quotation' : 'invoice' }}?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3">Delete</button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-2 py-1" title="Delete">
+                                            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                        </button>
                                     </form>
                                 </div>
                             </td>

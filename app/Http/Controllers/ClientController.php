@@ -16,7 +16,7 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Client::where('user_id', Auth::id());
+        $query = Client::where('user_id', Auth::id())->withCount('invoices');
 
         if ($request->has('search')) {
             $search = $request->get('search');

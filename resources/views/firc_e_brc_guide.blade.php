@@ -150,7 +150,76 @@
                         </ol>
                     </div>
 
-                    <h2 class="fw-bold text-dark mt-5 mb-3">4. Best Practices for Software & Agency Exporters</h2>
+                    <h2 class="fw-bold text-dark mt-5 mb-3">4. RBI Purpose Codes for Indian Service Exporters</h2>
+                    <p class="text-secondary leading-relaxed">
+                        To ensure your inward wire clears without Nostro holds or query letters from Authorized Dealer banks (HDFC, ICICI, SBI), instruct your overseas remitter or platform (Wise, Payoneer, Remitly) to specify the exact RBI purpose code:
+                    </p>
+
+                    <div class="table-responsive my-4">
+                        <table class="table table-hover align-middle border rounded-3 mb-0">
+                            <thead class="table-light">
+                                <tr class="fs-7 text-uppercase text-muted fw-bold">
+                                    <th>Purpose Code</th>
+                                    <th>Classification</th>
+                                    <th>Export Services Covered</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">P0802</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="P0802" title="Copy Purpose Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">Software Implementation</td>
+                                    <td class="text-secondary fs-7">Custom web/mobile app engineering, coding, frontend & backend architecture</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">P0803</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="P0803" title="Copy Purpose Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">Data Processing & Hosting</td>
+                                    <td class="text-secondary fs-7">Cloud infrastructure provisioning, managed DB hosting, SaaS subscriptions</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">P0801</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="P0801" title="Copy Purpose Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">Hardware Consultancy</td>
+                                    <td class="text-secondary fs-7">Systems integration, DevOps tooling, technical architecture auditing</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">P1006</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="P1006" title="Copy Purpose Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">Advertising & Marketing</td>
+                                    <td class="text-secondary fs-7">SEO consulting, conversion rate optimization, digital performance campaigns</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">P1007</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="P1007" title="Copy Purpose Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">Management Consulting</td>
+                                    <td class="text-secondary fs-7">Fractional CTO, strategic product planning, agile workflow advisory</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">5. Best Practices for Software & Agency Exporters</h2>
                     <ul class="text-secondary leading-relaxed mb-4">
                         <li><strong>Always include your Purpose Code</strong> in remittance instructions given to international clients.</li>
                         <li><strong>Specify the exact invoice number</strong> in the SWIFT MT103 field 70 (Remittance Information).</li>
@@ -171,5 +240,27 @@
     <!-- Footer -->
     @include('partials.public_footer')
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(code).then(() => {
+                            const original = this.textContent;
+                            this.textContent = 'Copied! ✓';
+                            this.classList.remove('btn-outline-secondary');
+                            this.classList.add('btn-success', 'text-white');
+                            setTimeout(() => {
+                                this.textContent = original;
+                                this.classList.remove('btn-success', 'text-white');
+                                this.classList.add('btn-outline-secondary');
+                            }, 2000);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

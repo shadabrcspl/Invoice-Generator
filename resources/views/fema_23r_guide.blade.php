@@ -294,27 +294,52 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code class="text-primary fw-bold">998314</code></td>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">998314</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="998314" title="Copy SAC Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
                                     <td>IT Design & Development Services</td>
                                     <td>Custom coding, web apps, mobile apps, frontend/backend engineering</td>
                                 </tr>
                                 <tr>
-                                    <td><code class="text-primary fw-bold">998313</code></td>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">998313</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="998313" title="Copy SAC Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
                                     <td>IT Infrastructure & Network Management</td>
                                     <td>DevOps engineering, AWS/GCP server maintenance, security auditing</td>
                                 </tr>
                                 <tr>
-                                    <td><code class="text-primary fw-bold">998311</code></td>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">998311</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="998311" title="Copy SAC Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
                                     <td>Management & Technical Consulting</td>
                                     <td>Fractional CTO advisory, architecture planning, agile strategy</td>
                                 </tr>
                                 <tr>
-                                    <td><code class="text-primary fw-bold">998315</code></td>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">998315</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="998315" title="Copy SAC Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
                                     <td>Hosting and Infrastructure Provisioning</td>
                                     <td>SaaS platform subscriptions, managed database hosting</td>
                                 </tr>
                                 <tr>
-                                    <td><code class="text-primary fw-bold">998361</code></td>
+                                    <td>
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <code class="text-primary fw-bold">998361</code>
+                                            <button type="button" class="btn btn-xs btn-outline-secondary rounded-pill py-0 px-2 copy-btn" data-code="998361" title="Copy SAC Code" style="font-size: 11px;">Copy</button>
+                                        </div>
+                                    </td>
                                     <td>Digital Marketing & Lead Generation</td>
                                     <td>SEO consulting, conversion rate optimization, digital campaigns</td>
                                 </tr>
@@ -426,5 +451,27 @@
     <!-- Footer -->
     @include('partials.public_footer')
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(code).then(() => {
+                            const original = this.textContent;
+                            this.textContent = 'Copied! ✓';
+                            this.classList.remove('btn-outline-secondary');
+                            this.classList.add('btn-success', 'text-white');
+                            setTimeout(() => {
+                                this.textContent = original;
+                                this.classList.remove('btn-success', 'text-white');
+                                this.classList.add('btn-outline-secondary');
+                            }, 2000);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
