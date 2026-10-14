@@ -159,6 +159,36 @@
         color: #64748b;
     }
 
+    /* Action Card Overflow & Dropdown on Hover + Click */
+    .action-buttons-card {
+        overflow: visible !important;
+        position: relative;
+        z-index: 1050;
+    }
+    .action-buttons-card .dropdown {
+        position: relative;
+    }
+    .action-buttons-card .dropdown-menu {
+        z-index: 1060 !important;
+    }
+    .action-buttons-card .dropdown-menu::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 0;
+        right: 0;
+        height: 10px;
+    }
+    .action-buttons-card .dropdown:hover > .dropdown-menu {
+        display: block !important;
+        margin-top: 2px;
+        animation: fadeInDropdown 0.15s ease-in-out;
+    }
+    @keyframes fadeInDropdown {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
     /* Print styling rules */
     @media print {
         body {
@@ -1171,4 +1201,24 @@
         }
     </script>
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownEl = document.getElementById('moreActionsDropdown');
+            const dropdownParent = dropdownEl ? dropdownEl.closest('.dropdown') : null;
+            if (dropdownEl && dropdownParent && window.bootstrap) {
+                const bsDropdown = bootstrap.Dropdown.getOrCreateInstance(dropdownEl);
+                let hoverTimeout;
+                dropdownParent.addEventListener('mouseenter', () => {
+                    clearTimeout(hoverTimeout);
+                    bsDropdown.show();
+                });
+                dropdownParent.addEventListener('mouseleave', () => {
+                    hoverTimeout = setTimeout(() => {
+                        bsDropdown.hide();
+                    }, 150);
+                });
+            }
+        });
+    </script>
 @endsection
