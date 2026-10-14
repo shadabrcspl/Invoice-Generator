@@ -35,6 +35,7 @@
 - Quotations & Estimates: https://invoice.codxpert.com/features/quotations
 
 ### Statutory Exporter Guides
+- FEMA 23(R) Service Export Declaration & HDFC EDF Guide: https://invoice.codxpert.com/fema-23r-guide
 - GST LUT Rule 96A Guide: https://invoice.codxpert.com/gst-lut-guide
 - FIRC & e-BRC Reconciliation Guide: https://invoice.codxpert.com/firc-e-brc-guide
 

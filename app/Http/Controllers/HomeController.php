@@ -288,6 +288,14 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the FEMA 23(R) Service Export Declaration & HDFC EDF Guide.
+     */
+    public function fema23rGuide()
+    {
+        return view('fema_23r_guide');
+    }
+
+    /**
      * Display CodXpert vs Zoho Invoice comparison page.
      */
     public function vsZohoInvoice()

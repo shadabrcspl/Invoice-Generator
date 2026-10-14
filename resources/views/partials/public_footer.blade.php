@@ -179,6 +179,7 @@
             <div class="col-lg-2 col-md-6 col-6">
                 <h6>Resources</h6>
                 <ul>
+                    <li><a href="{{ route('guide.fema-23r') }}">FEMA 23(R) Guide <span class="badge bg-danger text-white" style="font-size: 8px;">New</span></a></li>
                     <li><a href="{{ route('guide.gst-lut') }}">GST LUT Rule 96A Guide</a></li>
                     <li><a href="{{ route('guide.firc-e-brc') }}">FIRC & e-BRC Guide</a></li>
                     <li><a href="{{ route('vs.zoho-invoice') }}">vs Zoho Invoice</a></li>

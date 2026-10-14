@@ -103,6 +103,7 @@ Route::get('/features/quotations', [App\Http\Controllers\HomeController::class, 
 // Statutory Guides
 Route::get('/gst-lut-guide', [App\Http\Controllers\HomeController::class, 'gstLutGuide'])->name('guide.gst-lut');
 Route::get('/firc-e-brc-guide', [App\Http\Controllers\HomeController::class, 'fircEBrcGuide'])->name('guide.firc-e-brc');
+Route::get('/fema-23r-guide', [App\Http\Controllers\HomeController::class, 'fema23rGuide'])->name('guide.fema-23r');
 
 // Competitor Comparisons
 Route::get('/vs/zoho-invoice', [App\Http\Controllers\HomeController::class, 'vsZohoInvoice'])->name('vs.zoho-invoice');

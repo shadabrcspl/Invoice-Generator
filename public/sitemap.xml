@@ -85,6 +85,12 @@
 
   <!-- Statutory Exporter Guides -->
   <url>
+    <loc>https://invoice.codxpert.com/fema-23r-guide</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://invoice.codxpert.com/gst-lut-guide</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
