@@ -4,15 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Live Forex & Exporter Remittance Calculator | Cod Xpert</title>
-    <meta name="description" content="Calculate real-time foreign currency conversions and remittance variance for invoices. Instant conversions between USD, AED, EUR, GBP, CAD, AUD and INR with RBI reference buffer checks.">
-    <meta name="keywords" content="forex calculator for invoices, export currency conversion calculator, inward remittance calculator, forex variance calculator, INR exchange rate calculator">
+    <meta name="description" content="Calculate real-time foreign currency conversions and remittance variance for invoices across USD, AED, EUR, GBP, CAD, AUD, and INR.">
     <link rel="canonical" href="{{ url('/tools/forex-calculator') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/tools/forex-calculator') }}">
     <meta property="og:title" content="Live Forex & Exporter Remittance Calculator | Cod Xpert">
-    <meta property="og:description" content="Interactive currency calculator for exporters and freelancers. Compute exact invoice conversions and buffer against bank spreads.">
+    <meta property="og:description" content="Calculate real-time foreign currency conversions and remittance variance for invoices across USD, AED, EUR, GBP, CAD, AUD, and INR.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/tools/forex-calculator') }}">
+    <meta name="twitter:title" content="Live Forex & Exporter Remittance Calculator | Cod Xpert">
+    <meta name="twitter:description" content="Calculate real-time foreign currency conversions and remittance variance for invoices across USD, AED, EUR, GBP, CAD, AUD, and INR.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

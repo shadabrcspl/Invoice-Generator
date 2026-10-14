@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>E-Invoicing & Statutory Compliance Software | Cod Xpert Invoices</title>
-    <meta name="description" content="Next-generation e-invoicing software with automated GST Rule 96A declarations, QR code embedding, real-time Forex snapshots, and DPDP Act 2023 audit trails.">
-    <meta name="keywords" content="e invoicing software, electronic invoicing software, best invoice automation software, digital invoice generator, statutory e-invoicing">
+    <title>E-Invoicing & Statutory GST Compliance Software | Cod Xpert</title>
+    <meta name="description" content="Next-generation e-invoicing software with automated GST compliance, statutory LUT export zero-rating, and instant GSTR-1 reconciliation.">
     <link rel="canonical" href="{{ url('/features/e-invoicing') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/features/e-invoicing') }}">
-    <meta property="og:title" content="E-Invoicing & Statutory Compliance Software | Cod Xpert Invoices">
-    <meta property="og:description" content="Automated GST LUT declarations, QR code verification, and real-time Forex reconciliation in an enterprise e-invoicing suite.">
+    <meta property="og:title" content="E-Invoicing & Statutory GST Compliance Software | Cod Xpert">
+    <meta property="og:description" content="Next-generation e-invoicing software with automated GST compliance, statutory LUT export zero-rating, and instant GSTR-1 reconciliation.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/features/e-invoicing') }}">
+    <meta name="twitter:title" content="E-Invoicing & Statutory GST Compliance Software | Cod Xpert">
+    <meta name="twitter:description" content="Next-generation e-invoicing software with automated GST compliance, statutory LUT export zero-rating, and instant GSTR-1 reconciliation.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

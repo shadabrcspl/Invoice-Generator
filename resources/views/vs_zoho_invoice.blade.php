@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CodXpert vs Zoho Invoice | The Dedicated Invoicing Alternative | Cod Xpert</title>
-    <meta name="description" content="Compare CodXpert and Zoho Invoice. See why Indian exporters, freelancers, and growing agencies choose CodXpert for built-in GST LUT compliance, real-time forex rates, and zero paywalls.">
-    <meta name="keywords" content="CodXpert vs Zoho Invoice, Zoho Invoice alternative, best invoicing software for exporters, free Zoho Invoice alternative, invoicing software comparison">
+    <title>CodXpert vs Zoho Invoice | Dedicated Export Alternative</title>
+    <meta name="description" content="Compare CodXpert and Zoho Invoice. See why Indian exporters and agencies choose CodXpert for built-in GST LUT compliance and real-time forex rates.">
     <link rel="canonical" href="{{ url('/vs/zoho-invoice') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/vs/zoho-invoice') }}">
-    <meta property="og:title" content="CodXpert vs Zoho Invoice | The Dedicated Invoicing Alternative | Cod Xpert">
-    <meta property="og:description" content="Looking for a Zoho Invoice alternative? Compare features, export compliance, forex tools, and simplicity side-by-side.">
+    <meta property="og:title" content="CodXpert vs Zoho Invoice | Dedicated Export Alternative">
+    <meta property="og:description" content="Compare CodXpert and Zoho Invoice. See why Indian exporters and agencies choose CodXpert for built-in GST LUT compliance and real-time forex rates.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/vs/zoho-invoice') }}">
+    <meta name="twitter:title" content="CodXpert vs Zoho Invoice | Dedicated Export Alternative">
+    <meta name="twitter:description" content="Compare CodXpert and Zoho Invoice. See why Indian exporters and agencies choose CodXpert for built-in GST LUT compliance and real-time forex rates.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

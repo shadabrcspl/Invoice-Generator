@@ -6,24 +6,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- SEO Meta Tags -->
-    <title>Cod Xpert Invoices - GST LUT Foreign Currency Invoicing & Forex Software</title>
-    <meta name="description" content="Statutory GST LUT 0% IGST export invoicing and real-time Forex variance software. Automated FIRC reconciliation, e-BRC tracking, and GSTR-1 CSV exports.">
-    <meta name="keywords" content="invoice generator, multi-currency invoicing, GST LUT, export billing, GSTR-1 exporter, Forex gain loss tracker, business expense tracker, custom SMTP invoicing, DPDP Act compliant">
+    <title>Cod Xpert Invoices - GST LUT Export Billing & Forex Platform</title>
+    <meta name="description" content="Statutory GST LUT 0% IGST export invoicing, automated real-time Forex ledgers, and instant GSTR-1 reconciliation for global exporters and businesses.">
     <link rel="canonical" href="{{ url('/') }}">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:title" content="Cod Xpert Invoices - GST LUT Foreign Currency Invoicing & Forex Software">
-    <meta property="og:description" content="An ultra-modern, statutory-compliant invoicing platform for global exporters. Features GST LUT 0% IGST export billing, real-time exchange rates, automated Forex variance tracking, and GSTR-1 CSV exports.">
+    <meta property="og:title" content="Cod Xpert Invoices - GST LUT Export Billing & Forex Platform">
+    <meta property="og:description" content="Statutory GST LUT 0% IGST export invoicing, automated real-time Forex ledgers, and instant GSTR-1 reconciliation for global exporters and businesses.">
     <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ url('/') }}">
-    <meta property="twitter:title" content="Cod Xpert Invoices - GST LUT Foreign Currency Invoicing & Forex Software">
-    <meta property="twitter:description" content="An ultra-modern, statutory-compliant invoicing platform for global exporters. Features GST LUT 0% IGST export billing, real-time exchange rates, automated Forex variance tracking, and GSTR-1 CSV exports.">
-    <meta property="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="Cod Xpert Invoices - GST LUT Export Billing & Forex Platform">
+    <meta name="twitter:description" content="Statutory GST LUT 0% IGST export invoicing, automated real-time Forex ledgers, and instant GSTR-1 reconciliation for global exporters and businesses.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

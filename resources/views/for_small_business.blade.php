@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Invoicing Software for Small Business | Fast, Easy & Compliant | Cod Xpert</title>
-    <meta name="description" content="Purpose-built invoicing software for growing small businesses. Manage multi-currency clients, auto-apply GST/LUT compliance, automate payment tracking, and get paid faster.">
-    <meta name="keywords" content="invoicing software for small business, small business invoice generator, simple billing software for small business, GST invoicing small business, automated invoice tracking">
+    <title>Small Business Invoicing Software | GST & Forex | Cod Xpert</title>
+    <meta name="description" content="Purpose-built invoicing software for growing businesses. Automate 0% IGST LUT export declarations, multi-currency billing, and seamless GSTR-1 compliance.">
     <link rel="canonical" href="{{ url('/solutions/small-business') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/solutions/small-business') }}">
-    <meta property="og:title" content="Invoicing Software for Small Business | Fast, Easy & Compliant | Cod Xpert">
-    <meta property="og:description" content="Streamline your billing without complex accounting bloat. Multi-currency, GST LUT compliance, payment tracking, and zero setup fees.">
+    <meta property="og:title" content="Small Business Invoicing Software | GST & Forex | Cod Xpert">
+    <meta property="og:description" content="Purpose-built invoicing software for growing businesses. Automate 0% IGST LUT export declarations, multi-currency billing, and seamless GSTR-1 compliance.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/solutions/small-business') }}">
+    <meta name="twitter:title" content="Small Business Invoicing Software | GST & Forex | Cod Xpert">
+    <meta name="twitter:description" content="Purpose-built invoicing software for growing businesses. Automate 0% IGST LUT export declarations, multi-currency billing, and seamless GSTR-1 compliance.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

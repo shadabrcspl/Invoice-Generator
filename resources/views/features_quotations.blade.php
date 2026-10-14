@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quotation to Invoice Software | Convert Estimates Instantly | Cod Xpert</title>
-    <meta name="description" content="Generate client estimates and convert approved quotations into GST/Export invoices with 1-click. Track approvals, lock currency rates, and eliminate duplicate entries.">
-    <meta name="keywords" content="quotation to invoice software, estimate to invoice converter, proforma invoice generator, convert quote to tax invoice, client estimates software">
+    <title>Quotation to Invoice Software | Convert Estimates | Cod Xpert</title>
+    <meta name="description" content="Generate professional client estimates and convert approved quotations into statutory invoices in one click. Track approvals and revision histories.">
     <link rel="canonical" href="{{ url('/features/quotations') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/features/quotations') }}">
-    <meta property="og:title" content="Quotation to Invoice Software | Convert Estimates Instantly | Cod Xpert">
-    <meta property="og:description" content="Win bids faster. Send professional quotes in any currency, get client sign-offs, and convert them to compliant export invoices in one click.">
+    <meta property="og:title" content="Quotation to Invoice Software | Convert Estimates | Cod Xpert">
+    <meta property="og:description" content="Generate professional client estimates and convert approved quotations into statutory invoices in one click. Track approvals and revision histories.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/features/quotations') }}">
+    <meta name="twitter:title" content="Quotation to Invoice Software | Convert Estimates | Cod Xpert">
+    <meta name="twitter:description" content="Generate professional client estimates and convert approved quotations into statutory invoices in one click. Track approvals and revision histories.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

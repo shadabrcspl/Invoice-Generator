@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Transparent Pricing & Plans | Cod Xpert Invoices</title>
-    <meta name="description" content="Simple, transparent pricing for exporters, freelancers, and businesses. Start free with 0% IGST GST LUT export billing, or upgrade for automated Forex ledgers and custom SMTP.">
-    <meta name="keywords" content="invoicing software pricing, free invoice software, export billing cost, GST LUT software plans, multi currency invoice pricing">
+    <title>Transparent Pricing & Deployment Plans | Cod Xpert Invoices</title>
+    <meta name="description" content="Simple, transparent pricing for exporters and businesses. Start free with GST LUT export billing, or upgrade for automated Forex ledgers and custom SMTP.">
     <link rel="canonical" href="{{ url('/pricing') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/pricing') }}">
-    <meta property="og:title" content="Transparent Pricing & Plans | Cod Xpert Invoices">
-    <meta property="og:description" content="Start free with GST LUT invoicing or unlock automated Forex variance and GSTR-1 exports.">
+    <meta property="og:title" content="Transparent Pricing & Deployment Plans | Cod Xpert Invoices">
+    <meta property="og:description" content="Simple, transparent pricing for exporters and businesses. Start free with GST LUT export billing, or upgrade for automated Forex ledgers and custom SMTP.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/pricing') }}">
+    <meta name="twitter:title" content="Transparent Pricing & Deployment Plans | Cod Xpert Invoices">
+    <meta name="twitter:description" content="Simple, transparent pricing for exporters and businesses. Start free with GST LUT export billing, or upgrade for automated Forex ledgers and custom SMTP.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

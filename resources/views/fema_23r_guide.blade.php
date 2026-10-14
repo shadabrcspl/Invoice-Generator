@@ -3,17 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FEMA 23(R) Service Export Declaration & HDFC EDF Guide (2026) | Cod Xpert</title>
-    <meta name="description" content="Master guide to FEMA 23(R) Service Export Declaration and HDFC Bank EDF compliance for Indian IT exporters, freelancers, and software agencies. Learn how to clear inward remittances, reconcile SAC codes, and generate e-BRCs.">
-    <meta name="keywords" content="FEMA 23R, Service Export Declaration, HDFC EDF declaration, inward remittance clearance, IT export compliance India, SAC code 998314, FIRC eBRC, Softex vs FEMA declaration, RBI EDPMS IRM">
+    <title>FEMA 23(R) Service Export Declaration Guide | Cod Xpert</title>
+    <meta name="description" content="Master guide to FEMA 23(R) Service Export Declarations, RBI purpose codes, HDFC EDF compliance, and invoice reconciliation for Indian service exporters.">
     <link rel="canonical" href="{{ url('/guides/fema-23r') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ url('/guides/fema-23r') }}">
-    <meta property="og:title" content="FEMA 23(R) Service Export Declaration & HDFC EDF Guide (2026) | Cod Xpert">
-    <meta property="og:description" content="Step-by-step compliance playbook on clearing foreign currency wires, filling the HDFC Service Export Declaration & Request Letter, SAC codes, and avoiding RBI remittance holds.">
-    <meta property="og:image" content="{{ asset('favicon-192x192.png') }}">
+    <meta property="og:title" content="FEMA 23(R) Service Export Declaration Guide | Cod Xpert">
+    <meta property="og:description" content="Master guide to FEMA 23(R) Service Export Declarations, RBI purpose codes, HDFC EDF compliance, and invoice reconciliation for Indian service exporters.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/guides/fema-23r') }}">
+    <meta name="twitter:title" content="FEMA 23(R) Service Export Declaration Guide | Cod Xpert">
+    <meta name="twitter:description" content="Master guide to FEMA 23(R) Service Export Declarations, RBI purpose codes, HDFC EDF compliance, and invoice reconciliation for Indian service exporters.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

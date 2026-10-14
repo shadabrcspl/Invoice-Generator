@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Contact & Enterprise Demo Desk | Cod Xpert Invoices</title>
-    <meta name="description" content="Get in touch with Cod Xpert Invoices for enterprise deployment, custom SMTP setup, GST LUT compliance consulting, or technical support. Guaranteed 24-hour SLA.">
-    <meta name="keywords" content="contact codxpert, invoice software support, GST LUT inquiry, exporter software consultation, enterprise invoicing demo">
+    <title>Contact & Enterprise Support Desk | Cod Xpert Invoices</title>
+    <meta name="description" content="Get in touch with Cod Xpert Invoices for enterprise deployment, custom SMTP setup, GST LUT compliance consulting, or technical support. Guaranteed 24-hr SLA.">
     <link rel="canonical" href="{{ url('/contact') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/contact') }}">
-    <meta property="og:title" content="Contact & Enterprise Demo Desk | Cod Xpert Invoices">
-    <meta property="og:description" content="Reach our statutory compliance engineering team for enterprise deployment and technical support.">
+    <meta property="og:title" content="Contact & Enterprise Support Desk | Cod Xpert Invoices">
+    <meta property="og:description" content="Get in touch with Cod Xpert Invoices for enterprise deployment, custom SMTP setup, GST LUT compliance consulting, or technical support. Guaranteed 24-hr SLA.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/contact') }}">
+    <meta name="twitter:title" content="Contact & Enterprise Support Desk | Cod Xpert Invoices">
+    <meta name="twitter:description" content="Get in touch with Cod Xpert Invoices for enterprise deployment, custom SMTP setup, GST LUT compliance consulting, or technical support. Guaranteed 24-hr SLA.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

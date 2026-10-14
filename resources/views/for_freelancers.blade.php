@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Invoicing Software for Freelancers & Remote Professionals | Cod Xpert Invoices</title>
-    <meta name="description" content="The best invoicing software for freelancers working with international clients. Multi-currency billing (USD, EUR, GBP), automated payment reminders, and zero accounting clutter.">
-    <meta name="keywords" content="invoicing software for freelancers, best invoicing software for freelancers, freelance invoice generator, international freelance billing, cross border freelancer invoice">
+    <title>Freelancer Invoicing Software | GST LUT & Forex | Cod Xpert</title>
+    <meta name="description" content="Invoicing software for freelancers and remote contractors. Bill global clients in USD, EUR, or GBP with automated GST LUT 0% IGST export zero-rating.">
     <link rel="canonical" href="{{ url('/solutions/freelancers') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/solutions/freelancers') }}">
-    <meta property="og:title" content="Invoicing Software for Freelancers | Cod Xpert Invoices">
-    <meta property="og:description" content="Effortless multi-currency billing, automated payment reminders, and statutory GST LUT compliance for global freelancers.">
+    <meta property="og:title" content="Freelancer Invoicing Software | GST LUT & Forex | Cod Xpert">
+    <meta property="og:description" content="Invoicing software for freelancers and remote contractors. Bill global clients in USD, EUR, or GBP with automated GST LUT 0% IGST export zero-rating.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/solutions/freelancers') }}">
+    <meta name="twitter:title" content="Freelancer Invoicing Software | GST LUT & Forex | Cod Xpert">
+    <meta name="twitter:description" content="Invoicing software for freelancers and remote contractors. Bill global clients in USD, EUR, or GBP with automated GST LUT 0% IGST export zero-rating.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

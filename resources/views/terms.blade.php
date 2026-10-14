@@ -5,21 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Terms of Use | Cod Xpert Invoices</title>
-    <meta name="description" content="Terms of Use and Conditions for Cod Xpert Invoices billing and tax compliance software platform.">
-    <meta name="robots" content="index, follow">
+    <title>Terms of Use & Service Agreement | Cod Xpert Invoices</title>
+    <meta name="description" content="Terms of Use and Conditions for Cod Xpert Invoices. Review user rights, subscription terms, statutory compliance warranties, and platform policies.">
     <link rel="canonical" href="{{ url('/terms') }}">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/terms') }}">
-    <meta property="og:title" content="Terms of Use | Cod Xpert Invoices">
-    <meta property="og:description" content="Read the terms, conditions, and compliance guidelines governing the use of Cod Xpert Invoices software.">
+    <meta property="og:title" content="Terms of Use & Service Agreement | Cod Xpert Invoices">
+    <meta property="og:description" content="Terms of Use and Conditions for Cod Xpert Invoices. Review user rights, subscription terms, statutory compliance warranties, and platform policies.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/terms') }}">
+    <meta name="twitter:title" content="Terms of Use & Service Agreement | Cod Xpert Invoices">
+    <meta name="twitter:description" content="Terms of Use and Conditions for Cod Xpert Invoices. Review user rights, subscription terms, statutory compliance warranties, and platform policies.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+
+    <!-- Schema.org WebPage Terms of Service -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Terms of Use & Service Agreement | Cod Xpert Invoices",
+        "url": "https://invoice.codxpert.com/terms",
+        "description": "Terms of Use and Conditions for Cod Xpert Invoices billing, GST LUT statutory compliance, and foreign remittance ledger platform.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Cod Xpert Invoices",
+            "url": "https://invoice.codxpert.com/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "COD XPERT",
+            "url": "https://codxpert.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://invoice.codxpert.com/images/codxpert-logo.png"
+            }
+        }
+    }
+    </script>
+
 
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">

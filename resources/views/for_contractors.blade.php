@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Invoicing Software for Contractors & Consultants | Cod Xpert Invoices</title>
-    <meta name="description" content="Professional invoicing software built for independent contractors, IT consultants, and commercial service providers. Milestone billing, multi-currency support, and expense tracking.">
-    <meta name="keywords" content="contractor invoicing software, best invoicing software for contractors, template invoice contractor, commercial contractor billing, independent contractor invoice">
+    <title>Contractor Invoicing Software | Milestone Billing | Cod Xpert</title>
+    <meta name="description" content="Invoicing software built for contractors. Handle milestone billing, timesheets, statutory GST compliance, and multi-currency international wire receipts.">
     <link rel="canonical" href="{{ url('/solutions/contractors') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/solutions/contractors') }}">
-    <meta property="og:title" content="Contractor Invoicing Software | Cod Xpert Invoices">
-    <meta property="og:description" content="Milestone billing, multi-currency support, expense tracking, and clean professional PDF generation for contractors.">
+    <meta property="og:title" content="Contractor Invoicing Software | Milestone Billing | Cod Xpert">
+    <meta property="og:description" content="Invoicing software built for contractors. Handle milestone billing, timesheets, statutory GST compliance, and multi-currency international wire receipts.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/solutions/contractors') }}">
+    <meta name="twitter:title" content="Contractor Invoicing Software | Milestone Billing | Cod Xpert">
+    <meta name="twitter:description" content="Invoicing software built for contractors. Handle milestone billing, timesheets, statutory GST compliance, and multi-currency international wire receipts.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

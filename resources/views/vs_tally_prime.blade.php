@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CodXpert vs Tally Prime | Cloud Invoicing for Modern Businesses | Cod Xpert</title>
-    <meta name="description" content="Compare CodXpert with Tally Prime. Experience fast cloud invoicing, automatic GST LUT export zero-rating, multi-currency live conversions, and anywhere access without desktop hardware locks.">
-    <meta name="keywords" content="CodXpert vs Tally Prime, Tally Prime alternative, cloud invoicing vs Tally, online GST billing software, Tally Prime comparison">
+    <title>CodXpert vs Tally Prime | Cloud Invoicing for Modern Exporters</title>
+    <meta name="description" content="Compare CodXpert with Tally Prime. Fast cloud invoicing, automated GST LUT export zero-rating, live forex rates, and anywhere access without desktop locks.">
     <link rel="canonical" href="{{ url('/vs/tally-prime') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/vs/tally-prime') }}">
-    <meta property="og:title" content="CodXpert vs Tally Prime | Cloud Invoicing for Modern Businesses | Cod Xpert">
-    <meta property="og:description" content="Tired of desktop dongles, slow local backups, and complicated hotkeys? Discover why modern businesses choose CodXpert's cloud invoicing.">
+    <meta property="og:title" content="CodXpert vs Tally Prime | Cloud Invoicing for Modern Exporters">
+    <meta property="og:description" content="Compare CodXpert with Tally Prime. Fast cloud invoicing, automated GST LUT export zero-rating, live forex rates, and anywhere access without desktop locks.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/vs/tally-prime') }}">
+    <meta name="twitter:title" content="CodXpert vs Tally Prime | Cloud Invoicing for Modern Exporters">
+    <meta name="twitter:description" content="Compare CodXpert with Tally Prime. Fast cloud invoicing, automated GST LUT export zero-rating, live forex rates, and anywhere access without desktop locks.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Recurring Invoice Software | Automated Retainer Billing | Cod Xpert</title>
-    <meta name="description" content="Automate client retainers and recurring billing with Cod Xpert. Scheduled multi-currency invoices, automatic payment reminders, and zero manual hassle.">
-    <meta name="keywords" content="recurring invoice software, automated recurring billing, retainer invoice software, subscription billing, schedule invoices online">
+    <title>Recurring Invoices & Retainer Billing Software | Cod Xpert</title>
+    <meta name="description" content="Automate client retainers and recurring billing schedules. Send scheduled invoices with custom SMTP delivery and automated payment follow-ups.">
     <link rel="canonical" href="{{ url('/features/recurring-invoices') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/features/recurring-invoices') }}">
-    <meta property="og:title" content="Recurring Invoice Software | Automated Retainer Billing | Cod Xpert">
-    <meta property="og:description" content="Set it and forget it. Automated monthly client retainers, scheduled email delivery, and multi-currency exchange rate lock.">
+    <meta property="og:title" content="Recurring Invoices & Retainer Billing Software | Cod Xpert">
+    <meta property="og:description" content="Automate client retainers and recurring billing schedules. Send scheduled invoices with custom SMTP delivery and automated payment follow-ups.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/features/recurring-invoices') }}">
+    <meta name="twitter:title" content="Recurring Invoices & Retainer Billing Software | Cod Xpert">
+    <meta name="twitter:description" content="Automate client retainers and recurring billing schedules. Send scheduled invoices with custom SMTP delivery and automated payment follow-ups.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

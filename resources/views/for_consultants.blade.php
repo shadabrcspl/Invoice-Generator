@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Invoicing Software for Consultants | Hourly & Retainer Billing | Cod Xpert</title>
-    <meta name="description" content="Professional invoicing software for independent and management consultants. Track billable hours, bill multi-currency international clients, and automate LUT compliance.">
-    <meta name="keywords" content="invoicing software for consultants, consultant invoice generator, consulting billing software, hourly invoice for consultants, management consultant invoice template">
+    <title>Consultant Invoicing Software | Hourly Timesheets | Cod Xpert</title>
+    <meta name="description" content="Professional invoicing software for independent consultants. Track billable hours, convert approved quotations, and manage international client payments.">
     <link rel="canonical" href="{{ url('/solutions/consultants') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/solutions/consultants') }}">
-    <meta property="og:title" content="Invoicing Software for Consultants | Hourly & Retainer Billing | Cod Xpert">
-    <meta property="og:description" content="Deliver consulting invoices that reflect your professional caliber. Hourly rates, milestone billing, multi-currency conversion, and GST LUT export support.">
+    <meta property="og:title" content="Consultant Invoicing Software | Hourly Timesheets | Cod Xpert">
+    <meta property="og:description" content="Professional invoicing software for independent consultants. Track billable hours, convert approved quotations, and manage international client payments.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/solutions/consultants') }}">
+    <meta name="twitter:title" content="Consultant Invoicing Software | Hourly Timesheets | Cod Xpert">
+    <meta name="twitter:description" content="Professional invoicing software for independent consultants. Track billable hours, convert approved quotations, and manage international client payments.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

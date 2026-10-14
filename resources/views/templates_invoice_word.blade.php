@@ -3,17 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Free Word Invoice Templates (.docx) | Download Editable Templates | Cod Xpert</title>
-    <meta name="description" content="Download free editable Microsoft Word invoice templates (.docx) for Indian businesses, freelancers, and exporters. Fully formatted with GST, HSN/SAC, LUT zero-rating, and Google Docs support.">
-    <meta name="keywords" content="invoice template word, free invoice template docx, download word invoice template, blank invoice template microsoft word, gst invoice docx, export invoice word template">
+    <title>Free Word Invoice Templates (.docx) Download | Cod Xpert</title>
+    <meta name="description" content="Download free editable Microsoft Word invoice templates (.docx) with GST, HSN/SAC codes, LUT zero-rating, and Google Docs support for Indian businesses.">
     <link rel="canonical" href="{{ url('/templates/word-invoice-template') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/templates/word-invoice-template') }}">
-    <meta property="og:title" content="Free Word Invoice Templates (.docx) | Download Editable Templates | Cod Xpert">
-    <meta property="og:description" content="Download 100% free Microsoft Word invoice templates (.docx). Includes Corporate GST, Freelancer Consultant, and Statutory Export formats.">
-    <meta property="og:image" content="{{ asset('favicon-192x192.png') }}">
+    <meta property="og:title" content="Free Word Invoice Templates (.docx) Download | Cod Xpert">
+    <meta property="og:description" content="Download free editable Microsoft Word invoice templates (.docx) with GST, HSN/SAC codes, LUT zero-rating, and Google Docs support for Indian businesses.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/templates/word-invoice-template') }}">
+    <meta name="twitter:title" content="Free Word Invoice Templates (.docx) Download | Cod Xpert">
+    <meta name="twitter:description" content="Download free editable Microsoft Word invoice templates (.docx) with GST, HSN/SAC codes, LUT zero-rating, and Google Docs support for Indian businesses.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

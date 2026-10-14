@@ -5,21 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Privacy Policy | Cod Xpert Invoices</title>
-    <meta name="description" content="Privacy Policy for Cod Xpert Invoices. Learn how we collect, use, and protect your business billing, client data, GST details, and invoice records.">
-    <meta name="robots" content="index, follow">
+    <title>Privacy Policy & Data Protection | Cod Xpert Invoices</title>
+    <meta name="description" content="Privacy Policy for Cod Xpert Invoices. Learn how we collect, store, and protect your billing records, client databases, GST data, and payment logs.">
     <link rel="canonical" href="{{ url('/privacy') }}">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/privacy') }}">
-    <meta property="og:title" content="Privacy Policy | Cod Xpert Invoices">
-    <meta property="og:description" content="Learn how Cod Xpert Invoices protects your business billing data, GST compliance details, and customer records.">
+    <meta property="og:title" content="Privacy Policy & Data Protection | Cod Xpert Invoices">
+    <meta property="og:description" content="Privacy Policy for Cod Xpert Invoices. Learn how we collect, store, and protect your billing records, client databases, GST data, and payment logs.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/privacy') }}">
+    <meta name="twitter:title" content="Privacy Policy & Data Protection | Cod Xpert Invoices">
+    <meta name="twitter:description" content="Privacy Policy for Cod Xpert Invoices. Learn how we collect, store, and protect your billing records, client databases, GST data, and payment logs.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+
+    <!-- Schema.org WebPage Privacy Policy -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacy Policy & Data Protection | Cod Xpert Invoices",
+        "url": "https://invoice.codxpert.com/privacy",
+        "description": "Privacy Policy for Cod Xpert Invoices governing user billing data, customer databases, GST records, and data retention standards.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Cod Xpert Invoices",
+            "url": "https://invoice.codxpert.com/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "COD XPERT",
+            "url": "https://codxpert.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://invoice.codxpert.com/images/codxpert-logo.png"
+            }
+        }
+    }
+    </script>
+
 
     <!-- Premium Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">

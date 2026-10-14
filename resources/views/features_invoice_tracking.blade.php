@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Invoice Tracking Software | Monitor Paid & Overdue Bills | Cod Xpert</title>
-    <meta name="description" content="Never lose track of unpaid invoices. Real-time invoice tracking software with payment status logs, partial payment records, and automated overdue alerts.">
-    <meta name="keywords" content="invoice tracking software, track invoices online, invoice payment tracker, overdue invoice monitor, unpaid invoices software">
+    <title>Invoice Tracking & Payment Reconciliation | Cod Xpert</title>
+    <meta name="description" content="Never lose track of unpaid invoices. Real-time status monitoring, automated overdue reminders, and complete export remittance payment audit trails.">
     <link rel="canonical" href="{{ url('/features/invoice-tracking') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/features/invoice-tracking') }}">
-    <meta property="og:title" content="Invoice Tracking Software | Monitor Paid & Overdue Bills | Cod Xpert">
-    <meta property="og:description" content="Track invoice life-cycle from draft to bank realization. Overdue chasers, status indicators, and audit trails.">
+    <meta property="og:title" content="Invoice Tracking & Payment Reconciliation | Cod Xpert">
+    <meta property="og:description" content="Never lose track of unpaid invoices. Real-time status monitoring, automated overdue reminders, and complete export remittance payment audit trails.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/features/invoice-tracking') }}">
+    <meta name="twitter:title" content="Invoice Tracking & Payment Reconciliation | Cod Xpert">
+    <meta name="twitter:description" content="Never lose track of unpaid invoices. Real-time status monitoring, automated overdue reminders, and complete export remittance payment audit trails.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

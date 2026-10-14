@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Invoicing Software for Digital Agencies | Retainers & Client Billing | Cod Xpert</title>
-    <meta name="description" content="Purpose-built agency invoicing software. Manage monthly client retainers, project milestone billing, multi-currency foreign accounts, and automatic payment tracking.">
-    <meta name="keywords" content="invoicing software for agencies, agency billing software, digital agency retainer billing, marketing agency invoicing, multi-currency agency billing">
+    <title>Digital Agency Invoicing Software | Multi-Currency | Cod Xpert</title>
+    <meta name="description" content="Purpose-built agency invoicing software. Manage client retainers, multi-currency billing, team tracking, and automated payment reminders with zero hassle.">
     <link rel="canonical" href="{{ url('/solutions/agencies') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/solutions/agencies') }}">
-    <meta property="og:title" content="Invoicing Software for Digital Agencies | Retainers & Client Billing | Cod Xpert">
-    <meta property="og:description" content="Put your agency's retainer billing on autopilot. Multi-currency, automated payment tracking, and zero manual hassle.">
+    <meta property="og:title" content="Digital Agency Invoicing Software | Multi-Currency | Cod Xpert">
+    <meta property="og:description" content="Purpose-built agency invoicing software. Manage client retainers, multi-currency billing, team tracking, and automated payment reminders with zero hassle.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/solutions/agencies') }}">
+    <meta name="twitter:title" content="Digital Agency Invoicing Software | Multi-Currency | Cod Xpert">
+    <meta name="twitter:description" content="Purpose-built agency invoicing software. Manage client retainers, multi-currency billing, team tracking, and automated payment reminders with zero hassle.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

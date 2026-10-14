@@ -4,16 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Free Online Invoice Generator | Instant PDF Download | Cod Xpert</title>
-    <meta name="description" content="Create and download professional invoices instantly in any currency (USD, EUR, INR, AED, GBP). Free online invoice maker with 0% IGST LUT export support. No sign-up required.">
-    <meta name="keywords" content="free invoice generator, create invoice free, free invoice maker online, instant invoice pdf, international invoice generator">
+    <title>Free Online Invoice Generator | Instant PDF Export | Cod Xpert</title>
+    <meta name="description" content="Create and download professional invoices in seconds. Features GST calculation, multi-currency support, custom line items, and instant PDF download.">
     <link rel="canonical" href="{{ url('/tools/invoice-generator') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/tools/invoice-generator') }}">
-    <meta property="og:title" content="Free Online Invoice Generator | Instant PDF Download">
-    <meta property="og:description" content="Generate beautiful, multi-currency export invoices in seconds. Download PDF instantly with zero registration required.">
+    <meta property="og:title" content="Free Online Invoice Generator | Instant PDF Export | Cod Xpert">
+    <meta property="og:description" content="Create and download professional invoices in seconds. Features GST calculation, multi-currency support, custom line items, and instant PDF download.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/tools/invoice-generator') }}">
+    <meta name="twitter:title" content="Free Online Invoice Generator | Instant PDF Export | Cod Xpert">
+    <meta name="twitter:description" content="Create and download professional invoices in seconds. Features GST calculation, multi-currency support, custom line items, and instant PDF download.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

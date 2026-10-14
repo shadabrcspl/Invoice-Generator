@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Multi-Currency Invoicing Software | Live Forex & GST LUT | Cod Xpert</title>
-    <meta name="description" content="Generate compliant international invoices in USD, EUR, AED, GBP, AUD, and CAD. Real-time interbank Forex sync and automated exchange gain/loss tracking.">
-    <meta name="keywords" content="multi currency invoicing software, foreign currency invoice, forex billing software, international invoice generator, usd inr invoice software">
+    <title>Multi-Currency Invoicing Software | Live Forex | Cod Xpert</title>
+    <meta name="description" content="Generate compliant international invoices with live exchange rate conversions, RBI reference rate tracking, and automated foreign exchange variance ledgers.">
     <link rel="canonical" href="{{ url('/features/multi-currency') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/features/multi-currency') }}">
-    <meta property="og:title" content="Multi-Currency Invoicing Software | Live Forex & GST LUT | Cod Xpert">
-    <meta property="og:description" content="Dual currency display, real-time central bank exchange rates, and automated Forex variance ledger for global exporters.">
+    <meta property="og:title" content="Multi-Currency Invoicing Software | Live Forex | Cod Xpert">
+    <meta property="og:description" content="Generate compliant international invoices with live exchange rate conversions, RBI reference rate tracking, and automated foreign exchange variance ledgers.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/features/multi-currency') }}">
+    <meta name="twitter:title" content="Multi-Currency Invoicing Software | Live Forex | Cod Xpert">
+    <meta name="twitter:description" content="Generate compliant international invoices with live exchange rate conversions, RBI reference rate tracking, and automated foreign exchange variance ledgers.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/forex_dashboard.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

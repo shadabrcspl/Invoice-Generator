@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GST LUT Rule 96A Guide for Exporters | Filing & Invoice Compliance | Cod Xpert</title>
-    <meta name="description" content="Complete 2026 guide on Letter of Undertaking (LUT) under GST Rule 96A for service and goods exporters in India. Learn filing steps, mandatory invoice declarations, and ARN tracking.">
-    <meta name="keywords" content="GST LUT guide, export of services under LUT, Rule 96A GST, letter of undertaking GST, zero rated supply without payment of IGST, LUT invoice declaration format">
+    <title>GST LUT Rule 96A Exporter Guide (0% IGST) | Cod Xpert</title>
+    <meta name="description" content="Complete guide on Letter of Undertaking (LUT) under Rule 96A CGST Rules. Export services with 0% IGST and prevent working capital blockage.">
     <link rel="canonical" href="{{ url('/guides/gst-lut') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ url('/guides/gst-lut') }}">
-    <meta property="og:title" content="GST LUT Rule 96A Guide for Exporters | Filing & Invoice Compliance | Cod Xpert">
-    <meta property="og:description" content="Master GST LUT Rule 96A compliance. How to file RFD-11, generate zero-rated export invoices, and avoid working capital blockage.">
+    <meta property="og:title" content="GST LUT Rule 96A Exporter Guide (0% IGST) | Cod Xpert">
+    <meta property="og:description" content="Complete guide on Letter of Undertaking (LUT) under Rule 96A CGST Rules. Export services with 0% IGST and prevent working capital blockage.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/guides/gst-lut') }}">
+    <meta name="twitter:title" content="GST LUT Rule 96A Exporter Guide (0% IGST) | Cod Xpert">
+    <meta name="twitter:description" content="Complete guide on Letter of Undertaking (LUT) under Rule 96A CGST Rules. Export services with 0% IGST and prevent working capital blockage.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">

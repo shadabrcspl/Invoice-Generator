@@ -3,17 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Free Excel Invoice Templates (.xlsx) | Automated Tax Formulas | Cod Xpert</title>
-    <meta name="description" content="Download free automated Excel invoice templates (.xlsx) with pre-built math formulas for GST (CGST/SGST/IGST), foreign currency conversion, and consulting timesheets. Open in Excel or Google Sheets.">
-    <meta name="keywords" content="excel invoice template, free invoice template xlsx, automated gst invoice excel, excel spreadsheet invoice with formulas, download excel invoice format, forex invoice excel">
+    <title>Free Excel Invoice Templates (.xlsx) Formulas | Cod Xpert</title>
+    <meta name="description" content="Download free automated Excel invoice templates (.xlsx) with pre-built math formulas for GST (CGST/SGST/IGST) and multi-currency foreign conversion.">
     <link rel="canonical" href="{{ url('/templates/excel-invoice-template') }}">
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/templates/excel-invoice-template') }}">
-    <meta property="og:title" content="Free Excel Invoice Templates (.xlsx) | Automated Tax Formulas | Cod Xpert">
-    <meta property="og:description" content="Download free Microsoft Excel invoice templates (.xlsx) with pre-configured formulas for GST tax split, subtotal calculations, and forex conversion.">
-    <meta property="og:image" content="{{ asset('favicon-192x192.png') }}">
+    <meta property="og:title" content="Free Excel Invoice Templates (.xlsx) Formulas | Cod Xpert">
+    <meta property="og:description" content="Download free automated Excel invoice templates (.xlsx) with pre-built math formulas for GST (CGST/SGST/IGST) and multi-currency foreign conversion.">
+    <meta property="og:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cod Xpert Invoices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/templates/excel-invoice-template') }}">
+    <meta name="twitter:title" content="Free Excel Invoice Templates (.xlsx) Formulas | Cod Xpert">
+    <meta name="twitter:description" content="Download free automated Excel invoice templates (.xlsx) with pre-built math formulas for GST (CGST/SGST/IGST) and multi-currency foreign conversion.">
+    <meta name="twitter:image" content="https://invoice.codxpert.com/images/invoice_pdf.png">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
