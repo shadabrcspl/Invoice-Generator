@@ -6,11 +6,11 @@
     <title>FIRC & e-BRC Guide for Indian Exporters | Reconciliation & DGFT Portal | Cod Xpert</title>
     <meta name="description" content="Comprehensive guide to Foreign Inward Remittance Certificates (FIRC) and electronic Bank Realisation Certificates (e-BRC) for software, service, and goods exporters in India.">
     <meta name="keywords" content="FIRC guide, e-BRC generation process, Foreign Inward Remittance Certificate, DGFT eBRC self certification, export remittance reconciliation, EDPMS IRMS">
-    <link rel="canonical" href="{{ url('/firc-e-brc-guide') }}">
+    <link rel="canonical" href="{{ url('/guides/firc-e-brc') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="{{ url('/firc-e-brc-guide') }}">
+    <meta property="og:url" content="{{ url('/guides/firc-e-brc') }}">
     <meta property="og:title" content="FIRC & e-BRC Guide for Indian Exporters | Reconciliation & DGFT Portal | Cod Xpert">
     <meta property="og:description" content="Step-by-step masterclass on reconciling foreign wire remittances, inward advices, IRIS/EDPMS matching, and self-generating e-BRCs on DGFT.">
 

@@ -7,11 +7,11 @@
     <title>Free Online Invoice Generator | Instant PDF Download | Cod Xpert</title>
     <meta name="description" content="Create and download professional invoices instantly in any currency (USD, EUR, INR, AED, GBP). Free online invoice maker with 0% IGST LUT export support. No sign-up required.">
     <meta name="keywords" content="free invoice generator, create invoice free, free invoice maker online, instant invoice pdf, international invoice generator">
-    <link rel="canonical" href="{{ url('/free-invoice-generator') }}">
+    <link rel="canonical" href="{{ url('/tools/invoice-generator') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/free-invoice-generator') }}">
+    <meta property="og:url" content="{{ url('/tools/invoice-generator') }}">
     <meta property="og:title" content="Free Online Invoice Generator | Instant PDF Download">
     <meta property="og:description" content="Generate beautiful, multi-currency export invoices in seconds. Download PDF instantly with zero registration required.">
 
@@ -26,7 +26,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Cod Xpert Free Invoice Generator",
-    "url": "https://invoice.codxpert.com/free-invoice-generator",
+    "url": "https://invoice.codxpert.com/tools/invoice-generator",
     "image": "https://invoice.codxpert.com/images/codxpert-logo.png",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "All",

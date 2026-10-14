@@ -1,10 +1,12 @@
 User-agent: *
 Allow: /
 Allow: /pricing
-Allow: /for/freelancers
-Allow: /for/contractors
-Allow: /features/e-invoicing
-Allow: /free-invoice-generator
+Allow: /solutions/
+Allow: /features/
+Allow: /guides/
+Allow: /tools/
+Allow: /templates/
+Allow: /vs/
 Allow: /contact
 Allow: /terms
 Allow: /privacy

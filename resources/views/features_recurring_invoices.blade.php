@@ -196,7 +196,7 @@
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="{{ route('register') }}" class="btn-brand-primary">Start Free Trial Now</a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn-brand-secondary">Try Live Generator</a>
+                <a href="{{ route('tools.invoice-generator') }}" class="btn-brand-secondary">Try Live Generator</a>
             </div>
             <p class="text-muted fs-8 mt-3 mb-0">⚡ 100% Free during open beta · No credit card required</p>
         </div>

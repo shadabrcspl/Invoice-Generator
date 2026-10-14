@@ -6,11 +6,11 @@
     <title>FEMA 23(R) Service Export Declaration & HDFC EDF Guide (2026) | Cod Xpert</title>
     <meta name="description" content="Master guide to FEMA 23(R) Service Export Declaration and HDFC Bank EDF compliance for Indian IT exporters, freelancers, and software agencies. Learn how to clear inward remittances, reconcile SAC codes, and generate e-BRCs.">
     <meta name="keywords" content="FEMA 23R, Service Export Declaration, HDFC EDF declaration, inward remittance clearance, IT export compliance India, SAC code 998314, FIRC eBRC, Softex vs FEMA declaration, RBI EDPMS IRM">
-    <link rel="canonical" href="{{ url('/fema-23r-guide') }}">
+    <link rel="canonical" href="{{ url('/guides/fema-23r') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="{{ url('/fema-23r-guide') }}">
+    <meta property="og:url" content="{{ url('/guides/fema-23r') }}">
     <meta property="og:title" content="FEMA 23(R) Service Export Declaration & HDFC EDF Guide (2026) | Cod Xpert">
     <meta property="og:description" content="Step-by-step compliance playbook on clearing foreign currency wires, filling the HDFC Service Export Declaration & Request Letter, SAC codes, and avoiding RBI remittance holds.">
     <meta property="og:image" content="{{ asset('favicon-192x192.png') }}">
@@ -43,7 +43,7 @@
                 "dateModified": "2026-10-14",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
-                    "@id": "{{ url('/fema-23r-guide') }}"
+                    "@id": "{{ url('/guides/fema-23r') }}"
                 }
             },
             {

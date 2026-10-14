@@ -6,11 +6,11 @@
     <title>Free Word Invoice Templates (.docx) | Download Editable Templates | Cod Xpert</title>
     <meta name="description" content="Download free editable Microsoft Word invoice templates (.docx) for Indian businesses, freelancers, and exporters. Fully formatted with GST, HSN/SAC, LUT zero-rating, and Google Docs support.">
     <meta name="keywords" content="invoice template word, free invoice template docx, download word invoice template, blank invoice template microsoft word, gst invoice docx, export invoice word template">
-    <link rel="canonical" href="{{ url('/templates/invoice-template-word') }}">
+    <link rel="canonical" href="{{ url('/templates/word-invoice-template') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/templates/invoice-template-word') }}">
+    <meta property="og:url" content="{{ url('/templates/word-invoice-template') }}">
     <meta property="og:title" content="Free Word Invoice Templates (.docx) | Download Editable Templates | Cod Xpert">
     <meta property="og:description" content="Download 100% free Microsoft Word invoice templates (.docx). Includes Corporate GST, Freelancer Consultant, and Statutory Export formats.">
     <meta property="og:image" content="{{ asset('favicon-192x192.png') }}">
@@ -235,7 +235,7 @@
                     </svg>
                     Excel Templates (.xlsx)
                 </a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2.5 fw-semibold">
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2.5 fw-semibold">
                     Free Web Generator (Instant PDF)
                 </a>
             </div>
@@ -486,7 +486,7 @@
                             <li><strong class="text-primary">✓</strong> Live RBI foreign currency exchange rates for USD, EUR, GBP, AED</li>
                             <li><strong class="text-primary">✓</strong> 1-Click instant PDF download — zero registration required</li>
                         </ul>
-                        <a href="{{ route('free-invoice-generator') }}" class="btn btn-primary rounded-pill px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-2">
+                        <a href="{{ route('tools.invoice-generator') }}" class="btn btn-primary rounded-pill px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-2">
                             <span>Open Free Invoice Maker</span>
                             <span>&rarr;</span>
                         </a>
@@ -546,7 +546,7 @@
                 Don't waste time formatting tables in Word. Use CodXpert's free browser-based generator to produce audit-ready PDF invoices instantly.
             </p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="{{ route('free-invoice-generator') }}" class="btn-brand-primary">
+                <a href="{{ route('tools.invoice-generator') }}" class="btn-brand-primary">
                     Launch Free Online Generator
                 </a>
                 <a href="{{ route('templates.excel') }}" class="btn btn-outline-light rounded-pill px-4 py-2.5 fw-semibold">

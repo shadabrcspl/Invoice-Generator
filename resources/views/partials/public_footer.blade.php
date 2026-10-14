@@ -149,11 +149,11 @@
             <div class="col-lg-2 col-md-6 col-6">
                 <h6>Solutions</h6>
                 <ul>
-                    <li><a href="{{ route('for.small-business') }}">For Small Business</a></li>
-                    <li><a href="{{ route('for.agencies') }}">For Digital Agencies</a></li>
-                    <li><a href="{{ route('for.consultants') }}">For Consultants</a></li>
-                    <li><a href="{{ route('for.freelancers') }}">For Freelancers</a></li>
-                    <li><a href="{{ route('for.contractors') }}">For Contractors</a></li>
+                    <li><a href="{{ route('solutions.small-business') }}">For Small Business</a></li>
+                    <li><a href="{{ route('solutions.agencies') }}">For Digital Agencies</a></li>
+                    <li><a href="{{ route('solutions.consultants') }}">For Consultants</a></li>
+                    <li><a href="{{ route('solutions.freelancers') }}">For Freelancers</a></li>
+                    <li><a href="{{ route('solutions.contractors') }}">For Contractors</a></li>
                     <li><a href="{{ url('/') }}">For Global Exporters</a></li>
                 </ul>
             </div>
@@ -163,7 +163,7 @@
                 <h6>Free Tools</h6>
                 <ul>
                     <li>
-                        <a href="{{ route('free-invoice-generator') }}">
+                        <a href="{{ route('tools.invoice-generator') }}">
                             <span>Invoice Generator</span>
                             <span class="badge bg-primary text-white" style="font-size: 9px;">Free</span>
                         </a>
@@ -179,9 +179,9 @@
             <div class="col-lg-2 col-md-6 col-6">
                 <h6>Resources</h6>
                 <ul>
-                    <li><a href="{{ route('guide.fema-23r') }}">FEMA 23(R) Guide <span class="badge bg-danger text-white" style="font-size: 8px;">New</span></a></li>
-                    <li><a href="{{ route('guide.gst-lut') }}">GST LUT Rule 96A Guide</a></li>
-                    <li><a href="{{ route('guide.firc-e-brc') }}">FIRC & e-BRC Guide</a></li>
+                    <li><a href="{{ route('guides.fema-23r') }}">FEMA 23(R) Guide <span class="badge bg-danger text-white" style="font-size: 8px;">New</span></a></li>
+                    <li><a href="{{ route('guides.gst-lut') }}">GST LUT Rule 96A Guide</a></li>
+                    <li><a href="{{ route('guides.firc-e-brc') }}">FIRC & e-BRC Guide</a></li>
                     <li><a href="{{ route('vs.zoho-invoice') }}">vs Zoho Invoice</a></li>
                     <li><a href="{{ route('vs.tally-prime') }}">vs Tally Prime</a></li>
                     <li><a href="{{ route('pricing') }}">Pricing & Plans</a></li>

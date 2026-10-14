@@ -236,7 +236,7 @@
                     </svg>
                     Word Templates (.docx)
                 </a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2.5 fw-semibold">
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2.5 fw-semibold">
                     Free Web Generator (Instant PDF)
                 </a>
             </div>
@@ -483,7 +483,7 @@
                             <li><strong class="text-success">✓</strong> Automatic sequential invoice numbers with prefix customization</li>
                             <li><strong class="text-success">✓</strong> 1-Click instant PDF export and client status tracking</li>
                         </ul>
-                        <a href="{{ route('free-invoice-generator') }}" class="btn btn-success rounded-pill px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-2">
+                        <a href="{{ route('tools.invoice-generator') }}" class="btn btn-success rounded-pill px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-2">
                             <span>Use Free Online Generator</span>
                             <span>&rarr;</span>
                         </a>
@@ -543,7 +543,7 @@
                 Tired of managing spreadsheets? Use CodXpert's free browser-based generator for automatic calculations, live currency rates, and instant PDF delivery.
             </p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-success rounded-pill px-4 py-2.5 fw-bold shadow-sm">
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-success rounded-pill px-4 py-2.5 fw-bold shadow-sm">
                     Open Free Online Generator
                 </a>
                 <a href="{{ route('templates.word') }}" class="btn btn-outline-light rounded-pill px-4 py-2.5 fw-semibold">

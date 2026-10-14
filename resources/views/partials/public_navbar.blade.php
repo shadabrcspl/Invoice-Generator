@@ -157,35 +157,35 @@
                         <span>Solutions</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-modern" style="min-width: 300px;">
-                        <a href="{{ route('for.small-business') }}" class="dropdown-item-modern">
+                        <a href="{{ route('solutions.small-business') }}" class="dropdown-item-modern">
                             <div class="item-icon">🏢</div>
                             <div>
                                 <div class="item-title">Small Businesses</div>
                                 <div class="item-desc">Fast, cloud-based GST billing without ERP bloat.</div>
                             </div>
                         </a>
-                        <a href="{{ route('for.agencies') }}" class="dropdown-item-modern">
+                        <a href="{{ route('solutions.agencies') }}" class="dropdown-item-modern">
                             <div class="item-icon">🎨</div>
                             <div>
                                 <div class="item-title">Digital & Creative Agencies</div>
                                 <div class="item-desc">Manage client retainers and cross-border billing.</div>
                             </div>
                         </a>
-                        <a href="{{ route('for.consultants') }}" class="dropdown-item-modern">
+                        <a href="{{ route('solutions.consultants') }}" class="dropdown-item-modern">
                             <div class="item-icon">💼</div>
                             <div>
                                 <div class="item-title">Independent Consultants</div>
                                 <div class="item-desc">Hourly rates, fractional CXO & advisory retainers.</div>
                             </div>
                         </a>
-                        <a href="{{ route('for.freelancers') }}" class="dropdown-item-modern">
+                        <a href="{{ route('solutions.freelancers') }}" class="dropdown-item-modern">
                             <div class="item-icon">💻</div>
                             <div>
                                 <div class="item-title">Freelancers</div>
                                 <div class="item-desc">Sleek international invoices with foreign wire details.</div>
                             </div>
                         </a>
-                        <a href="{{ route('for.contractors') }}" class="dropdown-item-modern">
+                        <a href="{{ route('solutions.contractors') }}" class="dropdown-item-modern">
                             <div class="item-icon">🔨</div>
                             <div>
                                 <div class="item-title">Contractors</div>
@@ -201,7 +201,7 @@
                         <span>Tools & Templates</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-modern" style="min-width: 310px;">
-                        <a href="{{ route('free-invoice-generator') }}" class="dropdown-item-modern">
+                        <a href="{{ route('tools.invoice-generator') }}" class="dropdown-item-modern">
                             <div class="item-icon" style="background:#e0f2fe; color:#0284c7;">🚀</div>
                             <div>
                                 <div class="item-title d-flex align-items-center gap-2">
@@ -241,14 +241,24 @@
                         <span>Guides & Compare</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-modern" style="min-width: 320px;">
-                        <a href="{{ route('guide.gst-lut') }}" class="dropdown-item-modern">
+                        <a href="{{ route('guides.fema-23r') }}" class="dropdown-item-modern">
+                            <div class="item-icon">🛡️</div>
+                            <div>
+                                <div class="item-title d-flex align-items-center gap-2">
+                                    <span>FEMA 23(R) Export Guide</span>
+                                    <span class="badge bg-danger text-white" style="font-size: 9px;">New</span>
+                                </div>
+                                <div class="item-desc">Service export declarations & HDFC bank clearance.</div>
+                            </div>
+                        </a>
+                        <a href="{{ route('guides.gst-lut') }}" class="dropdown-item-modern">
                             <div class="item-icon">📜</div>
                             <div>
                                 <div class="item-title">GST LUT Rule 96A Masterclass</div>
                                 <div class="item-desc">How to file RFD-11 & export at 0% tax without IGST.</div>
                             </div>
                         </a>
-                        <a href="{{ route('guide.firc-e-brc') }}" class="dropdown-item-modern">
+                        <a href="{{ route('guides.firc-e-brc') }}" class="dropdown-item-modern">
                             <div class="item-icon">🏦</div>
                             <div>
                                 <div class="item-title">FIRC & e-BRC Reconciliation Guide</div>

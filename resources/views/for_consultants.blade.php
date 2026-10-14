@@ -6,11 +6,11 @@
     <title>Invoicing Software for Consultants | Hourly & Retainer Billing | Cod Xpert</title>
     <meta name="description" content="Professional invoicing software for independent and management consultants. Track billable hours, bill multi-currency international clients, and automate LUT compliance.">
     <meta name="keywords" content="invoicing software for consultants, consultant invoice generator, consulting billing software, hourly invoice for consultants, management consultant invoice template">
-    <link rel="canonical" href="{{ url('/for/consultants') }}">
+    <link rel="canonical" href="{{ url('/solutions/consultants') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/for/consultants') }}">
+    <meta property="og:url" content="{{ url('/solutions/consultants') }}">
     <meta property="og:title" content="Invoicing Software for Consultants | Hourly & Retainer Billing | Cod Xpert">
     <meta property="og:description" content="Deliver consulting invoices that reflect your professional caliber. Hourly rates, milestone billing, multi-currency conversion, and GST LUT export support.">
 
@@ -183,7 +183,7 @@
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="{{ route('register') }}" class="btn-brand-primary">Start Invoicing Free</a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-semibold">Try Free Generator</a>
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-semibold">Try Free Generator</a>
             </div>
         </div>
     </header>

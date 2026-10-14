@@ -8,11 +8,11 @@
     <title>Invoicing Software for Contractors & Consultants | Cod Xpert Invoices</title>
     <meta name="description" content="Professional invoicing software built for independent contractors, IT consultants, and commercial service providers. Milestone billing, multi-currency support, and expense tracking.">
     <meta name="keywords" content="contractor invoicing software, best invoicing software for contractors, template invoice contractor, commercial contractor billing, independent contractor invoice">
-    <link rel="canonical" href="{{ url('/for/contractors') }}">
+    <link rel="canonical" href="{{ url('/solutions/contractors') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/for/contractors') }}">
+    <meta property="og:url" content="{{ url('/solutions/contractors') }}">
     <meta property="og:title" content="Contractor Invoicing Software | Cod Xpert Invoices">
     <meta property="og:description" content="Milestone billing, multi-currency support, expense tracking, and clean professional PDF generation for contractors.">
 
@@ -207,7 +207,7 @@
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="{{ route('register') }}" class="btn-brand-primary">Start Contractor Plan Free →</a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-secondary py-3 px-4 rounded-3 fw-semibold">Instant Sample Invoice</a>
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-secondary py-3 px-4 rounded-3 fw-semibold">Instant Sample Invoice</a>
             </div>
         </div>
     </header>

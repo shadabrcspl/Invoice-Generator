@@ -6,11 +6,11 @@
     <title>Invoicing Software for Digital Agencies | Retainers & Client Billing | Cod Xpert</title>
     <meta name="description" content="Purpose-built agency invoicing software. Manage monthly client retainers, project milestone billing, multi-currency foreign accounts, and automatic payment tracking.">
     <meta name="keywords" content="invoicing software for agencies, agency billing software, digital agency retainer billing, marketing agency invoicing, multi-currency agency billing">
-    <link rel="canonical" href="{{ url('/for/agencies') }}">
+    <link rel="canonical" href="{{ url('/solutions/agencies') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/for/agencies') }}">
+    <meta property="og:url" content="{{ url('/solutions/agencies') }}">
     <meta property="og:title" content="Invoicing Software for Digital Agencies | Retainers & Client Billing | Cod Xpert">
     <meta property="og:description" content="Put your agency's retainer billing on autopilot. Multi-currency, automated payment tracking, and zero manual hassle.">
 

@@ -183,7 +183,7 @@
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="{{ route('register') }}" class="btn-brand-primary">Start Creating Quotes Free</a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-semibold">Try Free Generator</a>
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-semibold">Try Free Generator</a>
             </div>
         </div>
     </header>

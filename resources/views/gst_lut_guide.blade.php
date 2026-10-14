@@ -6,11 +6,11 @@
     <title>GST LUT Rule 96A Guide for Exporters | Filing & Invoice Compliance | Cod Xpert</title>
     <meta name="description" content="Complete 2026 guide on Letter of Undertaking (LUT) under GST Rule 96A for service and goods exporters in India. Learn filing steps, mandatory invoice declarations, and ARN tracking.">
     <meta name="keywords" content="GST LUT guide, export of services under LUT, Rule 96A GST, letter of undertaking GST, zero rated supply without payment of IGST, LUT invoice declaration format">
-    <link rel="canonical" href="{{ url('/gst-lut-guide') }}">
+    <link rel="canonical" href="{{ url('/guides/gst-lut') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="{{ url('/gst-lut-guide') }}">
+    <meta property="og:url" content="{{ url('/guides/gst-lut') }}">
     <meta property="og:title" content="GST LUT Rule 96A Guide for Exporters | Filing & Invoice Compliance | Cod Xpert">
     <meta property="og:description" content="Master GST LUT Rule 96A compliance. How to file RFD-11, generate zero-rated export invoices, and avoid working capital blockage.">
 

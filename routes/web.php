@@ -87,11 +87,20 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pricing', [App\Http\Controllers\HomeController::class, 'pricing'])->name('pricing');
-Route::get('/for/freelancers', [App\Http\Controllers\HomeController::class, 'forFreelancers'])->name('for.freelancers');
-Route::get('/for/contractors', [App\Http\Controllers\HomeController::class, 'forContractors'])->name('for.contractors');
-Route::get('/for/small-business', [App\Http\Controllers\HomeController::class, 'forSmallBusiness'])->name('for.small-business');
-Route::get('/for/agencies', [App\Http\Controllers\HomeController::class, 'forAgencies'])->name('for.agencies');
-Route::get('/for/consultants', [App\Http\Controllers\HomeController::class, 'forConsultants'])->name('for.consultants');
+
+// Solutions by Persona & Industry (Enterprise Silo)
+Route::get('/solutions/freelancers', [App\Http\Controllers\HomeController::class, 'forFreelancers'])->name('solutions.freelancers');
+Route::get('/solutions/contractors', [App\Http\Controllers\HomeController::class, 'forContractors'])->name('solutions.contractors');
+Route::get('/solutions/small-business', [App\Http\Controllers\HomeController::class, 'forSmallBusiness'])->name('solutions.small-business');
+Route::get('/solutions/agencies', [App\Http\Controllers\HomeController::class, 'forAgencies'])->name('solutions.agencies');
+Route::get('/solutions/consultants', [App\Http\Controllers\HomeController::class, 'forConsultants'])->name('solutions.consultants');
+
+// 301 Redirects for Legacy /for/ URLs
+Route::permanentRedirect('/for/freelancers', '/solutions/freelancers');
+Route::permanentRedirect('/for/contractors', '/solutions/contractors');
+Route::permanentRedirect('/for/small-business', '/solutions/small-business');
+Route::permanentRedirect('/for/agencies', '/solutions/agencies');
+Route::permanentRedirect('/for/consultants', '/solutions/consultants');
 
 // Feature Pillars
 Route::get('/features/e-invoicing', [App\Http\Controllers\HomeController::class, 'featuresEInvoicing'])->name('features.e-invoicing');
@@ -100,20 +109,29 @@ Route::get('/features/invoice-tracking', [App\Http\Controllers\HomeController::c
 Route::get('/features/multi-currency', [App\Http\Controllers\HomeController::class, 'featuresMultiCurrency'])->name('features.multi-currency');
 Route::get('/features/quotations', [App\Http\Controllers\HomeController::class, 'featuresQuotations'])->name('features.quotations');
 
-// Statutory Guides
-Route::get('/gst-lut-guide', [App\Http\Controllers\HomeController::class, 'gstLutGuide'])->name('guide.gst-lut');
-Route::get('/firc-e-brc-guide', [App\Http\Controllers\HomeController::class, 'fircEBrcGuide'])->name('guide.firc-e-brc');
-Route::get('/fema-23r-guide', [App\Http\Controllers\HomeController::class, 'fema23rGuide'])->name('guide.fema-23r');
+// Statutory Guides (Enterprise Silo)
+Route::get('/guides/gst-lut', [App\Http\Controllers\HomeController::class, 'gstLutGuide'])->name('guides.gst-lut');
+Route::get('/guides/firc-e-brc', [App\Http\Controllers\HomeController::class, 'fircEBrcGuide'])->name('guides.firc-e-brc');
+Route::get('/guides/fema-23r', [App\Http\Controllers\HomeController::class, 'fema23rGuide'])->name('guides.fema-23r');
+
+// 301 Redirects for Legacy Guide URLs
+Route::permanentRedirect('/gst-lut-guide', '/guides/gst-lut');
+Route::permanentRedirect('/firc-e-brc-guide', '/guides/firc-e-brc');
+Route::permanentRedirect('/fema-23r-guide', '/guides/fema-23r');
 
 // Competitor Comparisons
 Route::get('/vs/zoho-invoice', [App\Http\Controllers\HomeController::class, 'vsZohoInvoice'])->name('vs.zoho-invoice');
 Route::get('/vs/tally-prime', [App\Http\Controllers\HomeController::class, 'vsTallyPrime'])->name('vs.tally-prime');
 
-// Tools & Free Templates
-Route::get('/free-invoice-generator', [App\Http\Controllers\HomeController::class, 'freeInvoiceGenerator'])->name('free-invoice-generator');
+// Free Tools & Calculators (Enterprise Silo)
+Route::get('/tools/invoice-generator', [App\Http\Controllers\HomeController::class, 'freeInvoiceGenerator'])->name('tools.invoice-generator');
 Route::get('/tools/forex-calculator', [App\Http\Controllers\HomeController::class, 'toolsForexCalculator'])->name('tools.forex-calculator');
-Route::get('/templates/invoice-template-word', [App\Http\Controllers\HomeController::class, 'templatesWord'])->name('templates.word');
+Route::permanentRedirect('/free-invoice-generator', '/tools/invoice-generator');
+
+// Templates (Standardized Format-First Hierarchy)
+Route::get('/templates/word-invoice-template', [App\Http\Controllers\HomeController::class, 'templatesWord'])->name('templates.word');
 Route::get('/templates/excel-invoice-template', [App\Http\Controllers\HomeController::class, 'templatesExcel'])->name('templates.excel');
+Route::permanentRedirect('/templates/invoice-template-word', '/templates/word-invoice-template');
 Route::get('/downloads/template/{filename}', [App\Http\Controllers\HomeController::class, 'downloadTemplate'])->name('templates.download');
 
 // Contact Desk (GET renders dedicated page, POST handles submission)

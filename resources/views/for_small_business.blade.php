@@ -6,11 +6,11 @@
     <title>Invoicing Software for Small Business | Fast, Easy & Compliant | Cod Xpert</title>
     <meta name="description" content="Purpose-built invoicing software for growing small businesses. Manage multi-currency clients, auto-apply GST/LUT compliance, automate payment tracking, and get paid faster.">
     <meta name="keywords" content="invoicing software for small business, small business invoice generator, simple billing software for small business, GST invoicing small business, automated invoice tracking">
-    <link rel="canonical" href="{{ url('/for/small-business') }}">
+    <link rel="canonical" href="{{ url('/solutions/small-business') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/for/small-business') }}">
+    <meta property="og:url" content="{{ url('/solutions/small-business') }}">
     <meta property="og:title" content="Invoicing Software for Small Business | Fast, Easy & Compliant | Cod Xpert">
     <meta property="og:description" content="Streamline your billing without complex accounting bloat. Multi-currency, GST LUT compliance, payment tracking, and zero setup fees.">
 

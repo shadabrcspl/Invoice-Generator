@@ -220,7 +220,7 @@
                     </div>
 
                     <div class="mt-4 text-center">
-                        <a href="{{ route('free-invoice-generator') }}" class="btn btn-primary px-4 py-2 rounded-pill fw-bold">Generate Compliant Multi-Currency Invoice</a>
+                        <a href="{{ route('tools.invoice-generator') }}" class="btn btn-primary px-4 py-2 rounded-pill fw-bold">Generate Compliant Multi-Currency Invoice</a>
                     </div>
                 </div>
 

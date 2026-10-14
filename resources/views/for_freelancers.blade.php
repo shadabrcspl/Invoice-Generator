@@ -8,11 +8,11 @@
     <title>Invoicing Software for Freelancers & Remote Professionals | Cod Xpert Invoices</title>
     <meta name="description" content="The best invoicing software for freelancers working with international clients. Multi-currency billing (USD, EUR, GBP), automated payment reminders, and zero accounting clutter.">
     <meta name="keywords" content="invoicing software for freelancers, best invoicing software for freelancers, freelance invoice generator, international freelance billing, cross border freelancer invoice">
-    <link rel="canonical" href="{{ url('/for/freelancers') }}">
+    <link rel="canonical" href="{{ url('/solutions/freelancers') }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/for/freelancers') }}">
+    <meta property="og:url" content="{{ url('/solutions/freelancers') }}">
     <meta property="og:title" content="Invoicing Software for Freelancers | Cod Xpert Invoices">
     <meta property="og:description" content="Effortless multi-currency billing, automated payment reminders, and statutory GST LUT compliance for global freelancers.">
 
@@ -207,7 +207,7 @@
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="{{ route('register') }}" class="btn-brand-primary">Start Invoicing Free →</a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-primary py-3 px-4 rounded-3 fw-semibold">Try Free Generator</a>
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-primary py-3 px-4 rounded-3 fw-semibold">Try Free Generator</a>
             </div>
         </div>
     </header>

@@ -207,7 +207,7 @@
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="{{ route('register') }}" class="btn-brand-primary">Deploy E-Invoicing Free →</a>
-                <a href="{{ route('free-invoice-generator') }}" class="btn btn-outline-primary py-3 px-4 rounded-3 fw-semibold">Generate e-Invoice Now</a>
+                <a href="{{ route('tools.invoice-generator') }}" class="btn btn-outline-primary py-3 px-4 rounded-3 fw-semibold">Generate e-Invoice Now</a>
             </div>
         </div>
     </header>
