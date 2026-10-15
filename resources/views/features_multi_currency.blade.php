@@ -209,6 +209,122 @@
             </div>
         </div>
 
+
+        <!-- Real-Time Exchange Rate Architecture -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Multi-Currency Engine Architecture & Dual-Reporting Standards</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Feature 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Automated Interbank Feeds</h5>
+                        <p class="text-muted fs-7 mb-0">Daily reference rates for USD, EUR, AED, GBP, CAD, and AUD are synchronized via secure institutional currency APIs, ensuring your billing reflects precise market exchange rates.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Feature 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Invoice Date Rate Freezing</h5>
+                        <p class="text-muted fs-7 mb-0">Once an invoice is finalized, the exchange rate on the date of supply is permanently frozen in accordance with statutory accounting standards, providing an audit-proof historical record.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Feature 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Dual Currency PDF Display</h5>
+                        <p class="text-muted fs-7 mb-0">Clients see clean foreign currency charges ($ USD, € EUR) while your accounting department sees statutory INR conversions alongside mandatory GST declarations on the same PDF.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statutory Regulatory Compliance for International Invoicing -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Statutory Compliance: RBI Reference Rates & Accounting Standard AS-11</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Invoicing international clients involves cross-border statutory compliance regulated by both the Reserve Bank of India (RBI) and the Goods and Services Tax (GST) Council.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Section 16 IGST Act & Rule 96A Exemption</h5>
+                        <p class="text-muted fs-7 mb-3">Service exports billed in foreign convertible currency qualify for zero-rated status under Section 16 of the IGST Act, provided a valid Letter of Undertaking (LUT) is filed. Cod Xpert stamps the legal LUT declaration automatically onto foreign currency invoices.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the GST LUT Rule 96A Exporter Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">FEMA 23(R) & Bank Realization Closure</h5>
+                        <p class="text-muted fs-7 mb-3">Under RBI Master Directions, export invoices must be reconciled against inward remittances within a statutory window. Cod Xpert generates standardized declarations compatible with Authorised Dealer (AD) banking desks at HDFC, ICICI, SBI, and Axis Bank.</p>
+                        <a href="{{ route('guides.fema-23r') }}" class="text-primary fw-bold fs-7 text-decoration-none">Review the FEMA 23(R) Compliance Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multi-Currency FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Multi-Currency Invoicing</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Which foreign currencies are supported?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What official rate sources does Cod Xpert use for benchmark rates?</h6>
+                    <p class="text-muted fs-7">Cod Xpert integrates authoritative benchmark exchange feeds sourced from institutional central banks including the European Central Bank (ECB) and the Reserve Bank of India (RBI) reference rate archives.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How do multi-currency invoices link with our e-BRC filings?</h6>
+                    <p class="text-muted fs-7">Every multi-currency invoice captures both foreign face value and domestic INR conversion on the supply date, giving your bank an unambiguous document to issue the Foreign Inward Remittance Certificate (FIRC).</p>
+                </div>
+
+                    <p class="text-muted fs-7">Cod Xpert supports all major global currencies including US Dollars (USD), Euros (EUR), British Pounds (GBP), UAE Dirhams (AED), Australian Dollars (AUD), and Canadian Dollars (CAD).</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I manually override an exchange rate on a specific invoice?</h6>
+                    <p class="text-muted fs-7">Yes. While the system automatically suggests the live benchmark exchange rate, you can manually adjust the rate to match a specific forward contract or bank agreement.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How does Cod Xpert handle realized forex gains and losses?</h6>
+                    <p class="text-muted fs-7">When you record payment against a foreign invoice, the system logs the net INR received and calculates the currency variance for easy entry into your accounting software under Section 43AA.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Does this work with international payment gateways like Stripe or Wise?</h6>
+                    <p class="text-muted fs-7">Yes. You can display your Wise, Payoneer, or foreign virtual account numbers (SWIFT/IBAN) directly on foreign invoices to make cross-border settlements frictionless.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multi-Currency Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Features, Invoicing Tools & Exporter Guides</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Forex Calculator</div>
+                        <span class="text-muted fs-8">Real-time wire conversion</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.e-invoicing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">E-Invoicing</div>
+                        <span class="text-muted fs-8">Statutory GST compliance</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.firc-e-brc') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">FIRC & e-BRC Guide</div>
+                        <span class="text-muted fs-8">Export remittance closure</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Multi-currency spreadsheets</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Invoice Globally with Zero Foreign Exchange Headaches</h2>

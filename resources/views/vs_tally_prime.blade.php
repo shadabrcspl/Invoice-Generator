@@ -299,6 +299,120 @@
             </div>
         </div>
 
+
+        <!-- Cloud vs Legacy Desktop Comparison Breakdown -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Why Exporters & Modern Businesses Choose CodXpert Over Tally</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Advantage 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Anywhere Cloud Access</h5>
+                        <p class="text-muted fs-7 mb-0">Unlike Tally Prime which requires Windows desktop installations and hardware license dongles, CodXpert operates in any modern browser on Mac, Windows, Linux, iPad, or mobile.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Advantage 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Automated Multi-Currency Rates</h5>
+                        <p class="text-muted fs-7 mb-0">Tally requires manual voucher rate entries for foreign currency transactions. CodXpert's <a href="{{ route('features.multi-currency') }}">Multi-Currency Engine</a> automatically captures live institutional exchange rates on the billing date.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Advantage 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Native Client-Facing PDFs</h5>
+                        <p class="text-muted fs-7 mb-0">Tally's default invoice designs look dated and corporate. CodXpert delivers sleek, modern PDFs with embedded payment links, custom bank wire details, and statutory <a href="{{ route('guides.gst-lut') }}">LUT zero-rated declarations</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Co-Existence Workflow -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Co-Existence Workflow: Using CodXpert Alongside Tally Prime</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                You don't need to replace your accountant's traditional ledger. Many high-growth Indian exporters use CodXpert for front-end client billing and export monthly GSTR-1 data directly into Tally.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Front-End Speed & Client Experience</h5>
+                        <p class="text-muted fs-7 mb-0">Your project managers and sales leads generate quotes and invoices in seconds via CodXpert without requiring access to your confidential accounting books or Tally license terminals.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">One-Click CA Tax Spreadsheets</h5>
+                        <p class="text-muted fs-7 mb-0">At month-end, download standard GSTR-1 and sales journal CSV exports from CodXpert. Your Chartered Accountant imports the data straight into Tally for annual statutory filing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tally FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions: Comparing CodXpert and Tally</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can CodXpert generate GSTR-1 reports compatible with Tally?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How does CodXpert handle recurring client retainers compared to Tally?</h6>
+                    <p class="text-muted fs-7">While Tally requires repetitive manual voucher creation each month, CodXpert features an automated <a href="{{ route('features.recurring-invoices') }}">Recurring Billing Engine</a> that creates and emails monthly retainers on schedule.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can CodXpert generate statutory FEMA export declarations?</h6>
+                    <p class="text-muted fs-7">Yes. In addition to GST Rule 96A statements, CodXpert generates standardized service export declarations compliant with <a href="{{ route('guides.fema-23r') }}">FEMA 23(R) Guidelines</a> for Indian banks.</p>
+                </div>
+
+                    <p class="text-muted fs-7">Yes. You can export clean sales registers and GSTR-1 Table 6A (Export Invoices) and Table 4B (Domestic B2B Invoices) CSV files that can be directly mapped or imported into Tally Prime.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Is there any training required to use CodXpert?</h6>
+                    <p class="text-muted fs-7">Zero. Unlike Tally which requires accounting training and complex keyboard shortcuts, CodXpert is an intuitive web app that anyone can master in under 2 minutes.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Does CodXpert support Letter of Undertaking (LUT) billing?</h6>
+                    <p class="text-muted fs-7">Yes. CodXpert natively applies 0% IGST export zero-rating and automatically stamps your statutory ARN declaration pursuant to Rule 96A onto your PDF invoices.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can multiple team members use CodXpert simultaneously?</h6>
+                    <p class="text-muted fs-7">Yes. CodXpert is a multi-user cloud platform. Team members can create estimates and track payments from any device without paying for separate multi-user desktop licenses.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tally Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Comparisons, Solutions & Free Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('vs.zoho-invoice') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">CodXpert vs Zoho</div>
+                        <span class="text-muted fs-8">Dedicated alternative</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.e-invoicing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">E-Invoicing</div>
+                        <span class="text-muted fs-8">Statutory GST compliance</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Automated tax formulas</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.fema-23r') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">FEMA 23(R) Guide</div>
+                        <span class="text-muted fs-8">Service export declarations</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Experience Next-Generation Invoicing</h2>

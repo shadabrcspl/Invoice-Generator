@@ -312,6 +312,131 @@
             </div>
 
         </div>
+
+        <!-- Enterprise Advisory & Integration Desk -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mt-5 mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Enterprise Onboarding & Statutory Migration Advisory Services</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Service 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Custom Corporate SMTP Setup</h5>
+                        <p class="text-muted fs-7 mb-0">Our engineering team assists with DNS record authentication (DKIM, SPF, DMARC) so your corporate emails dispatch directly through Google Workspace, Microsoft 365, or Amazon SES with zero spam penalties.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Service 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Chartered Accountant Consultation</h5>
+                        <p class="text-muted fs-7 mb-0">Need guidance on Letter of Undertaking (LUT) renewals or GSTR-1 Table 6A reconciliation? We coordinate directly with your accounting department to ensure seamless tax audits.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Service 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Multi-Entity & Branch Hierarchy</h5>
+                        <p class="text-muted fs-7 mb-0">For companies with operations across multiple states or international subsidiaries, we configure segregated company profiles, custom invoice prefixes, and isolated audit logs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Regulatory Advisory Consultation Framework -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Statutory Invoicing Advisory for Exporters & Chartered Accountants</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Navigating cross-border tax compliance, bank foreign remittances, and GST zero-rating requires specialist knowledge. Our compliance engineering team works directly with finance heads and CAs.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">FEMA 23(R) & AD Bank Remittance Alignment</h5>
+                        <p class="text-muted fs-7 mb-3">If your bank Authorized Dealer (AD Category-I) desk requires specific export realization schedules, purpose codes (e.g., P0802 for software services or P1007 for management consultancy), or consolidated export invoices, our compliance desk provides immediate technical assistance.</p>
+                        <a href="{{ route('guides.fema-23r') }}" class="text-primary fw-bold fs-7 text-decoration-none">Review the Complete FEMA 23(R) Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Rule 96A Letter of Undertaking (LUT) Assistance</h5>
+                        <p class="text-muted fs-7 mb-3">Filing your annual Form GST RFD-11 renewal or correcting past export invoice declarations? We provide pre-built templates, statutory wording checks, and GSTR-1 Table 6A reconciliation spreadsheets to resolve queries promptly.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the Complete GST LUT Rule 96A Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Enterprise Consultation FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions: Contact & Technical Support</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What is the guaranteed response time for technical inquiries?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our company request an in-person or virtual product walkthrough?</h6>
+                    <p class="text-muted fs-7">Yes. Our solutions engineering team hosts live interactive Zoom/Google Meet walkthroughs tailored to your finance department, demonstrating multi-currency ledgers, automated email setups, and GSTR-1 export workflows.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Where is COD XPERT headquartered in India?</h6>
+                    <p class="text-muted fs-7">COD XPERT operates from House No. 119, I.T.C. Colony, Shankarpur, Munger, Bihar 811201, India, providing software engineering and statutory billing solutions to clients across India and globally.</p>
+                </div>
+
+                    <p class="text-muted fs-7">Our support engineers review all incoming inquiries within 24 hours on business days. Enterprise tier clients receive priority 4-hour response SLAs with dedicated account managers.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can CodXpert help us migrate from Zoho, Tally, or Excel spreadsheets?</h6>
+                    <p class="text-muted fs-7">Yes. We provide automated CSV data ingestion tools and dedicated onboarding support to import your client contacts, item catalogs, and historical balances without operational downtime.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Is phone or WhatsApp support available?</h6>
+                    <p class="text-muted fs-7">Yes. You can contact our direct advisory line at +91 7979976451 during standard business hours (10:00 AM – 6:30 PM IST, Monday through Saturday) or request an executive callback.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How can our Chartered Accountant connect with CodXpert?</h6>
+                    <p class="text-muted fs-7">Select 'Monthly GSTR-1 Tax Portal Export' in the inquiry category above and include your firm's contact details. Our statutory compliance team will schedule an orientation call.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can we request custom feature developments or private API integrations?</h6>
+                    <p class="text-muted fs-7">Yes. Enterprise customers can request customized ERP sync connectors, automated banking webhooks, and private API access tailored to internal treasury workflows.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What security standards apply to contact submissions?</h6>
+                    <p class="text-muted fs-7">All contact desk submissions are encrypted in transit via TLS 1.3 and processed in full compliance with the Digital Personal Data Protection (DPDP) Act 2023.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Explore Self-Service Invoicing Resources & Guides</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.invoice-generator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Instant Generator</div>
+                        <span class="text-muted fs-8">Free browser PDF tool</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('pricing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Pricing & Plans</div>
+                        <span class="text-muted fs-8">Compare platform tiers</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.gst-lut') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">GST LUT Guide</div>
+                        <span class="text-muted fs-8">Rule 96A export zero-rating</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.fema-23r') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">FEMA 23(R) Guide</div>
+                        <span class="text-muted fs-8">Bank remittance filing</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->

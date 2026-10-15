@@ -600,6 +600,124 @@
                 </div>
             </div>
         </div>
+
+        <!-- Detailed Plan Feature Matrix -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mt-5 mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Comprehensive Plan Comparison & Feature Specifications</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-dark fw-bold">Platform Capability</th>
+                            <th class="text-dark fw-bold">Free Community Plan</th>
+                            <th class="text-primary fw-bold">Professional Exporter</th>
+                            <th class="text-dark fw-bold">Enterprise Custom</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-7 text-muted">
+                        <tr>
+                            <td class="fw-semibold text-dark">Monthly Active Invoices</td>
+                            <td>Up to 10 invoices / month.</td>
+                            <td>Unlimited invoices.</td>
+                            <td>Unlimited with dedicated API access.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Multi-Currency Engine</td>
+                            <td>Standard USD, EUR, INR conversions.</td>
+                            <td>Full live forex (USD, EUR, GBP, AED, CAD, AUD).</td>
+                            <td>Live forex with forward contract locks.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Statutory GST LUT Stamping</td>
+                            <td>Included under <a href="{{ route('guides.gst-lut') }}">Rule 96A</a>.</td>
+                            <td>Included with auto-renewal alerts.</td>
+                            <td>Included with multi-state GSTIN mapping.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Custom Corporate SMTP</td>
+                            <td>CodXpert default mailer.</td>
+                            <td>Your own domain (Google, O365, SES).</td>
+                            <td>Dedicated IP pool with custom DKIM/SPF.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Payment Tracking & Reminders</td>
+                            <td>Manual payment marking.</td>
+                            <td>Automated overdue reminder schedules via <a href="{{ route('features.invoice-tracking') }}">Invoice Tracking</a>.</td>
+                            <td>Custom escalation rules & webhook notifications.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Tax Exports for Accountants</td>
+                            <td>Manual CSV export.</td>
+                            <td>1-Click GSTR-1 Table 6A & 4B spreadsheets.</td>
+                            <td>Direct ERP integration & CA portal access.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- In-Depth Pricing FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Pricing & Plans</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I start using CodXpert without entering credit card details?</h6>
+                    <p class="text-muted fs-7">Yes. You can sign up and start generating statutory export invoices immediately with zero payment details required. No surprise bills or hidden fees.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Are there any restrictions on the free trial?</h6>
+                    <p class="text-muted fs-7">During the introductory rollout, you enjoy full access to all professional capabilities, including multi-currency conversions, PDF downloads, and custom email dispatch.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How does CodXpert save money compared to traditional accounting software?</h6>
+                    <p class="text-muted fs-7">Traditional software like Tally requires desktop hardware licenses, local maintenance, and manual currency data entry. CodXpert automates forex rates, saves CA reconciliation hours, and eliminates IGST cash flow blockage under Rule 96A.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our Chartered Accountant access our billing records for free?</h6>
+                    <p class="text-muted fs-7">Yes. You can download formatted CSV and Excel spreadsheets tailored for GSTR-1, GSTR-3B, and Income Tax profit & loss accounting at any time with no extra seat fees.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What if our business requires a custom enterprise SLA or deployment?</h6>
+                    <p class="text-muted fs-7">We offer tailored enterprise arrangements including on-premises deployment, dedicated private database clusters, and custom API integrations. Visit our <a href="{{ route('contact.view') }}">Contact Desk</a> for an enterprise briefing.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I downgrade or cancel my account at any time?</h6>
+                    <p class="text-muted fs-7">Yes. There are zero lock-in contracts. You can export all your past billing records, client databases, and tax audit logs as CSV or PDF archives whenever you wish.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Explore Tailored Industry Solutions & Compliance Guides</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.small-business') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Small Business</div>
+                        <span class="text-muted fs-8">Purpose-built invoicing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.agencies') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Agencies</div>
+                        <span class="text-muted fs-8">Retainer & campaign billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.gst-lut') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">GST LUT Guide</div>
+                        <span class="text-muted fs-8">0% IGST export compliance</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.fema-23r') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">FEMA 23(R) Guide</div>
+                        <span class="text-muted fs-8">RBI export declarations</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->

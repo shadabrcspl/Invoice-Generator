@@ -303,6 +303,117 @@
             </div>
         </div>
 
+
+
+        <!-- Managing Retainer Proration & Failed Collections -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Handling Mid-Month Prorations & Scope Addendums</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                When clients onboard mid-cycle or adjust their monthly engagement scope, Cod Xpert manages billing variations cleanly.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Automated Mid-Month Prorations</h5>
+                        <p class="text-muted fs-7 mb-0">Easily generate partial-period invoices for clients who start mid-month, aligning future billings seamlessly with the first of each subsequent calendar month with zero manual math errors.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Scope Addendums & Ad-Hoc Charges</h5>
+                        <p class="text-muted fs-7 mb-0">Need to bill for out-of-scope work or bonus milestones? Attach ad-hoc line items to upcoming recurring runs or generate one-off supplemental invoices in 1-click via <a href="{{ route('features.quotations') }}">Quotations</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statutory Requirements for Continuous Supply of Services -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Continuous Supply of Services under GST Law (Section 31(5))</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                When delivering ongoing digital marketing, software maintenance, or consulting services under long-term retainers, Indian GST legislation defines strict rules for continuous supply.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Section 31(5)(a) Due Date Determination</h5>
+                        <p class="text-muted fs-7 mb-3">Where the contract provides for a predetermined date of payment (e.g., 1st or 5th of every month), the invoice must be issued on or before that due date. Cod Xpert's automated background scheduler executes on your designated schedule so invoices are legally dated and dispatched on time.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the GST LUT Rule 96A Retainer Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Recurring Exchange Rate Freezes</h5>
+                        <p class="text-muted fs-7 mb-3">For international retainers denominated in USD, EUR, or GBP, each recurring generation captures the official interbank rate on that specific generation date. This guarantees accurate financial reporting under <a href="{{ route('features.multi-currency') }}">Multi-Currency Standards</a> and simplifies year-end CA audits.</p>
+                        <a href="{{ route('tools.forex-calculator') }}" class="text-primary fw-bold fs-7 text-decoration-none">Check Exchange Rate Calculation Mechanics →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recurring Invoicing FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Recurring Invoices</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What scheduling frequencies are supported?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I attach static terms or service level agreements (SLAs) to recurring invoices?</h6>
+                    <p class="text-muted fs-7">Yes. You can define static boilerplate terms, SLA commitments, and payment wire details that append automatically to each recurring monthly generation.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What happens if an automated recurring dispatch fails due to an invalid email?</h6>
+                    <p class="text-muted fs-7">The system logs the delivery failure in your dashboard audit queue, highlights the affected client record, and alerts your billing administrator immediately.</p>
+                </div>
+
+                    <p class="text-muted fs-7">You can set up recurring invoice schedules on weekly, bi-weekly, monthly, quarterly, semi-annual, or annual cadences. You can also specify an optional end date or total occurrence limit.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can recurring invoices be sent automatically without manual review?</h6>
+                    <p class="text-muted fs-7">Yes. You can configure full auto-pilot mode where Cod Xpert generates the PDF and emails it directly to your client via your authenticated corporate SMTP domain on the scheduled date.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How do automated overdue reminders work?</h6>
+                    <p class="text-muted fs-7">If a client fails to settle an invoice within the designated payment window (e.g., Net-15 or Net-30), our <a href="{{ route('features.invoice-tracking') }}">Invoice Tracking System</a> dispatches gentle follow-ups at 7, 14, and 21 days past due.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I pause or edit an active recurring retainer schedule?</h6>
+                    <p class="text-muted fs-7">Yes. You can pause, adjust monthly fees, update line items, or cancel an active recurring profile at any time with immediate effect.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recurring Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Features, Solutions & Templates</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.agencies') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Agencies</div>
+                        <span class="text-muted fs-8">Retainer & campaign billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.quotations') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Quotations</div>
+                        <span class="text-muted fs-8">Convert accepted estimates</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.e-invoicing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">E-Invoicing</div>
+                        <span class="text-muted fs-8">Statutory GST compliance</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Download recurring sheets</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Put Your Monthly Client Billing on Autopilot</h2>

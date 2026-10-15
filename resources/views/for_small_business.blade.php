@@ -272,7 +272,107 @@
                 </div>
                 <div class="col-md-6">
                     <h6 class="fw-bold text-dark mb-2">How much does Cod Xpert cost for small businesses?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can we manage multi-location branches and separate GSTINs?</h6>
+                    <p class="text-muted fs-7">Yes. You can configure multiple company profiles and branch addresses with their respective state GSTINs, state jurisdiction codes, and dedicated invoice numbering sequences.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How does Cod Xpert maintain audit trails for company auditors?</h6>
+                    <p class="text-muted fs-7">Every invoice created, modified, sent, or settled has an immutable system audit trail recording the timestamp, IP address, user account, and exact revision history for seamless annual auditing.</p>
+                </div>
+
                     <p class="text-muted fs-7">We are offering full access on a free trial with zero credit card required. Generate unlimited invoices and scale without subscription pressure.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 4-Stage Financial Workflow Section -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">A Complete Financial Operations Lifecycle for Growing Businesses</h3>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Phase 1</div>
+                        <h6 class="fw-bold text-dark mb-2">Estimates & Quotations</h6>
+                        <p class="text-muted fs-8 mb-2">Draft accurate client proposals with custom tax tiers and catalog pricing using our <a href="{{ route('features.quotations') }}" class="text-primary fw-semibold text-decoration-none">Quotations to Invoices</a> module. Secure client sign-off with immutable revision tracking.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Phase 2</div>
+                        <h6 class="fw-bold text-dark mb-2">Multi-Currency Invoicing</h6>
+                        <p class="text-muted fs-8 mb-2">Convert accepted quotes into statutory tax invoices in 1-click. Apply live exchange rate benchmarks via our <a href="{{ route('features.multi-currency') }}" class="text-primary fw-semibold text-decoration-none">Multi-Currency Engine</a> and lock currency conversion rates on invoice date.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Phase 3</div>
+                        <h6 class="fw-bold text-dark mb-2">Automated Tracking & Reminders</h6>
+                        <p class="text-muted fs-8 mb-2">Monitor settlement velocity in real time. Deploy non-intrusive payment notifications via <a href="{{ route('features.invoice-tracking') }}" class="text-primary fw-semibold text-decoration-none">Invoice Tracking</a> and dispatch from your verified corporate domain with zero spam penalties.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Phase 4</div>
+                        <h6 class="fw-bold text-dark mb-2">GSTR-1 & Audit Closure</h6>
+                        <p class="text-muted fs-8 mb-2">Generate export-ready GSTR-1 Table 6A CSV returns automatically. Match foreign inflows against bank remittances in line with <a href="{{ route('guides.fema-23r') }}" class="text-primary fw-semibold text-decoration-none">FEMA 23(R) Guidelines</a> and prepare for annual CA reviews.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statutory Compliance & Tax Architecture for Indian MSMEs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Statutory Compliance Built for Indian MSMEs and Exporters</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Operating a growing business requires rigorous adherence to statutory regulations. Cod Xpert automates tax calculations and regulatory declarations, shielding your enterprise from hefty penalties.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">Zero-Rated Export Billing Under Rule 96A</h5>
+                        <p class="text-muted fs-7 mb-3">If your business delivers software development, consulting, design, or engineering services to foreign clients, you are entitled to export with 0% IGST under a valid Letter of Undertaking (LUT). Cod Xpert embeds the mandatory statutory declaration required by the GST Department directly into your PDF invoices, eliminating manual paperwork errors.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the Complete GST LUT Rule 96A Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">Foreign Remittance & Bank Realization Tracking</h5>
+                        <p class="text-muted fs-7 mb-3">Inward remittances received via international wire or payment gateways must be reconciled with your invoice value to obtain a Foreign Inward Remittance Certificate (FIRC) or electronic Bank Realisation Certificate (e-BRC). Our built-in ledger matches payments against benchmark rates to ensure error-free documentation.</p>
+                        <a href="{{ route('guides.firc-e-brc') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the FIRC & e-BRC Reconciliation Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inter-Connected Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Explore Related Solutions, Specialized Guides & Free Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.agencies') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Digital Agencies</div>
+                        <span class="text-muted fs-8">Retainers & project billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.consultants') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Consultants</div>
+                        <span class="text-muted fs-8">Hourly & milestone invoices</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Live Forex Calculator</div>
+                        <span class="text-muted fs-8">Real-time currency converter</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Free Excel Templates</div>
+                        <span class="text-muted fs-8">Automated tax spreadsheets</span>
+                    </a>
                 </div>
             </div>
         </div>

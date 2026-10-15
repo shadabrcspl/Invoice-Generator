@@ -237,6 +237,67 @@
                         <li><strong>Store Inward Advice PDFs alongside invoices</strong> inside your Cod Xpert workspace for audit-ready CA verification.</li>
                     </ul>
 
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">6. Payment Gateways (Stripe, Wise, Payoneer) & Bank Advice Documents</h2>
+                    <p class="text-secondary leading-relaxed mb-3">
+                        Modern service exporters frequently receive overseas payments through third-party platforms rather than traditional wire transfers. Obtaining valid proof of foreign realization requires understanding their routing:
+                    </p>
+                    <ul class="text-secondary leading-relaxed mb-4">
+                        <li><strong>Wise Business Remittances:</strong> Wise routes funds into India through partner AD Category-I banks (such as HDFC Bank, Yes Bank, or ICICI). You must download the partner bank Foreign Inward Remittance Advice (FIRA) directly from the Wise dashboard.</li>
+                        <li><strong>Stripe India Cross-Border Settlements:</strong> Stripe partners with domestic authorized banks to process export transactions. Each export payout is accompanied by a digitally signed FIRC statement containing the specific transaction reference and beneficiary GSTIN.</li>
+                        <li><strong>Payoneer Inward Transfers:</strong> Payoneer provides a FIRA / FIRC download service for all funds withdrawn to Indian bank accounts, typically generated within 2-3 business days following fund transfer.</li>
+                    </ul>
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">7. DGFT Electronic Bank Realization (e-BRC) Self-Certification Workflow</h2>
+                    <p class="text-secondary leading-relaxed mb-3">
+                        Under the Directorate General of Foreign Trade (DGFT) Foreign Trade Policy (FTP 2023), exporters can self-certify their electronic Bank Realization Certificates directly on the DGFT digital portal:
+                    </p>
+                    <ol class="text-secondary leading-relaxed mb-4">
+                        <li>Log in to the official DGFT portal (<a href="https://www.dgft.gov.in" target="_blank" rel="noopener" class="text-primary">dgft.gov.in</a>) using your digital signature token (DSC) linked to your Importer-Exporter Code (IEC).</li>
+                        <li>Navigate to <strong>Services &gt; e-BRC System &gt; View Bank Inward Remittance Messages</strong>.</li>
+                        <li>Search by your bank account number, date range, or Foreign Inward Remittance Reference number.</li>
+                        <li>Match each inward credit against your specific Cod Xpert invoice number and shipping/service contract details, and submit for instant electronic validation.</li>
+                    </ol>
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">8. Frequently Asked Questions on FIRC & Foreign Inward Remittance</h2>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">What is the difference between a FIRC and a FIRA?</h6>
+                            <p class="text-muted fs-7 mb-0">Under current RBI and FEDAI guidelines, a physical FIRC is issued strictly for Foreign Direct Investment (FDI) and non-resident capital inflows. For export of services and goods, banks issue a Foreign Inward Remittance Advice (FIRA) or inward credit advice.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">How long must I preserve FIRC and e-BRC records?</h6>
+                            <p class="text-muted fs-7 mb-0">Under Section 36 of the CGST Act and RBI Master Directions, accounting records, export invoices, FIRAs, and e-BRC documents must be preserved for at least 6 years (72 months) following the annual return filing deadline.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">What if my bank charges an issuance fee for the FIRC/Advice?</h6>
+                            <p class="text-muted fs-7 mb-0">Most major Indian banks charge between ₹100 and ₹500 plus GST per certificate. You can record these bank charges inside Cod Xpert's expense tracker to claim allowable business expense deductions under income tax.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">How does Cod Xpert simplify e-BRC matching?</h6>
+                            <p class="text-muted fs-7 mb-0">Cod Xpert enables you to store the bank transaction reference number, RBI purpose code, and realized exchange value alongside each invoice, allowing 1-click export of your complete realization ledger.</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Guides & Hub -->
+                    <div class="p-4 rounded-4 bg-light border my-4">
+                        <h5 class="fw-bold text-dark mb-3">Related Compliance Guides & Exporter Features</h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <a href="{{ route('guides.fema-23r') }}" class="text-decoration-none fw-semibold text-primary d-block">FEMA 23(R) Guide →</a>
+                                <span class="text-muted fs-8">RBI service export declarations</span>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ route('guides.gst-lut') }}" class="text-decoration-none fw-semibold text-primary d-block">GST LUT Guide →</a>
+                                <span class="text-muted fs-8">Rule 96A export zero-rating</span>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ route('features.invoice-tracking') }}" class="text-decoration-none fw-semibold text-primary d-block">Invoice Tracking →</a>
+                                <span class="text-muted fs-8">Reconcile payments & receipts</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- In-article CTA -->
                     <div class="p-4 bg-light rounded-4 border text-center my-5">
                         <h4 class="fw-bold text-dark mb-2">Issue Remittance-Ready Export Invoices</h4>

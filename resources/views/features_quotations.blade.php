@@ -294,6 +294,120 @@
             </div>
         </div>
 
+
+        <!-- From Quote to Paid Invoice: 4-Stage Conversion Pipeline -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">From Proposal to Paid Invoice: The 4-Stage Conversion Pipeline</h3>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 1</div>
+                        <h6 class="fw-bold text-dark mb-2">Scope & Estimate</h6>
+                        <p class="text-muted fs-8 mb-2">Draft structured proposals with itemized scopes, hourly rates, and deliverables. Include custom tax parameters and terms of service.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 2</div>
+                        <h6 class="fw-bold text-dark mb-2">Client Acceptance</h6>
+                        <p class="text-muted fs-8 mb-2">Share clean PDFs with one-click review links. Track proposal viewing status and maintain a clear audit trail of client sign-offs.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 3</div>
+                        <h6 class="fw-bold text-dark mb-2">1-Click Conversion</h6>
+                        <p class="text-muted fs-8 mb-2">Transform approved quotations into legal tax invoices in 1-click. Apply live exchange rates via <a href="{{ route('features.multi-currency') }}">Multi-Currency</a> with zero re-keying.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 4</div>
+                        <h6 class="fw-bold text-dark mb-2">Settlement Tracking</h6>
+                        <p class="text-muted fs-8 mb-2">Monitor settlement velocity using <a href="{{ route('features.invoice-tracking') }}">Invoice Tracking</a> and deploy automated payment follow-ups from your verified domain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scope Creep Prevention & Revision Tracking -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Eliminate Scope Creep with Immutable Quotation Revision Records</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Agencies and consultants frequently face scope disagreements when clients request revisions without adjusting billing milestones.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Version-Controlled Estimates</h5>
+                        <p class="text-muted fs-7 mb-3">Every quotation version (v1, v2, v3) is preserved with its original pricing, timeline commitments, and deliverable descriptions. When project scopes evolve, generate addendum quotes without overwriting initial agreements.</p>
+                        <a href="{{ route('solutions.agencies') }}" class="text-primary fw-bold fs-7 text-decoration-none">Explore How Agencies Handle Scoping →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Seamless Statutory Export Invoicing</h5>
+                        <p class="text-muted fs-7 mb-3">When converting quotes for international clients, Cod Xpert automatically verifies Letter of Undertaking (LUT) eligibility, applying 0% IGST under Rule 96A without forcing you to re-enter client tax codes.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the GST LUT Rule 96A Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quotations FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Quotations & Estimates</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I customize quotation terms and validity periods?</h6>
+                    <p class="text-muted fs-7">Yes. You can specify custom validity windows (e.g. valid for 14 or 30 days), payment milestone schedules, and project assumptions on every quotation.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What happens to a quotation after it is converted into an invoice?</h6>
+                    <p class="text-muted fs-7">The original quotation is marked as 'Converted' and permanently linked to the resulting invoice, preserving a full audit trail from initial estimate to final payment.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I create quotations in foreign currencies?</h6>
+                    <p class="text-muted fs-7">Yes. You can draft quotations in USD, EUR, GBP, AED, CAD, AUD, or INR, capturing live interbank benchmark exchange rates for accurate budget scoping.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I convert a quotation into a recurring retainer?</h6>
+                    <p class="text-muted fs-7">Yes. You can convert approved quotes into recurring retainer profiles via our <a href="{{ route('features.recurring-invoices') }}">Recurring Billing Engine</a> with automated monthly execution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quotations Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Features, Solutions & Free Templates</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.consultants') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Consultants</div>
+                        <span class="text-muted fs-8">Scope & hourly advisory</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.e-invoicing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">E-Invoicing</div>
+                        <span class="text-muted fs-8">Statutory GST compliance</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.word') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Word Templates</div>
+                        <span class="text-muted fs-8">Download editable .docx files</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('pricing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Pricing & Plans</div>
+                        <span class="text-muted fs-8">Free trial with zero lock-in</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Accelerate Your Deal Cycle Today</h2>

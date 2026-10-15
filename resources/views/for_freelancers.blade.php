@@ -289,6 +289,149 @@
 
         </div>
 
+
+        <!-- Step-by-Step Freelancer Invoicing Lifecycle -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Step-by-Step Cross-Border Billing Lifecycle for Freelancers</h3>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 1</div>
+                        <h6 class="fw-bold text-dark mb-2">Proposal & Scoping</h6>
+                        <p class="text-muted fs-8 mb-2">Send professional client estimates using <a href="{{ route('features.quotations') }}" class="text-primary fw-semibold text-decoration-none">Quotations</a>. Lock deliverable specifications, payment milestones, and currency terms upfront.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 2</div>
+                        <h6 class="fw-bold text-dark mb-2">Multi-Currency Invoice</h6>
+                        <p class="text-muted fs-8 mb-2">Bill foreign clients in USD, EUR, GBP, or AED with automated live rate conversions via our <a href="{{ route('features.multi-currency') }}" class="text-primary fw-semibold text-decoration-none">Multi-Currency Feature</a>.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 3</div>
+                        <h6 class="fw-bold text-dark mb-2">LUT Zero-Rating</h6>
+                        <p class="text-muted fs-8 mb-2">Automatically append statutory export declarations pursuant to <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-semibold text-decoration-none">Rule 96A CGST Rules</a>. Eliminate 18% IGST cash flow blockage.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Step 4</div>
+                        <h6 class="fw-bold text-dark mb-2">FIRC & Tax Closure</h6>
+                        <p class="text-muted fs-8 mb-2">Track inward wire settlements from Wise, Payoneer, or direct bank transfer and reconcile for <a href="{{ route('guides.firc-e-brc') }}" class="text-primary fw-semibold text-decoration-none">e-BRC Realization Certificates</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Wise/Payoneer/SWIFT Remittance Reconciliation -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Handling International Inflows: Wise, Payoneer & Direct SWIFT</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Understanding how foreign remittances clear through intermediary correspondent banks ensures accurate tax reporting and complete statutory protection.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-3 border rounded-3 h-100 bg-light">
+                        <h6 class="fw-bold text-dark mb-2">Direct SWIFT Wire Transfers</h6>
+                        <p class="text-muted fs-8 mb-0">Direct wire to your Indian bank account gives you a clean bank realization with your Authorised Dealer (AD) issuing the FIRC/FIRA document directly under your RBI purpose code (e.g., P0802 for software services).</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded-3 h-100 bg-light">
+                        <h6 class="fw-bold text-dark mb-2">Wise Business Inflows</h6>
+                        <p class="text-muted fs-8 mb-0">Wise routes funds via partner banks in India (such as HDFC or Yes Bank). You must download the partner bank Foreign Inward Remittance Advice (FIRA) from Wise to substantiate zero-rated export zero-tax status.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded-3 h-100 bg-light">
+                        <h6 class="fw-bold text-dark mb-2">Payoneer & Upwork Remittances</h6>
+                        <p class="text-muted fs-8 mb-0">Platform withdrawals require matching your Cod Xpert invoice number against the platform settlement statement. Cod Xpert records platform fee deductions so your net and gross receipts match for annual tax audits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Freelancer Statutory Compliance Matrix -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Freelancer Statutory Compliance Matrix: GST, e-BRC & FEMA</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Operating as an independent developer, designer, or writer in India requires strict adherence to banking and tax codes when receiving overseas remittances.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">FEMA 23(R) Export Declarations</h5>
+                        <p class="text-muted fs-7 mb-3">Under the Reserve Bank of India's Foreign Exchange Management Act (FEMA 23(R)), every cross-border service export requires documentation connecting the invoice with the inward remittance reference. Cod Xpert generates standardized declarations for HDFC, ICICI, SBI, and Axis Bank AD desks.</p>
+                        <a href="{{ route('guides.fema-23r') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the FEMA 23(R) Service Export Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">Third-Party Gateway Inward Advice</h5>
+                        <p class="text-muted fs-7 mb-3">When receiving international payments through Stripe, PayPal, or Wise, intermediary partner banks issue Foreign Inward Remittance Advices (FIRA/FIRC). Cod Xpert records gross invoice amounts and platform deductions to give your CA exact audit schedules.</p>
+                        <a href="{{ route('guides.firc-e-brc') }}" class="text-primary fw-bold fs-7 text-decoration-none">Learn How to Obtain FIRCs from Wise & Stripe →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Freelancer FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions for Freelancers</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Do I need a GST number to invoice international clients?</h6>
+                    <p class="text-muted fs-7">Under Indian GST law, export of services is treated as an inter-state supply. While the threshold exemption of ₹20 Lakhs turnover exists, filing a Letter of Undertaking (LUT) to supply zero-rated services without paying 18% IGST requires a valid GSTIN registration.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I include my Wise or Payoneer account details on invoices?</h6>
+                    <p class="text-muted fs-7">Yes. Cod Xpert allows you to format domestic bank details (NEFT/RTGS/UPI) alongside international virtual bank accounts (SWIFT, IBAN, routing numbers) directly on your branded PDF.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How do I track foreign exchange rate fluctuations?</h6>
+                    <p class="text-muted fs-7">Cod Xpert captures the interbank exchange rate on the date of invoice issuance. Use our <a href="{{ route('tools.forex-calculator') }}" class="text-primary fw-semibold text-decoration-none">Live Forex Calculator</a> to calculate estimated bank spread loss and net INR realization.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I automate follow-up reminders for unpaid invoices?</h6>
+                    <p class="text-muted fs-7">Yes. Our <a href="{{ route('features.invoice-tracking') }}" class="text-primary fw-semibold text-decoration-none">Invoice Tracking Engine</a> dispatches automated, polite payment reminders at scheduled intervals directly from your verified email address.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Freelancer Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Explore Freelance Invoicing Resources & Free Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.invoice-generator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Instant Generator</div>
+                        <span class="text-muted fs-8">Free no-login PDF maker</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Automated math formulas</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.gst-lut') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">GST LUT Guide</div>
+                        <span class="text-muted fs-8">0% IGST export compliance</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('pricing') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Pricing & Plans</div>
+                        <span class="text-muted fs-8">Start free without a credit card</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Call to Action Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
             <h2 class="display-6 fw-bold mb-3">Ready to Upgrade Your Freelance Invoicing?</h2>

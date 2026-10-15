@@ -278,6 +278,137 @@
             </div>
         </div>
 
+
+        <!-- Consultant Billing Architecture & Time Tracking -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Advisory Billing Models Engineered for Professional Consultants</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Model 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Hourly & Daily Time Billing</h5>
+                        <p class="text-muted fs-7 mb-0">Invoice corporate clients with itemized timesheets, billing rates, and detailed deliverable descriptions. Seamlessly convert scoped work via our <a href="{{ route('features.quotations') }}" class="text-primary fw-semibold text-decoration-none">Quotations Module</a>.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Model 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Retainer & Advisory Schedulers</h5>
+                        <p class="text-muted fs-7 mb-0">For ongoing strategic advisory relationships, configure recurring automated billing via <a href="{{ route('features.recurring-invoices') }}" class="text-primary fw-semibold text-decoration-none">Recurring Invoicing</a> with zero manual intervention required each billing cycle.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Model 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Cross-Border Forex Realization</h5>
+                        <p class="text-muted fs-7 mb-0">Bill foreign enterprises in USD, EUR, GBP, or AED with live interbank rate captures using our <a href="{{ route('features.multi-currency') }}" class="text-primary fw-semibold text-decoration-none">Multi-Currency Engine</a>, locking rates on invoice creation dates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Retainer vs Hourly Comparison Matrix -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Consulting Engagement Models: Retainer vs. Hourly Billing</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Selecting the right billing model protects your consulting margins and establishes clear deliverable boundaries with corporate clients.
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-dark fw-bold">Dimension</th>
+                            <th class="text-primary fw-bold">Monthly Retainer Model</th>
+                            <th class="text-dark fw-bold">Hourly Timesheet Model</th>
+                            <th class="text-dark fw-bold">Fixed Project Milestone</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-7 text-muted">
+                        <tr>
+                            <td class="fw-semibold text-dark">Best Suited For</td>
+                            <td>Ongoing strategic advisory, board advisory, and fraction-CXO roles.</td>
+                            <td>Technical audits, hands-on code reviews, and ad-hoc troubleshooting.</td>
+                            <td>System implementations, strategy roadmaps, and ERP deployments.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Invoicing Cadence</td>
+                            <td>Advance billing on the 1st of each calendar month via <a href="{{ route('features.recurring-invoices') }}">Recurring Billing</a>.</td>
+                            <td>Bi-weekly or monthly arrears with attached timesheets.</td>
+                            <td>Milestone completion triggers (e.g., 30% advance, 70% delivery).</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Statutory Exemption</td>
+                            <td>0% IGST under <a href="{{ route('guides.gst-lut') }}">Rule 96A Letter of Undertaking</a>.</td>
+                            <td>0% IGST under Rule 96A with logged foreign remittances.</td>
+                            <td>0% IGST with milestone sign-off certificates.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Payment Risk Mitigation</td>
+                            <td>Prepaid monthly retainer eliminates uncollected debt risk.</td>
+                            <td>Lock hourly rates with <a href="{{ route('features.quotations') }}">Quotations</a> to avoid scope creep.</td>
+                            <td>Require progress payments before releasing production code.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Statutory SAC Code & GST Guidelines for Consultants -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Statutory Compliance & SAC Codes for Indian Consultants</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Management and IT consultants must declare appropriate Services Accounting Code (SAC) descriptors and adhere to statutory cross-border export regulations.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">SAC Code Classification (998311 & 998312)</h5>
+                        <p class="text-muted fs-7 mb-3">Management consulting services (SAC 998311) and financial/IT advisory services (SAC 998312) require precise invoice documentation. For cross-border engagements, export zero-rating is codified under Rule 96A without upfront 18% IGST liability.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the GST LUT Rule 96A Consultant Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">FEMA 23(R) Export Declaration & Banking Audit</h5>
+                        <p class="text-muted fs-7 mb-3">Consulting exports delivered via electronic channels require mandatory declaration of RBI purpose codes (such as P0802 for software or P1007 for management consultancy) to obtain bank FIRCs and ensure clean FEMA compliance.</p>
+                        <a href="{{ route('guides.fema-23r') }}" class="text-primary fw-bold fs-7 text-decoration-none">Review the FEMA 23(R) Advisory Compliance Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consultant Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Solutions, Templates & Invoicing Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.freelancers') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Freelancers</div>
+                        <span class="text-muted fs-8">Cross-border independent billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.invoice-tracking') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Invoice Tracking</div>
+                        <span class="text-muted fs-8">Payment status & overdue alerts</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.word') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Word Templates</div>
+                        <span class="text-muted fs-8">Download editable .docx files</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Forex Calculator</div>
+                        <span class="text-muted fs-8">Real-time wire conversion</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Elevate Your Advisory Practice</h2>

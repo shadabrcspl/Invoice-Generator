@@ -285,6 +285,119 @@
             </div>
         </div>
 
+
+        <!-- 5 Architectural Differences Section -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">5 Key Architectural Differences: CodXpert vs. Zoho Invoice</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Difference 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Native GST LUT Export Logic</h5>
+                        <p class="text-muted fs-7 mb-0">While Zoho Invoice treats export billing as a generic custom field, CodXpert has built-in <a href="{{ route('guides.gst-lut') }}">Rule 96A statutory stamping</a>, automatic zero-rating, and GSTR-1 Table 6A automated returns.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Difference 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Automated Real-Time Forex</h5>
+                        <p class="text-muted fs-7 mb-0">CodXpert connects directly with central bank feeds to record live foreign exchange rates on invoice creation dates via our <a href="{{ route('features.multi-currency') }}">Multi-Currency Engine</a>, eliminating manual rate searches.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Difference 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Instant No-Login Generator</h5>
+                        <p class="text-muted fs-7 mb-0">Need to create an invoice right now? CodXpert provides a 100% free <a href="{{ route('tools.invoice-generator') }}">Online Invoice Maker</a> accessible directly in your browser with zero registration walls.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Difference 4</div>
+                        <h5 class="fw-bold text-dark mb-2">Zero Ecosystem Bloat</h5>
+                        <p class="text-muted fs-7 mb-0">Zoho Invoice frequently nudges users to upgrade to full ERP accounting suites (Zoho Books). CodXpert remains dedicated strictly to lightning-fast, high-converting statutory billing.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Difference 5</div>
+                        <h5 class="fw-bold text-dark mb-2">Custom Domain Mailers</h5>
+                        <p class="text-muted fs-7 mb-0">Send invoices through your own authenticated Google Workspace or corporate SMTP servers with zero third-party branding, guaranteeing primary inbox deliverability.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Migration</div>
+                        <h5 class="fw-bold text-dark mb-2">Fast 3-Step Onboarding</h5>
+                        <p class="text-muted fs-7 mb-0">Export your client contacts from Zoho as a CSV, upload your logo and bank details into CodXpert, and issue your first statutory invoice in under 5 minutes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- In-Depth Comparison FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions: Switching from Zoho Invoice</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Is CodXpert suitable for international service exporters?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I customize my email sending address with CodXpert?</h6>
+                    <p class="text-muted fs-7">Yes. You can connect your own corporate domain SMTP credentials (via Google Workspace, Microsoft 365, or Amazon SES) so all invoices are dispatched directly from your company domain with zero third-party branding.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How does CodXpert handle foreign exchange gain and loss ledgers?</h6>
+                    <p class="text-muted fs-7">When foreign remittance is realized in your bank, CodXpert calculates the currency variance between the invoice date exchange rate and the actual settlement value, providing audit-proof reports for Section 43AA tax filings.</p>
+                </div>
+
+                    <p class="text-muted fs-7">Yes. CodXpert is purpose-built for Indian IT firms, software developers, design agencies, and cross-border consultants who require zero-rated GST LUT export declarations, multi-currency live conversions, and e-BRC tracking.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our Chartered Accountant easily access our tax records?</h6>
+                    <p class="text-muted fs-7">Yes. CodXpert generates clean, pre-formatted CSV and Excel spreadsheets tailored for GSTR-1 Table 6A (Export Invoices) and Table 4B (Domestic B2B Invoices), making monthly filing seamless.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Does CodXpert support recurring client retainers?</h6>
+                    <p class="text-muted fs-7">Yes. Our <a href="{{ route('features.recurring-invoices') }}">Recurring Invoices Module</a> allows you to schedule monthly retainer runs with automated email delivery and overdue payment reminders.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What is the cost difference between CodXpert and Zoho?</h6>
+                    <p class="text-muted fs-7">CodXpert offers generous free tier access with zero credit card requirements and transparent pricing, without the sudden paywalls or complex tier gates common in full ERP suites.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Comparisons, Solutions & Free Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('vs.tally-prime') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">CodXpert vs Tally</div>
+                        <span class="text-muted fs-8">Cloud vs legacy desktop</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.agencies') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Agencies</div>
+                        <span class="text-muted fs-8">Retainer & project billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Forex Calculator</div>
+                        <span class="text-muted fs-8">Check currency spread loss</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.gst-lut') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">GST LUT Guide</div>
+                        <span class="text-muted fs-8">Rule 96A export zero-rating</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Ready for a Faster Invoicing Experience?</h2>

@@ -304,6 +304,136 @@
             </div>
         </div>
 
+
+        <!-- Payment Velocity & Aging Reports -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Accounts Receivable Aging & Cash Velocity Framework</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Tier 1 (0-30 Days)</div>
+                        <h5 class="fw-bold text-dark mb-2">Active & On-Time Settlement</h5>
+                        <p class="text-muted fs-7 mb-0">Monitor open invoices with clear due date indicators. Clients receive professional notifications with embedded payment links, domestic bank details, and international SWIFT instructions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-warning text-dark rounded-pill mb-2 px-3 py-1">Tier 2 (31-60 Days)</div>
+                        <h5 class="fw-bold text-dark mb-2">Automated Grace Follow-Up</h5>
+                        <p class="text-muted fs-7 mb-0">When bills cross their due date, our non-intrusive scheduler triggers reminder dispatches from your verified domain, escalating priority without burning client goodwill.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-danger text-white rounded-pill mb-2 px-3 py-1">Tier 3 (60+ Days)</div>
+                        <h5 class="fw-bold text-dark mb-2">Critical Audit & Escalation</h5>
+                        <p class="text-muted fs-7 mb-0">Under Indian GST Rule 96A(1)(b), export payments must be realized within one year to protect your zero-rated 0% IGST status. Automated aging logs alert your finance team in advance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Dispute Resolution & Discrepancy Workflows -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Handling Client Discrepancies & Credit Notes</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Clear dispute resolution protocols protect your client relationships while keeping your accounts receivable aging accurate.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Discrepancy Notes & Internal Logs</h5>
+                        <p class="text-muted fs-7 mb-0">If a client disputes a specific deliverable or wire fee deduction, log internal dispute notes directly against the invoice record so your accounting team has context before sending escalation reminders.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Payment Receipt Acknowledgments</h5>
+                        <p class="text-muted fs-7 mb-0">Once an invoice is marked as Paid, Cod Xpert can automatically dispatch a clean, branded payment receipt acknowledgment to your client, confirming full settlement and closing open receivables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Reconciliation & Realization Matching -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Bank Reconciliation & Export Inward Remittance Matching</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Tracking invoice status goes beyond knowing who paid—it requires recording exact realized bank values for statutory e-BRC closure.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Partial & Milestone Payments</h5>
+                        <p class="text-muted fs-7 mb-3">Enterprise clients frequently settle invoices across multiple tranches or deduct withholding taxes (TDS under Section 194J). Cod Xpert logs partial receipts with specific transaction IDs, leaving an audit-ready unpaid balance.</p>
+                        <a href="{{ route('guides.firc-e-brc') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the FIRC & Bank Reconciliation Guide →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Realized Exchange Variance Ledgers</h5>
+                        <p class="text-muted fs-7 mb-3">When a $10,000 USD invoice is issued at ₹83.50/$ but realized at ₹83.80/$, currency movement generates a foreign exchange gain. Our tracking ledger captures both numbers so your accountant records exchange gains correctly under Section 43AA.</p>
+                        <a href="{{ route('tools.forex-calculator') }}" class="text-primary fw-bold fs-7 text-decoration-none">Calculate Foreign Exchange Variance →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracking FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Invoice Tracking</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I customize the email text of overdue reminders?</h6>
+                    <p class="text-muted fs-7">Yes. You can edit the tone, subject lines, and schedule of payment reminders to ensure they reflect your brand's communication style and client relationship.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Do clients need an account to view and download their invoice?</h6>
+                    <p class="text-muted fs-7">No. Invoices are attached as standard PDF documents and include direct download links that require zero client registration or login hassle.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our finance team filter by overdue status?</h6>
+                    <p class="text-muted fs-7">Yes. The invoice directory features instant filters for Paid, Unpaid, Partial, and Overdue statuses, complete with date range and client search filters.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Does Cod Xpert alert me when an invoice is overdue?</h6>
+                    <p class="text-muted fs-7">Yes. The dashboard highlights overdue invoices with visual KPI badges and generates automated status summaries for your finance manager.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracking Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Features, Solutions & Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.recurring-invoices') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Recurring Invoices</div>
+                        <span class="text-muted fs-8">Automate retainer schedules</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.multi-currency') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Multi-Currency</div>
+                        <span class="text-muted fs-8">Live global forex sync</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.gst-lut') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">GST LUT Guide</div>
+                        <span class="text-muted fs-8">Rule 96A export zero-rating</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.consultants') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Consultants</div>
+                        <span class="text-muted fs-8">Hourly advisory invoices</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Stop Wondering When Invoices Will Be Paid</h2>

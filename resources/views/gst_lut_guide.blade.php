@@ -189,6 +189,67 @@
                         Under RBI FEMA guidelines and GST regulations, export proceeds for services must be realized in convertible foreign exchange (or permissible INR via Vostro accounts) within <strong>9 months</strong> from the date of the invoice. Keep your Bank Inward Remittance Statements (FIRC / Advice) safe for CA audit.
                     </p>
 
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">6. Common Pitfalls in GST LUT Compliance & How to Avoid Tax Notices</h2>
+                    <p class="text-secondary leading-relaxed mb-3">
+                        While filing an LUT allows you to supply zero-rated services without paying 18% IGST upfront, tax officers strictly scrutinize cross-border transactions during GST audits. Avoid these common compliance mistakes:
+                    </p>
+                    <ul class="text-secondary leading-relaxed mb-4">
+                        <li><strong>Missing the 1-Year Realization Window:</strong> Under Rule 96A(1)(b) of the CGST Rules, if inward remittance is not received within one year from the invoice date, you must deposit 18% IGST plus 18% per annum interest from the date of invoice issuance.</li>
+                        <li><strong>Failing to Mention the Full Statutory Endorsement:</strong> Omitting the mandatory phrase <em>"Supply Meant for Export Under Letter of Undertaking Without Payment of Integrated Tax"</em> invalidates zero-rated treatment.</li>
+                        <li><strong>Discrepancies Between Bank Inward Advice and Invoice Value:</strong> Bank intermediary deductions that result in lower realized sums must be accounted for with foreign exchange bank advices. Use our <a href="{{ route('tools.forex-calculator') }}">Forex Calculator</a> to model typical spreads.</li>
+                    </ul>
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">7. Annual Renewal Process: Form GST RFD-11</h2>
+                    <p class="text-secondary leading-relaxed mb-3">
+                        An approved Letter of Undertaking (LUT) is valid strictly for a single financial year (from April 1st to March 31st). To avoid tax disruptions:
+                    </p>
+                    <ol class="text-secondary leading-relaxed mb-4">
+                        <li>Log in to the GST Portal in late March prior to the commencement of the new fiscal year.</li>
+                        <li>Navigate to <strong>Services &gt; User Services &gt; Furnish Letter of Undertaking (LUT)</strong>.</li>
+                        <li>Select the upcoming financial year, declare two independent witnesses, and submit using your digital signature (DSC) or Electronic Verification Code (EVC).</li>
+                        <li>Update your newly issued Application Reference Number (ARN) inside your <a href="{{ route('features.e-invoicing') }}">Cod Xpert Invoicing Settings</a> so all future invoices reflect the renewed compliance credentials.</li>
+                    </ol>
+
+                    <h2 class="fw-bold text-dark mt-5 mb-3">8. Frequently Asked Questions on GST LUT</h2>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">Do I need to file an LUT if my turnover is below ₹20 Lakhs?</h6>
+                            <p class="text-muted fs-7 mb-0">Under Section 24 of the CGST Act, persons making inter-state supplies are required to register. While export exemptions exist for certain small service providers, registering for GST and obtaining an LUT is the only legal way to claim 0% tax status without paying 18% upfront.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">What is the difference between Export under LUT and Export with IGST Payment?</h6>
+                            <p class="text-muted fs-7 mb-0">Under LUT, you pay 0% tax at invoice time and preserve working capital. Exporting with IGST requires paying 18% tax to the government upfront and claiming a tax refund via Form GST RFD-01, which often takes months to process.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">Does an LUT cover goods exports as well as services?</h6>
+                            <p class="text-muted fs-7 mb-0">Yes. Form GST RFD-11 covers both goods and service exports. However, goods exports have a tighter 3-month shipping timeline under Rule 96A(1)(a), whereas service exports enjoy a 1-year remittance realization period under Rule 96A(1)(b).</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-dark mb-1">How does Cod Xpert automate LUT compliance?</h6>
+                            <p class="text-muted fs-7 mb-0">You simply enter your ARN number and financial year once in your account profile. Cod Xpert automatically stamps the required statutory declaration, locks currency conversions, and prepares GSTR-1 Table 6A exports.</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Guides & Hub -->
+                    <div class="p-4 rounded-4 bg-light border my-4">
+                        <h5 class="fw-bold text-dark mb-3">Related Statutory Guides & Exporter Tools</h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <a href="{{ route('guides.fema-23r') }}" class="text-decoration-none fw-semibold text-primary d-block">FEMA 23(R) Export Guide →</a>
+                                <span class="text-muted fs-8">RBI purpose codes & bank filing</span>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ route('guides.firc-e-brc') }}" class="text-decoration-none fw-semibold text-primary d-block">FIRC & e-BRC Guide →</a>
+                                <span class="text-muted fs-8">Foreign inward realization</span>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ route('features.multi-currency') }}" class="text-decoration-none fw-semibold text-primary d-block">Multi-Currency Invoicing →</a>
+                                <span class="text-muted fs-8">Automated live forex sync</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- In-article CTA -->
                     <div class="p-4 bg-light rounded-4 border text-center my-5">
                         <h4 class="fw-bold text-dark mb-2">Generate Compliant Export Invoices Now</h4>

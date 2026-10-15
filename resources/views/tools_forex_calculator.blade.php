@@ -247,6 +247,131 @@
                 </div>
             </div>
         </div>
+
+        <!-- Statutory Forex Accounting Framework -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mt-5 mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Statutory Accounting for Foreign Exchange Fluctuations in India</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Accounting Standard AS-11 & Ind AS 21</h5>
+                        <p class="text-muted fs-7 mb-3">Under Indian Accounting Standard AS-11, a foreign currency transaction must be recorded initially in the reporting currency (INR) by applying the exchange rate on the date of supply. When funds are received, the variance between invoice date value and bank credit value constitutes a realized foreign exchange gain or loss.</p>
+                        <a href="{{ route('features.multi-currency') }}" class="text-primary fw-bold fs-7 text-decoration-none">Explore Our Multi-Currency Engine →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Tax Treatment Under Section 43AA</h5>
+                        <p class="text-muted fs-7 mb-3">Under Section 43AA of the Income Tax Act, 1961, foreign exchange gains or losses arising in respect of monetary items relating to business revenue must be treated as taxable income or allowable business deductions in the financial year in which realization occurs.</p>
+                        <a href="{{ route('guides.firc-e-brc') }}" class="text-primary fw-bold fs-7 text-decoration-none">Learn More in the FIRC & e-BRC Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fintech vs Traditional Banks Spread Comparison -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Minimizing Foreign Wire Spread Loss: Fintech vs. Traditional Banks</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Selecting the optimal remittance channel can save Indian exporters and agencies between 1.5% and 3.5% on every international settlement.
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-dark fw-bold">Remittance Channel</th>
+                            <th class="text-primary fw-bold">Typical FX Margin</th>
+                            <th class="text-dark fw-bold">Fixed Wire Fees</th>
+                            <th class="text-dark fw-bold">FIRC / e-BRC Ease</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-7 text-muted">
+                        <tr>
+                            <td class="fw-semibold text-dark">Direct SWIFT Wire (AD Bank)</td>
+                            <td>1.5% - 2.8% over interbank rate.</td>
+                            <td>$15 - $35 intermediary deduction + ₹250 bank fee.</td>
+                            <td>Direct bank FIRA issued by your AD Branch.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Wise Business Remittances</td>
+                            <td>0.4% - 0.7% (Mid-market transparent rate).</td>
+                            <td>Low transparent fee (typically &lt;0.5%).</td>
+                            <td>Partner bank FIRA downloadable from Wise portal.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Payoneer Virtual Receiving</td>
+                            <td>1.5% - 2.0% above mid-market rate.</td>
+                            <td>Standard platform withdrawal fees.</td>
+                            <td>FIRA generated within 48-72 hours.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Forex FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Forex Invoicing</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Which exchange rate should I declare on a GST export invoice?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How should I document foreign bank intermediary deductions?</h6>
+                    <p class="text-muted fs-7">When overseas clients remit payments, correspondent banks often deduct $15 to $30 in wire charges. Record these fees under allowable bank expenses inside our tracker to maintain exact gross-to-net reconciliation.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What is the statutory deadline for realizing foreign exchange proceeds in India?</h6>
+                    <p class="text-muted fs-7">Under Foreign Exchange Management Act (FEMA) regulations, foreign inward remittances for services must be realized within 9 months from the invoice date (extended to 1 year under GST Rule 96A(1)(b)).</p>
+                </div>
+
+                    <p class="text-muted fs-7">Under CBIC guidelines, the exchange rate notified by the Central Board of Indirect Taxes and Customs (CBIC) or the Reserve Bank of India (RBI) reference rate on the date of the invoice should be applied for calculating statutory INR values.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What causes variance between invoice INR and bank credit?</h6>
+                    <p class="text-muted fs-7">Two factors cause remittance variance: exchange rate movements between the invoice dispatch date and realization date, and bank intermediary spread margins (typically 1.2% - 2.5%) plus fixed telegraphic transfer fees.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can CodXpert automatically freeze exchange rates on invoice creation?</h6>
+                    <p class="text-muted fs-7">Yes. When creating an invoice in USD, EUR, GBP, or AED, CodXpert locks the benchmark exchange rate on that date so your historical records remain audit-ready.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Does an exchange loss reduce my taxable income in India?</h6>
+                    <p class="text-muted fs-7">Yes. Under Section 43AA of the Income Tax Act, 1961, a realized foreign exchange loss incurred on revenue account transactions is treated as an allowable business deduction.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forex Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Invoicing Tools, Solutions & Guides</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.invoice-generator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Instant Generator</div>
+                        <span class="text-muted fs-8">Create multi-currency PDF</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.multi-currency') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Multi-Currency</div>
+                        <span class="text-muted fs-8">Automated live forex sync</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.fema-23r') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">FEMA 23(R) Guide</div>
+                        <span class="text-muted fs-8">RBI export declarations</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Download multi-currency sheets</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Interactive Script -->

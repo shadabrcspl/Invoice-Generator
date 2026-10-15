@@ -407,6 +407,144 @@
             </div>
         </div>
 
+
+        <!-- Mandatory Statutory Particulars for Indian Invoices -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mt-5 mb-5 no-print">
+            <h3 class="fw-bold text-dark mb-4 text-center">Mandatory Statutory Particulars on Legal Indian Tax & Export Invoices</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Under Section 31 of the CGST Act, 2017 read with Rule 46 of the CGST Rules, every tax and export invoice must contain specific mandatory fields to remain legally valid.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h6 class="fw-bold text-dark mb-2">1. Identity & GSTIN Details</h6>
+                        <p class="text-muted fs-7 mb-0">Supplier and recipient legal name, registered trade address, GSTIN (or PAN if unregistered), state code, and consecutive unique invoice numbering with financial year prefixes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h6 class="fw-bold text-dark mb-2">2. HSN / SAC Code Descriptions</h6>
+                        <p class="text-muted fs-7 mb-0">Accurate Harmonized System of Nomenclature (HSN) or Services Accounting Code (SAC) classification for each line item alongside tax rate breakdown (CGST, SGST, or IGST).</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-3 h-100 bg-light">
+                        <h6 class="fw-bold text-dark mb-2">3. Statutory Export Declarations</h6>
+                        <p class="text-muted fs-7 mb-0">For cross-border zero-rated supplies, mandatory endorsement under <a href="{{ route('guides.gst-lut') }}">Rule 96A</a> with Application Reference Number (ARN) and foreign currency conversion rate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free Online Maker vs Cloud Invoicing Platform -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5 no-print">
+            <h3 class="fw-bold text-dark mb-3 text-center">Free Browser Generator vs. Full Cloud Invoicing Platform</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                While our instant generator is perfect for quick one-off invoices, growing businesses and exporters benefit from automated financial management.
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-dark fw-bold">Capability</th>
+                            <th class="text-dark fw-bold">Free Instant Web Generator</th>
+                            <th class="text-primary fw-bold">Full CodXpert Platform</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-7 text-muted">
+                        <tr>
+                            <td class="fw-semibold text-dark">Account Setup</td>
+                            <td>No sign-up or registration needed.</td>
+                            <td>Free account with multi-user permissions.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Data Storage & History</td>
+                            <td>Browser session only (data clears on close).</td>
+                            <td>Permanent cloud storage with audit history.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Automated Email Dispatch</td>
+                            <td>Manual download & personal email dispatch.</td>
+                            <td>Automated custom SMTP delivery from your domain.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Tax Return Preparation</td>
+                            <td>Manual entry into spreadsheets.</td>
+                            <td>One-click CSV exports for GSTR-1 & CA audits.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-dark">Payment Reminders</td>
+                            <td>Manual follow-ups.</td>
+                            <td>Automated overdue reminder schedules via <a href="{{ route('features.invoice-tracking') }}">Invoice Tracking</a>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Generator FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5 no-print">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions on Free Online Invoicing</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Is this online invoice generator truly free?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How do I format an export invoice for overseas clients without paying GST?</h6>
+                    <p class="text-muted fs-7">File a Letter of Undertaking (Form GST RFD-11) on the GST portal to obtain an ARN. Then add the mandatory statutory statement: <em>"Supply Meant for Export Under Letter of Undertaking Without Payment of Integrated Tax"</em> directly into the invoice notes.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I convert estimates or quotations into invoices automatically?</h6>
+                    <p class="text-muted fs-7">With our full platform, you can draft structured proposals and convert them in 1-click via the <a href="{{ route('features.quotations') }}">Quotations Engine</a> without re-typing any line items.</p>
+                </div>
+
+                    <p class="text-muted fs-7">Yes. You can create, preview, print, and download as many PDF invoices as you need with zero registration, watermarks, or subscription paywalls.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I add my company logo and signature?</h6>
+                    <p class="text-muted fs-7">Yes. Click 'Change Logo' at the top of the invoice template to upload your company branding. You can also customize your business details, bank details, and payment notes.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Does this generator support foreign currencies?</h6>
+                    <p class="text-muted fs-7">Yes. You can toggle between USD, EUR, GBP, AED, INR, AUD, and CAD. The generator converts values using live daily interbank exchange rates.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Is my billing data secure when using the browser tool?</h6>
+                    <p class="text-muted fs-7">All calculations and PDF rendering occur directly inside your browser's local sandbox. No invoice data is sent to our servers until you choose to register for a cloud account.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generator Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5 no-print">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Features, Invoicing Solutions & Free Templates</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.word') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Word Templates</div>
+                        <span class="text-muted fs-8">Editable .docx formats</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Automated math formulas</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Forex Calculator</div>
+                        <span class="text-muted fs-8">Live bank rate check</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.freelancers') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Freelancers</div>
+                        <span class="text-muted fs-8">Upgrade to cloud billing</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->

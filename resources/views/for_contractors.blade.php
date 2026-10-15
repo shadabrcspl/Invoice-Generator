@@ -289,6 +289,145 @@
 
         </div>
 
+
+        <!-- Contractor Milestone & Statutory Workflow -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Contractor Project Billing & Milestone Verification Architecture</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Feature 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Milestone Completion Billing</h5>
+                        <p class="text-muted fs-7 mb-0">Invoice enterprise clients against specific Statement of Work (SOW) deliverables. Attach timesheets, milestone sign-offs, and expense receipts in one unified dispatch.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Feature 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Multi-Currency Global Remittances</h5>
+                        <p class="text-muted fs-7 mb-0">Contracting with overseas tech firms? Bill in USD, EUR, or GBP with real-time exchange rates powered by our <a href="{{ route('features.multi-currency') }}" class="text-primary fw-semibold text-decoration-none">Multi-Currency Engine</a> and track realized bank spreads.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Feature 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Automated Payment Velocity</h5>
+                        <p class="text-muted fs-7 mb-0">Keep enterprise accounts payable departments on track with non-intrusive automated notifications via <a href="{{ route('features.invoice-tracking') }}" class="text-primary fw-semibold text-decoration-none">Invoice Tracking</a> sent from your own domain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SOW & Work Order Verification -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Statement of Work (SOW) & Acceptance Certificate Reconciliation</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Enterprise contractors frequently deal with multi-tier procurement processes where payment depends on verified deliverables and matching purchase orders (POs).
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Purchase Order (PO) Matching</h5>
+                        <p class="text-muted fs-7 mb-0">Every invoice generated in Cod Xpert allows you to reference enterprise client PO numbers, project codes, cost centers, and contracting work orders. This ensures accounts payable teams match invoices against approved purchase commitments without delays.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100 bg-light">
+                        <h5 class="fw-bold text-dark mb-2">Multi-Currency Bank Account Options</h5>
+                        <p class="text-muted fs-7 mb-0">Contractors operating across jurisdictions can include multiple remittance destinations on a single invoice layout: Indian INR bank accounts (RTGS/NEFT/UPI) alongside international virtual receiving accounts (SWIFT, IBAN, ACH routing).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statutory Compliance & TDS/GST Rules for Contractors -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">TDS Withholding & Statutory Export Invoicing for Independent Contractors</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Domestic and international contracting contracts carry distinct statutory obligations under the Indian Income Tax and GST Acts.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">Domestic TDS Withholding (Section 194J vs 194C)</h5>
+                        <p class="text-muted fs-7 mb-3">When billing domestic clients, corporate payers deduct Tax Deducted at Source (TDS) under Section 194J (10% or 2% for technical services) or Section 194C (contractors). Cod Xpert records TDS deductions cleanly so your annual Form 26AS matches your invoicing ledger.</p>
+                        <a href="{{ route('features.e-invoicing') }}" class="text-primary fw-bold fs-7 text-decoration-none">Explore E-Invoicing & Compliance Capabilities →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">Overseas Contracting Under GST Rule 96A</h5>
+                        <p class="text-muted fs-7 mb-3">If you contract for overseas tech firms, your services represent cross-border exports. File a valid Letter of Undertaking (LUT) to supply zero-rated services without paying 18% IGST upfront, and maintain banking documentation for e-BRC realization.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Review the Complete GST LUT Rule 96A Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contractor FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions for Independent Contractors</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can I issue milestone-based invoices?</h6>
+                    <p class="text-muted fs-7">Yes. You can create customized line items with progress milestones (e.g., 30% advance on signing, 40% on UAT delivery, 30% upon production deployment).</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How do I handle expense reimbursements?</h6>
+                    <p class="text-muted fs-7">Our expense tracker lets you log reimbursable travel, software licenses, or hardware purchases and add them directly as billed line items with receipt attachments.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What banking information can I display?</h6>
+                    <p class="text-muted fs-7">You can include domestic bank accounts (NEFT/RTGS/UPI) alongside international wire details (SWIFT/BIC code, IBAN, bank name, intermediary routing numbers).</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our Chartered Accountant download my tax data?</h6>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">What is the distinction between Section 194J and Section 194C for tech contractors?</h6>
+                    <p class="text-muted fs-7">Section 194J applies to professional and technical services (carrying a 10% or 2% rate), whereas Section 194C applies to general works and labor contracts (carrying 1% or 2%). Cod Xpert lets you specify exact service classifications to avoid misclassification notices.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How do I account for international client currency fluctuations?</h6>
+                    <p class="text-muted fs-7">Our <a href="{{ route('tools.forex-calculator') }}">Live Forex Engine</a> records the interbank exchange rate on the date of supply, giving you an exact baseline to calculate realized forex gain or loss when payment lands in your bank account.</p>
+                </div>
+
+                    <p class="text-muted fs-7">Yes. Download pre-formatted spreadsheets for GSTR-1, GSTR-3B, and Income Tax profit & loss accounting with one click.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contractor Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Solutions, Calculators & Invoicing Tools</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.consultants') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Consultants</div>
+                        <span class="text-muted fs-8">Advisory & hourly billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Forex Calculator</div>
+                        <span class="text-muted fs-8">Real-time wire conversion</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('guides.fema-23r') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">FEMA 23(R) Guide</div>
+                        <span class="text-muted fs-8">Statutory export declaration</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('templates.excel') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Excel Templates</div>
+                        <span class="text-muted fs-8">Download free tax sheets</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
             <h2 class="display-6 fw-bold mb-3">Streamline Your Consulting & Contract Billing</h2>

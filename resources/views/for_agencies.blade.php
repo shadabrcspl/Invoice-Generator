@@ -277,6 +277,113 @@
             </div>
         </div>
 
+
+        <!-- Agency Retainer & Milestone Billing Architecture -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Agency Cash Flow & Retainer Billing Framework</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Pillar 1</div>
+                        <h5 class="fw-bold text-dark mb-2">Automated Monthly Retainers</h5>
+                        <p class="text-muted fs-7 mb-0">Set up recurring retainer agreements that dispatch on the 1st of every month automatically via our <a href="{{ route('features.recurring-invoices') }}" class="text-primary fw-semibold text-decoration-none">Recurring Invoices Module</a>. Lock in currency exchange rates and include itemized deliverable checklists.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Pillar 2</div>
+                        <h5 class="fw-bold text-dark mb-2">Milestone & Deliverable Sign-Off</h5>
+                        <p class="text-muted fs-7 mb-0">For fixed-fee design, development, or performance campaigns, convert accepted client estimates using <a href="{{ route('features.quotations') }}" class="text-primary fw-semibold text-decoration-none">Quotation to Invoicing</a>. Trigger milestone invoices upon completion of wireframes, beta deployment, or final delivery.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 rounded-3 bg-light h-100 border">
+                        <div class="badge bg-primary text-white rounded-pill mb-2 px-3 py-1">Pillar 3</div>
+                        <h5 class="fw-bold text-dark mb-2">Global Currency Realization</h5>
+                        <p class="text-muted fs-7 mb-0">Bill foreign clients in USD, EUR, GBP, or AED while tracking your domestic INR realization through our <a href="{{ route('features.multi-currency') }}" class="text-primary fw-semibold text-decoration-none">Multi-Currency Engine</a>. Monitor realized forex variance between invoice dispatch and wire receipt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statutory Compliance for Indian Digital Agencies -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-3 text-center">Statutory Compliance & GST Management for Digital Agencies</h3>
+            <p class="text-muted text-center fs-7 mx-auto mb-4" style="max-width: 720px;">
+                Whether delivering SEO, UI/UX, software development, or media buying services, Indian agencies face strict compliance requirements when serving overseas clients.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">Rule 96A Zero-Rated Export Invoicing</h5>
+                        <p class="text-muted fs-7 mb-3">Under Indian GST law, digital and IT services exported to clients outside India qualify as zero-rated supplies under Section 16 of the IGST Act. Cod Xpert automatically stamps the required statutory Letter of Undertaking (LUT) declaration onto every invoice, preventing 18% tax blockage.</p>
+                        <a href="{{ route('guides.gst-lut') }}" class="text-primary fw-bold fs-7 text-decoration-none">Learn How to Export Agency Services Under GST LUT →</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border rounded-3 p-4 h-100">
+                        <h5 class="fw-bold text-dark mb-2">e-BRC & Foreign Inward Remittance Reconciliation</h5>
+                        <p class="text-muted fs-7 mb-3">Inward remittances received via international wire or payment processors (Stripe, Wise, Payoneer) must be documented with an Authorized Dealer bank to close your export obligations. Track all inward remittances and maintain flawless records for DGFT e-BRC certification.</p>
+                        <a href="{{ route('guides.firc-e-brc') }}" class="text-primary fw-bold fs-7 text-decoration-none">Read the Complete Agency FIRC & e-BRC Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extended Agency FAQs -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h3 class="fw-bold text-dark mb-4 text-center">Frequently Asked Questions for Agencies</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our agency bill clients in multiple foreign currencies?</h6>
+                    <p class="text-muted fs-7">Yes. You can invoice client A in US Dollars ($ USD), client B in British Pounds (£ GBP), and client C in UAE Dirhams (AED). Each invoice preserves live exchange rates and INR benchmarks.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">How does Cod Xpert prevent agency invoices from landing in spam?</h6>
+                    <p class="text-muted fs-7">You can configure your agency's verified custom domain SMTP credentials (Google Workspace, Microsoft 365, or Amazon SES). Emails come directly from billing@youragency.com, ensuring 100% primary inbox deliverability.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can our Chartered Accountant export data for GSTR-1?</h6>
+                    <p class="text-muted fs-7">Yes. Cod Xpert generates pre-formatted CSV and Excel spreadsheets tailored for GSTR-1 Table 6A (Export Invoices) and Table 4B (Domestic B2B Invoices) with zero manual reformatting required.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-dark mb-2">Can we pass through contractor or third-party ad expenses to clients?</h6>
+                    <p class="text-muted fs-7">Yes. Use our item catalog and expense tracking features to itemize out-of-pocket ad spend, software licenses, or freelance developer costs directly on client billing schedules.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agency Resource Hub -->
+        <div class="p-4 p-md-5 rounded-4 bg-white border mb-5">
+            <h4 class="fw-bold text-dark mb-3 text-center">Related Invoicing Solutions & Agency Resources</h4>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.consultants') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Consultants</div>
+                        <span class="text-muted fs-8">Hourly advisory billing</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('solutions.contractors') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">For Contractors</div>
+                        <span class="text-muted fs-8">Milestone-based invoices</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('features.invoice-tracking') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Invoice Tracking</div>
+                        <span class="text-muted fs-8">Monitor payment velocity</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="{{ route('tools.forex-calculator') }}" class="d-block p-3 rounded-3 bg-light text-decoration-none border h-100">
+                        <div class="fw-bold text-dark fs-7 mb-1">Live Forex Tool</div>
+                        <span class="text-muted fs-8">Check currency spread loss</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Banner -->
         <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
             <h2 class="fw-extrabold mb-3">Modernize Your Agency Invoicing Today</h2>
