@@ -47,6 +47,7 @@
                 <div class="col-12 col-md-6">
                     <label class="form-label fw-semibold text-muted fs-7">Category <span class="text-danger">*</span></label>
                     <select name="category_select" id="category_select" class="form-select rounded-3" required>
+                        <option value="Salaries & Employee Payroll" {{ old('category') === 'Salaries & Employee Payroll' ? 'selected' : '' }}>Salaries & Employee Payroll</option>
                         <option value="Software & Subscriptions" {{ old('category') === 'Software & Subscriptions' ? 'selected' : '' }}>Software & Subscriptions</option>
                         <option value="Domain & Hosting" {{ old('category') === 'Domain & Hosting' ? 'selected' : '' }}>Domain & Hosting</option>
                         <option value="Utilities & Internet" {{ old('category') === 'Utilities & Internet' ? 'selected' : '' }}>Utilities & Internet</option>
@@ -55,7 +56,7 @@
                         <option value="Marketing & Advertising" {{ old('category') === 'Marketing & Advertising' ? 'selected' : '' }}>Marketing & Advertising</option>
                         <option value="custom" {{ old('category_select') === 'custom' ? 'selected' : '' }}>Other / Custom (Specify...)</option>
                     </select>
-                    <input type="hidden" name="category" id="category_hidden" value="{{ old('category', 'Software & Subscriptions') }}">
+                    <input type="hidden" name="category" id="category_hidden" value="{{ old('category', 'Salaries & Employee Payroll') }}">
                 </div>
 
                 <!-- Custom Category Input -->
@@ -137,7 +138,8 @@
                 <!-- Payment Mode -->
                 <div class="col-12 col-md-6">
                     <label class="form-label fw-semibold text-muted fs-7">Payment Mode</label>
-                    <select name="payment_mode" class="form-select rounded-3">
+                    <select name="payment_mode" id="payment_mode" class="form-select rounded-3">
+                        <option value="Bank Transfer (Company Account)" {{ old('payment_mode') === 'Bank Transfer (Company Account)' ? 'selected' : '' }}>Bank Transfer (Company Account)</option>
                         <option value="Current Account Debit Card" {{ old('payment_mode') === 'Current Account Debit Card' ? 'selected' : '' }}>Current Account Debit Card</option>
                         <option value="Net Banking" {{ old('payment_mode') === 'Net Banking' ? 'selected' : '' }}>Net Banking</option>
                         <option value="Credit Card" {{ old('payment_mode') === 'Credit Card' ? 'selected' : '' }}>Credit Card</option>
@@ -196,12 +198,33 @@
         const igstInput = document.getElementById('igst');
         const totalAmountInput = document.getElementById('total_amount');
         
+        const vendorNameInput = document.querySelector('input[name="vendor_name"]');
+        const paymentModeSelect = document.getElementById('payment_mode');
+        const isItcEligibleCheckbox = document.getElementById('is_itc_eligible');
+
         // --- Category Selection Toggles ---
         function updateCategoryHidden() {
             if (categorySelect.value === 'custom') {
                 categoryHidden.value = customCategoryInput.value.trim() || 'Miscellaneous';
             } else {
                 categoryHidden.value = categorySelect.value;
+            }
+
+            // Smart defaults for Salaries & Employee Payroll (Schedule III - Non GST)
+            if (categorySelect.value === 'Salaries & Employee Payroll') {
+                if (gstTypeSelect) {
+                    gstTypeSelect.value = 'none';
+                    calculateTaxes();
+                }
+                if (isItcEligibleCheckbox) {
+                    isItcEligibleCheckbox.checked = false;
+                }
+                if (paymentModeSelect && !paymentModeSelect.value) {
+                    paymentModeSelect.value = 'Bank Transfer (Company Account)';
+                }
+                if (vendorNameInput && !vendorNameInput.value) {
+                    vendorNameInput.placeholder = 'e.g. Staff Payroll - September 2026 (6 Employees)';
+                }
             }
         }
 
@@ -217,6 +240,13 @@
         });
 
         customCategoryInput.addEventListener('input', updateCategoryHidden);
+
+        // Initial check for category defaults
+        if (categorySelect.value === 'Salaries & Employee Payroll' && (!gstTypeSelect.value || gstTypeSelect.value === 'local_18')) {
+            gstTypeSelect.value = 'none';
+            if (paymentModeSelect) paymentModeSelect.value = 'Bank Transfer (Company Account)';
+            if (vendorNameInput && !vendorNameInput.value) vendorNameInput.placeholder = 'e.g. Staff Payroll - September 2026 (6 Employees)';
+        }
 
         // --- GST Calculations ---
         function calculateTaxes() {

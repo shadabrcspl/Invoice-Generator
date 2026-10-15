@@ -42,8 +42,14 @@ class ExpenseController extends Controller
 
         $expenses = $query->orderBy('expense_date', 'desc')->paginate(15);
         
-        // Get unique categories for filter dropdown
-        $categories = Expense::where('user_id', $userId)->distinct()->pluck('category');
+        // Get unique categories for filter dropdown including presets
+        $categories = Expense::where('user_id', $userId)
+            ->distinct()
+            ->pluck('category')
+            ->merge(['Salaries & Employee Payroll', 'Software & Subscriptions', 'Domain & Hosting', 'Rent & Workspace', 'Utilities & Internet'])
+            ->unique()
+            ->filter()
+            ->values();
 
         // Total sum of expenses in the selected scope
         $totalExpensesSum = $query->sum('total_amount');

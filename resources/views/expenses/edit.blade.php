@@ -46,12 +46,13 @@
 
                 <!-- Category -->
                 @php
-                    $presets = ['Software & Subscriptions', 'Domain & Hosting', 'Utilities & Internet', 'Office Supplies', 'Rent & Workspace', 'Marketing & Advertising'];
+                    $presets = ['Salaries & Employee Payroll', 'Software & Subscriptions', 'Domain & Hosting', 'Utilities & Internet', 'Office Supplies', 'Rent & Workspace', 'Marketing & Advertising'];
                     $isCustom = !in_array($expense->category, $presets);
                 @endphp
                 <div class="col-12 col-md-6">
                     <label class="form-label fw-semibold text-muted fs-7">Category <span class="text-danger">*</span></label>
                     <select name="category_select" id="category_select" class="form-select rounded-3" required>
+                        <option value="Salaries & Employee Payroll" {{ old('category_select', $expense->category) === 'Salaries & Employee Payroll' ? 'selected' : '' }}>Salaries & Employee Payroll</option>
                         <option value="Software & Subscriptions" {{ old('category_select', $expense->category) === 'Software & Subscriptions' ? 'selected' : '' }}>Software & Subscriptions</option>
                         <option value="Domain & Hosting" {{ old('category_select', $expense->category) === 'Domain & Hosting' ? 'selected' : '' }}>Domain & Hosting</option>
                         <option value="Utilities & Internet" {{ old('category_select', $expense->category) === 'Utilities & Internet' ? 'selected' : '' }}>Utilities & Internet</option>
@@ -143,6 +144,7 @@
                 <div class="col-12 col-md-6">
                     <label class="form-label fw-semibold text-muted fs-7">Payment Mode</label>
                     <select name="payment_mode" class="form-select rounded-3">
+                        <option value="Bank Transfer (Company Account)" {{ old('payment_mode', $expense->payment_mode) === 'Bank Transfer (Company Account)' ? 'selected' : '' }}>Bank Transfer (Company Account)</option>
                         <option value="Current Account Debit Card" {{ old('payment_mode', $expense->payment_mode) === 'Current Account Debit Card' ? 'selected' : '' }}>Current Account Debit Card</option>
                         <option value="Net Banking" {{ old('payment_mode', $expense->payment_mode) === 'Net Banking' ? 'selected' : '' }}>Net Banking</option>
                         <option value="Credit Card" {{ old('payment_mode', $expense->payment_mode) === 'Credit Card' ? 'selected' : '' }}>Credit Card</option>
