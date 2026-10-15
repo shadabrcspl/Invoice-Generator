@@ -93,7 +93,7 @@
 <nav class="navbar navbar-expand-lg navbar-public fixed-top no-print">
     <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none me-3" href="{{ url('/') }}">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none me-3" href="{{ route('home') }}">
             <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 36px; width: auto; object-fit: contain;">
             <span class="fw-bold text-dark fs-5 tracking-tight">Invoices</span>
         </a>

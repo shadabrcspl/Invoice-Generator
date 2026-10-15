@@ -122,7 +122,7 @@
         <div class="container article-container">
             <nav aria-label="breadcrumb" class="mb-3">
                 <ol class="breadcrumb mb-0 small">
-                    <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-slate-400 text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-slate-400 text-decoration-none">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('blog.index') }}" class="text-slate-400 text-decoration-none">Blog</a></li>
                     <li class="breadcrumb-item text-info active" aria-current="page">RBI Purpose Codes for IT Exporters</li>
                 </ol>

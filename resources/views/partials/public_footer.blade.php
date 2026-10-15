@@ -92,12 +92,12 @@
             
             <!-- Column 1: Brand & Contact Info -->
             <div class="col-lg-4 col-md-6">
-                <a class="d-inline-flex align-items-center gap-2 text-decoration-none mb-3" href="{{ url('/') }}">
+                <a class="d-inline-flex align-items-center gap-2 text-decoration-none mb-3" href="{{ route('home') }}">
                     <img src="{{ asset('images/codxpert-logo.png') }}" alt="CodXpert" style="height: 38px; width: auto; object-fit: contain; filter: brightness(1.2);">
                     <span class="fw-bold text-white fs-4">Invoices</span>
                 </a>
                 <p class="text-slate-400 fs-7 mb-4 leading-relaxed">
-                    Enterprise statutory multi-currency foreign invoicing, GST LUT zero-rated compliance, and real-time Forex reconciliation platform. Built by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-info text-decoration-none fw-semibold">CodXpert</a>.
+                    Enterprise statutory multi-currency foreign invoicing, GST LUT zero-rated compliance, and real-time Forex reconciliation platform. Built by <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-info text-decoration-none fw-semibold">COD XPERT</a>.
                 </p>
 
                 <!-- Official Business Details -->
@@ -140,8 +140,8 @@
                     <li><a href="{{ route('features.invoice-tracking') }}">Invoice Tracking</a></li>
                     <li><a href="{{ route('features.multi-currency') }}">Multi-Currency & Forex</a></li>
                     <li><a href="{{ route('features.quotations') }}">Quotes to Invoices</a></li>
-                    <li><a href="{{ url('/') }}#features">Custom SMTP Mailer</a></li>
-                    <li><a href="{{ url('/') }}#architecture">Audit & Archival Engine</a></li>
+                    <li><a href="{{ route('home') }}#features">Custom SMTP Mailer</a></li>
+                    <li><a href="{{ route('home') }}#architecture">Audit & Archival Engine</a></li>
                 </ul>
             </div>
 
@@ -154,7 +154,7 @@
                     <li><a href="{{ route('solutions.consultants') }}">For Consultants</a></li>
                     <li><a href="{{ route('solutions.freelancers') }}">For Freelancers</a></li>
                     <li><a href="{{ route('solutions.contractors') }}">For Contractors</a></li>
-                    <li><a href="{{ url('/') }}">For Global Exporters</a></li>
+                    <li><a href="{{ route('home') }}">For Global Exporters</a></li>
                 </ul>
             </div>
 
@@ -171,7 +171,7 @@
                     <li><a href="{{ route('tools.forex-calculator') }}">Forex Calculator</a></li>
                     <li><a href="{{ route('templates.word') }}">Word Templates (.docx)</a></li>
                     <li><a href="{{ route('templates.excel') }}">Excel Templates (.xlsx)</a></li>
-                    <li><a href="{{ url('/') }}#simulator">Live Forex Sandbox</a></li>
+                    <li><a href="{{ route('home') }}#simulator">Live Forex Sandbox</a></li>
                 </ul>
             </div>
 
