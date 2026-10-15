@@ -1,4 +1,13 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # 301 Permanent Redirect: Never allow /public in URLs
+    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
+    RewriteRule ^ %1 [L,R=301,NE]
+
+    RewriteCond %{THE_REQUEST} \s/+public[\s?] [NC]
+    RewriteRule ^ / [L,R=301]
+
+    # Internally rewrite everything to public/
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>

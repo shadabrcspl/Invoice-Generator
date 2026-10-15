@@ -152,5 +152,10 @@ Route::get('/terms-of-use', [App\Http\Controllers\HomeController::class, 'terms'
 
 Route::get('/pending-approval', [App\Http\Controllers\Auth\RegisteredUserController::class, 'pendingView'])->name('auth.pending');
 
+// 301 Permanent Redirect: Never allow /public prefix in URLs
+Route::any('/public/{any?}', function ($any = null) {
+    return redirect($any ? '/' . $any : '/', 301);
+})->where('any', '.*');
+
 // Auth Routes placeholder (will be handled by Breeze)
 require __DIR__.'/auth.php';
