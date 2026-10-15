@@ -114,6 +114,12 @@ Route::get('/guides/gst-lut', [App\Http\Controllers\HomeController::class, 'gstL
 Route::get('/guides/firc-e-brc', [App\Http\Controllers\HomeController::class, 'fircEBrcGuide'])->name('guides.firc-e-brc');
 Route::get('/guides/fema-23r', [App\Http\Controllers\HomeController::class, 'fema23rGuide'])->name('guides.fema-23r');
 
+// Blog Hub & Regulatory Articles
+Route::get('/blog', [App\Http\Controllers\HomeController::class, 'blogIndex'])->name('blog.index');
+Route::get('/blog/how-to-file-gst-lut-rfd-11-2026', [App\Http\Controllers\HomeController::class, 'blogGstLutRfd11'])->name('blog.gst-lut-rfd-11');
+Route::get('/blog/top-rbi-purpose-codes-software-exporters', [App\Http\Controllers\HomeController::class, 'blogRbiPurposeCodes'])->name('blog.rbi-purpose-codes');
+Route::get('/blog/sac-code-998311-vs-998312', [App\Http\Controllers\HomeController::class, 'blogSacCodeComparison'])->name('blog.sac-code-comparison');
+
 // 301 Redirects for Legacy Guide URLs
 Route::permanentRedirect('/gst-lut-guide', '/guides/gst-lut');
 Route::permanentRedirect('/firc-e-brc-guide', '/guides/firc-e-brc');

@@ -284,8 +284,9 @@
                 </li>
 
                 <!-- Direct Links -->
-                <li class="nav-item"><a class="nav-link" href="{{ route('pricing') }}">Pricing</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('contact.view') }}">Contact Desk</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('blog*') ? 'active' : '' }}" href="{{ route('blog.index') }}">Blog</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('pricing') ? 'active' : '' }}" href="{{ route('pricing') }}">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="{{ route('contact.view') }}">Contact Desk</a></li>
             </ul>
 
             <!-- Auth Buttons -->

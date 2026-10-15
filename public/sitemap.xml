@@ -103,6 +103,32 @@
     <priority>0.80</priority>
   </url>
 
+  <!-- Blog Hub & Regulatory Articles -->
+  <url>
+    <loc>https://invoice.codxpert.com/blog</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://invoice.codxpert.com/blog/how-to-file-gst-lut-rfd-11-2026</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://invoice.codxpert.com/blog/top-rbi-purpose-codes-software-exporters</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://invoice.codxpert.com/blog/sac-code-998311-vs-998312</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
   <!-- Competitor Comparisons -->
   <url>
     <loc>https://invoice.codxpert.com/vs/zoho-invoice</loc>

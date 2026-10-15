@@ -34,7 +34,11 @@
 - Multi-Currency Billing: https://invoice.codxpert.com/features/multi-currency
 - Quotations & Estimates: https://invoice.codxpert.com/features/quotations
 
-### Statutory Exporter Guides
+### Statutory Exporter Guides & Regulatory Blog
+- Blog & Regulatory Knowledge Base Hub: https://invoice.codxpert.com/blog
+- Step-by-Step Guide on Filing GST LUT (RFD-11): https://invoice.codxpert.com/blog/how-to-file-gst-lut-rfd-11-2026
+- RBI Purpose Codes for Software & IT Exporters: https://invoice.codxpert.com/blog/top-rbi-purpose-codes-software-exporters
+- SAC Code 998311 vs 998312 Classification Guide: https://invoice.codxpert.com/blog/sac-code-998311-vs-998312
 - FEMA 23(R) Service Export Declaration & HDFC EDF Guide: https://invoice.codxpert.com/guides/fema-23r
 - GST LUT Rule 96A Guide: https://invoice.codxpert.com/guides/gst-lut
 - FIRC & e-BRC Reconciliation Guide: https://invoice.codxpert.com/guides/firc-e-brc

@@ -4,6 +4,8 @@ Allow: /pricing
 Allow: /solutions/
 Allow: /features/
 Allow: /guides/
+Allow: /blog
+Allow: /blog/
 Allow: /tools/
 Allow: /templates/
 Allow: /vs/

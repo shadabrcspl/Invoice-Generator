@@ -296,6 +296,38 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the COD XPERT Exporter Blog & Regulatory Knowledge Base Hub.
+     */
+    public function blogIndex()
+    {
+        return view('blog.index');
+    }
+
+    /**
+     * Display the Step-by-Step Guide on Filing Form GST RFD-11 (LUT) for FY 2026-27.
+     */
+    public function blogGstLutRfd11()
+    {
+        return view('blog.how_to_file_gst_lut_rfd_11_2026');
+    }
+
+    /**
+     * Display the RBI Purpose Codes for Software & IT Exporters Guide.
+     */
+    public function blogRbiPurposeCodes()
+    {
+        return view('blog.top_rbi_purpose_codes_software_exporters');
+    }
+
+    /**
+     * Display the SAC Code 998311 vs 998312 IT Exporter GST Guide.
+     */
+    public function blogSacCodeComparison()
+    {
+        return view('blog.sac_code_998311_vs_998312');
+    }
+
+    /**
      * Display CodXpert vs Zoho Invoice comparison page.
      */
     public function vsZohoInvoice()

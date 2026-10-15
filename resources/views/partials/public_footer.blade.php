@@ -179,6 +179,7 @@
             <div class="col-lg-2 col-md-6 col-6">
                 <h6>Resources</h6>
                 <ul>
+                    <li><a href="{{ route('blog.index') }}" class="fw-semibold text-info">Exporter Blog Hub</a></li>
                     <li><a href="{{ route('guides.fema-23r') }}">FEMA 23(R) Guide <span class="badge bg-danger text-white" style="font-size: 8px;">New</span></a></li>
                     <li><a href="{{ route('guides.gst-lut') }}">GST LUT Rule 96A Guide</a></li>
                     <li><a href="{{ route('guides.firc-e-brc') }}">FIRC & e-BRC Guide</a></li>
@@ -186,7 +187,7 @@
                     <li><a href="{{ route('vs.tally-prime') }}">vs Tally Prime</a></li>
                     <li><a href="{{ route('pricing') }}">Pricing & Plans</a></li>
                     <li><a href="{{ route('contact.view') }}">Enterprise Contact Desk</a></li>
-                    <li><a href="https://codxpert.com/" target="_blank" rel="noopener">CodXpert Corporate ↗</a></li>
+                    <li><a href="https://codxpert.com/" target="_blank" rel="noopener">COD XPERT Corporate ↗</a></li>
                 </ul>
             </div>
 
@@ -195,9 +196,11 @@
         <!-- Footer Bottom Bar -->
         <div class="footer-bottom-bar d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
             <div class="text-center text-md-start">
-                © {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-white fw-semibold">CodXpert</a> (<a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-slate-400">codxpert.com</a>). All rights reserved.
+                © {{ date('Y') }} <a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-white fw-semibold">COD XPERT</a> (<a href="https://codxpert.com/" target="_blank" rel="noopener" class="text-slate-400">codxpert.com</a>). All rights reserved.
             </div>
             <div class="d-flex flex-wrap justify-content-center gap-3 font-mono">
+                <a href="{{ route('blog.index') }}">Blog</a>
+                <span>·</span>
                 <a href="{{ route('privacy') }}">Privacy Policy</a>
                 <span>·</span>
                 <a href="{{ route('terms') }}">Terms of Use</a>
