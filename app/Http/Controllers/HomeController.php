@@ -328,6 +328,22 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the HDFC Bank EDF Cum Request Letter Filing Guide.
+     */
+    public function blogHdfcEdfRequestLetter()
+    {
+        return view('blog.how_to_fill_hdfc_bank_edf_cum_request_letter');
+    }
+
+    /**
+     * Display the FEMA 23(R) 30-Day Export Declaration Timeline Guide.
+     */
+    public function blogFema23rTimeline()
+    {
+        return view('blog.fema_23r_export_declaration_timeline_software_exporters');
+    }
+
+    /**
      * Display CodXpert vs Zoho Invoice comparison page.
      */
     public function vsZohoInvoice()

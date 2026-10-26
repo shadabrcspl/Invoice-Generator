@@ -39,6 +39,8 @@
 - Step-by-Step Guide on Filing GST LUT (RFD-11): https://invoice.codxpert.com/blog/how-to-file-gst-lut-rfd-11-2026
 - RBI Purpose Codes for Software & IT Exporters: https://invoice.codxpert.com/blog/top-rbi-purpose-codes-software-exporters
 - SAC Code 998311 vs 998312 Classification Guide: https://invoice.codxpert.com/blog/sac-code-998311-vs-998312
+- How to Fill HDFC Bank EDF Cum Request Letter (Attachment 3 Tutorial): https://invoice.codxpert.com/blog/how-to-fill-hdfc-bank-edf-cum-request-letter-export-services
+- FEMA 23(R) 30-Day Export Declaration Timeline Guide: https://invoice.codxpert.com/blog/fema-23r-export-declaration-timeline-software-exporters
 - FEMA 23(R) Service Export Declaration & HDFC EDF Guide: https://invoice.codxpert.com/guides/fema-23r
 - GST LUT Rule 96A Guide: https://invoice.codxpert.com/guides/gst-lut
 - FIRC & e-BRC Reconciliation Guide: https://invoice.codxpert.com/guides/firc-e-brc

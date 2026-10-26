@@ -369,6 +369,54 @@
                     </div>
                 </div>
 
+                <!-- Article: How to Fill HDFC Bank EDF Cum Request Letter -->
+                <div class="col-md-6 col-lg-4 article-item" data-category="rbi-fema" data-title="How to Fill HDFC Bank EDF Cum Request Letter Export of Services FEMA 23R Attachment 3 Purpose Code P0802">
+                    <div class="article-card">
+                        <div class="p-4 flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge badge-tag badge-fema">HDFC & FEMA 23(R)</span>
+                                <span class="text-muted small">October 2026</span>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">
+                                <a href="{{ route('blog.hdfc-edf-request-letter') }}" class="text-decoration-none text-dark hover-primary">
+                                    How to Fill HDFC Bank EDF Cum Request Letter (2026 Format)
+                                </a>
+                            </h3>
+                            <p class="text-slate-600 small mb-0">
+                                Detailed field-by-field tutorial for completing HDFC Bank's official Request Letter for Export of Services & EDF Filing. Clear held remittances, quote P0802, and automate EDPMS compliance.
+                            </p>
+                        </div>
+                        <div class="px-4 py-3 bg-slate-50 border-top d-flex justify-content-between align-items-center">
+                            <a href="{{ route('blog.hdfc-edf-request-letter') }}" class="text-primary fw-semibold small text-decoration-none">Read Tutorial →</a>
+                            <span class="text-muted small">12 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article: FEMA 23(R) 30-Day Export Declaration Timeline -->
+                <div class="col-md-6 col-lg-4 article-item" data-category="rbi-fema" data-title="FEMA 23R Export Declaration Timeline 30 Days from Month End Software Exporters EDPMS Caution List">
+                    <div class="article-card">
+                        <div class="p-4 flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge badge-tag badge-fema">Statutory Timelines</span>
+                                <span class="text-muted small">October 2026</span>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">
+                                <a href="{{ route('blog.fema-23r-timeline') }}" class="text-decoration-none text-dark hover-primary">
+                                    FEMA 23(R) 30-Day Export Declaration (EDF) Timeline
+                                </a>
+                            </h3>
+                            <p class="text-slate-600 small mb-0">
+                                Master the revised 30-day export declaration timeline from month-end. Practical examples for handling advance remittances, EDPMS regularisation, and avoiding RBI cautionary flags.
+                            </p>
+                        </div>
+                        <div class="px-4 py-3 bg-slate-50 border-top d-flex justify-content-between align-items-center">
+                            <a href="{{ route('blog.fema-23r-timeline') }}" class="text-primary fw-semibold small text-decoration-none">Read Guide →</a>
+                            <span class="text-muted small">10 min read</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Article 4: FEMA 23(R) Master Guide -->
                 <div class="col-md-6 col-lg-4 article-item" data-category="rbi-fema guides" data-title="FEMA 23R Service Export Declaration Guide HDFC EDF Inward Remittance SOFTEX exemption">
                     <div class="article-card">

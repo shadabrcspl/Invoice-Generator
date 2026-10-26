@@ -120,6 +120,8 @@ Route::get('/blog', [App\Http\Controllers\HomeController::class, 'blogIndex'])->
 Route::get('/blog/how-to-file-gst-lut-rfd-11-2026', [App\Http\Controllers\HomeController::class, 'blogGstLutRfd11'])->name('blog.gst-lut-rfd-11');
 Route::get('/blog/top-rbi-purpose-codes-software-exporters', [App\Http\Controllers\HomeController::class, 'blogRbiPurposeCodes'])->name('blog.rbi-purpose-codes');
 Route::get('/blog/sac-code-998311-vs-998312', [App\Http\Controllers\HomeController::class, 'blogSacCodeComparison'])->name('blog.sac-code-comparison');
+Route::get('/blog/how-to-fill-hdfc-bank-edf-cum-request-letter-export-services', [App\Http\Controllers\HomeController::class, 'blogHdfcEdfRequestLetter'])->name('blog.hdfc-edf-request-letter');
+Route::get('/blog/fema-23r-export-declaration-timeline-software-exporters', [App\Http\Controllers\HomeController::class, 'blogFema23rTimeline'])->name('blog.fema-23r-timeline');
 
 // 301 Redirects for Legacy Guide URLs
 Route::permanentRedirect('/gst-lut-guide', '/guides/gst-lut');
