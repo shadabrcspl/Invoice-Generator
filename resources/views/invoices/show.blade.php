@@ -245,6 +245,14 @@
                     Download PDF
                 </a>
 
+                @if($invoice->currency_code !== 'INR')
+                    <!-- Prominent Export Compliance: HDFC EDF & Request Letter -->
+                    <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn text-white rounded-pill px-3 py-2 fw-semibold border-0 shadow-sm d-inline-flex align-items-center gap-1.5" style="background: linear-gradient(135deg, #1e3a5f, #0f172a);" title="Download pre-filled HDFC Bank Export Declaration Form (EDF) Cum Request Letter (.xlsx)">
+                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span>📄 Download EDF & Request Letter (.xlsx)</span>
+                    </a>
+                @endif
+
                 <!-- Primary Action 2: Send Email -->
                 <button type="button" onclick="document.getElementById('emailModal').style.display='flex'" class="btn btn-success rounded-pill px-4 fw-semibold border-0 shadow-sm" style="background: linear-gradient(135deg,#059669,#047857);">
                     <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="me-1"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -857,18 +865,35 @@
                     </div>
                 @endif
 
-                @if($invoice->currency_code !== 'INR' && ($invoice->payment || $fircRef || $actualReceivedInr))
-                    <div class="p-3 border border-warning rounded-3 bg-light">
+                @if($invoice->currency_code !== 'INR')
+                    <div class="p-3 border border-primary-subtle rounded-3 bg-light shadow-2xs">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="metadata-label text-warning m-0">Compliance: FIRC/e-BRC Tracking Summary</span>
-                            <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn btn-sm btn-outline-warning text-dark fw-semibold rounded-pill py-0 px-2 fs-8 d-inline-flex align-items-center gap-1" title="Edit payment details">
-                                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                                Edit
-                            </button>
+                            <span class="metadata-label text-primary m-0 d-flex align-items-center gap-1.5 fw-bold">
+                                <span>🏛️</span> HDFC Bank & RBI FEMA 23(R) Export Compliance
+                            </span>
+                            @if($invoice->payment || $fircRef || $actualReceivedInr)
+                                <button type="button" onclick="document.getElementById('recordPaymentModal').style.display='flex'; initForexReconcilerModal();" class="btn btn-sm btn-outline-warning text-dark fw-semibold rounded-pill py-0 px-2 fs-8 d-inline-flex align-items-center gap-1" title="Edit payment details">
+                                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    Edit Payment
+                                </button>
+                            @else
+                                <span class="badge bg-secondary-subtle text-secondary fs-9 rounded-pill px-2">Payment Pending</span>
+                            @endif
                         </div>
                         <div class="row g-2 fs-7 text-muted">
-                            <div class="col-6">FIRC/e-BRC Ref:</div>
-                            <div class="col-6 fw-bold text-dark">{{ $fircRef ?: 'N/A' }}</div>
+                            <div class="col-6">Mandatory Purpose Code:</div>
+                            <div class="col-6 fw-bold text-dark">P0802 (Software Consultancy)</div>
+
+                            <div class="col-6">Credit Account Number:</div>
+                            <div class="col-6 fw-bold text-dark">50200120756905 (HDFC Bank)</div>
+
+                            <div class="col-6">GST LUT Declaration:</div>
+                            <div class="col-6 fw-semibold text-dark">AD100626002271U</div>
+
+                            @if($fircRef)
+                                <div class="col-6">FIRC/e-BRC Ref:</div>
+                                <div class="col-6 fw-bold text-dark">{{ $fircRef }}</div>
+                            @endif
                             @if($liquidationRate)
                                 <div class="col-6">Bank Liquidation Rate:</div>
                                 <div class="col-6 fw-bold text-dark">1 {{ $invoice->currency_code }} = {{ number_format($liquidationRate, 4) }} INR</div>
@@ -881,15 +906,11 @@
                                 <div class="col-6">Withholding / TDS Tax:</div>
                                 <div class="col-6 fw-bold text-primary">₹{{ number_format($tdsAmount, 2) }} ({{ $tdsSec ?: 'Sec 195' }})</div>
                             @endif
-                            <div class="col-6">Invoiced INR Equivalent:</div>
+                            <div class="col-6">Invoiced INR Value:</div>
                             <div class="col-6 fw-semibold text-dark">₹{{ number_format($invoicedInr, 2) }}</div>
                             @if($paymentDate)
                                 <div class="col-6">Payment Received Date:</div>
                                 <div class="col-6 fw-semibold text-dark">{{ $paymentDate }}</div>
-                            @endif
-                            @if($payment?->payment_notes)
-                                <div class="col-6">Reference / Notes:</div>
-                                <div class="col-6 text-dark">{{ $payment->payment_notes }}</div>
                             @endif
                             
                             @if($difference !== null)
@@ -902,11 +923,13 @@
                                 </div>
                             @endif
 
-                            <div class="col-12 border-top pt-2 mt-2 d-flex flex-wrap justify-content-between align-items-center gap-2">
-                                <span class="fs-8 text-muted">Mandatory under FEMA 23(R) effective Oct 1, 2026</span>
-                                <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn btn-sm btn-dark rounded-pill px-3 py-1 fs-8 fw-semibold d-inline-flex align-items-center gap-1" style="background: #1e3a5f; border-color: #1e3a5f;" title="Auto-populate HDFC EDF Declaration Form (.xlsx)">
-                                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                                    Download FEMA 23(R) / HDFC EDF Excel
+                            <div class="col-12 border-top pt-2 mt-2">
+                                <div class="small text-muted mb-2">
+                                    Required by HDFC Bank to credit remittance & regularise export bill in RBI EDPMS:
+                                </div>
+                                <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn btn-sm btn-dark rounded-pill px-3 py-1.5 fs-7 fw-semibold d-inline-flex align-items-center gap-1.5 w-100 justify-content-center" style="background: #1e3a5f; border-color: #1e3a5f;" title="Auto-populate HDFC EDF Declaration Form (.xlsx)">
+                                    <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    Download EDF & Request Letter (.xlsx)
                                 </a>
                             </div>
                         </div>

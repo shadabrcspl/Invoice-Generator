@@ -170,8 +170,8 @@
                         <span class="fw-semibold fs-7"><span id="selected-count">0</span> foreign currency invoices selected for monthly filing</span>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-warning btn-sm rounded-pill px-4 fw-bold text-dark">
-                            📥 Download Consolidated FEMA 23(R) / EDF (.xlsx)
+                        <button type="submit" class="btn btn-warning btn-sm rounded-pill px-4 fw-bold text-dark shadow-sm">
+                            📥 Download Consolidated EDF & Request Letter (.xlsx)
                         </button>
                     </div>
                 </div>
@@ -245,6 +245,11 @@
                                     <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-light btn-sm rounded-pill px-3 fw-semibold text-dark border shadow-xs" title="View details">
                                         View
                                     </a>
+                                    @if($invoice->currency_code !== 'INR')
+                                        <a href="{{ route('invoices.fema-declaration', $invoice->id) }}" class="btn btn-dark btn-sm rounded-pill px-2.5 py-1 fw-bold fs-8 d-inline-flex align-items-center gap-1 shadow-xs" style="background: #1e3a5f; border-color: #1e3a5f;" title="Download HDFC Export Declaration Form (EDF) Cum Request Letter (.xlsx)">
+                                            <span>📄 EDF</span>
+                                        </a>
+                                    @endif
                                     <a href="{{ route('invoices.pdf', $invoice->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-2 py-1" title="Download PDF">
                                         <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                                     </a>
