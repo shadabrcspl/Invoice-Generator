@@ -81,6 +81,15 @@ class InvoiceController extends Controller
         
         $type = $request->get('type', 'invoice');
 
+        // Support duplicating an existing invoice for recurring / monthly billing
+        $duplicateInvoice = null;
+        if ($request->has('duplicate_id')) {
+            $duplicateInvoice = Invoice::with(['items', 'client'])->where('user_id', $userId)->find($request->get('duplicate_id'));
+            if ($duplicateInvoice) {
+                $type = $duplicateInvoice->type;
+            }
+        }
+
         // Dynamic Default Number (e.g. INV-202507-0001, QUO-..., CN-..., DN-...)
         $year = date('Y');
         $month = date('m');
@@ -160,7 +169,7 @@ class InvoiceController extends Controller
             }
         }
 
-        return view('invoices.create', compact('clients', 'companySetting', 'defaultInvoiceNumber', 'type', 'latestRates', 'activeCurrencies', 'originalInvoice'));
+        return view('invoices.create', compact('clients', 'companySetting', 'defaultInvoiceNumber', 'type', 'latestRates', 'activeCurrencies', 'originalInvoice', 'duplicateInvoice'));
     }
 
     /**
@@ -528,6 +537,19 @@ class InvoiceController extends Controller
 
         return redirect()->route('invoices.show', $invoice->id)
             ->with('success', 'Quotation successfully converted to Invoice ' . $newInvoiceNumber);
+    }
+
+    /**
+     * Duplicate an existing invoice for recurring / monthly billing.
+     */
+    public function duplicate(Invoice $invoice)
+    {
+        $this->authorize('view', $invoice);
+
+        return redirect()->route('invoices.create', [
+            'duplicate_id' => $invoice->id,
+            'type'         => $invoice->type,
+        ]);
     }
 
     /**

@@ -259,6 +259,12 @@
                     Send Email
                 </button>
 
+                <!-- Action: Duplicate Invoice -->
+                <a href="{{ route('invoices.duplicate', $invoice->id) }}" class="btn btn-outline-secondary rounded-pill px-3 py-2 fw-semibold border shadow-xs d-inline-flex align-items-center gap-1.5" title="Duplicate this invoice for a new monthly billing cycle">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    <span>Duplicate</span>
+                </a>
+
                 <!-- Primary Action 3 (Contextual): Convert / Record Payment -->
                 @if($invoice->type === 'quotation')
                     <form method="POST" action="{{ route('quotations.convert', $invoice->id) }}" class="d-inline">
@@ -285,6 +291,12 @@
                         More Actions
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2 border-0" aria-labelledby="moreActionsDropdown" style="min-width: 240px;">
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" href="{{ route('invoices.duplicate', $invoice->id) }}">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                Duplicate / Copy Invoice
+                            </a>
+                        </li>
                         <li>
                             <button class="dropdown-item rounded-3 py-2 px-3 fw-medium d-flex align-items-center gap-2" onclick="window.print()">
                                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-3a2 2 0 00-2-2H9a2 2 0 00-2 2v3a2 2 0 002 2zm5-17v2m-6 2h12"/></svg>

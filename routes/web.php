@@ -56,6 +56,7 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     Route::post('invoices/fema-declaration/consolidated', [InvoiceController::class, 'downloadConsolidatedFemaDeclaration'])->name('invoices.fema-declaration.consolidated');
     Route::resource('invoices', InvoiceController::class);
     Route::post('invoices/{invoice}/convert', [InvoiceController::class, 'convertToInvoice'])->name('quotations.convert');
+    Route::get('invoices/{invoice}/duplicate', [InvoiceController::class, 'duplicate'])->name('invoices.duplicate');
     Route::post('invoices/{invoice}/record-payment', [InvoiceController::class, 'recordPayment'])->name('invoices.record-payment');
     Route::get('invoices/{invoice}/fema-declaration', [InvoiceController::class, 'downloadFemaDeclaration'])->name('invoices.fema-declaration');
 

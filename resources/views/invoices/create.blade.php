@@ -56,6 +56,21 @@
     <form method="POST" action="{{ route('invoices.store') }}" id="invoice-form">
         @csrf
 
+        @if(!empty($duplicateInvoice))
+            <div class="alert alert-primary border-0 rounded-4 mb-4 d-flex align-items-center justify-content-between p-3" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb !important;">
+                <div class="d-flex align-items-center gap-3">
+                    <span style="font-size: 26px;">📋</span>
+                    <div>
+                        <span class="fw-bold text-primary fs-7">Duplicating From Invoice:</span>
+                        <a href="{{ route('invoices.show', $duplicateInvoice->id) }}" target="_blank" class="fw-bold text-dark fs-7 ms-1 text-decoration-underline">{{ $duplicateInvoice->invoice_number }}</a>
+                        <span class="text-muted fs-8">({{ $duplicateInvoice->invoice_date->format('d M Y') }}) — {{ $duplicateInvoice->currency_symbol }}{{ number_format($duplicateInvoice->grand_total, 2) }}</span>
+                        <div class="text-dark fs-8 mt-1">Pre-filled with customer details, currency, line items, and payment notes for this month. A fresh sequential invoice number and today's date have been assigned. Review and click <strong>Generate {{ ucfirst($type) }}</strong>.</div>
+                    </div>
+                </div>
+                <span class="badge bg-primary rounded-pill px-3 py-2 fs-8">MONTHLY DUPLICATE</span>
+            </div>
+        @endif
+
         @if(!empty($originalInvoice))
             <input type="hidden" name="original_invoice_id" value="{{ $originalInvoice->id }}">
             <div class="alert alert-info border-0 rounded-4 mb-4 d-flex align-items-center justify-content-between p-3" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #0284c7 !important;">
@@ -86,9 +101,9 @@
                         <div class="col-12 col-md-4">
                             <label class="form-label fw-semibold text-muted fs-7">Select Client <span class="text-danger">*</span></label>
                             <select name="client_id" id="client-select" class="form-select rounded-3" required>
-                                <option value="" disabled {{ empty($originalInvoice) ? 'selected' : '' }}>-- Choose Customer --</option>
+                                <option value="" disabled {{ empty($originalInvoice) && empty($duplicateInvoice) ? 'selected' : '' }}>-- Choose Customer --</option>
                                 @foreach($clients as $client)
-                                    <option value="{{ $client->id }}" data-email="{{ $client->email }}" data-phone="{{ $client->phone }}" data-address="{{ $client->address }}" data-country="{{ $client->country }}" data-gst="{{ $client->gst_number }}" {{ (old('client_id', $originalInvoice?->client_id) == $client->id) ? 'selected' : '' }}>
+                                    <option value="{{ $client->id }}" data-email="{{ $client->email }}" data-phone="{{ $client->phone }}" data-address="{{ $client->address }}" data-country="{{ $client->country }}" data-gst="{{ $client->gst_number }}" {{ (old('client_id', $duplicateInvoice?->client_id ?? $originalInvoice?->client_id) == $client->id) ? 'selected' : '' }}>
                                         {{ $client->name }}
                                     </option>
                                 @endforeach
@@ -107,14 +122,14 @@
                         <div class="col-12 col-md-4">
                             <label class="form-label fw-semibold text-muted fs-7">Currency Support <span class="text-danger">*</span></label>
                             <select name="currency_code" id="currency-select" class="form-select rounded-3" required>
-                                <option value="INR" data-symbol="₹" {{ (old('currency_code', $originalInvoice?->currency_code) === 'INR') ? 'selected' : '' }}>INR (₹)</option>
+                                <option value="INR" data-symbol="₹" {{ (old('currency_code', $duplicateInvoice?->currency_code ?? $originalInvoice?->currency_code) === 'INR') ? 'selected' : '' }}>INR (₹)</option>
                                 @foreach($activeCurrencies as $curr)
-                                    <option value="{{ $curr->code }}" data-symbol="{{ $curr->symbol }}" {{ (old('currency_code', $originalInvoice?->currency_code) === $curr->code) ? 'selected' : '' }}>
+                                    <option value="{{ $curr->code }}" data-symbol="{{ $curr->symbol }}" {{ (old('currency_code', $duplicateInvoice?->currency_code ?? $originalInvoice?->currency_code) === $curr->code) ? 'selected' : '' }}>
                                         {{ $curr->code }} ({{ $curr->symbol }})
                                     </option>
                                 @endforeach
                             </select>
-                            <input type="hidden" name="currency_symbol" id="currency-symbol-input" value="{{ $originalInvoice?->currency_symbol ?: '₹' }}">
+                            <input type="hidden" name="currency_symbol" id="currency-symbol-input" value="{{ $duplicateInvoice?->currency_symbol ?? ($originalInvoice?->currency_symbol ?: '₹') }}">
                         </div>
 
                         <!-- Date -->
@@ -221,8 +236,9 @@
                             <tbody id="items-tbody">
                                 @php
                                     $initialItems = old('items');
-                                    if (!$initialItems && !empty($originalInvoice) && $originalInvoice->items->isNotEmpty()) {
-                                        $initialItems = $originalInvoice->items->map(function($it) {
+                                    $sourceInvoice = $originalInvoice ?? $duplicateInvoice;
+                                    if (!$initialItems && !empty($sourceInvoice) && $sourceInvoice->items->isNotEmpty()) {
+                                        $initialItems = $sourceInvoice->items->map(function($it) {
                                             return [
                                                 'item_name' => $it->item_name,
                                                 'description' => $it->description,
@@ -301,12 +317,12 @@
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
                             <label class="form-label fw-semibold text-muted fs-7">Bank & Payment Instructions (Editable)</label>
-                            <textarea name="bank_notes" rows="4" class="form-control rounded-3 fs-7" placeholder="Bank payment instructions...">{{ old('bank_notes', $companySetting->bank_notes ?? '') }}</textarea>
+                            <textarea name="bank_notes" rows="4" class="form-control rounded-3 fs-7" placeholder="Bank payment instructions...">{{ old('bank_notes', $duplicateInvoice?->bank_notes ?? ($companySetting->bank_notes ?? '')) }}</textarea>
                         </div>
                         
                         <div class="col-12 col-md-6">
                             <label class="form-label fw-semibold text-muted fs-7">Invoice Terms / Notes to Client</label>
-                            <textarea name="notes" rows="4" class="form-control rounded-3 fs-7" placeholder="e.g. Thank you for your business! Payment is due within 14 days."></textarea>
+                            <textarea name="notes" rows="4" class="form-control rounded-3 fs-7" placeholder="e.g. Thank you for your business! Payment is due within 14 days.">{{ old('notes', $duplicateInvoice?->notes ?? '') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -370,17 +386,17 @@
                     <!-- Recurring Invoices & Subscriptions Box -->
                     <div class="calculation-box mb-4" id="recurring-settings-box" style="{{ in_array($type, ['invoice']) ? '' : 'display: none;' }}">
                         <div class="form-check form-switch mb-2">
-                            <input class="form-check-input" type="checkbox" role="switch" name="is_recurring" value="1" id="is-recurring-switch" {{ old('is_recurring') ? 'checked' : '' }}>
+                            <input class="form-check-input" type="checkbox" role="switch" name="is_recurring" value="1" id="is-recurring-switch" {{ old('is_recurring', $duplicateInvoice?->is_recurring) ? 'checked' : '' }}>
                             <label class="form-check-label fw-bold text-dark fs-7" for="is-recurring-switch">🔄 Recurring Subscription</label>
                         </div>
-                        <div id="recurring-fields-container" style="{{ old('is_recurring') ? '' : 'display: none;' }}">
+                        <div id="recurring-fields-container" style="{{ old('is_recurring', $duplicateInvoice?->is_recurring) ? '' : 'display: none;' }}">
                             <div class="mb-2">
                                 <label class="form-label fw-semibold text-muted fs-8 mb-1">Billing Frequency</label>
                                 <select name="recurring_frequency" class="form-select form-select-sm rounded-2">
-                                    <option value="weekly" {{ old('recurring_frequency') === 'weekly' ? 'selected' : '' }}>Weekly</option>
-                                    <option value="monthly" {{ old('recurring_frequency', 'monthly') === 'monthly' ? 'selected' : '' }}>Monthly</option>
-                                    <option value="quarterly" {{ old('recurring_frequency') === 'quarterly' ? 'selected' : '' }}>Quarterly</option>
-                                    <option value="yearly" {{ old('recurring_frequency') === 'yearly' ? 'selected' : '' }}>Yearly</option>
+                                    <option value="weekly" {{ old('recurring_frequency', $duplicateInvoice?->recurring_frequency) === 'weekly' ? 'selected' : '' }}>Weekly</option>
+                                    <option value="monthly" {{ old('recurring_frequency', $duplicateInvoice?->recurring_frequency ?? 'monthly') === 'monthly' ? 'selected' : '' }}>Monthly</option>
+                                    <option value="quarterly" {{ old('recurring_frequency', $duplicateInvoice?->recurring_frequency) === 'quarterly' ? 'selected' : '' }}>Quarterly</option>
+                                    <option value="yearly" {{ old('recurring_frequency', $duplicateInvoice?->recurring_frequency) === 'yearly' ? 'selected' : '' }}>Yearly</option>
                                 </select>
                             </div>
                             <div class="mb-2">
