@@ -33,10 +33,20 @@ class FemaDeclarationService
             $bankName = trim($m[1]);
         }
 
-        $branchAddress = 'HDFC Bank Ltd., Upper Ground & First Floor, Anu Complex, Bekapur Market, Munger, Bihar, Pin-811201';
+        $rawBranchAddress = 'Upper Ground & First Floor, Anu Complex, Bekapur Market, Munger, Bihar, Pin-811201';
         if (preg_match('/Branch\s*Address\s*:\s*([^\r\n]+)/i', $bankNotes, $m)) {
-            $branchAddress = trim($m[1]);
+            $rawBranchAddress = trim($m[1]);
         }
+        // Clean off any duplicate "HDFC Bank Ltd." prefix from branch address
+        $branchAddress = preg_replace('/^(?:HDFC\s*Bank\s*Ltd\.?,?\s*)+/i', '', $rawBranchAddress);
+        $branchAddress = trim($branchAddress, " \t\n\r\0\x0B,.");
+
+        $branchName = 'Bekapur Market, Munger';
+        if (preg_match('/(Bekapur Market[^\r\n,]*,\s*Munger)/i', $branchAddress, $bm)) {
+            $branchName = trim($bm[1]);
+        }
+
+        $adNameAddress = "{$bankName}, {$branchAddress}";
 
         // Extract PAN from GSTIN (chars 3 to 12) or fallback
         $gstNumber = $companySetting?->gst_number ?? '10BZUPA6699D1Z7';
@@ -93,8 +103,9 @@ class FemaDeclarationService
                 'email'           => $companySetting?->email ?: 'info@codxpert.com',
                 'account_number'  => $accountNumber,
                 'bank_name'       => $bankName,
+                'branch_name'     => $branchName,
                 'branch_address'  => $branchAddress,
-                'ad_name_address' => "{$bankName}, {$branchAddress}",
+                'ad_name_address' => $adNameAddress,
             ],
             'client'                => [
                 'name'    => $invoice->client?->name ?: 'Overseas Client',
@@ -164,10 +175,20 @@ class FemaDeclarationService
             $bankName = trim($m[1]);
         }
 
-        $branchAddress = 'HDFC Bank Ltd., Upper Ground & First Floor, Anu Complex, Bekapur Market, Munger, Bihar, Pin-811201';
+        $rawBranchAddress = 'Upper Ground & First Floor, Anu Complex, Bekapur Market, Munger, Bihar, Pin-811201';
         if (preg_match('/Branch\s*Address\s*:\s*([^\r\n]+)/i', $bankNotes, $m)) {
-            $branchAddress = trim($m[1]);
+            $rawBranchAddress = trim($m[1]);
         }
+        // Clean off any duplicate "HDFC Bank Ltd." prefix from branch address
+        $branchAddress = preg_replace('/^(?:HDFC\s*Bank\s*Ltd\.?,?\s*)+/i', '', $rawBranchAddress);
+        $branchAddress = trim($branchAddress, " \t\n\r\0\x0B,.");
+
+        $branchName = 'Bekapur Market, Munger';
+        if (preg_match('/(Bekapur Market[^\r\n,]*,\s*Munger)/i', $branchAddress, $bm)) {
+            $branchName = trim($bm[1]);
+        }
+
+        $adNameAddress = "{$bankName}, {$branchAddress}";
 
         // Extract PAN from GSTIN (chars 3 to 12) or fallback
         $gstNumber = $companySetting?->gst_number ?? '10BZUPA6699D1Z7';
@@ -213,8 +234,9 @@ class FemaDeclarationService
                 'email'           => $companySetting?->email ?: 'info@codxpert.com',
                 'account_number'  => $accountNumber,
                 'bank_name'       => $bankName,
+                'branch_name'     => $branchName,
                 'branch_address'  => $branchAddress,
-                'ad_name_address' => "{$bankName}, {$branchAddress}",
+                'ad_name_address' => $adNameAddress,
             ],
             'invoices'            => $invoicesData,
         ];

@@ -104,10 +104,13 @@ def main():
     if 'REQUEST LETTER' in wb.sheetnames:
         ws_req = wb['REQUEST LETTER']
         
-        # Letter Date
+        # Letter Date & Branch in Row 4
         letter_date = data.get('request_letter_date') or data.get('payment_date') or data.get('invoice_date')
         if letter_date:
             ws_req['AG4'] = letter_date
+            
+        branch_name = exporter.get('branch_name') or 'Bekapur Market, Munger'
+        ws_req['A4'] = branch_name
             
         # Account to be Credited
         account_no = exporter.get('account_number', '50200120756905')
@@ -137,7 +140,12 @@ def main():
         ws_req['A9'] = f"Customer PAN: {pan}" if pan else "Customer PAN: N/A"
         
         # Bank & Exporter Details
-        ws_req['P10'] = exporter.get('ad_name_address') or f"{exporter.get('bank_name', 'HDFC Bank Ltd.')}, {exporter.get('branch_address', 'Munger Branch')}"
+        clean_ad_name_address = exporter.get('ad_name_address')
+        if not clean_ad_name_address:
+            b_addr = exporter.get('branch_address', 'Upper Ground & First Floor, Anu Complex, Bekapur Market, Munger, Bihar, Pin-811201')
+            clean_ad_name_address = b_addr if b_addr.startswith('HDFC Bank') else f"{exporter.get('bank_name', 'HDFC Bank Ltd.')}, {b_addr}"
+        
+        ws_req['P10'] = clean_ad_name_address
         ws_req['P11'] = f"{exporter.get('name', 'COD XPERT')}, {exporter.get('address', '')}"
         
         # Export Classifications (Preserving and setting valid dropdown values)
@@ -234,6 +242,7 @@ def main():
         ws_edf['C5'] = exporter.get('iec', 'As per Bank records')
         ws_edf['D5'] = exporter.get('gstin', 'As per Bank records')
         ws_edf['E5'] = exporter.get('pan', 'As per Bank records')
+        ws_edf['F5'] = clean_ad_name_address
         ws_edf['G5'] = exporter.get('address', 'As per Bank records')
         ws_edf['H5'] = exporter.get('name', 'As per Bank records')
         
