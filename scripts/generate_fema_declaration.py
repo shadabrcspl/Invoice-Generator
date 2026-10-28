@@ -120,15 +120,13 @@ def main():
         purpose_code = data.get('purpose_code', 'P0802 - Software consultancy implementation other than those covered in SOFTEX form')
         ws_req['F6'] = purpose_code
         
-        # Exchange Rate / Forward contract details
-        rate_payment = data.get('exchange_rate_payment')
-        rate_invoice = data.get('exchange_rate_invoice')
-        if rate_payment:
-            ws_req['L7'] = f"1 {currency} = {float(rate_payment):.4f} INR (Realized Bank Liquidation Rate)"
-        elif rate_invoice:
-            ws_req['L7'] = f"1 {currency} = {float(rate_invoice):.4f} INR (Rate on Invoice Date)"
+        # Exchange Rate / Forward contract details if any
+        # HDFC Bank Trade Desk standard: write "Card Rate" when no forward contract / treasury deal is booked
+        forward_contract = data.get('forward_contract_details')
+        if forward_contract:
+            ws_req['L7'] = forward_contract
         else:
-            ws_req['L7'] = "As per Bank Realisation"
+            ws_req['L7'] = "Card Rate"
             
         # IEC, GSTIN, PAN
         iec = exporter.get('iec', 'N/A')
