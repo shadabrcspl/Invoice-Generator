@@ -143,9 +143,11 @@ Route::get('/templates/excel-invoice-template', [App\Http\Controllers\HomeContro
 Route::permanentRedirect('/templates/invoice-template-word', '/templates/word-invoice-template');
 Route::get('/downloads/template/{filename}', [App\Http\Controllers\HomeController::class, 'downloadTemplate'])->name('templates.download');
 
-// Contact Desk (GET renders dedicated page, POST handles submission)
+// Contact Desk (GET renders dedicated page, POST handles submission with rate limiting)
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contactView'])->name('contact.view');
-Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contact'])
+    ->middleware('throttle:5,1')
+    ->name('contact');
 
 // Public Legal and Compliance Pages
 Route::get('/privacy', [App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy');
