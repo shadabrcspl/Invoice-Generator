@@ -114,9 +114,27 @@
                         <tr>
                             <td>{{ $expense->expense_date->format('d-M-Y') }}</td>
                             <td>
-                                <div class="fw-semibold">{{ $expense->vendor_name }}</div>
+                                <div class="fw-semibold d-flex align-items-center gap-1.5 flex-wrap">
+                                    <span>{{ $expense->vendor_name }}</span>
+                                    @if($expense->is_recurring)
+                                        <span class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle px-2 py-0.5" style="font-size: 10px;" title="Next: {{ $expense->recurring_next_date?->format('d M Y') }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-arrow-repeat me-0.5" viewBox="0 0 16 16" style="vertical-align: -1px;">
+                                              <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                                              <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                                            </svg>
+                                            {{ ucfirst($expense->recurring_frequency ?? 'Monthly') }}
+                                        </span>
+                                    @elseif($expense->recurring_parent_id)
+                                        <span class="badge rounded-pill bg-light text-muted border border-slate-200 px-2 py-0.5" style="font-size: 10px;">
+                                            Auto-Generated
+                                        </span>
+                                    @endif
+                                </div>
                                 @if($expense->vendor_gstin)
                                     <div class="text-muted fs-8">GSTIN: <span class="badge bg-light text-secondary border border-secondary-subtle px-2 py-0.5">{{ $expense->vendor_gstin }}</span></div>
+                                @endif
+                                @if($expense->is_recurring && $expense->recurring_next_date)
+                                    <div class="text-muted fs-8 mt-0.5" style="font-size: 11px;">Next Cycle: <span class="text-primary fw-medium">{{ $expense->recurring_next_date->format('d-M-Y') }}</span></div>
                                 @endif
                             </td>
                             <td>
@@ -165,7 +183,15 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                <div class="d-flex justify-content-end gap-2">
+                                <div class="d-flex justify-content-end gap-1.5">
+                                    @if($expense->is_recurring)
+                                        <form method="POST" action="{{ route('expenses.toggle-recurring', $expense->id) }}" class="m-0" title="Pause recurring schedule">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-warning btn-sm rounded-pill px-2.5 py-1 text-nowrap" style="font-size: 12px;">
+                                                Pause
+                                            </button>
+                                        </form>
+                                    @endif
                                     <a href="{{ route('expenses.edit', $expense->id) }}" class="btn btn-light btn-sm rounded-pill px-3">Edit</a>
                                     
                                     <form method="POST" action="{{ route('expenses.destroy', $expense->id) }}" class="m-0" onsubmit="return confirm('Are you sure you want to delete this expense entry?');">

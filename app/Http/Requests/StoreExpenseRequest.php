@@ -23,8 +23,12 @@ class StoreExpenseRequest extends FormRequest
             'sgst'            => ['nullable', 'numeric', 'min:0'],
             'igst'            => ['nullable', 'numeric', 'min:0'],
             'total_amount'    => ['required', 'numeric', 'min:0'],
-            'payment_mode'    => ['nullable', 'string', 'max:100'],
-            'receipt'         => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'],
+            'payment_mode'        => ['nullable', 'string', 'max:100'],
+            'receipt'             => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'],
+            'is_recurring'        => ['nullable', 'boolean'],
+            'recurring_frequency' => ['nullable', 'string', 'in:weekly,monthly,quarterly,yearly'],
+            'recurring_next_date' => ['nullable', 'date'],
+            'recurring_end_date'  => ['nullable', 'date'],
         ];
     }
 }

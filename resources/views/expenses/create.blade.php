@@ -168,6 +168,47 @@
                     </div>
                 </div>
 
+                <!-- Recurring Expense Switch & Options -->
+                <div class="col-12 mt-3">
+                    <div class="p-3 bg-light rounded-3 border border-slate-100">
+                        <div class="form-check form-switch d-flex justify-content-between align-items-center mb-0">
+                            <div class="pe-3">
+                                <label class="form-check-label fw-bold text-dark fs-6 d-block mb-1" for="is_recurring">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat text-primary me-1" viewBox="0 0 16 16" style="vertical-align: -2px;">
+                                      <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                                      <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                                    </svg>
+                                    Make this a Recurring Expense
+                                </label>
+                                <span class="text-muted fs-7">Automatically generate this expense every cycle (ideal for office rent, payroll, cloud subscriptions).</span>
+                            </div>
+                            <input class="form-check-input ms-0" type="checkbox" role="switch" name="is_recurring" id="is_recurring" value="1" {{ old('is_recurring') ? 'checked' : '' }} style="width: 48px; height: 24px; cursor: pointer;">
+                        </div>
+
+                        <div id="recurring-fields" class="row g-3 mt-2 pt-3 border-top {{ old('is_recurring') ? '' : 'd-none' }}">
+                            <div class="col-12 col-md-4">
+                                <label class="form-label fw-semibold text-muted fs-7">Repeat Frequency <span class="text-danger">*</span></label>
+                                <select name="recurring_frequency" id="recurring_frequency" class="form-select rounded-3">
+                                    <option value="monthly" {{ old('recurring_frequency', 'monthly') === 'monthly' ? 'selected' : '' }}>Monthly (e.g. Rent, Salaries)</option>
+                                    <option value="quarterly" {{ old('recurring_frequency') === 'quarterly' ? 'selected' : '' }}>Quarterly (Every 3 Months)</option>
+                                    <option value="yearly" {{ old('recurring_frequency') === 'yearly' ? 'selected' : '' }}>Yearly (Annual Renewals)</option>
+                                    <option value="weekly" {{ old('recurring_frequency') === 'weekly' ? 'selected' : '' }}>Weekly</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label class="form-label fw-semibold text-muted fs-7">Next Generation Date</label>
+                                <input type="date" name="recurring_next_date" id="recurring_next_date" class="form-control rounded-3" value="{{ old('recurring_next_date') }}">
+                                <span class="text-muted" style="font-size: 11px;">Defaults to +1 cycle from expense date if blank.</span>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label class="form-label fw-semibold text-muted fs-7">End Date (Optional)</label>
+                                <input type="date" name="recurring_end_date" id="recurring_end_date" class="form-control rounded-3" value="{{ old('recurring_end_date') }}">
+                                <span class="text-muted" style="font-size: 11px;">Leave blank for ongoing until stopped.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Submission Actions -->
                 <div class="col-12 mt-4 d-flex justify-content-end gap-2">
                     <button type="submit" class="btn btn-primary rounded-pill px-4 py-2.5 fw-semibold border-0" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
@@ -305,6 +346,19 @@
         cgstInput.addEventListener('input', calculateTaxes);
         sgstInput.addEventListener('input', calculateTaxes);
         igstInput.addEventListener('input', calculateTaxes);
+
+        // --- Recurring Toggle Handler ---
+        const isRecurringSwitch = document.getElementById('is_recurring');
+        const recurringFields = document.getElementById('recurring-fields');
+        if (isRecurringSwitch && recurringFields) {
+            isRecurringSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    recurringFields.classList.remove('d-none');
+                } else {
+                    recurringFields.classList.add('d-none');
+                }
+            });
+        }
 
         // Initial trigger
         calculateTaxes();

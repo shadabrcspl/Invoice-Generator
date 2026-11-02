@@ -83,6 +83,24 @@ class ExpenseController extends Controller
         }
 
         $validated['is_itc_eligible'] = $request->has('is_itc_eligible');
+        $validated['is_recurring'] = $request->has('is_recurring');
+        if ($validated['is_recurring']) {
+            $validated['recurring_frequency'] = $request->input('recurring_frequency', 'monthly');
+            if (empty($validated['recurring_next_date'])) {
+                $baseDate = \Carbon\Carbon::parse($validated['expense_date']);
+                $validated['recurring_next_date'] = match ($validated['recurring_frequency']) {
+                    'weekly' => $baseDate->addWeek()->toDateString(),
+                    'quarterly' => $baseDate->addMonths(3)->toDateString(),
+                    'yearly' => $baseDate->addYear()->toDateString(),
+                    default => $baseDate->addMonth()->toDateString(),
+                };
+            }
+            $validated['recurring_end_date'] = $request->input('recurring_end_date') ?: null;
+        } else {
+            $validated['recurring_frequency'] = null;
+            $validated['recurring_next_date'] = null;
+            $validated['recurring_end_date'] = null;
+        }
 
         Auth::user()->expenses()->create($validated);
 
@@ -116,10 +134,54 @@ class ExpenseController extends Controller
         }
 
         $validated['is_itc_eligible'] = $request->has('is_itc_eligible');
+        $validated['is_recurring'] = $request->has('is_recurring');
+        if ($validated['is_recurring']) {
+            $validated['recurring_frequency'] = $request->input('recurring_frequency', 'monthly');
+            if (empty($validated['recurring_next_date'])) {
+                $baseDate = \Carbon\Carbon::parse($validated['expense_date']);
+                $validated['recurring_next_date'] = match ($validated['recurring_frequency']) {
+                    'weekly' => $baseDate->addWeek()->toDateString(),
+                    'quarterly' => $baseDate->addMonths(3)->toDateString(),
+                    'yearly' => $baseDate->addYear()->toDateString(),
+                    default => $baseDate->addMonth()->toDateString(),
+                };
+            }
+            $validated['recurring_end_date'] = $request->input('recurring_end_date') ?: null;
+        } else {
+            $validated['recurring_frequency'] = null;
+            $validated['recurring_next_date'] = null;
+            $validated['recurring_end_date'] = null;
+        }
 
         $expense->update($validated);
 
         return redirect()->route('expenses.index')->with('success', 'Expense updated successfully!');
+    }
+
+    /**
+     * Toggle the recurring status of an expense.
+     */
+    public function toggleRecurring(Expense $expense)
+    {
+        $this->authorize('update', $expense);
+
+        if ($expense->is_recurring) {
+            $expense->update([
+                'is_recurring' => false,
+            ]);
+            return back()->with('success', 'Recurring schedule paused for ' . $expense->vendor_name . '.');
+        } else {
+            $nextDate = \Carbon\Carbon::parse($expense->expense_date)->addMonth();
+            if ($nextDate->isPast()) {
+                $nextDate = now()->addMonth();
+            }
+            $expense->update([
+                'is_recurring' => true,
+                'recurring_frequency' => $expense->recurring_frequency ?: 'monthly',
+                'recurring_next_date' => $nextDate->toDateString(),
+            ]);
+            return back()->with('success', 'Recurring schedule activated for ' . $expense->vendor_name . ' (Next: ' . $nextDate->format('M d, Y') . ').');
+        }
     }
 
     /**

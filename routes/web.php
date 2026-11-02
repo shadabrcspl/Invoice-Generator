@@ -35,6 +35,7 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
 
     // Expenses CRUD Directory
     Route::get('expenses/export', [ExpenseController::class, 'export'])->name('expenses.export');
+    Route::post('expenses/{expense}/toggle-recurring', [ExpenseController::class, 'toggleRecurring'])->name('expenses.toggle-recurring');
     Route::resource('expenses', ExpenseController::class)->except(['show']);
 
     // Company profile settings
