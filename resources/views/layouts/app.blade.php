@@ -303,6 +303,10 @@
         }
 
         /* Modern Pagination Styling */
+        nav[role="navigation"],
+        .content-body nav {
+            width: 100%;
+        }
         .pagination {
             margin-bottom: 0;
             display: flex;
