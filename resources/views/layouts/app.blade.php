@@ -307,6 +307,9 @@
         .content-body nav {
             width: 100%;
         }
+        nav p.small, nav .text-muted {
+            margin-bottom: 0 !important;
+        }
         .pagination {
             margin-bottom: 0;
             display: flex;
