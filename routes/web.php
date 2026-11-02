@@ -144,6 +144,13 @@ Route::get('/templates/excel-invoice-template', [App\Http\Controllers\HomeContro
 Route::permanentRedirect('/templates/invoice-template-word', '/templates/word-invoice-template');
 Route::get('/downloads/template/{filename}', [App\Http\Controllers\HomeController::class, 'downloadTemplate'])->name('templates.download');
 
+// IndexNow Key Verification Route (Bing / Yahoo / Yandex real-time search engine verification)
+Route::get('/3edd1a85498f32f18ebe43031dbef1d4.txt', function () {
+    return response("3edd1a85498f32f18ebe43031dbef1d4\n", 200, [
+        'Content-Type' => 'text/plain; charset=UTF-8',
+    ]);
+});
+
 // Contact Desk (GET renders dedicated page, POST handles submission with rate limiting)
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contactView'])->name('contact.view');
 Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contact'])
