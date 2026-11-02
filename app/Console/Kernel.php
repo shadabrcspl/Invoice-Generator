@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('exchange-rates:fetch')->dailyAt('06:00');
         $schedule->command('invoices:process-recurring')->dailyAt('08:00');
         $schedule->command('expenses:process-recurring')->dailyAt('08:15');
+        $schedule->command('seo:indexnow --sitemap')->weeklyOn(0, '07:00');
     }
 
     /**
