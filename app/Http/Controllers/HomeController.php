@@ -344,6 +344,22 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the Forex Calculator & Bank Spread Tracking Guide.
+     */
+    public function blogForexCalculatorBankSpread()
+    {
+        return view('blog.forex_calculator_borderless_billing_bank_spread_tracking');
+    }
+
+    /**
+     * Display the Mastering LUT Compliant Export Invoices & Tax Saves Guide.
+     */
+    public function blogLutCompliantExportInvoices()
+    {
+        return view('blog.mastering_lut_compliant_export_invoices_tax_savings');
+    }
+
+    /**
      * Display CodXpert vs Zoho Invoice comparison page.
      */
     public function vsZohoInvoice()

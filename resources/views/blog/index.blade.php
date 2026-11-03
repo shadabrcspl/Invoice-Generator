@@ -296,6 +296,54 @@
 
             <!-- Articles Grid -->
             <div class="row g-4 mb-5" id="articlesGrid">
+
+                <!-- Article New 1: Forex Calculator & Bank Spread Tracking -->
+                <div class="col-md-6 col-lg-4 article-item" data-category="rbi-fema" data-title="Forex calculator borderless billing bank spread tracking IT exporters TT buying interbank IBR AS-11">
+                    <div class="article-card border border-primary border-opacity-25 shadow-sm">
+                        <div class="p-4 flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge badge-tag badge-fema">Forex & Banking</span>
+                                <span class="badge bg-warning text-dark small fw-bold">NEW</span>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">
+                                <a href="{{ route('blog.forex-calculator-bank-spread') }}" class="text-decoration-none text-dark hover-primary">
+                                    Forex Calculator for Borderless Billing & Bank Spread Tracking
+                                </a>
+                            </h3>
+                            <p class="text-slate-600 small mb-0">
+                                Stop losing 2% to 4% to hidden bank forex markups. Learn how TT buying rates work, how to audit foreign exchange leakage, and automate real-time multi-currency ledgers under ICAI AS-11.
+                            </p>
+                        </div>
+                        <div class="px-4 py-3 bg-slate-50 border-top d-flex justify-content-between align-items-center">
+                            <a href="{{ route('blog.forex-calculator-bank-spread') }}" class="text-primary fw-semibold small text-decoration-none">Read Guide →</a>
+                            <span class="text-muted small">12 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article New 2: Mastering LUT Compliant Export Invoices -->
+                <div class="col-md-6 col-lg-4 article-item" data-category="gst-lut" data-title="Mastering LUT compliant export invoices comfortable VAT tax saves zero rated IGST Section 16 Rule 96A">
+                    <div class="article-card border border-primary border-opacity-25 shadow-sm">
+                        <div class="p-4 flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge badge-tag badge-gst">GST & Export Tax</span>
+                                <span class="badge bg-success small fw-bold">NEW</span>
+                            </div>
+                            <h3 class="h5 fw-bold mb-3">
+                                <a href="{{ route('blog.lut-compliant-export-invoices') }}" class="text-decoration-none text-dark hover-primary">
+                                    Mastering LUT Compliant Export Invoices: Zero-Rated GST & Tax Saves
+                                </a>
+                            </h3>
+                            <p class="text-slate-600 small mb-0">
+                                The definitive playbook for Indian IT exporters to legally eliminate 18% IGST upfront under Letter of Undertaking (LUT), handle foreign client VAT reverse charges, and preserve 100% of working capital.
+                            </p>
+                        </div>
+                        <div class="px-4 py-3 bg-slate-50 border-top d-flex justify-content-between align-items-center">
+                            <a href="{{ route('blog.lut-compliant-export-invoices') }}" class="text-primary fw-semibold small text-decoration-none">Read Guide →</a>
+                            <span class="text-muted small">14 min read</span>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Article 1: GST LUT RFD-11 -->
                 <div class="col-md-6 col-lg-4 article-item" data-category="gst-lut" data-title="How to File GST LUT RFD-11 Online Step-by-Step Guide FY 2026-27 Rule 96A zero rated export">

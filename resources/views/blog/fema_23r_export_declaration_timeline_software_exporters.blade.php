@@ -312,7 +312,27 @@
                         <a href="{{ url('/register') }}" class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark shadow">
                             Try CodXpert Free →
                         </a>
+                        <a href="https://codxpert.com/" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold mt-2 mt-md-0 ms-md-2">
+                            COD XPERT Site →
+                        </a>
                     </div>
+                </div>
+            </div>
+
+            <!-- E-E-A-T Verified Author Component -->
+            @include('partials.blog_author_box')
+
+            <!-- Related Internal Links Silo -->
+            <div class="pt-4 mt-4 border-top text-slate-500 small">
+                <p class="mb-2"><strong>Recommended Cross-Border Invoicing Resources:</strong></p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('blog.forex-calculator-bank-spread') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Forex Calculator & Bank Spread Tracking</a>
+                    <a href="{{ route('blog.mastering-lut-compliant-export-invoices-tax-savings') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Mastering LUT Export Invoices</a>
+                    <a href="{{ route('blog.hdfc-edf-request-letter') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">HDFC Bank EDF Filing Tutorial</a>
+                    <a href="{{ route('blog.rbi-purpose-codes') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">RBI Purpose Codes Guide (P0802)</a>
+                    <a href="{{ route('blog.gst-lut-rfd-11') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">How to File GST LUT (Form RFD-11)</a>
+                    <a href="{{ route('guides.fema-23r') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">FEMA 23(R) Export Declaration Guide</a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="badge bg-primary text-white text-decoration-none p-2">COD XPERT Official Website</a>
                 </div>
             </div>
 

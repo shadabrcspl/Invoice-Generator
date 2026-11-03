@@ -425,18 +425,27 @@
                     <a href="{{ route('solutions.consultants') }}" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">
                         Invoicing for Consultants →
                     </a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill">
+                        Visit COD XPERT Official Site →
+                    </a>
                 </div>
             </div>
+
+            <!-- E-E-A-T Verified Author Component -->
+            @include('partials.blog_author_box')
 
             <!-- Author & Silo Internal Links -->
             <div class="pt-4 border-top text-slate-500 small">
                 <p class="mb-2"><strong>Related Exporter Resources:</strong></p>
                 <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('blog.mastering-lut-compliant-export-invoices-tax-savings') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Mastering LUT Export Invoices</a>
+                    <a href="{{ route('blog.forex-calculator-bank-spread') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Forex Calculator & Bank Spread Tracking</a>
                     <a href="{{ route('blog.gst-lut-rfd-11') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">How to File GST LUT (RFD-11)</a>
                     <a href="{{ route('blog.rbi-purpose-codes') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">RBI Purpose Codes for IT Exporters</a>
                     <a href="{{ route('features.e-invoicing') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">E-Invoicing & Compliance</a>
                     <a href="{{ route('solutions.freelancers') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Invoicing for Freelancers</a>
                     <a href="{{ route('guides.gst-lut') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">GST LUT Rule 96A Guide</a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="badge bg-primary text-white text-decoration-none p-2">COD XPERT Official Website</a>
                 </div>
             </div>
 

@@ -382,18 +382,27 @@
                     <a href="{{ route('guides.fema-23r') }}" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">
                         Read FEMA 23(R) Export Guide →
                     </a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill">
+                        Visit COD XPERT Official Site →
+                    </a>
                 </div>
             </div>
+
+            <!-- E-E-A-T Verified Author Component -->
+            @include('partials.blog_author_box')
 
             <!-- Author & Silo Internal Links -->
             <div class="pt-4 border-top text-slate-500 small">
                 <p class="mb-2"><strong>Related Exporter Resources:</strong></p>
                 <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('blog.forex-calculator-bank-spread') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Forex Calculator & Bank Spread Tracking</a>
+                    <a href="{{ route('blog.mastering-lut-compliant-export-invoices-tax-savings') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Mastering LUT Export Invoices</a>
                     <a href="{{ route('blog.gst-lut-rfd-11') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">How to File GST LUT (RFD-11)</a>
                     <a href="{{ route('blog.sac-code-comparison') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">SAC Code 998311 vs 998312</a>
                     <a href="{{ route('guides.firc-e-brc') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">FIRC & e-BRC Reconciliation Guide</a>
                     <a href="{{ route('solutions.contractors') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Invoicing for Contractors</a>
                     <a href="{{ route('features.multi-currency') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Multi-Currency & Forex Management</a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="badge bg-primary text-white text-decoration-none p-2">COD XPERT Official Website</a>
                 </div>
             </div>
 

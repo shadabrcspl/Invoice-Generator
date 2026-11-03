@@ -589,6 +589,39 @@
                 </div>
             </section>
 
+            <!-- Bottom CTA Banner -->
+            <div class="p-5 rounded-4 text-center text-white my-5 shadow-lg" style="background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);">
+                <h3 class="h4 fw-bold text-white mb-2">Automate Your HDFC Bank EDF Generation</h3>
+                <p class="text-white-50 mx-auto mb-4" style="max-width: 620px;">
+                    COD XPERT Invoices auto-populates HDFC Bank Annexure 1 & 2 Excel schedules directly from your logged cross-border invoices with 1 click.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ route('tools.invoice-generator') }}" class="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill shadow-sm">
+                        Create Free Invoice
+                    </a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">
+                        Visit COD XPERT Official Site →
+                    </a>
+                </div>
+            </div>
+
+            <!-- E-E-A-T Verified Author Component -->
+            @include('partials.blog_author_box')
+
+            <!-- Related Internal Links Silo -->
+            <div class="pt-4 mt-4 border-top text-slate-500 small">
+                <p class="mb-2"><strong>Recommended Cross-Border Invoicing Resources:</strong></p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('blog.forex-calculator-bank-spread') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Forex Calculator & Bank Spread Tracking</a>
+                    <a href="{{ route('blog.mastering-lut-compliant-export-invoices-tax-savings') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">Mastering LUT Export Invoices</a>
+                    <a href="{{ route('blog.fema-23r-timeline') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">FEMA 23(R) 30-Day Timeline</a>
+                    <a href="{{ route('blog.rbi-purpose-codes') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">RBI Purpose Codes Guide (P0802)</a>
+                    <a href="{{ route('blog.gst-lut-rfd-11') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">How to File GST LUT (Form RFD-11)</a>
+                    <a href="{{ route('guides.fema-23r') }}" class="badge bg-slate-200 text-dark text-decoration-none p-2">FEMA 23(R) Export Declaration Guide</a>
+                    <a href="https://codxpert.com/" target="_blank" rel="noopener" class="badge bg-primary text-white text-decoration-none p-2">COD XPERT Official Website</a>
+                </div>
+            </div>
+
         </article>
     </main>
 

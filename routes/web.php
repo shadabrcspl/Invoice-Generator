@@ -123,6 +123,8 @@ Route::get('/blog/top-rbi-purpose-codes-software-exporters', [App\Http\Controlle
 Route::get('/blog/sac-code-998311-vs-998312', [App\Http\Controllers\HomeController::class, 'blogSacCodeComparison'])->name('blog.sac-code-comparison');
 Route::get('/blog/how-to-fill-hdfc-bank-edf-cum-request-letter-export-services', [App\Http\Controllers\HomeController::class, 'blogHdfcEdfRequestLetter'])->name('blog.hdfc-edf-request-letter');
 Route::get('/blog/fema-23r-export-declaration-timeline-software-exporters', [App\Http\Controllers\HomeController::class, 'blogFema23rTimeline'])->name('blog.fema-23r-timeline');
+Route::get('/blog/forex-calculator-borderless-billing-bank-spread-tracking', [App\Http\Controllers\HomeController::class, 'blogForexCalculatorBankSpread'])->name('blog.forex-calculator-bank-spread');
+Route::get('/blog/mastering-lut-compliant-export-invoices-tax-savings', [App\Http\Controllers\HomeController::class, 'blogLutCompliantExportInvoices'])->name('blog.lut-compliant-export-invoices');
 
 // 301 Redirects for Legacy Guide URLs
 Route::permanentRedirect('/gst-lut-guide', '/guides/gst-lut');
