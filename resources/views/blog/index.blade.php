@@ -330,7 +330,7 @@
                                 <span class="badge bg-success small fw-bold">NEW</span>
                             </div>
                             <h3 class="h5 fw-bold mb-3">
-                                <a href="{{ route('blog.lut-compliant-export-invoices') }}" class="text-decoration-none text-dark hover-primary">
+                                <a href="{{ route('blog.mastering-lut-compliant-export-invoices-tax-savings') }}" class="text-decoration-none text-dark hover-primary">
                                     Mastering LUT Compliant Export Invoices: Zero-Rated GST & Tax Saves
                                 </a>
                             </h3>
@@ -339,7 +339,7 @@
                             </p>
                         </div>
                         <div class="px-4 py-3 bg-slate-50 border-top d-flex justify-content-between align-items-center">
-                            <a href="{{ route('blog.lut-compliant-export-invoices') }}" class="text-primary fw-semibold small text-decoration-none">Read Guide →</a>
+                            <a href="{{ route('blog.mastering-lut-compliant-export-invoices-tax-savings') }}" class="text-primary fw-semibold small text-decoration-none">Read Guide →</a>
                             <span class="text-muted small">14 min read</span>
                         </div>
                     </div>
