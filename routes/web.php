@@ -38,6 +38,9 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     Route::post('expenses/{expense}/toggle-recurring', [ExpenseController::class, 'toggleRecurring'])->name('expenses.toggle-recurring');
     Route::resource('expenses', ExpenseController::class)->except(['show']);
 
+    // Profit & Loss Financial Statement
+    Route::get('/profit-loss', [App\Http\Controllers\ProfitLossController::class, 'index'])->name('profit-loss.index');
+
     // Company profile settings
     Route::get('settings', [CompanySettingController::class, 'edit'])->name('settings.edit');
     Route::put('settings', [CompanySettingController::class, 'update'])->name('settings.update');

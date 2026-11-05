@@ -134,4 +134,12 @@ class Invoice extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+    /**
+     * Get all payment settlements associated with this invoice.
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
