@@ -23,19 +23,10 @@ class ProfitLossController extends Controller
         $invoiceMonths = Invoice::where('user_id', $userId)
             ->where('type', 'invoice')
             ->whereNotNull('invoice_date')
-            ->selectRaw("DISTINCT strftime('%Y-%m', invoice_date) as m")
-            ->pluck('m')
+            ->pluck('invoice_date')
+            ->map(fn($d) => Carbon::parse($d)->format('Y-m'))
+            ->unique()
             ->toArray();
-
-        // Fallback for MySQL if running in production
-        if (empty($invoiceMonths)) {
-            $invoiceMonths = Invoice::where('user_id', $userId)
-                ->where('type', 'invoice')
-                ->whereNotNull('invoice_date')
-                ->selectRaw("DISTINCT DATE_FORMAT(invoice_date, '%Y-%m') as m")
-                ->pluck('m')
-                ->toArray();
-        }
 
         $paymentMonths = Payment::whereHas('invoice', fn($q) => $q->where('user_id', $userId))
             ->whereNotNull('payment_date')
@@ -51,7 +42,7 @@ class ProfitLossController extends Controller
             ->unique()
             ->toArray();
 
-        $allMonths = array_unique(array_merge($invoiceMonths, $paymentMonths, $expenseMonths));
+        $allMonths = array_values(array_unique(array_merge($invoiceMonths, $paymentMonths, $expenseMonths)));
         rsort($allMonths);
 
         // Determine current selected period (default to current month, or the latest month with activity)
